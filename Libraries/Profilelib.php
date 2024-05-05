@@ -24,7 +24,7 @@ class Profilelib
                 if ($decoded) {
                     $userId = $decoded->id;
 
-                    $user = $this->_db->table('v_user')
+                    $user = $this->_db->table('v_user_new')
                         ->where('id', $userId)
                         ->get()->getRowObject();
                     if ($user) {

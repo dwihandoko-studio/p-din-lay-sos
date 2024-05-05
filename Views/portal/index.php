@@ -440,7 +440,7 @@
 
         function aksiCompleted(event) {
             $.ajax({
-                url: './portal/getCompletedAccount',
+                url: './portal/getCompletedAccount', 
                 type: 'POST',
                 data: {
                     id: 'lengkapi',

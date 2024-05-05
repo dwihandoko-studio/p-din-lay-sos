@@ -41,7 +41,8 @@ class Portal extends BaseController
                     $data['level'] = $level;
                     $data['layanans'] = $layanan['layanans'];
                     // var_dump($user->data)
-                    $data['completeAccount'] = ($user->data->kk == NULL || $user->data->kk == "") ? false : true;
+                    $data['completeAccount'] = ($user->data->rt == NULL || $user->data->rt == "") ? false : true;
+                    // $data['completeAccount'] = ($user->data->kk == NULL || $user->data->kk == "") ? false : true;
                     return view('portal/index', $data);
                 } else {
                     session()->destroy();
@@ -256,6 +257,18 @@ class Portal extends BaseController
                     'required' => 'Alamat tidak boleh kosong. ',
                 ]
             ],
+            'rt' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'RT tidak boleh kosong. ',
+                ]
+            ],
+            'rw' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'RW tidak boleh kosong. ',
+                ]
+            ],
             'nohp' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -285,6 +298,8 @@ class Portal extends BaseController
                 . $this->validator->getError('kelurahan')
                 . $this->validator->getError('pekerjaan')
                 . $this->validator->getError('alamat')
+                . $this->validator->getError('rt')
+                . $this->validator->getError('rw')
                 . $this->validator->getError('email')
                 . $this->validator->getError('nohp');
             return json_encode($response);
@@ -311,6 +326,8 @@ class Portal extends BaseController
             $kelurahan = htmlspecialchars($this->request->getVar('kelurahan'), true);
             $pekerjaan = htmlspecialchars($this->request->getVar('pekerjaan'), true);
             $alamat = htmlspecialchars($this->request->getVar('alamat'), true);
+            $rt = htmlspecialchars($this->request->getVar('rt'), true);
+            $rw = htmlspecialchars($this->request->getVar('rw'), true);
             $nohp = htmlspecialchars($this->request->getVar('nohp'), true);
             $email = htmlspecialchars($this->request->getVar('email'), true);
 
@@ -328,6 +345,8 @@ class Portal extends BaseController
                     'kelurahan' => $kelurahan,
                     'pekerjaan' => $pekerjaan,
                     'alamat' => $alamat,
+                    'rt' => $rt,
+                    'rw' => $rw,
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];
 

@@ -87,6 +87,7 @@ class Selesai extends BaseController
         }
 
         $data['user'] = $user->data;
+        $data['layanans'] = $this->_db->table('_permohonan')->select("layanan, count(layanan) as jumlah")->where('status_permohonan', 5)->groupBy('layanan')->orderBy('layanan', 'ASC')->get()->getResult();
 
         // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
 

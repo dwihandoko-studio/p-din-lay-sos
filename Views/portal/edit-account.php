@@ -100,7 +100,16 @@
                         <textarea rows="5" class="form-control alamat" id="_alamat" name="_alamat" placeholder="Alamat lengkap..." onfocusin="inputFocus(this);"><?= $data->alamat ?></textarea>
                         <div class="help-block _alamat"></div>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="_rt" class="form-label">RT</label>
+                        <input type="text" class="form-control rt" value="<?= $data->tempat_lahir ?>" id="_rt" name="_rt" placeholder="Rt..." onfocusin="inputFocus(this);">
+                        <div class="help-block _rt"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="_rw" class="form-label">RW</label>
+                        <input type="text" class="form-control rw" value="<?= $data->tempat_lahir ?>" id="_rw" name="_rw" placeholder="Rw..." onfocusin="inputFocus(this);">
+                        <div class="help-block _rw"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,6 +202,8 @@
             const kecamatan = document.getElementsByName('_kecamatan')[0].value;
             const kelurahan = document.getElementsByName('_kelurahan')[0].value;
             const alamat = document.getElementsByName('_alamat')[0].value;
+            const rt = document.getElementsByName('_rt')[0].value;
+            const rw = document.getElementsByName('_rw')[0].value;
             const email = document.getElementsByName('_email')[0].value;
             const nohp = document.getElementsByName('_nohp')[0].value;
             const pekerjaan_lain = document.getElementsByName('_pekerjaan_lain')[0].value;
@@ -264,6 +275,18 @@
                 $('._alamat').html('<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">Alamat tidak boleh kosong.</li></ul>');
                 return false;
             }
+            if (rt === "") {
+                $("input#_rt").css("color", "#dc3545");
+                $("input#_rt").css("border-color", "#dc3545");
+                $('._rt').html('<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">RT tidak boleh kosong.</li></ul>');
+                return false;
+            }
+            if (rw === "") {
+                $("input#_rw").css("color", "#dc3545");
+                $("input#_rw").css("border-color", "#dc3545");
+                $('._rw').html('<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">RW tidak boleh kosong.</li></ul>');
+                return false;
+            }
             if (email === "") {
                 $("input#_email").css("color", "#dc3545");
                 $("input#_email").css("border-color", "#dc3545");
@@ -309,6 +332,8 @@
                             kecamatan: kecamatan,
                             kelurahan: kelurahan,
                             alamat: alamat,
+                            rt: rt,
+                            rw: rw,
                             email: email,
                             nohp: nohp,
                         },
