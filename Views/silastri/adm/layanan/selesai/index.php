@@ -207,7 +207,7 @@
                 "url": "./getAll",
                 "type": "POST",
                 "data": function(data) {
-                    data.layanan = $('#_filter_layanan').val();
+                    data.filter_layanan = $('#_filter_layanan').val();
                 }
             },
             language: {
