@@ -37,7 +37,7 @@
                                         <?php if (isset($layanans)) { ?>
                                             <?php if (count($layanans) > 0) { ?>
                                                 <?php foreach ($layanans as $key => $value) { ?>
-                                                    <option value="<?= $value->layanan ?>" selected><?= $value->layanan ?></option>
+                                                    <option value="<?= $value->layanan ?>"><?= $value->layanan ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
