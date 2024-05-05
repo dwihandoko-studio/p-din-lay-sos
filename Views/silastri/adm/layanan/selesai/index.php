@@ -36,8 +36,8 @@
                                         <option value="" selected>--Pilih--</option>
                                         <?php if (isset($layanans)) { ?>
                                             <?php if (count($layanans) > 0) { ?>
-                                                <?php foreach ($layanans as $key => $value) { ?>
-                                                    <option value="<?= $value->layanan ?>"><?= $value->layanan ?></option>
+                                                <?php foreach ($layanans as $key) { ?>
+                                                    <option value="<?= $key ?>"><?= $key ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
