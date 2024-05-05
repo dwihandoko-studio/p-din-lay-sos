@@ -102,12 +102,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="_rt" class="form-label">RT</label>
-                        <input type="text" class="form-control rt" value="<?= $data->tempat_lahir ?>" id="_rt" name="_rt" placeholder="Rt..." onfocusin="inputFocus(this);">
+                        <input type="text" class="form-control rt" value="<?= $data->rt ?>" id="_rt" name="_rt" placeholder="Rt..." onfocusin="inputFocus(this);">
                         <div class="help-block _rt"></div>
                     </div>
                     <div class="mb-3">
                         <label for="_rw" class="form-label">RW</label>
-                        <input type="text" class="form-control rw" value="<?= $data->tempat_lahir ?>" id="_rw" name="_rw" placeholder="Rw..." onfocusin="inputFocus(this);">
+                        <input type="text" class="form-control rw" value="<?= $data->rw ?>" id="_rw" name="_rw" placeholder="Rw..." onfocusin="inputFocus(this);">
                         <div class="help-block _rw"></div>
                     </div>
                 </div>
