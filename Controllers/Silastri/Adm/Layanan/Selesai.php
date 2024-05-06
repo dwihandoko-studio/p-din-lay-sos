@@ -8,7 +8,7 @@ use Config\Services;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use App\Libraries\Profilelib;
-use App\Libraries\Apilib;
+use App\Libraries\Silastri\Apilib;
 use App\Libraries\Helplib;
 use App\Libraries\Silastri\Ttelib;
 use App\Libraries\Uuid;
@@ -142,6 +142,155 @@ class Selesai extends BaseController
             return view('silastri/adm/layanan/selesai/detail-page', $data);
         } else {
             return view('404', ['error' => "Data tidak ditemukan."]);
+        }
+    }
+
+    public function download()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                delete_cookie('jwt');
+                session()->destroy();
+                return redirect()->to(base_url('auth'));
+            }
+            $kecamatan = $this->_helpLib->getKecamatan($user->data->id);
+
+            $data['user'] = $user->data;
+            $layanans = getGrantedAccessLayanan($user->data->id);
+            $data['layanans'] = $layanans;
+
+            $response = new \stdClass;
+            $response->status = 200;
+            $response->message = "Permintaan diizinkan";
+            $response->data = view('silastri/adm/layanan/selesai/download', $data);
+            return json_encode($response);
+            // } else {
+            //     $response = new \stdClass;
+            //     $response->status = 400;
+            //     $response->message = "Data tidak ditemukan";
+            //     return json_encode($response);
+            // }
+        }
+    }
+
+    public function aksidownload()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'tgl_awal' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal Awal tidak boleh kosong. ',
+                ]
+            ],
+            'tgl_akhir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal Akhir tidak boleh kosong. ',
+                ]
+            ],
+            'layanan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Layanan tidak boleh kosong. ',
+                ]
+            ],
+            'type_file' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Type file tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('tgl_awal')
+                . $this->validator->getError('tgl_akhir')
+                . $this->validator->getError('layanan')
+                . $this->validator->getError('type_file');
+            return json_encode($response);
+        } else {
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                delete_cookie('jwt');
+                session()->destroy();
+                $response = new \stdClass;
+                $response->status = 401;
+                $response->message = "Session expired";
+                return json_encode($response);
+            }
+
+            $tgl_awal = htmlspecialchars($this->request->getVar('tgl_awal'), true);
+            $tgl_akhir = htmlspecialchars($this->request->getVar('tgl_akhir'), true);
+            $layanan = htmlspecialchars($this->request->getVar('layanan'), true);
+            $type_file = htmlspecialchars($this->request->getVar('type_file'), true);
+
+            $apiLib = new Apilib();
+
+            $result = $apiLib->downloadLaporanPbi($tgl_awal, $tgl_akhir, $layanan, $type_file);
+
+            if ($result) {
+                if ($result->status == 200) {
+                    if (isset($result->data)) {
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->data = $result;
+                        $response->url = base_url() . "/uploads/api" . $result->data->url;
+                        $response->message = "Download Data Berhasil Dilakukan.";
+                        return json_encode($response);
+                    } else {
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = $result->message;
+                        return json_encode($response);
+                    }
+                } else {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->error = $result;
+                    $response->message = "Gagal Tarik Data.";
+                    return json_encode($response);
+                }
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Gagal Tarik Data";
+                return json_encode($response);
+            }
         }
     }
 
