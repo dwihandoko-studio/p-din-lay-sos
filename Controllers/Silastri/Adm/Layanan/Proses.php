@@ -421,7 +421,8 @@ class Proses extends BaseController
             $response = new \stdClass;
             $response->status = 200;
             $response->redirrect = base_url('silastri/adm/layanan/approval');
-            $response->message = "Selesaikan Permohonan $data->layanan $data->jenis $data->kode_permohonan berhasil dilakukan.";
+            $response->message = "Proses Permohonan Persetujuan $data->layanan $data->jenis $data->kode_permohonan berhasil. Selanjutnya menunggu TTE Kepala Dinas.";
+            // $response->message = "Selesaikan Permohonan $data->layanan $data->jenis $data->kode_permohonan berhasil dilakukan.";
             return json_encode($response);
         } else {
             $this->_db->transRollback();
