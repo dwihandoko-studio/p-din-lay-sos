@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_no_tanggal_notaris" class="col-sm-3 col-form-label">Nama Notaris</label>
+                                    <label for="_no_tanggal_notaris" class="col-sm-3 col-form-label">Nomor Akta Notaris</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_no_tanggal_notaris" name="_no_tanggal_notaris" placeholder="Contoh: 02/27-02/2000 " required />
                                         <div class="help-block _no_tanggal_notaris"></div>
