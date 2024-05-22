@@ -257,7 +257,7 @@ class Proses extends BaseController
                 $data_surat = [
                     'id' => $data->id_permohonan,
                     'no_surat' => $nomorFix,
-                    'kecamatan' => $data->kecamatan_pemohon,
+                    'kecamatan' => substr($data->kelurahan_pemohon, 0, 7),
                     'kelurahan' => $data->kelurahan_pemohon,
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
