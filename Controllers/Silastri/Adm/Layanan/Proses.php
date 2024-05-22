@@ -281,18 +281,18 @@ class Proses extends BaseController
                 $date = new DateTime();
 
                 $template_processor->setValue('TGL_TTE', tgl_indo($date->format('Y-m-d')));
-                $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
+                // $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
                 $date->modify('+3 years');
                 $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
                 $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
 
-                $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
-                $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
-                $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
-                $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
-                $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
+                // $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
+                // $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
+                // $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
+                // $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
+                // $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
 
-                $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
+                // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
                 // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData->kode_aduan, 'width' => 100, 'height' => 100, 'ratio' => false));
                 // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'], 'width' => 100, 'height' => 100, 'ratio' => false));
                 // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'] . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
@@ -400,7 +400,7 @@ class Proses extends BaseController
 
         $tteUpload = new Ttelib();
         // $uploaded = $tteUpload->createUploadFile($dir_temp . $oldData['nik'] . '.pdf', $dir, $oldData['nik'] . '.pdf', $contentCreator, 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData['id'] . '&choe=UTF-8');
-        $uploaded = $tteUpload->createUploadFile($dir_temp . $data->kode_permohonan . '.pdf', $dir, $data->kode_permohonan . '.pdf', $contentCreator, 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan);
+        $uploaded = $tteUpload->createUploadFileGenerate($dir_temp . $data->kode_permohonan . '.pdf', $dir, $data->kode_permohonan . '.pdf', $contentCreator, 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan);
         // $uploaded = $tteUpload->createUploadFile($dir_pdf_tte, $dir, $newNamelampiran, $contentCreator);
         // var_dump($uploaded);
         // die;
