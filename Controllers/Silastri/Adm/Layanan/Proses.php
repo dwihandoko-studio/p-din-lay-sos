@@ -286,11 +286,11 @@ class Proses extends BaseController
                 $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
                 $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
 
-                // $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
-                // $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
-                // $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
+                $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
+                $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
+                $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
                 // $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
-                // $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
+                $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
 
                 // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
                 // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData->kode_aduan, 'width' => 100, 'height' => 100, 'ratio' => false));
