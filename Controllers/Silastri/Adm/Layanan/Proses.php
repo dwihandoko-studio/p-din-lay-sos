@@ -136,7 +136,14 @@ class Proses extends BaseController
 
         if ($current) {
             $data['data'] = $current;
-            return view('silastri/adm/layanan/proses/detail-page', $data);
+            if ($current->layanan == "LKS") {
+                $data['lks'] = $this->_db->table('_permohonan_lksa')
+                    ->where('id_permohonan', $current->id)
+                    ->get()->getResultObject();
+                return view('silastri/adm/layanan/proses/detail-page-lks', $data);
+            } else {
+                return view('silastri/adm/layanan/proses/detail-page', $data);
+            }
         } else {
             return view('404', ['error' => "Data tidak ditemukan."]);
         }
