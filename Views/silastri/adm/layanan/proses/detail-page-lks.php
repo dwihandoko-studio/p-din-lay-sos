@@ -330,114 +330,114 @@
                                         <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (KTP Pengurus, Akta Notaris, Pengesahan Kemenkumham, ADRT, Keterangan Domisili, Akreditasi, Struktur Organisasi, NPWP, Foto Lokasi Tampak Depan, Foto Usaha Ekonomi Produktif, Logo Lembaga, dan File Binaan).</p>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <?php if (isset($data->lampiran_ktp_ketua)) { ?>
-                                                    <?php if ($data->lampiran_ktp_ketua === null || $data->lampiran_ktp_ketua === "") { ?>
+                                                <?php if (isset($lks->lampiran_ktp_ketua)) { ?>
+                                                    <?php if ($lks->lampiran_ktp_ketua === null || $lks->lampiran_ktp_ketua === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_ketua ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_ketua ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_ketua ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_ketua ?>" id="nik">
                                                             Lampiran KTP Pengurus (Ketua)
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_ktp_sekretaris)) { ?>
-                                                    <?php if ($data->lampiran_ktp_sekretaris === null || $data->lampiran_ktp_sekretaris === "") { ?>
+                                                <?php if (isset($lks->lampiran_ktp_sekretaris)) { ?>
+                                                    <?php if ($lks->lampiran_ktp_sekretaris === null || $lks->lampiran_ktp_sekretaris === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_sekretaris ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_sekretaris ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_sekretaris ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_sekretaris ?>" id="nik">
                                                             Lampiran KTP Pengurus (Sekretaris)
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_ktp_bendahara)) { ?>
-                                                    <?php if ($data->lampiran_ktp_bendahara === null || $data->lampiran_ktp_bendahara === "") { ?>
+                                                <?php if (isset($lks->lampiran_ktp_bendahara)) { ?>
+                                                    <?php if ($lks->lampiran_ktp_bendahara === null || $lks->lampiran_ktp_bendahara === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_bendahara ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_ktp_bendahara ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_bendahara ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_ktp_bendahara ?>" id="nik">
                                                             Lampiran KTP Pengurus (Bendahara)
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_akta_notaris)) { ?>
-                                                    <?php if ($data->lampiran_akta_notaris === null || $data->lampiran_akta_notaris === "") { ?>
+                                                <?php if (isset($lks->lampiran_akta_notaris)) { ?>
+                                                    <?php if ($lks->lampiran_akta_notaris === null || $lks->lampiran_akta_notaris === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_akta_notaris ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_akta_notaris ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_akta_notaris ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_akta_notaris ?>" id="nik">
                                                             Lampiran Akta Notaris Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_kemenkumham)) { ?>
-                                                    <?php if ($data->lampiran_kemenkumham === null || $data->lampiran_kemenkumham === "") { ?>
+                                                <?php if (isset($lks->lampiran_kemenkumham)) { ?>
+                                                    <?php if ($lks->lampiran_kemenkumham === null || $lks->lampiran_kemenkumham === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_kemenkumham ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_kemenkumham ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_kemenkumham ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_kemenkumham ?>" id="nik">
                                                             Lampiran Kemenkumham Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_adrt)) { ?>
-                                                    <?php if ($data->lampiran_adrt === null || $data->lampiran_adrt === "") { ?>
+                                                <?php if (isset($lks->lampiran_adrt)) { ?>
+                                                    <?php if ($lks->lampiran_adrt === null || $lks->lampiran_adrt === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_adrt ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_adrt ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_adrt ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_adrt ?>" id="nik">
                                                             Lampiran ADRT Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_domisili)) { ?>
-                                                    <?php if ($data->lampiran_domisili === null || $data->lampiran_domisili === "") { ?>
+                                                <?php if (isset($lks->lampiran_domisili)) { ?>
+                                                    <?php if ($lks->lampiran_domisili === null || $lks->lampiran_domisili === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_domisili ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_domisili ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_domisili ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_domisili ?>" id="nik">
                                                             Lampiran Domisili Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_akreditasi)) { ?>
-                                                    <?php if ($data->lampiran_akreditasi === null || $data->lampiran_akreditasi === "") { ?>
+                                                <?php if (isset($lks->lampiran_akreditasi)) { ?>
+                                                    <?php if ($lks->lampiran_akreditasi === null || $lks->lampiran_akreditasi === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_akreditasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_akreditasi ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_akreditasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_akreditasi ?>" id="nik">
                                                             Lampiran Akreditasi Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_struktur_organisasi)) { ?>
-                                                    <?php if ($data->lampiran_struktur_organisasi === null || $data->lampiran_struktur_organisasi === "") { ?>
+                                                <?php if (isset($lks->lampiran_struktur_organisasi)) { ?>
+                                                    <?php if ($lks->lampiran_struktur_organisasi === null || $lks->lampiran_struktur_organisasi === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_struktur_organisasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_struktur_organisasi ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_struktur_organisasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_struktur_organisasi ?>" id="nik">
                                                             Lampiran Struktur Organisasi Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_npwp)) { ?>
-                                                    <?php if ($data->lampiran_npwp === null || $data->lampiran_npwp === "") { ?>
+                                                <?php if (isset($lks->lampiran_npwp)) { ?>
+                                                    <?php if ($lks->lampiran_npwp === null || $lks->lampiran_npwp === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_npwp ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_npwp ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_npwp ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_npwp ?>" id="nik">
                                                             Lampiran NPWP Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_foto_lokasi)) { ?>
-                                                    <?php if ($data->lampiran_foto_lokasi === null || $data->lampiran_foto_lokasi === "") { ?>
+                                                <?php if (isset($lks->lampiran_foto_lokasi)) { ?>
+                                                    <?php if ($lks->lampiran_foto_lokasi === null || $lks->lampiran_foto_lokasi === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_foto_lokasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_foto_lokasi ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_foto_lokasi ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_foto_lokasi ?>" id="nik">
                                                             Lampiran Foto Lokasi Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_foto_usaha)) { ?>
-                                                    <?php if ($data->lampiran_foto_usaha === null || $data->lampiran_foto_usaha === "") { ?>
+                                                <?php if (isset($lks->lampiran_foto_usaha)) { ?>
+                                                    <?php if ($lks->lampiran_foto_usaha === null || $lks->lampiran_foto_usaha === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_foto_usaha ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_foto_usaha ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_foto_usaha ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_foto_usaha ?>" id="nik">
                                                             Lampiran Foto Usaha Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_logo)) { ?>
-                                                    <?php if ($data->lampiran_logo === null || $data->lampiran_logo === "") { ?>
+                                                <?php if (isset($lks->lampiran_logo)) { ?>
+                                                    <?php if ($lks->lampiran_logo === null || $lks->lampiran_logo === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_logo ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_logo ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_logo ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_logo ?>" id="nik">
                                                             Lampiran Logo Lembaga
                                                         </a>
                                                     <?php } ?>
                                                 <?php } ?>
-                                                <?php if (isset($data->lampiran_data_binaan)) { ?>
-                                                    <?php if ($data->lampiran_data_binaan === null || $data->lampiran_data_binaan === "") { ?>
+                                                <?php if (isset($lks->lampiran_data_binaan)) { ?>
+                                                    <?php if ($lks->lampiran_data_binaan === null || $lks->lampiran_data_binaan === "") { ?>
                                                     <?php } else { ?>
-                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $data->lampiran_data_binaan ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $data->lampiran_data_binaan ?>" id="nik">
+                                                        <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/lks') . '/' . $lks->lampiran_data_binaan ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/lks') . '/' . $lks->lampiran_data_binaan ?>" id="nik">
                                                             Lampiran Data Binaan Lembaga
                                                         </a>
                                                     <?php } ?>
