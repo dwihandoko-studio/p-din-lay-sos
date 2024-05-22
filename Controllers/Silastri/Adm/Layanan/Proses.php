@@ -381,6 +381,8 @@ class Proses extends BaseController
     {
         $date = date('Y-m-d H:i:s');
 
+        $oldData = [];
+
         $oldData['updated_at'] = $date;
         $oldData['date_approve'] = $date;
         $oldData['admin_approve'] = $user->data->id;
@@ -403,7 +405,7 @@ class Proses extends BaseController
         // var_dump($uploaded);
         // die;
         if ($uploaded->code === 200) {
-            $data['lampiran_selesai'] = $data->kode_permohonan . '.pdf';
+            $oldData['lampiran_selesai'] = $data->kode_permohonan . '.pdf';
         } else {
             $response = new \stdClass;
             $response->status = 400;
