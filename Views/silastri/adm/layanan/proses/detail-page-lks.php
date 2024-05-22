@@ -455,8 +455,8 @@
                             <div class="row">
                                 <div class="col-lg-6 justify-content-end">
                                     <button type="button" onclick="actionTolak(this)" class="btn btn-danger waves-effect waves-light">Tolak Permohonan</button>
-                                    <!-- <button type="button" onclick="actionApproveTemp(this)" class="btn btn-success waves-effect waves-light">Proses Lanjutkan Ke TTE Kadis</button> -->
-                                    <button type="button" onclick="actionApproveUpload(this)" class="btn btn-success waves-effect waves-light">Lanjutkan Proses</button>
+                                    <button type="button" onclick="actionApproveTemp(this)" class="btn btn-success waves-effect waves-light">Proses Lanjutkan Ke TTE Kadis</button>
+                                    <!-- <button type="button" onclick="actionApproveTemp(this)" class="btn btn-success waves-effect waves-light">Lanjutkan Proses</button> -->
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
@@ -525,7 +525,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "./formupload",
+                        url: "./generateRekomendasi",
                         type: 'POST',
                         data: {
                             id: '<?= $data->id ?>',
@@ -712,7 +712,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "./prosesttefromtemp",
+                        url: "./generateRekomendasi",
                         type: 'POST',
                         data: {
                             id: id,
