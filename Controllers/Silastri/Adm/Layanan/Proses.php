@@ -415,7 +415,7 @@ class Proses extends BaseController
         }
 
         $this->_db->transBegin();
-        $this->_db->table('_permohonan')->where('id', $data->id)->update($oldData);
+        $this->_db->table('_permohonan')->where('id', $data->id_permohonan)->update($oldData);
         if ($this->_db->affectedRows() > 0) {
             $this->_db->transCommit();
             $response = new \stdClass;
