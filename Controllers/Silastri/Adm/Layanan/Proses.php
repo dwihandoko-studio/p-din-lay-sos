@@ -234,9 +234,8 @@ class Proses extends BaseController
                 $id = htmlspecialchars($this->request->getVar('id'), true);
 
                 $data = $this->_db->table('_permohonan_lksa a')
-                    ->select("a.*, b.kode_permohonan, b.nik as nik_pemohon, b.nama as nama_pemohon, b.kelurahan as kelurahan_pemohon, c.kecamatan as kecamatan_pemohon")
+                    ->select("a.*, b.kode_permohonan, b.nik as nik_pemohon, b.nama as nama_pemohon, b.kelurahan as kelurahan_pemohon, b.layanan, b.jenis")
                     ->join('_permohonan b', 'a.id_permohonan = b.id')
-                    ->join('_profil_users_tb c', 'c.id = b.user_id')
                     ->where('a.id_permohonan', $id)
                     ->get()->getRowObject();
 
@@ -285,7 +284,7 @@ class Proses extends BaseController
                 $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
                 $date->modify('+3 years');
                 $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
-                $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lemebaga);
+                $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
 
                 $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
                 $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
@@ -340,13 +339,14 @@ class Proses extends BaseController
 
                 if ($result) {
                     if ($result->status == 200) {
-                        $response = new \stdClass;
-                        $response->status = 200;
-                        $response->result = $result;
-                        $response->dir = FCPATH . "upload/generate/surat/pdf/" . $data->kode_permohonan . ".pdf";
-                        $response->dir_temp = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
-                        $response->filename = $data->kode_permohonan . ".pdf";
-                        return $response;
+
+                        // $response = new \stdClass;
+                        // $response->status = 200;
+                        // $response->result = $result;
+                        // $response->dir = FCPATH . "upload/generate/surat/pdf/" . $data->kode_permohonan . ".pdf";
+                        // $response->dir_temp = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+                        // $response->filename = $data->kode_permohonan . ".pdf";
+                        return $this->prosesttekadis($data, $user);
                     } else {
                         try {
                             unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
@@ -374,6 +374,59 @@ class Proses extends BaseController
             }
         } else {
             exit('Maaf tidak dapat diproses');
+        }
+    }
+
+    private function prosesttekadis($data, $user)
+    {
+        $date = date('Y-m-d H:i:s');
+
+        $oldData['updated_at'] = $date;
+        $oldData['date_approve'] = $date;
+        $oldData['admin_approve'] = $user->data->id;
+        $oldData['status_permohonan'] = 2;
+
+        $contentCreator = [
+            'author' => $user->data->fullname,
+            'title' => $data->layanan . ' (' . $data->jenis . ')',
+            'subject' => $data->layanan . ' (' . $data->jenis . ') - ' . $data->kode_permohonan,
+            'keyword' => 'TTE, Signature, Lampung Tengah, ' . $data->jenis . ', ' . $data->kode_permohonan,
+        ];
+
+        $dir = FCPATH . "upload/lks";
+        $dir_temp = FCPATH . "upload/generate/surat/pdf/";
+
+        $tteUpload = new Ttelib();
+        // $uploaded = $tteUpload->createUploadFile($dir_temp . $oldData['nik'] . '.pdf', $dir, $oldData['nik'] . '.pdf', $contentCreator, 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData['id'] . '&choe=UTF-8');
+        $uploaded = $tteUpload->createUploadFile($dir_temp . $data->kode_permohonan . '.pdf', $dir, $data->kode_permohonan . '.pdf', $contentCreator, 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan);
+        // $uploaded = $tteUpload->createUploadFile($dir_pdf_tte, $dir, $newNamelampiran, $contentCreator);
+        // var_dump($uploaded);
+        // die;
+        if ($uploaded->code === 200) {
+            $data['lampiran_selesai'] = $data->kode_permohonan . '.pdf';
+        } else {
+            $response = new \stdClass;
+            $response->status = 400;
+            // $response->erronya = var_dump($uploaded->message);
+            $response->message = "Kesalahan dalam mengupload file, file pdf max versi 1.5.";
+            return json_encode($response);
+        }
+
+        $this->_db->transBegin();
+        $this->_db->table('_permohonan')->where('id', $data->id)->update($oldData);
+        if ($this->_db->affectedRows() > 0) {
+            $this->_db->transCommit();
+            $response = new \stdClass;
+            $response->status = 200;
+            $response->redirrect = base_url('silastri/adm/layanan/approval');
+            $response->message = "Selesaikan Permohonan $data->layanan $data->jenis $data->kode_permohonan berhasil dilakukan.";
+            return json_encode($response);
+        } else {
+            $this->_db->transRollback();
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Gagal menyelesaikan permohonan $data->layanan $data->jenis $data->kode_permohonan";
+            return json_encode($response);
         }
     }
 
