@@ -133,6 +133,30 @@ class Approval extends BaseController
 
         if ($current) {
             $data['data'] = $current;
+            switch ($current->layanan) {
+                case 'LKS':
+                    $data['file'] = "lks/$current->lampiran_selesai";
+                    break;
+                case 'PBI':
+                    $data['file'] = "pbi/$current->lampiran_selesai";
+                    break;
+                case 'SKTM':
+                    $data['file'] = "sktm/$current->lampiran_selesai";
+                    break;
+                case 'DTKS':
+                    $data['file'] = "dtks/$current->lampiran_selesai";
+                    break;
+                case 'SPT':
+                    $data['file'] = "spt/$current->lampiran_selesai";
+                    break;
+                case 'ASSESMENT':
+                    $data['file'] = "assesment/$current->lampiran_selesai";
+                    break;
+
+                default:
+                    $data['file'] = "sktm/$current->lampiran_selesai";
+                    break;
+            }
             return view('silastri/adm/layanan/approval/detail-page', $data);
         } else {
             return view('404', ['error' => "Data tidak ditemukan."]);

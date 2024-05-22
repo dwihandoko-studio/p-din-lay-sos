@@ -142,9 +142,11 @@
                             <h2>DOKUMEN</h2>
                             <div class="col-lg-12">
                                 <label class="col-form-label">Dokumen yang akan di TTE:</label>
-                                <object data="<?= base_url('upload') . '/' . $file ?>" type="application/pdf" style="max-width: 100%; min-width: 100%; height: 600px;">
-                                    <embed src="<?= base_url('upload') . '/' . $file ?>" width="auto" height="auto" />
-                                </object>
+                                <?php if (isset($file)) { ?>
+                                    <object data="<?= base_url('upload') . '/' . $file ?>" type="application/pdf" style="max-width: 100%; min-width: 100%; height: 600px;">
+                                        <embed src="<?= base_url('upload') . '/' . $file ?>" width="auto" height="auto" />
+                                    </object>
+                                <?php } ?>
                             </div>
                         </div>
                         <hr />
