@@ -453,12 +453,12 @@
                     <div class="card mt-0 mb-1">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-3 justify-content-end">
+                                <div class="col-lg-6 justify-content-end">
                                     <button type="button" onclick="actionTolak(this)" class="btn btn-danger waves-effect waves-light">Tolak Permohonan</button>
                                     <!-- <button type="button" onclick="actionApproveTemp(this)" class="btn btn-success waves-effect waves-light">Proses Lanjutkan Ke TTE Kadis</button> -->
                                     <button type="button" onclick="actionApproveUpload(this)" class="btn btn-success waves-effect waves-light">Lanjutkan Proses</button>
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-lg-6">
                                     <div>
                                         <progress id="progressBar" value="0" max="100" style="width:100%; display: none;"></progress>
                                     </div>
