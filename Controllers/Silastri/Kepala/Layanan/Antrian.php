@@ -292,7 +292,7 @@ class Antrian extends BaseController
                     $fName = $oldData->nik;
                     break;
                 case 'LKS':
-                    $dirFile = 'generate/surat/pdf/' . $oldData->kode_permohonan;
+                    $dirFile = 'lks/' . $oldData->kode_permohonan;
                     $fName = $oldData->kode_permohonan;
                     break;
 
