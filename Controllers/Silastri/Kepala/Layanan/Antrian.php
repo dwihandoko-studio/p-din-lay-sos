@@ -184,6 +184,11 @@ class Antrian extends BaseController
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
                         // $data['file'] = $dirFile . '/' . $current->nik . '.pdf';
                         break;
+                    case 'LKS':
+                        $dirFile = 'lks';
+                        $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        // $data['file'] = $dirFile . '/' . $current->nik . '.pdf';
+                        break;
 
                     default:
                         $dirFile = 'notfound';
@@ -285,6 +290,10 @@ class Antrian extends BaseController
                 case 'SKDTKS':
                     $dirFile = 'dtks/' . $oldData->nik;
                     $fName = $oldData->nik;
+                    break;
+                case 'LKS':
+                    $dirFile = 'generate/surat/pdf/' . $oldData->kode_permohonan;
+                    $fName = $oldData->kode_permohonan;
                     break;
 
                 default:
