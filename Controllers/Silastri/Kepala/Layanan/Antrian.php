@@ -316,8 +316,8 @@ class Antrian extends BaseController
                 'file' => new \CURLFile('/var/www/public/upload/' . $dirFile . '.pdf', 'application/pdf', $fName . '.pdf'),
             ];
 
-            var_dump($dataSend);
-            die;
+            // var_dump($dataSend);
+            // die;
 
             $bsreLib = new Bsrelib();
             $data = $bsreLib->signDocument($dataSend);
