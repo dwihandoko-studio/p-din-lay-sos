@@ -9,7 +9,7 @@ class PeksosModel extends Model
 {
     protected $table = "ref_sdm a";
     protected $column_order = array(null, null, 'a.nik', 'a.nip', 'a.nama', 'a.jabatan', 'a.jenis', 'a.nohp', 'a.email', 'a.kelurahan', 'a.kecamatan');
-    protected $column_search = array('a.nik', 'a.nama', 'a.email', 'a.no_hp');
+    protected $column_search = array('a.nik', 'a.nama', 'a.email', 'a.nohp');
     // protected $order = array('a.role_user' => 'desc', 'a.fullname' => 'asc');
     protected $request;
     protected $db;

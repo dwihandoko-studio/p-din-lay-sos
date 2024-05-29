@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-6">
                 <label for="_pangkat_golongan" class="col-form-label">Pangkat Golongan:</label>
-                <input type="text" class="form-control pangkat_golongan" id="_pangkat_golongan" name="_pangkat_golongan" placeholder="Pangkat golongan..." onfocusin="inputFocus(this);" required />
+                <input type="text" class="form-control pangkat_golongan" id="_pangkat_golongan" name="_pangkat_golongan" placeholder="Pangkat golongan..." onfocusin="inputFocus(this);" />
                 <div class="help-block _pangkat_golongan"></div>
             </div>
             <div class="col-lg-6">
