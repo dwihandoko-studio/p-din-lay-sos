@@ -1368,6 +1368,8 @@
         const lat = document.getElementsByName('_latitude')[0].value;
         const long = document.getElementsByName('_longitude')[0].value;
 
+
+
         $.ajax({
             url: "./location",
             type: 'POST',
