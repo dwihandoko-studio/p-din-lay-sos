@@ -117,50 +117,6 @@
 <script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <script>
-    function actionAddRayon(event, nama, email) {
-        $.ajax({
-            url: "./addRayon",
-            type: 'POST',
-            data: {
-                id: event,
-                nama: nama,
-                email: email,
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.main-content').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.main-content').unblock();
-                if (resul.status !== 200) {
-                    Swal.fire(
-                        'Failed!',
-                        resul.message,
-                        'warning'
-                    );
-                } else {
-                    $('#content-detailModalLabel').html('TAMBAH AREA NAUNGAN');
-                    $('.contentBodyModal').html(resul.data);
-                    $('.content-detailModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                    $('.content-detailModal').modal('show');
-                }
-            },
-            error: function() {
-                $('div.main-content').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
     function actionAdd(event) {
         $.ajax({
             url: "./add",
@@ -183,101 +139,13 @@
                         'warning'
                     );
                 } else {
-                    $('#content-detailModalLabel').html('TAMBAH AKUN');
+                    $('#content-detailModalLabel').html('TAMBAH REFERENSI SDM');
                     $('.contentBodyModal').html(resul.data);
                     $('.content-detailModal').modal({
                         backdrop: 'static',
                         keyboard: false,
                     });
                     $('.content-detailModal').modal('show');
-                }
-            },
-            error: function() {
-                $('div.main-content').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function actionJadikanAdminLayanan(id, role, nama) {
-        $.ajax({
-            url: "./jadikanadmin",
-            type: 'POST',
-            data: {
-                id: id,
-                role: role,
-                nama: nama,
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.main-content').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.main-content').unblock();
-                if (resul.status !== 200) {
-                    Swal.fire(
-                        'Failed!',
-                        resul.message,
-                        'warning'
-                    );
-                } else {
-                    $('#content-roleModalLabel').html('JADIKAN ADMIN LAYANAN');
-                    $('.contentroleBodyModal').html(resul.data);
-                    $('.content-roleModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                    $('.content-roleModal').modal('show');
-                }
-            },
-            error: function() {
-                $('div.main-content').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function actionEditRole(id, role, nama) {
-        $.ajax({
-            url: "./editrole",
-            type: 'POST',
-            data: {
-                id: id,
-                role: role,
-                nama: nama,
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.main-content').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.main-content').unblock();
-                if (resul.status !== 200) {
-                    Swal.fire(
-                        'Failed!',
-                        resul.message,
-                        'warning'
-                    );
-                } else {
-                    $('#content-roleModalLabel').html('EDIT ROLE');
-                    $('.contentroleBodyModal').html(resul.data);
-                    $('.content-roleModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                    $('.content-roleModal').modal('show');
                 }
             },
             error: function() {
@@ -332,89 +200,6 @@
                 );
             }
         });
-    }
-
-    function actionResetPassword(id, nama, email, nik) {
-        Swal.fire({
-            title: 'Apakah anda yakin ingin mereset password Akun Pengguna ini?',
-            text: "Reset Password Akun Pengguna : " + nama,
-            showCancelButton: true,
-            icon: 'question',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Reset Password!'
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire({
-                    title: "Masukkan password baru",
-                    input: "text",
-                    showCancelButton: !0,
-                    confirmButtonText: "Kirim",
-                    showLoaderOnConfirm: !0,
-                    confirmButtonColor: "#556ee6",
-                    cancelButtonColor: "#f46a6a",
-                    preConfirm: function(n) {
-                        return new Promise(function(t, e) {
-                            setTimeout(function() {
-                                n.length < 6 ? e("Panjang password minimal 6.") : t()
-                            }, 2e3)
-                        })
-                    },
-                    allowOutsideClick: !1
-                }).then(function(t) {
-                    $.ajax({
-                        url: "./resetPassword",
-                        type: 'POST',
-                        data: {
-                            id: id,
-                            nama: nama,
-                            email: email,
-                            nik: nik,
-                            password: t.value,
-                        },
-                        dataType: 'JSON',
-                        beforeSend: function() {
-                            $('div.main-content').block({
-                                message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                            });
-                        },
-                        success: function(resul) {
-                            $('div.main-content').unblock();
-
-                            if (resul.status !== 200) {
-                                Swal.fire(
-                                    'Failed!',
-                                    resul.message,
-                                    'warning'
-                                );
-                            } else {
-                                Swal.fire(
-                                    'SELAMAT!',
-                                    resul.message,
-                                    'success'
-                                ).then((valRes) => {
-                                    reloadPage();
-                                })
-                            }
-                        },
-                        error: function() {
-                            $('div.main-content').unblock();
-                            Swal.fire(
-                                'Failed!',
-                                "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                                'warning'
-                            );
-                        }
-                    });
-                    // Swal.fire({
-                    //     icon: "success",
-                    //     title: "Ajax request finished!",
-                    //     html: "Submitted email: " + t,
-                    //     confirmButtonColor: "#556ee6"
-                    // })
-                })
-            }
-        })
     }
 
     function actionHapus(id, nama, nik) {

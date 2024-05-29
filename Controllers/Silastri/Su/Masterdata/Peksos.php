@@ -304,23 +304,12 @@ class Peksos extends BaseController
         } else {
             $id = htmlspecialchars($this->request->getVar('action'), true);
 
-            $roles = $this->_db->table('_role_user')->whereNotIn('id', [1])->get()->getResult();
-            $wilayahs = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
-
-            if (count($roles) > 0 && count($wilayahs) > 0) {
-                $data['roles'] = $roles;
-                $data['wilayahs'] = $wilayahs;
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/su/masterdata/pengguna/add', $data);
-                return json_encode($response);
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
+            $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'asc')->get()->getResult();
+            $response = new \stdClass;
+            $response->status = 200;
+            $response->message = "Permintaan diizinkan";
+            $response->data = view('silastri/su/masterdata/peksos/add', $data);
+            return json_encode($response);
         }
     }
 
