@@ -41,7 +41,7 @@
                 <input type="tel" class="form-control nohp" id="_nohp" name="_nohp" placeholder="+62..." onfocusin="inputFocus(this);" required />
                 <div class="help-block _nohp"></div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="row mb-2">
                     <label for="_kecamatan" class="col-sm-3 col-form-label">Kecamatan :</label>
                     <div class="col-sm-8">
@@ -58,8 +58,7 @@
                         <div class="help-block _kecamatan"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
+
                 <div class="row mb-2 select2-kelurahan-loading">
                     <label for="_kelurahan" class="col-sm-3 col-form-label">Kelurahan :</label>
                     <div class="col-sm-8">
