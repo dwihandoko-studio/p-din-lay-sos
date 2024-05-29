@@ -37,115 +37,27 @@ class Peksos extends BaseController
             $row = [];
 
             $row[] = $no;
-            switch ($list->role_user) {
-                case 4:
-                    $action = '<div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
-                            <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="javascript:actionDetail(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname) . '\');"><i class="bx bxs-show font-size-16 align-middle"></i> &nbsp;Detail</a>
-                                <a class="dropdown-item" href="javascript:actionResetPassword(\'' . $list->id . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\', \'' . $list->email  . '\', \'' . $list->nik . '\');"><i class="bx bx-key font-size-16 align-middle"></i> &nbsp;Reset Password</a>
-                                <a class="dropdown-item" href="javascript:actionEditRole(\'' . $list->id . '\', \'' . $list->role_user . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Edit Role</a>
-                                <a class="dropdown-item" href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-trash font-size-16 align-middle"></i> &nbsp;Hapus</a>
-                                <div class="dropdown-divider"></div>
-                                <!--<a class="dropdown-item" href="javascript:actionAddRayon(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-shape-triangle font-size-16 align-middle"></i> &nbsp;Tambah Naungan</i></a>-->
-                            </div>
-                        </div>';
-                    break;
 
-                case 5:
-                    $action = '<div class="btn-group">
+            $action = '<div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
                             <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="javascript:actionDetail(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname) . '\');"><i class="bx bxs-show font-size-16 align-middle"></i> &nbsp;Detail</a>
-                                <a class="dropdown-item" href="javascript:actionResetPassword(\'' . $list->id . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\', \'' . $list->email  . '\', \'' . $list->nik . '\');"><i class="bx bx-key font-size-16 align-middle"></i> &nbsp;Reset Password</a>
-                                <a class="dropdown-item" href="javascript:actionEditRole(\'' . $list->id . '\', \'' . $list->role_user . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Edit Role</a>
-                                <a class="dropdown-item" href="javascript:actionEdit(\'' . $list->id . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-edit-alt font-size-16 align-middle"></i> &nbsp;Edit</a>
-                                <a class="dropdown-item" href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-trash font-size-16 align-middle"></i> &nbsp;Hapus</a>
+                                <a class="dropdown-item" href="javascript:actionDetail(\'' . $list->nik . '\', \'' . $list->nip . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><i class="bx bxs-show font-size-16 align-middle"></i> &nbsp;Detail</a>
+                                <a class="dropdown-item" href="javascript:actionEdit(\'' . $list->nik . '\', \'' . $list->nip . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Edit</a>
+                                <a class="dropdown-item" href="javascript:actionHapus(\'' . $list->nik . '\', \'' . $list->nip . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama))  . '\');"><i class="bx bx-trash font-size-16 align-middle"></i> &nbsp;Hapus</a>
                                 <div class="dropdown-divider"></div>
-                                <!--<a class="dropdown-item" href="javascript:actionUnlockSpj(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-lock-open-alt font-size-16 align-middle"></i> &nbsp;Unlock SPJ</i></a>-->
                             </div>
                         </div>';
-                    break;
-                case 6:
-                    $action = '<div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
-                            <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="javascript:actionDetail(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname) . '\');"><i class="bx bxs-show font-size-16 align-middle"></i> &nbsp;Detail</a>
-                                <a class="dropdown-item" href="javascript:actionResetPassword(\'' . $list->id . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\', \'' . $list->email  . '\', \'' . $list->nik . '\');"><i class="bx bx-key font-size-16 align-middle"></i> &nbsp;Reset Password</a>
-                                <a class="dropdown-item" href="javascript:actionEditRole(\'' . $list->id . '\', \'' . $list->role_user . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Edit Role</a>
-                                <a class="dropdown-item" href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-trash font-size-16 align-middle"></i> &nbsp;Hapus</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:actionJadikanAdminLayanan(\'' . $list->id . '\', \'' . $list->role_user . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Jadikan Admin Layanan</a>
-                            </div>
-                        </div>';
-                    break;
-
-                default:
-                    $action = '<div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
-                            <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="javascript:actionDetail(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname) . '\');"><i class="bx bxs-show font-size-16 align-middle"></i> &nbsp;Detail</a>
-                                <a class="dropdown-item" href="javascript:actionResetPassword(\'' . $list->id . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\', \'' . $list->email  . '\', \'' . $list->nik . '\');"><i class="bx bx-key font-size-16 align-middle"></i> &nbsp;Reset Password</a>
-                                <a class="dropdown-item" href="javascript:actionEditRole(\'' . $list->id . '\', \'' . $list->role_user . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->fullname))  . '\');"><i class="bx bx-shuffle font-size-16 align-middle"></i> &nbsp;Edit Role</a>
-                                <a class="dropdown-item" href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-trash font-size-16 align-middle"></i> &nbsp;Hapus</a>
-                                <div class="dropdown-divider"></div>
-                               <!-- <a class="dropdown-item" href="javascript:actionUnlockSpj(\'' . $list->id . '\', \'' . str_replace("'", "", $list->fullname)  . '\', \'' . $list->email . '\');"><i class="bx bx-lock-open-alt font-size-16 align-middle"></i> &nbsp;Unlock SPJ</i></a>-->
-                            </div>
-                        </div>';
-                    break;
-            }
-            // $action = '<a href="javascript:actionDetail(\'' . $list->id . '\', \'' . str_replace("'", "", $list->nama) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
-            //     <i class="bx bxs-show font-size-16 align-middle"></i></button>
-            //     </a>
-            //     <a href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->nik . '\');"><button type="button" class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
-            //     <i class="bx bx-transfer-alt font-size-16 align-middle"></i></button>
-            //     </a>
-            //     <a href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk . '\');" class="delete" id="delete"><button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
-            //     <i class="bx bx-trash font-size-16 align-middle"></i></button>
-            //     </a>';
             $row[] = $action;
             $row[] = $list->nik;
-            $row[] = $list->fullname;
+            $row[] = $list->nip;
+            $row[] = $list->nama;
+            $row[] = $list->jabatan;
+            $row[] = $list->jenis;
+            $row[] = $list->nohp;
             $row[] = $list->email;
-            $row[] = $list->no_hp;
-            $row[] = $list->role_name;
-            $row[] = $list->nama_kecamatan;
-            switch ($list->is_active) {
-                case 1:
-                    $row[] = '<div class="text-center">
-                            <span class="badge rounded-pill badge-soft-success font-size-11">Aktif</span>
-                        </div>';
-                    break;
-                default:
-                    $row[] = '<div class="text-center">
-                        <span class="badge rounded-pill badge-soft-danger font-size-11">Non Aktif</span>
-                    </div>';
-                    break;
-            }
-            switch ($list->email_verified) {
-                case 1:
-                    $row[] = '<div class="text-center">
-                            <span class="badge rounded-pill badge-soft-success font-size-11">Ya</span>
-                        </div>';
-                    break;
-                default:
-                    $row[] = '<div class="text-center">
-                        <span class="badge rounded-pill badge-soft-danger font-size-11">Tidak</span>
-                    </div>';
-                    break;
-            }
-            switch ($list->wa_verified) {
-                case 1:
-                    $row[] = '<div class="text-center">
-                            <span class="badge rounded-pill badge-soft-success font-size-11">Ya</span>
-                        </div>';
-                    break;
-                default:
-                    $row[] = '<div class="text-center">
-                        <span class="badge rounded-pill badge-soft-danger font-size-11">Tidak</span>
-                    </div>';
-                    break;
-            }
+            $row[] = $list->kelurahan;
+            $row[] = $list->kecamatan;
+
 
             $data[] = $row;
         }
