@@ -185,99 +185,6 @@ class Peksos extends BaseController
         }
     }
 
-    public function resetPassword()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-            'nama' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Nama tidak boleh kosong. ',
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Email tidak boleh kosong. ',
-                ]
-            ],
-            'nik' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'nik tidak boleh kosong. ',
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Password tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('id')
-                . $this->validator->getError('nama')
-                . $this->validator->getError('nik')
-                . $this->validator->getError('password')
-                . $this->validator->getError('email');
-            return json_encode($response);
-        } else {
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-            $nik = htmlspecialchars($this->request->getVar('nik'), true);
-            $nama = htmlspecialchars($this->request->getVar('nama'), true);
-            $email = htmlspecialchars($this->request->getVar('email'), true);
-            $password = htmlspecialchars($this->request->getVar('password'), true);
-
-            $current = $this->_db->table('v_user')
-                ->where("id = '$id'")->get()->getRowObject();
-            if ($current) {
-                $this->_db->transBegin();
-                try {
-                    $this->_db->table('_users_tb')->where('id', $id)->update(['password' => password_hash($password, PASSWORD_BCRYPT), 'updated_at' => date('Y-m-d H:i:s')]);
-                    if ($this->_db->affectedRows() > 0) {
-                        $this->_db->transCommit();
-                        $response = new \stdClass;
-                        $response->status = 200;
-                        $response->message = "Reset Password Pengguna $nama berhasil. Password default : $password";
-                        return json_encode($response);
-                    } else {
-                        $this->_db->transRollback();
-                        $response = new \stdClass;
-                        $response->status = 400;
-                        $response->message = "Gagal reset password.";
-                        return json_encode($response);
-                    }
-                } catch (\Throwable $th) {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal reset password.";
-                    return json_encode($response);
-                }
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
-        }
-    }
-
     public function add()
     {
         if ($this->request->getMethod() != 'post') {
@@ -313,180 +220,6 @@ class Peksos extends BaseController
         }
     }
 
-    public function addRayon()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $Profilelib = new Profilelib();
-            $user = $Profilelib->user();
-            if ($user->status != 200) {
-                delete_cookie('jwt');
-                session()->destroy();
-                $response = new \stdClass;
-                $response->status = 401;
-                $response->message = "Permintaan diizinkan";
-                return json_encode($response);
-            }
-
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-            $oldData =  $this->_db->table('sekolah_naungan')->where('user_id', $id)->get()->getRowObject();
-
-            $sekolahs = $this->_db->table('ref_sekolah')->whereIn('bentuk_pendidikan_id', [6])->get()->getResult();
-
-            if (count($sekolahs) > 0) {
-                if ($oldData) {
-                    $data['niks'] = explode(",", $oldData->nik);
-                } else {
-                    $data['niks'] = [];
-                }
-                $data['id'] = $id;
-                $data['sekolahs'] = $sekolahs;
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/su/masterdata/pengguna/add_rayon', $data);
-                return json_encode($response);
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
-        }
-    }
-
-    public function addSaveRayon()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'sekolahs' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Sekolahs tidak boleh kosong. ',
-                ]
-            ],
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('sekolahs')
-                . $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $Profilelib = new Profilelib();
-            $user = $Profilelib->user();
-            if ($user->status != 200) {
-                delete_cookie('jwt');
-                session()->destroy();
-                $response = new \stdClass;
-                $response->status = 401;
-                $response->message = "Permintaan diizinkan";
-                return json_encode($response);
-            }
-
-            $sekolahs = $this->request->getVar('sekolahs');
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-
-            $oldData =  $this->_db->table('sekolah_naungan')->where('user_id', $id)->get()->getRowObject();
-
-            $data = [
-                'nik' => $sekolahs,
-            ];
-
-            $this->_db->transBegin();
-            if ($oldData) {
-                $data['updated_at'] = date('Y-m-d H:i:s');
-                try {
-                    $this->_db->table('sekolah_naungan')->where('user_id', $oldData->user_id)->update($data);
-                } catch (\Exception $e) {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->error = var_dump($e);
-                    $response->message = "Gagal mengupdate data baru.";
-                    return json_encode($response);
-                }
-
-                if ($this->_db->affectedRows() > 0) {
-
-                    $this->_db->transCommit();
-                    $response = new \stdClass;
-                    $response->status = 200;
-                    $response->message = "Data berhasil diupdate.";
-                    return json_encode($response);
-                } else {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupdate data baru";
-                    return json_encode($response);
-                }
-            } else {
-                $data['user_id'] = $id;
-                $data['created_at'] = date('Y-m-d H:i:s');
-
-                try {
-                    $this->_db->table('sekolah_naungan')->insert($data);
-                } catch (\Exception $e) {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->error = var_dump($e);
-                    $response->message = "Gagal menyimpan data baru.";
-                    return json_encode($response);
-                }
-
-                if ($this->_db->affectedRows() > 0) {
-
-                    $this->_db->transCommit();
-                    $response = new \stdClass;
-                    $response->status = 200;
-                    $response->message = "Data berhasil disimpan.";
-                    return json_encode($response);
-                } else {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal menyimpan data baru";
-                    return json_encode($response);
-                }
-            }
-        }
-    }
-
     public function addSave()
     {
         if ($this->request->getMethod() != 'post') {
@@ -497,10 +230,34 @@ class Peksos extends BaseController
         }
 
         $rules = [
+            'nik' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'NIK tidak boleh kosong. ',
+                ]
+            ],
+            'nip' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'NIP tidak boleh kosong. ',
+                ]
+            ],
             'nama' => [
                 'rules' => 'required|trim',
                 'errors' => [
                     'required' => 'Nama tidak boleh kosong. ',
+                ]
+            ],
+            'jabatan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Jabatan tidak boleh kosong. ',
+                ]
+            ],
+            'jenis' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Jenis tidak boleh kosong. ',
                 ]
             ],
             'email' => [
@@ -515,58 +272,32 @@ class Peksos extends BaseController
                     'required' => 'No handphone tidak boleh kosong. ',
                 ]
             ],
-            'nik' => [
+            'kecamatan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'NIK tidak boleh kosong. ',
+                    'required' => 'Kecamatan tidak boleh kosong. ',
                 ]
             ],
-            'role' => [
+            'kelurahan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Role tidak boleh kosong. ',
-                ]
-            ],
-            'wilayah' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Wilayah tidak boleh kosong. ',
-                ]
-            ],
-            'status' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Status tidak boleh kosong. ',
+                    'required' => 'Kelurahan tidak boleh kosong. ',
                 ]
             ],
         ];
 
-        $filenamelampiran = dot_array_search('file.name', $_FILES);
-        if ($filenamelampiran != '') {
-            $lampiranVal = [
-                'file' => [
-                    'rules' => 'uploaded[file]|max_size[file,512]|is_image[file]',
-                    'errors' => [
-                        'uploaded' => 'Pilih gambar profil terlebih dahulu. ',
-                        'max_size' => 'Ukuran gambar profil terlalu besar. ',
-                        'is_image' => 'Ekstensi yang anda upload harus berekstensi gambar. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranVal);
-        }
-
         if (!$this->validate($rules)) {
             $response = new \stdClass;
             $response->status = 400;
-            $response->message = $this->validator->getError('nama')
+            $response->message = $this->validator->getError('nip')
+                . $this->validator->getError('nik')
+                . $this->validator->getError('nama')
+                . $this->validator->getError('jabatan')
+                . $this->validator->getError('jenis')
                 . $this->validator->getError('email')
                 . $this->validator->getError('nohp')
-                . $this->validator->getError('nik')
-                . $this->validator->getError('role')
-                . $this->validator->getError('wilayah')
-                . $this->validator->getError('status')
-                . $this->validator->getError('file');
+                . $this->validator->getError('kecamatan')
+                . $this->validator->getError('kelurahan');
             return json_encode($response);
         } else {
             $Profilelib = new Profilelib();
@@ -580,106 +311,61 @@ class Peksos extends BaseController
                 return json_encode($response);
             }
 
+            $nik = htmlspecialchars($this->request->getVar('nik'), true);
+            $nip = htmlspecialchars($this->request->getVar('nip'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
+            $jabatan = htmlspecialchars($this->request->getVar('jabatan'), true);
+            $pangkat_golongan = htmlspecialchars($this->request->getVar('pangkat_golongan'), true);
+            $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
             $email = htmlspecialchars($this->request->getVar('email'), true);
             $nohp = htmlspecialchars($this->request->getVar('nohp'), true);
-            $nik = htmlspecialchars($this->request->getVar('nik'), true);
-            $role = htmlspecialchars($this->request->getVar('role'), true);
-            $wilayah = htmlspecialchars($this->request->getVar('wilayah'), true);
-            $status = htmlspecialchars($this->request->getVar('status'), true);
+            $kecamatan = htmlspecialchars($this->request->getVar('kecamatan'), true);
+            $kelurahan = htmlspecialchars($this->request->getVar('kelurahan'), true);
 
-            $oldData =  $this->_db->table('_profil_users_tb')->where('email', $email)->get()->getRowObject();
+            $oldData =  $this->_db->table('ref_sdm')->where("nik = '$nik' OR nip = '$nip'")->get()->getRowObject();
 
             if ($oldData) {
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Email sudah terdaftar.";
+                $response->message = "NIP / NIK sudah terdaftar.";
                 return json_encode($response);
             }
 
-            $uuidLib = new Uuid();
+            // $uuidLib = new Uuid();
 
             $data = [
-                'id' => $uuidLib->v4(),
-                'email' => $email,
-                'fullname' => $nama,
-                'no_hp' => $nohp,
                 'nik' => $nik,
-                'role_user' => $role,
-                'kecamatan' => $wilayah == "all" ? NULL : $wilayah,
+                'nip' => $nip,
+                'nama' => $nama,
+                'jabatan' => $jabatan,
+                'pangkat_golongan' => $pangkat_golongan == "" || $pangkat_golongan == NULL ? NULL : $pangkat_golongan,
+                'jenis' => $jenis,
+                'kelurahan' => $kelurahan,
+                'kecamatan' => $kecamatan,
+                'email' => $email,
+                'nohp' => $nohp,
+                'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
-            $dir = FCPATH . "upload/user";
-
-            if ($filenamelampiran != '') {
-                $lampiran = $this->request->getFile('file');
-                $filesNamelampiran = $lampiran->getName();
-                $newNamelampiran = _create_name_foto($filesNamelampiran);
-
-                if ($lampiran->isValid() && !$lampiran->hasMoved()) {
-                    $lampiran->move($dir, $newNamelampiran);
-                    $data['image'] = $newNamelampiran;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload gambar.";
-                    return json_encode($response);
-                }
-            }
-
             $this->_db->transBegin();
+
             try {
-                $this->_db->table('_users_tb')->insert([
-                    'id' => $data['id'],
-                    'email' => $data['email'],
-                    'nik' => $data['nik'],
-                    'no_hp' => $data['no_hp'],
-                    'password' => password_hash('123456', PASSWORD_DEFAULT),
-                    'scope' => 'app',
-                    'is_active' => $status,
-                    'wa_verified' => 0,
-                    'email_verified' => 0,
-                    'email_tertaut' => 0,
-                    'created_at' => date('Y-m-d H:i:s'),
-                ]);
-            } catch (\Throwable $e) {
-                unlink($dir . '/' . $newNamelampiran);
+                $this->_db->table('ref_sdm')->insert($data);
+            } catch (\Exception $e) {
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->error = $e;
                 $response->message = "Gagal menyimpan data baru.";
                 return json_encode($response);
             }
-
             if ($this->_db->affectedRows() > 0) {
-                try {
-                    $this->_db->table('_profil_users_tb')->insert($data);
-                } catch (\Exception $e) {
-                    unlink($dir . '/' . $newNamelampiran);
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal menyimpan data baru.";
-                    return json_encode($response);
-                }
-                if ($this->_db->affectedRows() > 0) {
-                    $this->_db->transCommit();
-                    $response = new \stdClass;
-                    $response->status = 200;
-                    $response->message = "Data berhasil disimpan. Password Default Akun: 123456";
-                    return json_encode($response);
-                } else {
-                    unlink($dir . '/' . $newNamelampiran);
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal menyimpan data baru";
-                    return json_encode($response);
-                }
+                $this->_db->transCommit();
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Data berhasil disimpan.";
+                return json_encode($response);
             } else {
-                unlink($dir . '/' . $newNamelampiran);
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
@@ -729,299 +415,6 @@ class Peksos extends BaseController
                 $response = new \stdClass;
                 $response->status = 400;
                 $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
-        }
-    }
-
-    public function jadikanadmin()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-            $role = htmlspecialchars($this->request->getVar('role'), true);
-            $nama = htmlspecialchars($this->request->getVar('nama'), true);
-
-            $current = $this->_db->table('v_user')
-                ->where('id', $id)->get()->getRowObject();
-            $bidang = $this->_db->table('ref_bidang')->get()->getResult();
-
-            if ($current) {
-                $data['data'] = $current;
-                $data['bidangs'] = $bidang;
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/su/masterdata/pengguna/jadikan-admin-layanan', $data);
-                return json_encode($response);
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
-        }
-    }
-
-    public function editrole()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-
-            $current = $this->_db->table('v_user')
-                ->where('id', $id)->get()->getRowObject();
-            $roles = $this->_db->table('_role_user')->whereNotIn('id', [1])->get()->getResult();
-
-            if ($current) {
-                $data['data'] = $current;
-                $data['roles'] = $roles;
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/su/masterdata/pengguna/edit-role', $data);
-                return json_encode($response);
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan";
-                return json_encode($response);
-            }
-        }
-    }
-
-    public function editSaveRole()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-            'role' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Role tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('role')
-                . $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $Profilelib = new Profilelib();
-            $user = $Profilelib->user();
-            if ($user->status != 200) {
-                delete_cookie('jwt');
-                session()->destroy();
-                $response = new \stdClass;
-                $response->status = 401;
-                $response->message = "Permintaan diizinkan";
-                return json_encode($response);
-            }
-
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-            $role = htmlspecialchars($this->request->getVar('role'), true);
-
-            $oldData =  $this->_db->table('v_user')->where('id', $id)->get()->getRowObject();
-
-            if (!$oldData) {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan.";
-                return json_encode($response);
-            }
-
-            if (
-                $role === $oldData->role_user
-            ) {
-                $response = new \stdClass;
-                $response->status = 201;
-                $response->message = "Tidak ada perubahan data yang disimpan.";
-                $response->redirect = base_url('silastri/su/masterdata/pengguna');
-                return json_encode($response);
-            }
-
-            $dataProfil = [
-                'role_user' => $role,
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-
-            $this->_db->transBegin();
-
-            try {
-                $this->_db->table('_profil_users_tb')->where('id', $oldData->id)->update($dataProfil);
-            } catch (\Exception $e) {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal menyimpan data baru.";
-                return json_encode($response);
-            }
-            if ($this->_db->affectedRows() > 0) {
-                $this->_db->transCommit();
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('silastri/su/masterdata/pengguna');
-                return json_encode($response);
-            } else {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupate data";
-                return json_encode($response);
-            }
-        }
-    }
-
-    public function addbidangnaungan()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
-
-        $rules = [
-            'id' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
-                ]
-            ],
-            'bidang' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Bidang tidak boleh kosong. ',
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = $this->validator->getError('bidang')
-                . $this->validator->getError('id');
-            return json_encode($response);
-        } else {
-            $Profilelib = new Profilelib();
-            $user = $Profilelib->user();
-            if ($user->status != 200) {
-                delete_cookie('jwt');
-                session()->destroy();
-                $response = new \stdClass;
-                $response->status = 401;
-                $response->message = "Permintaan diizinkan";
-                return json_encode($response);
-            }
-
-            $id = htmlspecialchars($this->request->getVar('id'), true);
-            $bidang = htmlspecialchars($this->request->getVar('bidang'), true);
-
-            $oldData =  $this->_db->table('v_user')->where('id', $id)->get()->getRowObject();
-
-            if (!$oldData) {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Data tidak ditemukan.";
-                return json_encode($response);
-            }
-
-            $cekData =  $this->_db->table('hak_access_pengaduan')->where(['user_id' => $id, 'bidang' => $bidang])->get()->getRowObject();
-
-            if (
-                $cekData
-            ) {
-                $response = new \stdClass;
-                $response->status = 201;
-                $response->message = "Hak access untuk pengguna pada pengaduan bidang $bidang sudah ada.";
-                $response->redirect = base_url('silastri/su/masterdata/pengguna');
-                return json_encode($response);
-            }
-
-            $dataProfil = [
-                'user_id' => $id,
-                'bidang' => $bidang,
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-
-            $this->_db->transBegin();
-
-            try {
-                $this->_db->table('hak_access_pengaduan')->insert($dataProfil);
-            } catch (\Exception $e) {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal menyimpan data baru.";
-                return json_encode($response);
-            }
-            if ($this->_db->affectedRows() > 0) {
-                $this->_db->transCommit();
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('silastri/su/masterdata/pengguna');
-                return json_encode($response);
-            } else {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupate data";
                 return json_encode($response);
             }
         }
@@ -1193,72 +586,6 @@ class Peksos extends BaseController
         }
     }
 
-    // public function sync()
-    // {
-    //     if ($this->request->getMethod() != 'post') {
-    //         $response = new \stdClass;
-    //         $response->status = 400;
-    //         $response->message = "Permintaan tidak diizinkan";
-    //         return json_encode($response);
-    //     }
-
-    //     $rules = [
-    //         'id' => [
-    //             'rules' => 'required|trim',
-    //             'errors' => [
-    //                 'required' => 'Id tidak boleh kosong. ',
-    //             ]
-    //         ],
-    //         'nama' => [
-    //             'rules' => 'required|trim',
-    //             'errors' => [
-    //                 'required' => 'Nama tidak boleh kosong. ',
-    //             ]
-    //         ],
-    //         'kecamatan' => [
-    //             'rules' => 'required|trim',
-    //             'errors' => [
-    //                 'required' => 'Kecamatan tidak boleh kosong. ',
-    //             ]
-    //         ],
-    //     ];
-
-    //     if (!$this->validate($rules)) {
-    //         $response = new \stdClass;
-    //         $response->status = 400;
-    //         $response->message = $this->validator->getError('id')
-    //             . $this->validator->getError('nama')
-    //             . $this->validator->getError('kecamatan');
-    //         return json_encode($response);
-    //     } else {
-    //         $id = htmlspecialchars($this->request->getVar('id'), true);
-    //         $nama = htmlspecialchars($this->request->getVar('nama'), true);
-    //         $kecamatan = htmlspecialchars($this->request->getVar('kecamatan'), true);
-
-    //         $apiLib = new Apilib();
-    //         $result = $apiLib->syncSekolah($id, $kecamatan);
-
-    //         if ($result) {
-    //             if ($result->status == 200) {
-    //                 $response = new \stdClass;
-    //                 $response->status = 200;
-    //                 $response->message = "Syncrone Data Sekolah Berhasil Dilakukan.";
-    //                 return json_encode($response);
-    //             } else {
-    //                 $response = new \stdClass;
-    //                 $response->status = 400;
-    //                 $response->message = "Gagal Syncrone Data";
-    //                 return json_encode($response);
-    //             }
-    //         } else {
-    //             $response = new \stdClass;
-    //             $response->status = 400;
-    //             $response->message = "Gagal Syncrone Data";
-    //             return json_encode($response);
-    //         }
-    //     }
-    // }
-
     public function delete()
     {
         if ($this->request->getMethod() != 'post') {
@@ -1269,10 +596,22 @@ class Peksos extends BaseController
         }
 
         $rules = [
-            'id' => [
+            'nip' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Id tidak boleh kosong. ',
+                    'required' => 'NIP tidak boleh kosong. ',
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'NIK tidak boleh kosong. ',
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama tidak boleh kosong. ',
                 ]
             ],
         ];
@@ -1280,10 +619,14 @@ class Peksos extends BaseController
         if (!$this->validate($rules)) {
             $response = new \stdClass;
             $response->status = 400;
-            $response->message = $this->validator->getError('id');
+            $response->message = $this->validator->getError('nip')
+                . $this->validator->getError('nik')
+                . $this->validator->getError('nama');
             return json_encode($response);
         } else {
-            $id = htmlspecialchars($this->request->getVar('id'), true);
+            $nip = htmlspecialchars($this->request->getVar('nip'), true);
+            $nik = htmlspecialchars($this->request->getVar('nik'), true);
+            $nama = htmlspecialchars($this->request->getVar('nama'), true);
 
             $Profilelib = new Profilelib();
             $user = $Profilelib->user();
@@ -1295,20 +638,16 @@ class Peksos extends BaseController
                 $response->message = "Permintaan diizinkan";
                 return json_encode($response);
             }
-            $current = $this->_db->table('_users_tb')
-                ->where('id', $id)->get()->getRowObject();
+            $current = $this->_db->table('ref_sdm')
+                ->where('nik', $nik)->get()->getRowObject();
 
             if ($current) {
                 $this->_db->transBegin();
                 try {
-                    $this->_db->table('_users_tb')->where('id', $id)->delete();
+                    $this->_db->table('ref_sdm')->where('nik', $nik)->delete();
 
                     if ($this->_db->affectedRows() > 0) {
-                        try {
-                            $dir = FCPATH . "uploads/user";
-                            unlink($dir . '/' . $current->image);
-                        } catch (\Throwable $err) {
-                        }
+
                         $this->_db->transCommit();
                         $response = new \stdClass;
                         $response->status = 200;
@@ -1334,235 +673,6 @@ class Peksos extends BaseController
                 $response->message = "Data tidak ditemukan";
                 return json_encode($response);
             }
-        }
-    }
-
-    public function import()
-    {
-        $data['title'] = 'Import Data PTK';
-        $Profilelib = new Profilelib();
-        $user = $Profilelib->user();
-        if ($user->status != 200) {
-            session()->destroy();
-            return redirect()->to(base_url('auth'));
-        }
-        $data['user'] = $user->data;
-        return view('silastri/su/masterdata/pengguna/import', $data);
-    }
-
-    public function uploadData()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = [
-                'code' => 400,
-                'error' => "Hanya request post yang diperbolehkan."
-            ];
-        } else {
-
-            $rules = [
-                'file' => [
-                    'rules' => 'uploaded[file]|max_size[file, 5120]|mime_in[file,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/excel,application/download,application/vnd.ms-office,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/zip,application/x-zip]',
-                    'errors' => [
-                        'uploaded' => 'File import gagal di upload',
-                        'max_size' => 'Ukuran file melebihi batas file max file upload.',
-                        'mime_in' => 'Ekstensi file tidak diizinkan untuk di upload.',
-                    ]
-                ]
-                // 'file' => 'uploaded[file]|max_size[file, 5120]|mime_in[file,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/excel,application/download,application/vnd.ms-office,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/zip,application/x-zip]'
-            ];
-
-            if (!$this->validate($rules)) {
-                $response = [
-                    'code' => 400,
-                    'error' => $this->validator->getError('file')
-                ];
-            } else {
-
-                // if (!file_exists('./upload/' . $this->folderImage)) {
-                //     mkdir('./upload/' . $this->folderImage, 0755);
-                //     $dir = './upload/' . $this->folderImage;
-                // } else {
-                //     $dir = './upload/' . $this->folderImage;
-                // }
-
-                $lampiran = $this->request->getFile('file');
-                $extension = $lampiran->getClientExtension();
-                $filesNamelampiran = $lampiran->getName();
-                $fileLocation = $lampiran->getTempName();
-                // $newNamelampiran = _create_name_import($filesNamelampiran);
-
-                // if ($lampiran->isValid() && !$lampiran->hasMoved()) {
-                //     $movedFile = $lampiran->move($dir, $newNamelampiran);
-                //     if($movedFile != false) {
-
-                //         $fileLocation = FCPATH . $dir . '/' . $newNamelampiran;
-
-                if ('xls' == $extension) {
-                    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
-                } else {
-                    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-                }
-
-                $spreadsheet = $reader->load($fileLocation);
-                $sheet = $spreadsheet->getActiveSheet()->toArray();
-
-                $total_line = (count($sheet) > 0) ? count($sheet) - 1 : 0;
-
-                $dataImport = [];
-
-                unset($sheet[0]);
-
-                foreach ($sheet as $key => $data) {
-                    $dataInsert = [
-                        'fullname' => $data[0],
-                        'email' => $data[1],
-                        'kecamatan' => $data[2],
-                        'sekolah' => $data[3],
-                        'nik' => $data[4],
-                        'kode_kecamatan' => $data[5],
-                        'koreg' => $data[6],
-                    ];
-
-                    $dataImport[] = $dataInsert;
-                }
-
-                $response = [
-                    'code' => 200,
-                    'success' => true,
-                    'total_line' => $total_line,
-                    'data' => $dataImport,
-                ];
-                //     } else {
-                //         $response =[
-                //             'code' => 400,
-                //             'error' => "Gagal upload file."
-                //         ];
-                //     }
-                // } else {
-                //     $response =[
-                //         'code' => 400,
-                //         'error' => "Gagal upload file."
-                //     ];
-                // }
-            }
-        }
-
-        echo json_encode($response);
-    }
-
-    public function importData()
-    {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->code = 500;
-            $response->message = "Request not allowed";
-            return json_encode($response);
-        }
-
-        $fullname = htmlspecialchars($this->request->getVar('fullname'), true);
-        $email = htmlspecialchars($this->request->getVar('email'), true);
-        $kecamatan = htmlspecialchars($this->request->getVar('kecamatan'), true);
-        $sekolah = htmlspecialchars($this->request->getVar('sekolah'), true);
-        $nik = htmlspecialchars($this->request->getVar('nik'), true);
-        $koreg = htmlspecialchars($this->request->getVar('koreg'), true);
-        $kode_kecamatan = htmlspecialchars($this->request->getVar('kode_kecamatan'), true);
-
-        $currentDataOnDB = $this->_db->table('_users_tb')->where('email', $email)->get()->getRowObject();
-
-        if ($currentDataOnDB) {
-            $response = new \stdClass;
-            $response->code = 200;
-            $response->message = "Berhasil mengimport data. data sudah ada.";
-            $response->url = base_url('');
-            return json_encode($response);
-        } else {
-
-            $uuidLib = new Uuid();
-
-            // try {
-
-            $data = [
-                'id' => $uuidLib->v4(),
-                'email' => $email,
-                'fullname' => $fullname,
-                'nik' => $nik,
-                'jabatan' => 'Admin',
-                'kecamatan' => $kode_kecamatan,
-                'role_user' => 5,
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-
-            $koregs = ($koreg === NULL || $koreg === "" || strlen($koreg) < 5) ? $nik : $koreg;
-
-            $this->_db->transBegin();
-            try {
-                $this->_db->table('_users_tb')->insert([
-                    'id' => $data['id'],
-                    'email' => $data['email'],
-                    'password' => password_hash($koregs, PASSWORD_DEFAULT),
-                    'scope' => 'app',
-                    'is_active' => 0,
-                    'wa_verified' => 0,
-                    'email_verified' => 0,
-                    'email_tertaut' => 0,
-                    'created_at' => date('Y-m-d H:i:s'),
-                ]);
-            } catch (\Exception $e) {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->code = 400;
-                $response->message = "Gagal menyimpan data";
-                return json_encode($response);
-            }
-
-            if ($this->_db->affectedRows() > 0) {
-                try {
-                    $this->_db->table('_profil_users_tb')->insert($data);
-                } catch (\Exception $e) {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->code = 400;
-                    $response->message = "Gagal menyimpan data";
-                    return json_encode($response);
-                }
-                if ($this->_db->affectedRows() > 0) {
-                    $this->_db->transCommit();
-                    $response = new \stdClass;
-                    $response->code = 200;
-                    $response->message = "Berhasil mengimport data";
-                    $response->url = base_url('');
-                    return json_encode($response);
-                } else {
-                    $this->_db->transRollback();
-                    $response = new \stdClass;
-                    $response->code = 400;
-                    $response->message = "Gagal menyimpan data";
-                    return json_encode($response);
-                }
-            } else {
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->code = 400;
-                $response->message = "Gagal menyimpan data";
-                return json_encode($response);
-            }
-
-            // if ($this->_db->affectedRows() > 0) {
-            //     $this->_db->transCommit();
-            //     $response = new \stdClass;
-            //     $response->code = 200;
-            //     $response->message = "Berhasil mengimport data";
-            //     $response->url = base_url('');
-            //     return json_encode($response);
-            // } else {
-
-            //     $this->_db->transRollback();
-            //     // } catch (\Throwable $e) {
-            //     $response = new \stdClass;
-            //     $response->code = 400;
-            //     $response->message = "Gagal menyimpan data";
-            //     return json_encode($response);
-            // }
         }
     }
 }

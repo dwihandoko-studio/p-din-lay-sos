@@ -202,10 +202,10 @@
         });
     }
 
-    function actionHapus(id, nama, nik) {
+    function actionHapus(nik, nip, nama) {
         Swal.fire({
             title: 'Apakah anda yakin ingin menghapus data ini?',
-            text: "Hapus Akun : " + nama + " ( " + nik + " )",
+            text: "Hapus Ref SDM : " + nama + " ( " + nik + " )",
             showCancelButton: true,
             icon: 'question',
             confirmButtonColor: '#3085d6',
@@ -217,7 +217,9 @@
                     url: "./delete",
                     type: 'POST',
                     data: {
-                        id: id,
+                        nik: nik,
+                        nip: nip,
+                        nama: nama,
                     },
                     dataType: 'JSON',
                     beforeSend: function() {

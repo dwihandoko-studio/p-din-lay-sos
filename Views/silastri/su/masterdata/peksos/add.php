@@ -149,53 +149,55 @@
 
     $("#formAddModalData").on("submit", function(e) {
         e.preventDefault();
-        const fullname = document.getElementsByName('_fullname')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
+        const nip = document.getElementsByName('_nip')[0].value;
+        const nama = document.getElementsByName('_fullname')[0].value;
+        const jabatan = document.getElementsByName('_jabatan')[0].value;
+        const pangkat_golongan = document.getElementsByName('_pangkat_golongan')[0].value;
+        const jenis = document.getElementsByName('_jenis')[0].value;
         const email = document.getElementsByName('_email')[0].value;
         const nohp = document.getElementsByName('_nohp')[0].value;
-        const fileName = document.getElementsByName('_file')[0].value;
-        const role = document.getElementsByName('_role')[0].value;
-        const wilayah = document.getElementsByName('_wilayah')[0].value;
+        const kecamatan = document.getElementsByName('_kecamatan')[0].value;
+        const kelurahan = document.getElementsByName('_kelurahan')[0].value;
 
-        let status;
-        if ($('#status_publikasi').is(":checked")) {
-            status = "1";
-        } else {
-            status = "0";
-        }
-
-        if (role === "") {
-            $("select#_role").css("color", "#dc3545");
-            $("select#_role").css("border-color", "#dc3545");
-            $('._role').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih Role Pengguna terlebih dahulu.</li></ul>');
+        if (nik === "") {
+            $("input#_nik").css("color", "#dc3545");
+            $("input#_nik").css("border-color", "#dc3545");
+            $('._nik').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">NIK tidak boleh kosong. Jika belum mempunya NIP silahkan isi dengan tanda (-). </li></ul>');
             return false;
         }
 
-        if (wilayah === "") {
-            $("select#_wilayah").css("color", "#dc3545");
-            $("select#_wilayah").css("border-color", "#dc3545");
-            $('._wilayah').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih Wilayah Pengguna terlebih dahulu.</li></ul>');
+        if (nip === "") {
+            $("input#_nip").css("color", "#dc3545");
+            $("input#_nip").css("border-color", "#dc3545");
+            $('._nip').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">NIP tidak boleh kosong. Jika belum mempunya NIP silahkan isi dengan tanda (-). </li></ul>');
             return false;
         }
-
-        if (fullname === "") {
+        if (nama === "") {
             $("input#_fullname").css("color", "#dc3545");
             $("input#_fullname").css("border-color", "#dc3545");
             $('._fullname').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Fullname tidak boleh kosong.</li></ul>');
             return false;
         }
 
-        if (fullname.length < 3) {
+        if (nama.length < 3) {
             $("input#_fullname").css("color", "#dc3545");
             $("input#_fullname").css("border-color", "#dc3545");
             $('._fullname').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Fullname minimal 3 karakter.</li></ul>');
             return false;
         }
 
-        if (nik === "") {
-            $("input#_nik").css("color", "#dc3545");
-            $("input#_nik").css("border-color", "#dc3545");
-            $('._nik').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">NIK tidak boleh kosong. Jika belum mempunya NIP silahkan isi dengan tanda (-). </li></ul>');
+        if (jabatan === "") {
+            $("input#_jabatan").css("color", "#dc3545");
+            $("input#_jabatan").css("border-color", "#dc3545");
+            $('._jabatan').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Jabatan tidak boleh kosong.</li></ul>');
+            return false;
+        }
+
+        if (jenis === "") {
+            $("input#_jenis").css("color", "#dc3545");
+            $("input#_jenis").css("border-color", "#dc3545");
+            $('._jenis').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Jenis tidak boleh kosong.</li></ul>');
             return false;
         }
 
@@ -220,25 +222,31 @@
             return false;
         }
 
-        if (fileName === "") {
-            Swal.fire(
-                "Peringatan!",
-                "Foto pengguna belum dipilih.",
-                "warning"
-            );
-            return true;
+        if (kecamatan === "") {
+            $("select#_kecamatan").css("color", "#dc3545");
+            $("select#_kecamatan").css("border-color", "#dc3545");
+            $('._kecamatan').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih Role Pengguna terlebih dahulu.</li></ul>');
+            return false;
+        }
+
+        if (kelurahan === "") {
+            $("select#_kelurahan").css("color", "#dc3545");
+            $("select#_kelurahan").css("border-color", "#dc3545");
+            $('._kelurahan').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih Role Pengguna terlebih dahulu.</li></ul>');
+            return false;
         }
 
         const formUpload = new FormData();
-        const file = document.getElementsByName('_file')[0].files[0];
-        formUpload.append('file', file);
-        formUpload.append('nama', fullname);
         formUpload.append('nik', nik);
+        formUpload.append('nip', nip);
+        formUpload.append('nama', nama);
+        formUpload.append('jabatan', jabatan);
+        formUpload.append('pangkat_golongan', pangkat_golongan);
+        formUpload.append('jenis', jenis);
         formUpload.append('email', email);
         formUpload.append('nohp', nohp);
-        formUpload.append('status', status);
-        formUpload.append('role', role);
-        formUpload.append('wilayah', wilayah);
+        formUpload.append('kecamatan', kecamatan);
+        formUpload.append('kelurahan', kelurahan);
 
         $.ajax({
             xhr: function() {
