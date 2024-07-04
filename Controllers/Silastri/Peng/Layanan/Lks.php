@@ -539,7 +539,7 @@ class Lks extends BaseController
         if ($filenamelampiranAktaNotaris != '') {
             $lampiranValAktaNotaris = [
                 '_file_akta_notaris' => [
-                    'rules' => 'uploaded[_file_akta_notaris]|max_size[_file_akta_notaris,2048]|mime_in[_file_akta_notaris,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_akta_notaris]|max_size[_file_akta_notaris,10240]|mime_in[_file_akta_notaris,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen Akta Notaris terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen Akta Notaris terlalu besar. ',
@@ -569,7 +569,7 @@ class Lks extends BaseController
         if ($filenamelampiranAdrt != '') {
             $lampiranValAdrt = [
                 '_file_adrt' => [
-                    'rules' => 'uploaded[_file_adrt]|max_size[_file_adrt,2048]|mime_in[_file_adrt,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_adrt]|max_size[_file_adrt,10480]|mime_in[_file_adrt,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen ADRT terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen ADRT terlalu besar. ',

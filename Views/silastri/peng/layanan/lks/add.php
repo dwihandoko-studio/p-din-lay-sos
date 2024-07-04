@@ -389,8 +389,8 @@
                                     <div class="col-lg-6">
                                         <div class="mt-3">
                                             <label for="_file_akta_notaris" class="form-label">Lampiran Akta Notaris : </label>
-                                            <input class="form-control" type="file" id="_file_akta_notaris" name="_file_akta_notaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_akta_notaris', 'Akta Notaris')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                            <input class="form-control" type="file" id="_file_akta_notaris" name="_file_akta_notaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_akta_notaris', 'Akta Notaris')">
+                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
                                             <div class="help-block _file_akta_notaris" for="_file_akta_notaris"></div>
                                         </div>
                                     </div>
@@ -407,8 +407,8 @@
                                     <div class="col-lg-6">
                                         <div class="mt-3">
                                             <label for="_file_adrt" class="form-label">Lampiran ADRT : </label>
-                                            <input class="form-control" type="file" id="_file_adrt" name="_file_adrt" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_adrt', 'ADRT')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                            <input class="form-control" type="file" id="_file_adrt" name="_file_adrt" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_adrt', 'ADRT')">
+                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
                                             <div class="help-block _file_adrt" for="_file_adrt"></div>
                                         </div>
                                     </div>
@@ -1106,12 +1106,14 @@
         }
 
         if (fileAkreditasi === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Akreditasi.",
-                'warning'
-            );
-            return;
+            if (akreditasi_lembaga !== "Belum Terakreditasi") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Akreditasi.",
+                    'warning'
+                );
+                return;
+            }
         }
 
         if (fileStrukturOrganisasi === "") {
@@ -1184,8 +1186,10 @@
         formUpload.append('_file_adrt', file_adrt);
         const file_keterangan_domisili = document.getElementsByName('_file_keterangan_domisili')[0].files[0];
         formUpload.append('_file_keterangan_domisili', file_keterangan_domisili);
-        const file_akreditasi = document.getElementsByName('_file_akreditasi')[0].files[0];
-        formUpload.append('_file_akreditasi', file_akreditasi);
+        if (akreditasi_lembaga !== "Belum Terakreditasi") {
+            const file_akreditasi = document.getElementsByName('_file_akreditasi')[0].files[0];
+            formUpload.append('_file_akreditasi', file_akreditasi);
+        }
         const file_struktur_organisasi = document.getElementsByName('_file_struktur_organisasi')[0].files[0];
         formUpload.append('_file_struktur_organisasi', file_struktur_organisasi);
         const file_npwp = document.getElementsByName('_file_npwp')[0].files[0];
@@ -1565,6 +1569,52 @@
     function removeLampiran(event, preview) {
         $('.imagePreviewUpload' + preview).removeAttr('src');
         document.getElementsByName(event)[0].value = "";
+    }
+
+    function loadFileCustom(event, preview) {
+        const input = document.getElementsByName(event)[0];
+        if (input.files && input.files[0]) {
+            var file = input.files[0];
+
+            var mime_types = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+
+            if (mime_types.indexOf(file.type) == -1) {
+                input.value = "";
+                $('.imagePreviewUpload' + preview).attr('src', '');
+                Swal.fire(
+                    'Warning!!!',
+                    "Hanya file type gambar dan pdf yang diizinkan.",
+                    'warning'
+                );
+                return false;
+            }
+
+            if (file.size > 10 * 1024 * 1000) {
+                input.value = "";
+                $('.imagePreviewUpload' + preview).attr('src', '');
+                Swal.fire(
+                    'Warning!!!',
+                    "Ukuran file tidak boleh lebih dari 10 Mb.",
+                    'warning'
+                );
+                return false;
+            }
+
+            if (file.type === 'application/pdf') {
+
+            } else {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.imagePreviewUpload' + preview).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        } else {
+            console.log("failed Load");
+        }
     }
 
     function loadFile(event, preview) {
