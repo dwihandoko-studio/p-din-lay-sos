@@ -1387,8 +1387,8 @@
             url: "./location",
             type: 'POST',
             data: {
-                lat: lat,
-                long: long,
+                lat: latSSS,
+                long: longSSS,
             },
             dataType: 'JSON',
             beforeSend: function() {
@@ -1414,18 +1414,18 @@
                     });
                     $('.content-detailModal').modal('show');
 
-                    var map = L.map("map_inits").setView([lat, long], 12);
+                    var map = L.map("map_inits").setView([latSSS, longSSS], 12);
                     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Supported By <a href="https://kntechline.id">Kntechline.id</a>'
                     }).addTo(map);
 
-                    var lati = lat;
-                    var longi = long;
+                    var lati = latSSS;
+                    var longi = longSSS;
                     var marker;
 
                     marker = L.marker({
-                        lat: lat,
-                        lng: long
+                        lat: latSSS,
+                        lng: longSSS
                     }, {
                         draggable: true
                     }).addTo(map);
