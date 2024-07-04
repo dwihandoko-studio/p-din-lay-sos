@@ -1368,11 +1368,20 @@
         $('.action-location-icon').css('color', '#adb5bd');
     }
 
+    let latSSS;
+    let longSSS;
+
     function pickCoordinat() {
-        const lat = document.getElementsByName('_latitude')[0].value;
-        const long = document.getElementsByName('_longitude')[0].value;
+        latSSS = document.getElementsByName('_latitude')[0].value;
+        longSSS = document.getElementsByName('_longitude')[0].value;
 
+        if (latSSS === "" || latSSS === undefined) {
+            latSSS = "-4.977093535071154";
+        }
 
+        if (longSSS === "" || longSSS === undefined) {
+            longSSS = "105.2118280463868";
+        }
 
         $.ajax({
             url: "./location",
@@ -1663,8 +1672,43 @@
         }
     }
 
-    $(document).ready(function() {
+    function showLocation(position) {
+        var latitudeSS = position.coords.latitude.toFixed(6);
+        var longitudeSS = position.coords.longitude.toFixed(6);
+        // $('#latlng').val(latitude + ',' + longitude);
+        $('input[name="_latitude"]').val(latitudeSS);
+        $('input[name="_latitude"]').val(longitudeSS);
+    }
 
+    function errorHandler(err) {
+        if (err.code == 1) {
+            toastr.error("Akses Lokasi / GPS di Block!", 'Failed !', {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 15000
+            });
+        } else if (err.code == 2) {
+            toastr.error("Position is unavailable!", 'Failed !', {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 15000
+            });
+        }
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            var options = {
+                timeout: 60000
+            };
+            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+        } else {
+            alert("Sorry, browser does not support geolocation!");
+        }
+    }
+
+    $(document).ready(function() {
+        getLocation();
     });
 </script>
 <?= $this->endSection(); ?>
