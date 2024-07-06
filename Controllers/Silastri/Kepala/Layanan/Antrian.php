@@ -372,6 +372,7 @@ class Antrian extends BaseController
                 case "UNAUTHORIZED":
                     $response = new \stdClass;
                     $response->status = 400;
+                    $response->err = $data;
                     $response->message = $data->message;
                     return json_encode($response);
                     break;
