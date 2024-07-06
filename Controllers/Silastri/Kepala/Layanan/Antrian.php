@@ -288,8 +288,8 @@ class Antrian extends BaseController
                     $fName = $oldData->kode_permohonan;
                     break;
                 case 'SKDTKS':
-                    $dirFile = 'dtks/' . $oldData->nik;
-                    $fName = $oldData->nik;
+                    $dirFile = 'dtks/' . $oldData->kode_permohonan;
+                    $fName = $oldData->kode_permohonan;
                     break;
                 case 'LKS':
                     $dirFile = 'lks/' . $oldData->kode_permohonan;
