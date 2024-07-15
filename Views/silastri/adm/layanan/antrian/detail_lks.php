@@ -186,14 +186,14 @@
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Kelurahan Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->rw_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= getNamaKelurahan($lks->kelurahan_lembaga) ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Kecamatan Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->rw_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= getNamaKecamatan($lks->kecamatan_lembaga) ?>" readonly />
             </div>
             <h4>DATA PENGURUS</h4>
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-2">
                 <label class="col-form-label">Nama Ketua Lembaga:</label>
                 <input type="text" class="form-control" value="<?= $lks->nama_ketua_pengurus ?>" readonly />
             </div>
