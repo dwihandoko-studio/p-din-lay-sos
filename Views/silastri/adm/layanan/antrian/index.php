@@ -36,7 +36,7 @@
                                         <option value="">--Pilih--</option>
                                         <?php if (isset($layanans)) { ?>
                                             <?php if (count($layanans) > 0) { ?>
-                                                <?php foreach ($variable as $value) { ?>
+                                                <?php foreach ($layanans as $value) { ?>
                                                     <option value="<?= $value ?>"><?= $value ?></option>
                                                 <?php } ?>
                                             <?php } ?>
