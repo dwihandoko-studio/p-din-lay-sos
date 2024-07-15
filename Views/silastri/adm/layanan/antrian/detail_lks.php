@@ -231,7 +231,7 @@
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Jumlah Pengurus Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->jumlah_pengurus_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->jumlah_pengurus ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Jumlah Binaan Dalam Lembaga:</label>
