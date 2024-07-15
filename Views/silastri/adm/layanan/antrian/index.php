@@ -235,6 +235,7 @@
         });
 
     });
+    console.log('<?= $layanans ?>');
 </script>
 <?= $this->endSection(); ?>
 
