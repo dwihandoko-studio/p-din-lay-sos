@@ -235,7 +235,7 @@
         });
 
     });
-    console.log('<?= isset($layanans) ? $layanans : '' ?>');
+    console.log('<?= isset($layanans) ? json_encode($layanans) : '' ?>');
 </script>
 <?= $this->endSection(); ?>
 
