@@ -119,7 +119,7 @@
             url: "./import",
             type: 'POST',
             data: {
-                action: 'import',
+                id: 'import',
             },
             dataType: 'JSON',
             beforeSend: function() {
