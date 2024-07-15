@@ -192,6 +192,7 @@
                 <label class="col-form-label">Kecamatan Lembaga:</label>
                 <input type="text" class="form-control" value="<?= getNamaKecamatan($lks->kecamatan_lembaga) ?>" readonly />
             </div>
+            <hr />
             <h4>DATA PENGURUS</h4>
             <div class="col-lg-4 mt-2">
                 <label class="col-form-label">Nama Ketua Lembaga:</label>
