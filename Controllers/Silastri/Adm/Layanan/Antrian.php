@@ -174,7 +174,16 @@ class Antrian extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/adm/layanan/antrian/detail', $data);
+                switch ($current->layanan) {
+                    case 'LKS':
+                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+                        $response->data = view('silastri/adm/layanan/antrian/detail_lks', $data);
+                        break;
+
+                    default:
+                        $response->data = view('silastri/adm/layanan/antrian/detail', $data);
+                        break;
+                }
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
