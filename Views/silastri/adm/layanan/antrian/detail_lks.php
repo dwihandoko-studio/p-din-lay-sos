@@ -195,39 +195,39 @@
             <h4>DATA PENGURUS</h4>
             <div class="col-lg-4">
                 <label class="col-form-label">Nama Ketua Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nama_ketua_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nama_ketua_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">NIK Ketua Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nik_ketua_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nik_ketua_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">No HP Ketua Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nohp_ketua_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nohp_ketua_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">Nama Sekretaris Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nama_sekretaris_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nama_sekretaris_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">NIK Sekretaris Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nik_sekretaris_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nik_sekretaris_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">No HP Sekretaris Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nohp_sekretaris_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nohp_sekretaris_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">Nama Bendahara Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nama_bendahara_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nama_bendahara_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">NIK Bendahara Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nik_bendahara_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nik_bendahara_pengurus ?>" readonly />
             </div>
             <div class="col-lg-4">
                 <label class="col-form-label">No HP Bendahara Lembaga:</label>
-                <input type="text" class="form-control" value="<?= $lks->nohp_bendahara_lembaga ?>" readonly />
+                <input type="text" class="form-control" value="<?= $lks->nohp_bendahara_pengurus ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Jumlah Pengurus Lembaga:</label>
