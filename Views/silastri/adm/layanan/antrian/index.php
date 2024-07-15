@@ -235,7 +235,7 @@
         });
 
     });
-    console.log('<?= $layanans ?>');
+    console.log('<?= isset($layanans) ? $layanans : '' ?>');
 </script>
 <?= $this->endSection(); ?>
 
