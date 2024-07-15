@@ -18,6 +18,7 @@
                     <ul class="sub-menu  <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "pengguna") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/pengguna') ?>" key="t-masterdata-pengguna">Pengguna</a></li>
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "peksos") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/peksos') ?>" key="t-masterdata-refsdm">Referensi SDM</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/padandtks') ?>" key="t-masterdata-refsdm">Referensi Padan DTKS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "accesspengguna") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/accesspengguna') ?>" key="t-masterdata-accesspengguna">Akses Pengguna</a></li>
                     </ul>
                 </li>
