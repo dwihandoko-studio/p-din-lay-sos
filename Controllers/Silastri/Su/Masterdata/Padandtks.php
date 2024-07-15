@@ -667,7 +667,7 @@ class Padandtks extends BaseController
         }
     }
 
-    public function upload()
+    public function import()
     {
         if ($this->request->isAJAX()) {
 
