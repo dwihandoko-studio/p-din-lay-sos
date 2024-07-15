@@ -699,7 +699,7 @@ class Padandtks extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('su/masterdata/padandtks/import');
+                $response->data = view('silastri/su/masterdata/padandtks/upload');
                 return json_encode($response);
             }
         } else {
