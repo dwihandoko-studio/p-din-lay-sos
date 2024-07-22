@@ -65,36 +65,38 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table id="data-datatables" class="table table-bordered dt-responsive  nowrap w-100">
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" data-orderable="false">#</th>
-                                    <th rowspan="2" data-orderable="false">Aksi</th>
-                                    <th rowspan="2" data-orderable="false">NIK</th>
-                                    <th rowspan="2" data-orderable="false">Nama</th>
-                                    <th rowspan="2" data-orderable="false">Kecamatan</th>
-                                    <th rowspan="2" data-orderable="false">Kelurahan</th>
-                                    <th rowspan="2" data-orderable="false">Desil</th>
-                                    <th rowspan="2" data-orderable="false">Usia</th>
-                                    <th rowspan="2" data-orderable="false">Status DTKS</th>
-                                    <th colspan="7" data-orderable="false">P3KE</th>
-                                    <th colspan="4" data-orderable="false">DTKS</th>
-                                </tr>
-                                <tr>
-                                    <th data-orderable="false">BPNT</th>
-                                    <th data-orderable="false">BST</th>
-                                    <th data-orderable="false">PKH</th>
-                                    <th data-orderable="false">SEMBAKO</th>
-                                    <th data-orderable="false">PRAKERJA</th>
-                                    <th data-orderable="false">KUR</th>
-                                    <th data-orderable="false">CBP</th>
-                                    <th data-orderable="false">BPNT</th>
-                                    <th data-orderable="false">PKH</th>
-                                    <th data-orderable="false">PBI</th>
-                                    <th data-orderable="false">BLT</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="data-datatables" class="table table-bordered  nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" data-orderable="false">#</th>
+                                        <th rowspan="2" data-orderable="false">Aksi</th>
+                                        <th rowspan="2" data-orderable="false">NIK</th>
+                                        <th rowspan="2" data-orderable="false">Nama</th>
+                                        <th rowspan="2" data-orderable="false">Kecamatan</th>
+                                        <th rowspan="2" data-orderable="false">Kelurahan</th>
+                                        <th rowspan="2" data-orderable="false">Desil</th>
+                                        <th rowspan="2" data-orderable="false">Usia</th>
+                                        <th rowspan="2" data-orderable="false">Status DTKS</th>
+                                        <th colspan="7" data-orderable="false">P3KE</th>
+                                        <th colspan="4" data-orderable="false">DTKS</th>
+                                    </tr>
+                                    <tr>
+                                        <th data-orderable="false">BPNT</th>
+                                        <th data-orderable="false">BST</th>
+                                        <th data-orderable="false">PKH</th>
+                                        <th data-orderable="false">SEMBAKO</th>
+                                        <th data-orderable="false">PRAKERJA</th>
+                                        <th data-orderable="false">KUR</th>
+                                        <th data-orderable="false">CBP</th>
+                                        <th data-orderable="false">BPNT</th>
+                                        <th data-orderable="false">PKH</th>
+                                        <th data-orderable="false">PBI</th>
+                                        <th data-orderable="false">BLT</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
