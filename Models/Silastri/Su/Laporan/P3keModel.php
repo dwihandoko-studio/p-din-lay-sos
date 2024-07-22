@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 
 class P3keModel extends Model
 {
-    protected $table = "ref_p3ke a";
+    protected $table = "ref_p3ke_individu a";
     protected $column_order = array(null, null, 'a.nik', 'a.nama', NULL, NULL, NULL, NULL, NULL, NULL);
     protected $column_search = array('a.nik', 'a.nama');
     // protected $order = array('a.status' => 'desc');
