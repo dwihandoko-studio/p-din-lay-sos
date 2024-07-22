@@ -35,8 +35,7 @@
                                         <div class="mb-3">
                                             <label for="_filter_desil" class="col-form-label">Filter Desil:</label>
                                             <select class="form-control" id="_filter_desil" name="_filter_desil" required>
-                                                <option value="">--Pilih--</option>
-                                                <option value="1">1</option>
+                                                <option value="1" selected>1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
