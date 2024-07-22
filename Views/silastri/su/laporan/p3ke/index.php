@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">DATA PADAN DTKS</h4>
+                    <h4 class="mb-sm-0 font-size-18">DATA P3KE</h4>
 
-                    <div class="page-title-right">
+                    <!-- <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript:actionImport(this);" class="btn btn-primary btn-rounded waves-effect waves-light">Upload Data Padan DTKS</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:actionSyncAll(this);" class="btn btn-primary btn-rounded waves-effect waves-light">Syncrone Semua Data PTK</a></li>
                         </ol>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -29,33 +29,69 @@
                             <div class="col-6">
                                 <h4 class="card-title">Data P3KE</h4>
                             </div>
-                            <!-- <div class="col-3">
-                                <label for="filter_role" class="col-form-label">Pilih JENIS:</label>
-                                <select class="form-control filter-role" id="filter_role" name="filter_role" style="width: 100%">
-                                    <option value="">&nbsp;</option>
-                                    <?php if (isset($roles)) {
-                                        if (count($roles) > 0) {
-                                            foreach ($roles as $key => $value) { ?>
-                                                <option value="<?= $value->jenis ?>"><?= $value->jenis ?></option>
-                                    <?php }
-                                        }
-                                    } ?>
-                                </select>
-                            </div> -->
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="_filter_desil" class="col-form-label">Filter Desil:</label>
+                                            <select class="form-control" id="_filter_desil" name="_filter_desil" required>
+                                                <option value="">--Pilih--</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                            <div class="help-block _filter_desil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="_filter_kecamatan" class="col-form-label">Filter Kecamatan:</label>
+                                            <select class="form-control" id="_filter_kecamatan" name="_filter_kecamatan" required>
+                                                <option value="">--Pilih--</option>
+                                                <?php if (isset($kecamatans)) { ?>
+                                                    <?php if (count($kecamatans) > 0) { ?>
+                                                        <?php foreach ($kecamatans as $key => $value) { ?>
+                                                            <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="help-block _filter_kecamatan"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <table id="data-datatables" class="table table-bordered dt-responsive  nowrap w-100">
                             <thead>
                                 <tr>
-                                    <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
-                                    <th>NIK</th>
-                                    <th>NIP</th>
-                                    <th>NAMA INPUT</th>
-                                    <th>NAMA DTKS</th>
-                                    <th>STATUS DTKS</th>
-                                    <th>BANSOS</th>
+                                    <th rowspan="2" data-orderable="false">#</th>
+                                    <th rowspan="2" data-orderable="false">Aksi</th>
+                                    <th rowspan="2" data-orderable="false">NIK</th>
+                                    <th rowspan="2" data-orderable="false">Nama</th>
+                                    <th rowspan="2" data-orderable="false">Kecamatan</th>
+                                    <th rowspan="2" data-orderable="false">Kelurahan</th>
+                                    <th rowspan="2" data-orderable="false">Desil</th>
+                                    <th rowspan="2" data-orderable="false">Usia</th>
+                                    <th rowspan="2" data-orderable="false">Status DTKS</th>
+                                    <th colspan="7" data-orderable="false">P3KE</th>
+                                    <th colspan="4" data-orderable="false">DTKS</th>
+                                </tr>
+                                <tr>
+                                    <th data-orderable="false">BPNT</th>
+                                    <th data-orderable="false">BST</th>
+                                    <th data-orderable="false">PKH</th>
+                                    <th data-orderable="false">SEMBAKO</th>
+                                    <th data-orderable="false">PRAKERJA</th>
+                                    <th data-orderable="false">KUR</th>
+                                    <th data-orderable="false">CBP</th>
+                                    <th data-orderable="false">BPNT</th>
+                                    <th data-orderable="false">PKH</th>
+                                    <th data-orderable="false">PBI</th>
+                                    <th data-orderable="false">BLT</th>
                                 </tr>
                             </thead>
                         </table>
@@ -69,7 +105,7 @@
 
 <!-- Modal -->
 <div id="content-detailModal" class="modal fade content-detailModal" tabindex="-1" role="dialog" aria-labelledby="content-detailModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content modal-content-loading">
             <div class="modal-header">
                 <h5 class="modal-title" id="content-detailModalLabel">Details</h5>
@@ -80,14 +116,14 @@
         </div>
     </div>
 </div>
-<div id="content-roleModal" class="modal fade content-roleModal" tabindex="-1" role="dialog" aria-labelledby="content-roleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content modal-content-loading">
+<div id="content-tolakModal" class="modal fade content-tolakModal" tabindex="-1" role="dialog" aria-labelledby="content-tolakModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-loading-tolak">
             <div class="modal-header">
-                <h5 class="modal-title" id="content-roleModalLabel">Details</h5>
+                <h5 class="modal-title" id="content-tolakModalLabel">Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="contentroleBodyModal">
+            <div class="contentTolakBodyModal">
             </div>
         </div>
     </div>
@@ -114,54 +150,13 @@
 <script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <script>
-    function actionImport(event) {
+    function actionDetail(id, nik, nama) {
         $.ajax({
-            url: "./import",
-            type: 'POST',
-            data: {
-                id: 'import',
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.main-content').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.main-content').unblock();
-                if (resul.status !== 200) {
-                    Swal.fire(
-                        'Failed!',
-                        resul.message,
-                        'warning'
-                    );
-                } else {
-                    $('#content-detailModalLabel').html('IMPORT REFERENSI PADAN DTKS');
-                    $('.contentBodyModal').html(resul.data);
-                    $('.content-detailModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                    $('.content-detailModal').modal('show');
-                }
-            },
-            error: function() {
-                $('div.main-content').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function actionEdit(id, nama) {
-        $.ajax({
-            url: "./edit",
+            url: "./detail",
             type: 'POST',
             data: {
                 id: id,
+                nik: nik,
                 nama: nama,
             },
             dataType: 'JSON',
@@ -179,106 +174,7 @@
                         'warning'
                     );
                 } else {
-                    $('#content-detailModalLabel').html('EDIT AKUN');
-                    $('.contentBodyModal').html(resul.data);
-                    $('.content-detailModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                    $('.content-detailModal').modal('show');
-                }
-            },
-            error: function() {
-                $('div.main-content').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function actionHapus(nik, nip, nama) {
-        Swal.fire({
-            title: 'Apakah anda yakin ingin menghapus data ini?',
-            text: "Hapus Ref SDM : " + nama + " ( " + nik + " )",
-            showCancelButton: true,
-            icon: 'question',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus!'
-        }).then((result) => {
-            if (result.value) {
-                $.ajax({
-                    url: "./delete",
-                    type: 'POST',
-                    data: {
-                        nik: nik,
-                        nip: nip,
-                        nama: nama,
-                    },
-                    dataType: 'JSON',
-                    beforeSend: function() {
-                        $('div.main-content').block({
-                            message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                        });
-                    },
-                    success: function(resul) {
-                        $('div.main-content').unblock();
-
-                        if (resul.status !== 200) {
-                            Swal.fire(
-                                'Failed!',
-                                resul.message,
-                                'warning'
-                            );
-                        } else {
-                            Swal.fire(
-                                'SELAMAT!',
-                                resul.message,
-                                'success'
-                            ).then((valRes) => {
-                                reloadPage();
-                            })
-                        }
-                    },
-                    error: function() {
-                        $('div.main-content').unblock();
-                        Swal.fire(
-                            'Failed!',
-                            "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                            'warning'
-                        );
-                    }
-                });
-            }
-        })
-    }
-
-    function actionDetail(event, title) {
-        $.ajax({
-            url: "./detail",
-            type: 'POST',
-            data: {
-                id: event,
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.main-content').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.main-content').unblock();
-                if (resul.status !== 200) {
-                    Swal.fire(
-                        'Failed!',
-                        resul.message,
-                        'warning'
-                    );
-                } else {
-                    $('#content-detailModalLabel').html('DETAIL PTK ' + title);
+                    $('#content-detailModalLabel').html('DETAIL PERMOHONAN ' + nama + ' (' + nik + ')');
                     $('.contentBodyModal').html(resul.data);
                     $('.content-detailModal').modal({
                         backdrop: 'static',
@@ -336,16 +232,17 @@
 
     $(document).ready(function() {
 
-        let tableDatatables = $('#data-datatables').DataTable({
+        let tableUsulan = $('#data-datatables').DataTable({
             "processing": true,
             "serverSide": true,
             "order": [],
             "ajax": {
                 "url": "./getAll",
                 "type": "POST",
-                // "data": function(data) {
-                //     data.jenis = $('#filter_role').val();
-                // }
+                "data": function(data) {
+                    data.desil = $('#_filter_desil').val();
+                    data.kecamatan = $('#_filter_kecamatan').val();
+                }
             },
             language: {
                 processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
@@ -354,10 +251,31 @@
                 "targets": 0,
                 "orderable": false,
             }],
+            lengthMenu: [
+                [10, 25, 50, 100, 500, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', '500 rows', 'Show all']
+            ],
+            dom: 'Blfrtip',
+            buttons: [
+                'copy', 'csv', 'excel',
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'A4',
+                    // messageTop: 'Rekapitulasi Data Pendaftar PPDB DISDIKBUD Kab. Lampung Tengah Tahun 2021',
+                    title: 'Rekap Data Total',
+                    text: 'PDF',
+                }
+            ]
         });
-        // $('#filter_role').change(function() {
-        //     tableDatatables.draw();
-        // });
+
+        $('#_filter_desil').change(function() {
+            tableUsulan.draw();
+        });
+        $('#_filter_kecamatan').change(function() {
+            tableUsulan.draw();
+        });
+
     });
 </script>
 <?= $this->endSection(); ?>

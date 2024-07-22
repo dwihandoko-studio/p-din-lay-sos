@@ -618,6 +618,12 @@ class Asesmenppks extends BaseController
     // 2.	dua kali pertahun            
     // 3.	satu kali/tahun
 
+    //_tinggal_bersama
+    //Sendiri
+    //Keluarga Inti
+    //Keluarga Besar
+    //Lainnya
+
     //_tempat_tinggal_ekonomi
     // 1.	Milik Sendiri
     // 2.	Sewa
