@@ -277,7 +277,8 @@ class Proses extends BaseController
                     $template_processor->setValue('NOMOR_NOTARIS_LEMBAGA', $data->nomor_notaris_lembaga);
                     $template_processor->setValue('TGL_BERDIRI_LEMBAGA', $data->tgl_berdiri_lembaga);
                     $template_processor->setValue('NPWP_LEMBAGA', $data->npwp_lembaga);
-                    $template_processor->setValue('STATUS_LEMBAGA', $data->status_lembaga);
+                    $statusLembaga = ucwords(strtolower($data->status_lembaga));
+                    $template_processor->setValue('STATUS_LEMBAGA', $statusLembaga);
                     $template_processor->setValue('BIDANG_KEGIATAN_LEMBAGA', $data->bidang_kegiatan_lembaga);
 
                     $date = new DateTime();
@@ -286,7 +287,10 @@ class Proses extends BaseController
                     // $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
                     $date->modify('+3 years');
                     $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
-                    $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
+
+                    $jenisLembaga = ucwords(strtolower($data->jenis_lembaga));
+
+                    $template_processor->setValue('JENIS_LEMBAGA', $jenisLembaga);
 
                     $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
                     $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
