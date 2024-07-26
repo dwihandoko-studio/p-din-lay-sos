@@ -251,8 +251,8 @@ class Auth extends BaseController
             $authLib = new Authlib();
             $results = $authLib->postLogin($username, $password);
 
-            var_dump($results);
-            die;
+            // var_dump($results);
+            // die;
 
             if (!$results) {
                 $response = new \stdClass;
