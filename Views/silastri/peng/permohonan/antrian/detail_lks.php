@@ -177,7 +177,6 @@
                         <a class="btn btn-primary" href="https://www.google.com/maps/@<?= $lks->lat_long_lembaga ?>,17z?q=<?= $lks->lat_long_lembaga ?>(Target Location)" target="_blank">Lihat</a>
                     </span>
                 </div>
-                <input type="text" class="form-control" value="<?= $lks->lat_long_lembaga ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Alamat Lembaga:</label>
