@@ -133,9 +133,42 @@ class Proses extends BaseController
 
         if ($current) {
             $data['data'] = $current;
-            return view('silastri/peng/permohonan/proses/detail', $data);
+            $response = new \stdClass;
+            $response->status = 200;
+            $response->message = "Permintaan diizinkan";
+            // $response->data = view('silastri/peng/permohonan/antrian/detail', $data);
+            switch ($current->layanan) {
+                case 'LKS':
+                    $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+                    $response->data = view('silastri/peng/permohonan/proses/detail_lks', $data);
+                    break;
+
+                default:
+                    $response->data = view('silastri/peng/permohonan/proses/detail', $data);
+                    break;
+            }
+            return json_encode($response);
         } else {
-            return view('404', ['error' => "Data tidak ditemukan."]);
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Data tidak ditemukan";
+            return json_encode($response);
         }
+        // if ($current) {
+        //     $data['data'] = $current;
+        //     // return view('silastri/peng/permohonan/proses/detail', $data);
+        //     switch ($current->layanan) {
+        //         case 'LKS':
+        //             $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+        //             return view('silastri/peng/permohonan/proses/detail_lks', $data);
+        //             break;
+
+        //         default:
+        //             return view('silastri/peng/permohonan/proses/detail', $data);
+        //             break;
+        //     }
+        // } else {
+        //     return view('404', ['error' => "Data tidak ditemukan."]);
+        // }
     }
 }

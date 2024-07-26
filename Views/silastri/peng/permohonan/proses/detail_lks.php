@@ -170,13 +170,6 @@
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Koordinat Lembaga:</label>
-                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                    <input type="text" class="form-control" value="<?= $lks->lat_long_lembaga ?>" readonly />
-
-                    <span class="input-group-btn input-group-append">
-                        <a class="btn btn-primary" href="https://www.google.com/maps/@<?= $data->lintang ?>,<?= $data->bujur ?>,17z?q=<?= $data->lintang ?>,<?= $data->bujur ?>(Target Location)" target="_blank">Lihat</a>
-                    </span>
-                </div>
                 <input type="text" class="form-control" value="<?= $lks->lat_long_lembaga ?>" readonly />
             </div>
             <div class="col-lg-6">
