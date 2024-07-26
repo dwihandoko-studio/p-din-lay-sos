@@ -2350,7 +2350,10 @@ class Asesmenppks extends BaseController
             'file_folder' => $filed,
         ];
 
-        $curlHandle = curl_init("http://192.168.33.30:1890/convert");
+        $urlConvert = getenv('beconvert.default.url');
+
+        // $curlHandle = curl_init("http://192.168.33.30:1891/convert");
+        $curlHandle = curl_init($urlConvert);
         curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, json_encode($datas));
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
