@@ -319,8 +319,8 @@ class Proses extends BaseController
 
                 $urlConvert = getenv('beconvert.default.url');
 
-                var_dump("hasilnya: " . $urlConvert);
-                die;
+                // var_dump("hasilnya: " . $urlConvert);
+                // die;
 
                 // $curlHandle = curl_init("http://192.168.33.30:1891/convert");
                 $curlHandle = curl_init($urlConvert);
