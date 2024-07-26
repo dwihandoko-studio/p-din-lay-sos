@@ -314,7 +314,13 @@
                                         <div class="form-group _koordinat-block">
                                             <label for="_koordinat" class="form-control-label">Koordinat Tempat Lembaga</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="_nama_lembaga" value="<?= $lks->lat_long_lembaga ?>" readonly />
+                                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                                    <input type="text" class="form-control" value="<?= $lks->lat_long_lembaga ?>" readonly />
+
+                                                    <span class="input-group-btn input-group-append">
+                                                        <a class="btn btn-primary" href="https://www.google.com/maps/@<?= $lks->lat_long_lembaga ?>,17z?q=<?= $lks->lat_long_lembaga ?>(Target Location)" target="_blank">Lihat</a>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
