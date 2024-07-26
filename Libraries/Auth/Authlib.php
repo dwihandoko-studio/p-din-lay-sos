@@ -808,8 +808,8 @@ class Authlib
         $add         = $this->_send_post($data, "login");
         $send_data         = curl_exec($add);
 
-        // var_dump($send_data);
-        // die;
+        var_dump($send_data);
+        die;
 
         $result = json_decode($send_data);
 
