@@ -340,7 +340,7 @@ class Proses extends BaseController
                     return $response;
                 }
 
-                var_dump($send_data);
+                var_dump($urlConvert);
                 die;
 
                 if ($result) {
