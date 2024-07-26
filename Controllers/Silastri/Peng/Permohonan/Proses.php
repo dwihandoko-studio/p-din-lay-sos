@@ -95,25 +95,59 @@ class Proses extends BaseController
 
     public function detail()
     {
-        if ($this->request->getMethod() != 'get') {
-            return view('404', ['error' => "Akses tidak diizinkan."]);
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
         }
 
-        $data['title'] = 'Detail Proses Permohonan Layanan';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
         if ($user->status != 200) {
             session()->destroy();
             delete_cookie('jwt');
-            return redirect()->to(base_url('auth'));
+            $response = new \stdClass;
+            $response->status = 401;
+            $response->message = "Session expired";
+            return json_encode($response);
         }
 
-        $data['user'] = $user->data;
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'NIK tidak boleh kosong. ',
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama tidak boleh kosong. ',
+                ]
+            ],
+        ];
 
-        $id = htmlspecialchars($this->request->getGet('token') ?? "", true);
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id')
+                . $this->validator->getError('nik')
+                . $this->validator->getError('nama');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+            $nik = htmlspecialchars($this->request->getVar('nik'), true);
+            $nama = htmlspecialchars($this->request->getVar('nama'), true);
 
-        $current = $this->_db->table('_permohonan a')
-            ->select("a.*, 
+            $current = $this->_db->table('_permohonan a')
+                ->select("a.*, 
                 b.nik as nik_pemohon, 
                 b.kk as kk, 
                 b.email as email, 
@@ -126,49 +160,50 @@ class Proses extends BaseController
                 c.kecamatan as nama_kecamatan, 
                 d.id as id_kelurahan, 
                 d.kelurahan as nama_kelurahan")
-            ->join('_profil_users_tb b', 'b.id = a.user_id')
-            ->join('ref_kecamatan c', 'c.id = b.kecamatan')
-            ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-            ->where("a.id = '$id' AND (a.status_permohonan = 1 OR a.status_permohonan = 2)")->get()->getRowObject();
+                ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                ->where("a.id = '$id' AND (a.status_permohonan = 1 OR a.status_permohonan = 2)")->get()->getRowObject();
 
-        if ($current) {
-            $data['data'] = $current;
-            $response = new \stdClass;
-            $response->status = 200;
-            $response->message = "Permintaan diizinkan";
-            // $response->data = view('silastri/peng/permohonan/antrian/detail', $data);
-            switch ($current->layanan) {
-                case 'LKS':
-                    $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
-                    $response->data = view('silastri/peng/permohonan/proses/detail_lks', $data);
-                    break;
+            if ($current) {
+                $data['data'] = $current;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                // $response->data = view('silastri/peng/permohonan/antrian/detail', $data);
+                switch ($current->layanan) {
+                    case 'LKS':
+                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+                        $response->data = view('silastri/peng/permohonan/proses/detail_lks', $data);
+                        break;
 
-                default:
-                    $response->data = view('silastri/peng/permohonan/proses/detail', $data);
-                    break;
+                    default:
+                        $response->data = view('silastri/peng/permohonan/proses/detail', $data);
+                        break;
+                }
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
+                return json_encode($response);
             }
-            return json_encode($response);
-        } else {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Data tidak ditemukan";
-            return json_encode($response);
-        }
-        // if ($current) {
-        //     $data['data'] = $current;
-        //     // return view('silastri/peng/permohonan/proses/detail', $data);
-        //     switch ($current->layanan) {
-        //         case 'LKS':
-        //             $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
-        //             return view('silastri/peng/permohonan/proses/detail_lks', $data);
-        //             break;
+            // if ($current) {
+            //     $data['data'] = $current;
+            //     // return view('silastri/peng/permohonan/proses/detail', $data);
+            //     switch ($current->layanan) {
+            //         case 'LKS':
+            //             $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+            //             return view('silastri/peng/permohonan/proses/detail_lks', $data);
+            //             break;
 
-        //         default:
-        //             return view('silastri/peng/permohonan/proses/detail', $data);
-        //             break;
-        //     }
-        // } else {
-        //     return view('404', ['error' => "Data tidak ditemukan."]);
-        // }
+            //         default:
+            //             return view('silastri/peng/permohonan/proses/detail', $data);
+            //             break;
+            //     }
+            // } else {
+            //     return view('404', ['error' => "Data tidak ditemukan."]);
+            // }
+        }
     }
 }

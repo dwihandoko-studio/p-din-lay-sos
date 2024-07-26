@@ -114,6 +114,17 @@ class Antrian extends BaseController
             return json_encode($response);
         }
 
+        $Profilelib = new Profilelib();
+        $user = $Profilelib->user();
+        if ($user->status != 200) {
+            session()->destroy();
+            delete_cookie('jwt');
+            $response = new \stdClass;
+            $response->status = 401;
+            $response->message = "Session expired";
+            return json_encode($response);
+        }
+
         $rules = [
             'id' => [
                 'rules' => 'required|trim',
