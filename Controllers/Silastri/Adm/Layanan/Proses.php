@@ -319,6 +319,9 @@ class Proses extends BaseController
 
                 $urlConvert = getenv('beconvert.default.url');
 
+                var_dump("hasilnya: " . $urlConvert);
+                die;
+
                 // $curlHandle = curl_init("http://192.168.33.30:1891/convert");
                 $curlHandle = curl_init($urlConvert);
                 curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
@@ -348,9 +351,6 @@ class Proses extends BaseController
                     $response->message = "Gagal mengenerate dokumen.";
                     return $response;
                 }
-
-                var_dump($urlConvert);
-                die;
 
                 if ($result) {
                     if ($result->status == 200) {
