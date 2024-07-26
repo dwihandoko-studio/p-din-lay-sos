@@ -264,42 +264,51 @@ class Proses extends BaseController
 
 
                 $file = FCPATH . "upload/template/rekomendasi-lks.docx";
-                $template_processor = new TemplateProcessor($file);
-                $template_processor->setValue('NO_SURAT', $data_surat['no_surat']);
-                $template_processor->setValue('NAMA_LEMBAGA', $data->nama_lembaga);
-                $template_processor->setValue('NAMA_KETUA', $data->nama_ketua_pengurus);
-                $template_processor->setValue('NIK_KETUA', $data->nik_ketua_pengurus);
-                $nama_kecamatan = getNamaKecamatan(substr($data->kelurahan_lembaga, 0, 7));
-                $nama_kelurahan = getNamaKelurahan($data->kelurahan_lembaga);
-                $template_processor->setValue('ALAMAT_LEMBAGA', "$data->alamat_lembaga, RT. $data->rt_lembaga / RW. $data->rw_lembaga $nama_kelurahan, Kec. $nama_kecamatan");
-                $template_processor->setValue('NOMOR_NOTARIS_LEMBAGA', $data->nomor_notaris_lembaga);
-                $template_processor->setValue('TGL_BERDIRI_LEMBAGA', $data->tgl_berdiri_lembaga);
-                $template_processor->setValue('NPWP_LEMBAGA', $data->npwp_lembaga);
-                $template_processor->setValue('STATUS_LEMBAGA', $data->status_lembaga);
-                $template_processor->setValue('BIDANG_KEGIATAN_LEMBAGA', $data->bidang_kegiatan_lembaga);
 
-                $date = new DateTime();
+                try {
+                    $template_processor = new TemplateProcessor($file);
+                    $template_processor->setValue('NO_SURAT', $data_surat['no_surat']);
+                    $template_processor->setValue('NAMA_LEMBAGA', $data->nama_lembaga);
+                    $template_processor->setValue('NAMA_KETUA', $data->nama_ketua_pengurus);
+                    $template_processor->setValue('NIK_KETUA', $data->nik_ketua_pengurus);
+                    $nama_kecamatan = getNamaKecamatan(substr($data->kelurahan_lembaga, 0, 7));
+                    $nama_kelurahan = getNamaKelurahan($data->kelurahan_lembaga);
+                    $template_processor->setValue('ALAMAT_LEMBAGA', "$data->alamat_lembaga, RT. $data->rt_lembaga / RW. $data->rw_lembaga $nama_kelurahan, Kec. $nama_kecamatan");
+                    $template_processor->setValue('NOMOR_NOTARIS_LEMBAGA', $data->nomor_notaris_lembaga);
+                    $template_processor->setValue('TGL_BERDIRI_LEMBAGA', $data->tgl_berdiri_lembaga);
+                    $template_processor->setValue('NPWP_LEMBAGA', $data->npwp_lembaga);
+                    $template_processor->setValue('STATUS_LEMBAGA', $data->status_lembaga);
+                    $template_processor->setValue('BIDANG_KEGIATAN_LEMBAGA', $data->bidang_kegiatan_lembaga);
 
-                $template_processor->setValue('TGL_TTE', tgl_indo($date->format('Y-m-d')));
-                // $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
-                $date->modify('+3 years');
-                $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
-                $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
+                    $date = new DateTime();
 
-                $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
-                $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
-                $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
-                // $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
-                $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
+                    $template_processor->setValue('TGL_TTE', tgl_indo($date->format('Y-m-d')));
+                    // $template_processor->setValue('TGL_KELUAR', tgl_indo($date->format('Y-m-d')));
+                    $date->modify('+3 years');
+                    $template_processor->setValue('TGL_BERLAKU', tgl_indo($date->format('Y-m-d')));
+                    $template_processor->setValue('JENIS_LEMBAGA', $data->jenis_lembaga);
 
-                // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
-                // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData->kode_aduan, 'width' => 100, 'height' => 100, 'ratio' => false));
-                // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'], 'width' => 100, 'height' => 100, 'ratio' => false));
-                // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'] . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
+                    $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
+                    $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
+                    $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
+                    // $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
+                    $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
 
-                $filed = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+                    // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
+                    // $template_processor->setImageValue('QR_CODE_NOTA', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData->kode_aduan, 'width' => 100, 'height' => 100, 'ratio' => false));
+                    // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'], 'width' => 100, 'height' => 100, 'ratio' => false));
+                    // $template_processor->setImageValue('QR_CODE_ASSESMENT', array('path' => 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $dataAssesment['kode_assesment'] . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
 
-                $template_processor->saveAs($filed);
+                    $filed = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+
+                    $template_processor->saveAs($filed);
+                } catch (\Exception $th) {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->err = $th->getMessage();
+                    $response->message = "Gagal mengenerate dokumen.";
+                    return $response;
+                }
 
                 sleep(3);
 
