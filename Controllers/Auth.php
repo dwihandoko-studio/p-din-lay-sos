@@ -249,17 +249,27 @@ class Auth extends BaseController
             $password = htmlspecialchars($this->request->getVar('password'), true);
 
             $authLib = new Authlib();
-            $result = $authLib->postLogin($username, $password);
+            $results = $authLib->postLogin($username, $password);
 
-            var_dump($result);
+            var_dump($results);
             die;
 
-            if (!$result) {
+            if (!$results) {
                 $response = new \stdClass;
                 $response->status = 400;
                 $response->message = "Username atau password salah.";
                 return json_encode($response);
             }
+
+
+            if (!($results->code == 200)) {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = $results->message;
+                return json_encode($response);
+            }
+
+            $result = $results->data;
 
             if (!($result->status == 200)) {
                 $response = new \stdClass;

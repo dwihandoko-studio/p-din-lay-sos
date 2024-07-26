@@ -815,13 +815,26 @@ class Authlib
 
 
         if (isset($result->error)) {
-            return false;
+            $response = new \stdClass;
+            $response->code = 400;
+            $response->status = "ERROR";
+            $response->message = $result->error;
+            return $response;
+            // return false;
         }
 
         if ($result) {
-            return $result;
+            $response = new \stdClass;
+            $response->code = 200;
+            $response->status = "SUCCESS";
+            $response->data = $result;
+            return $response;
         } else {
-            return false;
+            $response = new \stdClass;
+            $response->code = 400;
+            $response->status = "ERROR";
+            $response->message = $send_data;
+            return $response;
         }
 
         // $headers = [];
