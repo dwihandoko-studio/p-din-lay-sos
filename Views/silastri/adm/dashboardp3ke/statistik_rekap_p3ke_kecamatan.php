@@ -30,8 +30,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Kecamatan</th>
-                                            <th>Jumlah</th>
-                                            <th>Prosentase</th>
+                                            <th style="text-align: center;">Jumlah</th>
+                                            <th style="text-align: center;">Prosentase</th>
                                         </tr>
                                     </thead>
                                     <tbody>
