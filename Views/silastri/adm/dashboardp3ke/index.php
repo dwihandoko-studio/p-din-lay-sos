@@ -105,9 +105,9 @@
             <div class="col-lg-12">
                 <div class="d-flex">
                     <h4 class="card-title mb-4 flex-grow-1">INFOGRAFIS</h4>
-                    <div>
+                    <!-- <div>
                         <a href="#" class="btn btn-primary btn-sm">View All <i class="bx bx-right-arrow-alt"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3">
@@ -115,7 +115,7 @@
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                            <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
                             </a>
                         </div>
@@ -279,39 +279,19 @@
                 </div>
             </div>
 
-            <!-- <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Data Riwayat Permohonan</h4>
-                        <div data-simplebar="init" style="max-height: 420px;">
-                            <div class="simplebar-wrapper" style="margin: 0px;">
-                                <div class="simplebar-height-auto-observer-wrapper">
-                                    <div class="simplebar-height-auto-observer"></div>
-                                </div>
-                                <div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="right: -20px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; padding-right: 20px; padding-bottom: 0px; overflow: hidden scroll;">
-                                            <div class="simplebar-content loading-content-data-permohonan" style="padding: 0px;">
-                                                <ul class="verti-timeline list-unstyled datas-permohonan" id="datas-permohonan">
+        </div>
+    </div>
+</div>
 
-                                                </ul>
-                                                <div class="text-center mt-4"><a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="simplebar-placeholder" style="width: auto; height: 504px;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-                                <div class="simplebar-scrollbar" style="height: 292px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+<div id="content-statistikModal" class="modal fade content-statistikModal" tabindex="-1" role="dialog" aria-labelledby="content-statistikModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content modal-content-loading">
+            <div class="modal-header">
+                <h5 class="modal-title" id="content-statistikModalLabel">Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="content-statistikBodyModal">
+            </div>
         </div>
     </div>
 </div>
@@ -325,6 +305,54 @@
 <script src="<?= base_url() ?>/assets/libs/jquery-countdown/jquery.countdown.min.js"></script>
 <script src="<?= base_url() ?>/assets/js/pages/coming-soon.init.js"></script>
 <script>
+    function actionDetail(event) {
+        $.ajax({
+            url: "./detailStatistik",
+            type: 'POST',
+            data: {
+                id: event,
+            },
+            dataType: "json",
+            beforeSend: function() {
+                Swal.fire({
+                    title: 'Sedang Loading . . .',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+            },
+            complete: function() {},
+            success: function(response) {
+                if (response.status == 200) {
+                    Swal.close();
+                    $('#content-statistikModalLabel').html(response.title);
+                    $('.content-statistikBodyModal').html(response.data);
+                    $('.content-statistikModal').modal({
+                        backdrop: 'static',
+                        keyboard: false,
+                    });
+                    $('.content-statistikModal').modal('show');
+                } else {
+                    Swal.fire(
+                        'Failed!',
+                        response.message,
+                        'warning'
+                    );
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                Swal.fire(
+                    'Failed!',
+                    "gagal mengambil data (" + xhr.status.toString + ")",
+                    'warning'
+                );
+            }
+
+        });
+    }
+
     function getStatistikTop() {
         $.ajax({
             url: "./statistik",
