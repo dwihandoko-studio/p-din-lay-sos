@@ -114,7 +114,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
                             </a>
@@ -126,7 +126,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/rekap-approve.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/rekap-approve.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Sudah Verval dan Belum Verval</h5>
                             </a>
@@ -138,7 +138,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-air-minum.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-air-minum.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Air Minum</h5>
                             </a>
@@ -150,7 +150,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-bahan-bakar.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-bahan-bakar.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Bahan Bakar Memasak</h5>
                             </a>
@@ -162,7 +162,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-disabilitas.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-disabilitas.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Disabilitas</h5>
                             </a>
@@ -174,7 +174,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-ijazah.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-ijazah.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Ijazah</h5>
                             </a>
@@ -186,7 +186,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-jenis-dinding.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-jenis-dinding.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Jenis Dinding</h5>
                             </a>
@@ -198,7 +198,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Kepemilikan Tempat</h5>
                             </a>
@@ -210,7 +210,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Partisipasi Sekolah</h5>
                             </a>
@@ -222,7 +222,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-pekerjaan.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-pekerjaan.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Pekerjaan</h5>
                             </a>
@@ -234,7 +234,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-pendidikan.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-pendidikan.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Pendidikan</h5>
                             </a>
@@ -246,7 +246,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-penyakit-kronis.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-penyakit-kronis.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Penyakit Kronis</h5>
                             </a>
@@ -258,7 +258,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-status-kawin.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-status-kawin.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Status Perkawinan</h5>
                             </a>
@@ -270,7 +270,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-sumber-penerangan.png" alt="" class="avatar-sm">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-sumber-penerangan.png" alt="" class="avatar-sm">
                             <a href="#" class="text-body">
                                 <h5 class="mt-4 mb-2 font-size-15">Sumber Penerangan</h5>
                             </a>
