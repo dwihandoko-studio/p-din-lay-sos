@@ -55,15 +55,14 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="grafiktab" role="tabpanel">
-                            <p class="mb-0">
-                                Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-                                single-origin coffee squid. Exercitation +1 labore velit, blog
-                                sartorial PBR leggings next level wes anderson artisan four loko
-                                farm-to-table craft beer twee. Qui photo booth letterpress,
-                                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                                vinyl cillum PBR. Homo nostrud organic, assumenda labore
-                                aesthetic magna delectus.
-                            </p>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Rekapitulasi Data P3KE Per-Kecamatan</h4>
+
+                                    <canvas id="bar_p3ke" height="600" width="100%" style="display: block; box-sizing: border-box; height: 300px; width: 471px;"></canvas>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -75,5 +74,45 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
     </div>
+    <script src="<?= base_url() ?>/assets/libs/chart.js/chart.umd.js"></script>
+    <script>
+        <?php
+        $dataNya = [
+            'labels' => array_map(function ($item) {
+                return $item->kecamatan;
+            }, $data),
+            'datasets' => [
+                [
+                    'label' => 'Data P3KE Per Kecamatan',
+                    'data' => array_map(function ($item) {
+                        return $item->jumlah_perkecamatan;
+                    }, $result),
+                    'backgroundColor' => '--bs-success-rgb, 0.8',
+                    'borderColor' => '--bs-success-rgb, 0.8',
+                    'hoverBackgroundColor' => '--bs-success',
+                    'hoverBorderColor' => '--bs-success',
+                    'borderWidth' => 1
+                ]
+            ]
+        ];
 
+        $chartData = json_encode($dataNya);
+        ?>
+        // Ambil data JSON yang dikirim dari controller
+        var chartData = <?= $chartData ?>;
+
+        // Buat chart
+        var ctx = document.getElementById('bar_p3ke').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 <?php } ?>
