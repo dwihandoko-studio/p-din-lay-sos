@@ -125,16 +125,16 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/rekap-approve.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/rekap-approve.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Sudah Verval dan Belum Verval</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
                 <div class="card" style="min-height: 172px;">
