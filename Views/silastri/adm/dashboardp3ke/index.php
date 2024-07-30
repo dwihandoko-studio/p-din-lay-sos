@@ -325,248 +325,34 @@
 <script src="<?= base_url() ?>/assets/libs/jquery-countdown/jquery.countdown.min.js"></script>
 <script src="<?= base_url() ?>/assets/js/pages/coming-soon.init.js"></script>
 <script>
-    function loadAllPengaduan() {
+    function getStatistikTop() {
         $.ajax({
-            url: "./getAllPengaduan",
-            type: 'GET',
+            url: "./statistik",
+            type: 'POST',
+            data: {
+                id: 'get',
+            },
             dataType: 'JSON',
-            beforeSend: function() {
-                $('div.loading-content-data-pengaduan').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
+            beforeSend: function() {},
             success: function(resul) {
-                $('div.loading-content-data-pengaduan').unblock();
                 if (resul.status !== 200) {
-                    if (resul.status === 401) {
-                        Swal.fire(
-                            'PERINGATAN!',
-                            resul.message,
-                            'warning'
-                        ).then((valRes) => {
-                            reloadPage();
-                        });
-                    } else {
-                        // Swal.fire(
-                        //     'PERINGATAN!',
-                        //     resul.message,
-                        //     'warning'
-                        // );
-                    }
+                    $('.total_p3ke_keluarga').html("0");
+                    $('.total_p3ke_individu').html("0");
+                    $('.total_p3ke_sudah_verval').html("0");
+                    $('.total_p3ke_belum_verval').html("0");
                 } else {
-                    const ulPengaduan = document.querySelector('.datas-pengaduan');
-                    for (let index = 0; index < resul.data.length; index++) {
-                        // Create a new <li> element
-                        const liElement = document.createElement('li');
-                        liElement.classList.add('event-list');
-
-                        // Set the inner HTML of the <li> element
-                        liElement.innerHTML = `
-        <div class="event-timeline-dot">
-            <i class="bx bx-right-arrow-circle font-size-18"></i>
-        </div>
-        <div class="d-flex">
-            <div class="flex-shrink-0 me-3">
-                <div class="avatar-xs">
-                    <div class="avatar-title bg-primary text-primary bg-soft rounded-circle">
-                        <i class="${resul.data[index].icon} font-size-14"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-grow-1">
-                <div>${resul.data[index].keterangan}
-                    <p class="text-muted mb-0">${getTimeAgo(resul.data[index].created_at)}</p>
-                </div>
-            </div>
-        </div>
-    `;
-
-                        // Append the <li> element to the <ul> element
-                        ulPengaduan.appendChild(liElement);
-                    }
+                    $('.total_p3ke_keluarga').html(resul.data.total_keluarga);
+                    $('.total_p3ke_individu').html(resul.data.total_individu);
+                    $('.total_p3ke_sudah_verval').html(resul.data.total_sudah_verval);
+                    $('.total_p3ke_belum_verval').html(resul.data.total_belum_verval);
                 }
-            },
-            error: function() {
-                $('div.loading-content-data-pengaduan').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function loadAllPermohonan() {
-        $.ajax({
-            url: "./getAllPermohonan",
-            type: 'GET',
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('div.loading-content-data-permohonan').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.loading-content-data-permohonan').unblock();
-                if (resul.status !== 200) {
-                    if (resul.status === 401) {
-                        Swal.fire(
-                            'PERINGATAN!',
-                            resul.message,
-                            'warning'
-                        ).then((valRes) => {
-                            reloadPage();
-                        });
-                    } else {
-                        // Swal.fire(
-                        //     'PERINGATAN!',
-                        //     resul.message,
-                        //     'warning'
-                        // );
-                    }
-                } else {
-                    const ulPengaduan = document.querySelector('.datas-permohonan');
-                    for (let index = 0; index < resul.data.length; index++) {
-                        ulPengaduan.appendChild('<li class="event-list">' +
-                            '<div class="event-timeline-dot">' +
-                            '<i class="' + resul.data[index].icon + ' font-size-18"></i>' +
-                            '</div>' +
-                            '<div class="d-flex">' +
-                            '<div class="flex-shrink-0 me-3">' +
-                            '<div class="avatar-xs">' +
-                            '<div class="avatar-title bg-primary text-primary bg-soft rounded-circle">' +
-                            '<i class="bx bx-revision font-size-14"></i>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="flex-grow-1">' +
-                            '<div>' +
-                            resul.data[index].keterangan +
-                            '<p class="text-muted mb-0">' + getTimeAgo(resul.data[index].created_at) + '</p>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</li>');
-                    }
-                }
-            },
-            error: function() {
-                $('div.loading-content-data-permohonan').unblock();
-                Swal.fire(
-                    'Failed!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
             }
         });
     }
 
     $(document).ready(function() {
-        loadAllPengaduan();
-        loadAllPermohonan();
-
-        // $("#timeline-carousel").owlCarousel({
-        //     items: 1,
-        //     loop: !1,
-        //     margin: 0,
-        //     nav: !0,
-        //     navText: ["<i class='mdi mdi-chevron-left'></i>", "<i class='mdi mdi-chevron-right'></i>"],
-        //     dots: !1,
-        //     responsive: {
-        //         576: {
-        //             items: 3
-        //         },
-        //         768: {
-        //             items: 6
-        //         }
-        //     }
-        // });
+        getStatistikTop();
     });
-
-    function aksiAktivasiWa(event) {
-        $.ajax({
-            url: './home/getAktivasiWa',
-            type: 'POST',
-            data: {
-                id: 'wa',
-            },
-            dataType: 'JSON',
-            beforeSend: function() {
-                $('.aktivasi-button-wa').attr('disabled', true);
-                $('div.modal-content-loading').block({
-                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                });
-            },
-            success: function(resul) {
-                $('div.modal-content-loading').unblock();
-                if (resul.status == 200) {
-                    $('.contentAktivasiBodyModal').html(resul.data);
-                } else {
-                    if (resul.status == 404) {
-                        Swal.fire(
-                            'PERINGATAN!',
-                            resul.message,
-                            'warning'
-                        ).then((valRes) => {
-                            reloadPage(resul.redirrect);
-                        })
-                    } else {
-                        if (resul.status == 401) {
-                            Swal.fire(
-                                'PERINGATAN!',
-                                resul.message,
-                                'warning'
-                            ).then((valRes) => {
-                                reloadPage();
-                            })
-                        } else {
-                            $('.aktivasi-button-wa').attr('disabled', false);
-                            Swal.fire(
-                                'PERINGATAN!!!',
-                                resul.message,
-                                'warning'
-                            );
-                        }
-                    }
-                }
-            },
-            error: function(data) {
-                $('.aktivasi-button-wa').attr('disabled', false);
-                $('div.modal-content-loading').unblock();
-                Swal.fire(
-                    'PERINGATAN!',
-                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                    'warning'
-                );
-            }
-        });
-    }
-
-    function getTimeAgo(dateString) {
-        const date = new Date(dateString);
-        const now = new Date();
-        const timeDifferenceInSeconds = Math.floor((now - date) / 1000);
-
-        if (timeDifferenceInSeconds < 60) {
-            return `${timeDifferenceInSeconds} seconds ago`;
-        } else if (timeDifferenceInSeconds < 3600) {
-            const minutes = Math.floor(timeDifferenceInSeconds / 60);
-            return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
-        } else if (timeDifferenceInSeconds < 86400) {
-            const hours = Math.floor(timeDifferenceInSeconds / 3600);
-            return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-        } else if (timeDifferenceInSeconds < 2592000) {
-            const days = Math.floor(timeDifferenceInSeconds / 86400);
-            return `${days} day${days > 1 ? 's' : ''} ago`;
-        } else if (timeDifferenceInSeconds < 31536000) {
-            const months = Math.floor(timeDifferenceInSeconds / 2592000);
-            return `${months} month${months > 1 ? 's' : ''} ago`;
-        } else {
-            const years = Math.floor(timeDifferenceInSeconds / 31536000);
-            return `${years} year${years > 1 ? 's' : ''} ago`;
-        }
-    }
 </script>
 <?= $this->endSection(); ?>
 
