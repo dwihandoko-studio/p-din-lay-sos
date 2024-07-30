@@ -401,8 +401,6 @@
     }
 
     .menu_button_p3ke {
-        background-color: #f0f0f0;
-        color: #333;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s;
@@ -410,6 +408,10 @@
 
     .menu_button_p3ke:hover {
         background-color: #007bff;
+        color: #fff;
+    }
+
+    .menu_button_p3ke h5:hover {
         color: #fff;
     }
 </style>
