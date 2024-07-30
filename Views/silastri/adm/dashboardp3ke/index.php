@@ -117,7 +117,7 @@
                             <div class="text-center mb-3">
                                 <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
                                 <span class="text-body">
-                                    <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
+                                    <h5 class="mt-4 mb-2 font-size-15 text-body">Rekap P3KE Per-Kecamatan</h5>
                                 </span>
                             </div>
                         </div>
@@ -401,9 +401,8 @@
     }
 
     .menu_button_p3ke {
-        border: none;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, color 0.3s;
     }
 
     .menu_button_p3ke:hover {
@@ -411,7 +410,7 @@
         color: #fff;
     }
 
-    .menu_button_p3ke h5:hover {
+    .menu_button_p3ke:hover h5 {
         color: #fff;
     }
 </style>
