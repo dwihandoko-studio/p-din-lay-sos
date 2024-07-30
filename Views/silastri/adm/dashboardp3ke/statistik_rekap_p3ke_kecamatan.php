@@ -86,7 +86,7 @@
                     'label' => 'Data P3KE Per Kecamatan',
                     'data' => array_map(function ($item) {
                         return $item->jumlah_perkecamatan;
-                    }, $result),
+                    }, $data),
                     'backgroundColor' => '--bs-success-rgb, 0.8',
                     'borderColor' => '--bs-success-rgb, 0.8',
                     'hoverBackgroundColor' => '--bs-success',
