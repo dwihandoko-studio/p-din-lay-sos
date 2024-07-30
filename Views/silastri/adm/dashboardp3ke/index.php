@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/rekap-approve.png" alt="" class="avatar-sm">
@@ -135,7 +135,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-air-minum.png" alt="" class="avatar-sm">
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-bahan-bakar.png" alt="" class="avatar-sm">
@@ -159,7 +159,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-disabilitas.png" alt="" class="avatar-sm">
@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-ijazah.png" alt="" class="avatar-sm">
@@ -183,7 +183,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-jenis-dinding.png" alt="" class="avatar-sm">
@@ -195,7 +195,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
@@ -207,7 +207,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-pekerjaan.png" alt="" class="avatar-sm">
@@ -231,7 +231,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-pendidikan.png" alt="" class="avatar-sm">
@@ -243,7 +243,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-penyakit-kronis.png" alt="" class="avatar-sm">
@@ -255,7 +255,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-status-kawin.png" alt="" class="avatar-sm">
@@ -267,7 +267,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card" style="min-height: 172px;">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
                             <img src="<?= base_url() ?>/assets/icon_silastri/profil-sumber-penerangan.png" alt="" class="avatar-sm">
