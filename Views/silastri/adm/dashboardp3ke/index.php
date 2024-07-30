@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -158,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -170,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -182,7 +182,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -206,7 +206,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -218,7 +218,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -230,7 +230,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -242,7 +242,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -254,7 +254,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
@@ -266,7 +266,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="text-center mb-3">
