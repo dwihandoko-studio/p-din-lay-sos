@@ -40,7 +40,7 @@
                                             <?php foreach ($data as $key => $value) { ?>
                                                 <tr>
                                                     <th scope="row"><?= $key + 1 ?></th>
-                                                    <td><?= htmlspecialchars($value->kecamatan) ?></td>
+                                                    <td><?= htmlspecialchars($value->status_verval_individu) ?></td>
                                                     <td class="text-right"><?= number_format($value->jumlah) ?></td>
                                                     <td class="text-right"><?= number_format(($value->jumlah / $totalData) * 100, 2) ?>%</td>
                                                 </tr>
