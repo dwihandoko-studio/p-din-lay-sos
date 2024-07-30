@@ -111,16 +111,18 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
-                            <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');" class="text-body">
-                                <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
-                            </a>
+                <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
+                    <div class="card" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
+                                <span class="text-body">
+                                    <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
                 <div class="card" style="min-height: 172px;">
