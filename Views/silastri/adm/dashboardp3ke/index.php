@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
+                <a class="menu_button_p3ke" href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
                     <div class="card" style="min-height: 172px;">
                         <div class="card-body p-4">
                             <div class="text-center mb-3">
@@ -398,6 +398,19 @@
 
     ._sorot-mouse:hover ._color-p-hover {
         color: #202022 !important;
+    }
+
+    .menu_button_p3ke {
+        background-color: #f0f0f0;
+        color: #333;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .menu_button_p3ke:hover {
+        background-color: #007bff;
+        color: #fff;
     }
 </style>
 <!-- <link href="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" /> -->
