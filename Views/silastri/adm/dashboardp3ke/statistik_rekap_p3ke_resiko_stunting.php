@@ -29,7 +29,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Sumber Air Minum</th>
+                                            <th>Resiko Stunting</th>
                                             <th style="text-align: center;">Jumlah</th>
                                             <th style="text-align: center;">Prosentase</th>
                                         </tr>
@@ -40,7 +40,7 @@
                                             <?php foreach ($data as $key => $value) { ?>
                                                 <tr>
                                                     <th scope="row"><?= $key + 1 ?></th>
-                                                    <td><?= htmlspecialchars($value->sumber_air_minum) ?></td>
+                                                    <td><?= htmlspecialchars($value->resiko_stunting) ?></td>
                                                     <td class="text-right"><?= number_format($value->jumlah) ?></td>
                                                     <td class="text-right"><?= number_format(($value->jumlah / $totalData) * 100, 2) ?>%</td>
                                                 </tr>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="grafiktab" role="tabpanel">
-                            <h4 class="mb-4">Rekapitulasi Data Sumber Air Minum P3KE</h4>
+                            <h4 class="mb-4">Rekapitulasi Data Resiko Stunting P3KE</h4>
                             <div style="width: 80%; margin: auto; padding-top: 20px;">
                                 <canvas id="bar_p3ke"></canvas>
                             </div>
@@ -85,11 +85,11 @@
         <?php
         $dataNya = [
             'labels' => array_map(function ($item) {
-                return $item->sumber_air_minum;
+                return $item->resiko_stunting;
             }, $data),
             'datasets' => [
                 [
-                    'label' => 'Data Sumber Air Minum P3KE',
+                    'label' => 'Data Resiko Stunting P3KE',
                     'data' => array_map(function ($item) {
                         return $item->jumlah;
                     }, $data),

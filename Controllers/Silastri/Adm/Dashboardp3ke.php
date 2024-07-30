@@ -303,6 +303,25 @@ class Dashboardp3ke extends BaseController
                         $response->data = view('silastri/adm/dashboardp3ke/statistik_rekap_p3ke_pekerjaan', $x);
                         return json_encode($response);
                         break;
+                    case 'resiko_stunting':
+                        $result = $this->_db->table('ref_p3ke_keluarga a')
+                            ->select("resiko_stunting, count(resiko_stunting) as jumlah")
+                            ->groupBy('resiko_stunting')
+                            ->get()
+                            ->getResult();
+
+                        $totalData = array_reduce($result, function ($carry, $item) {
+                            return $carry + $item->jumlah;
+                        }, 0);
+
+                        $x['data'] = $result;
+                        $x['total_data'] = $totalData;
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->message = "dikenali.";
+                        $response->data = view('silastri/adm/dashboardp3ke/statistik_rekap_p3ke_resiko_stunting', $x);
+                        return json_encode($response);
+                        break;
 
                     default:
                         $response = new \stdClass;

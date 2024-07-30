@@ -230,7 +230,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <a href="javascript:actionDetail('pendidikan');">
                     <div class="card menu_button_p3ke" style="min-height: 172px;">
                         <div class="card-body p-4">
@@ -241,14 +241,14 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
             <div class="col-lg-3">
-                <a href="javascript:actionDetail('penyakit_kronis');">
+                <a href="javascript:actionDetail('resiko_stunting');">
                     <div class="card menu_button_p3ke" style="min-height: 172px;">
                         <div class="card-body p-4">
                             <div class="text-center mb-3">
                                 <img src="<?= base_url() ?>/assets/icon_silastri/profil-penyakit-kronis.png" alt="" class="avatar-sm">
-                                <h5 class="mt-4 mb-2 font-size-15">Penyakit Kronis</h5>
+                                <h5 class="mt-4 mb-2 font-size-15">Resiko Stunting</h5>
                             </div>
                         </div>
                     </div>
