@@ -407,7 +407,7 @@
     }
 
     .menu_button_p3ke:hover {
-        background-color: #007bff;
+        background-color: #2a3042;
         color: #fff;
     }
 
