@@ -51,6 +51,14 @@
                                             </tr>
                                         <?php } ?>
                                     </tbody>
+                                    <?php if (count($data)) { ?>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2" style="text-align: center;">TOTAL</td>
+                                                <td colspan="2" style="text-align: left;"><?= number_format($totalData) ?></td>
+                                            </tr>
+                                        </tfoot>
+                                    <?php } ?>
                                 </table>
                             </div>
                         </div>
