@@ -58,9 +58,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title mb-4">Rekapitulasi Data P3KE Per-Kecamatan</h4>
-
-                                    <canvas id="bar_p3ke" height="600" width="100%" style="display: block; box-sizing: border-box; height: 300px; width: 471px;"></canvas>
-
+                                    <div style="width: 80%; margin: auto;">
+                                        <canvas id="bar_p3ke"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
