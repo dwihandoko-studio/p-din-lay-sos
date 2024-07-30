@@ -31,6 +31,7 @@
                                     </thead>
                                     <tbody>
                                         <?php if (count($data)) { ?>
+                                            <?php $totalData = isset($total_data) ? $total_data : 0; ?>
                                             <?php foreach ($data as $key => $value) { ?>
                                                 <tr>
                                                     <th scope="row"><?= $key + 1 ?></th>
