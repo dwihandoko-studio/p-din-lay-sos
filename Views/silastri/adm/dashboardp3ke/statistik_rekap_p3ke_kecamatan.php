@@ -1,4 +1,9 @@
 <?php if (isset($data)) { ?>
+    <style>
+        .text-right {
+            text-align: right;
+        }
+    </style>
     <div class="modal-body">
         <div class="col-lg-12">
             <div class="card">
@@ -36,10 +41,14 @@
                                                 <tr>
                                                     <th scope="row"><?= $key + 1 ?></th>
                                                     <td><?= htmlspecialchars($value->kecamatan) ?></td>
-                                                    <td><?= number_format($value->jumlah_perkecamatan) ?></td>
-                                                    <td><?= number_format(($value->jumlah_perkecamatan / $totalData) * 100, 2) ?>%</td>
+                                                    <td class="text-right"><?= number_format($value->jumlah_perkecamatan) ?></td>
+                                                    <td class="text-right"><?= number_format(($value->jumlah_perkecamatan / $totalData) * 100, 2) ?>%</td>
                                                 </tr>
                                             <?php } ?>
+                                        <?php } else { ?>
+                                            <tr>
+                                                <td colspan="4" style="text-align: center;">Tidak ada data</td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
