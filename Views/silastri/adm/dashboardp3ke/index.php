@@ -111,8 +111,8 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <a class="menu_button_p3ke" href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
-                    <div class="card" style="min-height: 172px;">
+                <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
                         <div class="card-body p-4">
                             <div class="text-center mb-3">
                                 <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
