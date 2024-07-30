@@ -12,13 +12,13 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" data-bs-toggle="tab" href="#datatab" role="tab" aria-selected="true">
                                 <span class="d-block d-sm-none"><i class="far fa-file-text"></i></span>
-                                <span class="d-none d-sm-block"><i class="far fa-file-text"></i>Data</span>
+                                <span class="d-none d-sm-block"><i class="far fa-file-text"></i>DATA</span>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" href="#grafiktab" role="tab" aria-selected="false" tabindex="-1">
-                                <span class="d-block d-sm-none"><i class="far fa-bar-chart"></i></span>
-                                <span class="d-none d-sm-block"><i class="far fa-bar-chart"></i>Grafik</span>
+                                <span class="d-block d-sm-none"><i class="fa fa-bar-chart"></i></span>
+                                <span class="d-none d-sm-block"><i class="fa fa-bar-chart"></i>GRAFIK</span>
                             </a>
                         </li>
                     </ul>
