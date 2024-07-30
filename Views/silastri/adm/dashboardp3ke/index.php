@@ -30,7 +30,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">P3KE Keluarga</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 total_p3ke_keluarga" id="total_p3ke_keluarga"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -49,7 +49,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">P3KE Individu</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 total_p3ke_individu" id="total_p3ke_individu"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -68,7 +68,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">P3KE Sudah Verval</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 total_p3ke_sudah_verval" id="total_p3ke_sudah_verval"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -87,7 +87,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">P3KE Belum Verval</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 total_p3ke_belum_verval" id="total_p3ke_belum_verval"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -102,7 +102,184 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="col-lg-12">
+                <div class="d-flex">
+                    <h4 class="card-title mb-4 flex-grow-1">INFOGRAFIS</h4>
+                    <div>
+                        <a href="#" class="btn btn-primary btn-sm">View All <i class="bx bx-right-arrow-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Per-Kecamatan</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/rekap-approve.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Rekap P3KE Sudah Verval dan Belum Verval</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-air-minum.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Air Minum</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-bahan-bakar.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Bahan Bakar Memasak</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-disabilitas.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Disabilitas</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-ijazah.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Ijazah</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-jenis-dinding.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Jenis Dinding</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Kepemilikan Tempat</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Partisipasi Sekolah</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-pekerjaan.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Pekerjaan</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-pendidikan.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Pendidikan</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-penyakit-kronis.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Penyakit Kronis</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-status-kawin.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Status Perkawinan</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="<?= base_url() ?>/assets/icon_silastri/img/infografis/profil-sumber-penerangan.png" alt="" class="avatar-sm">
+                            <a href="#" class="text-body">
+                                <h5 class="mt-4 mb-2 font-size-15">Sumber Penerangan</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Data Riwayat Permohonan</h4>
@@ -134,40 +311,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Data Riwayat Pengaduan</h4>
-                        <div data-simplebar="init" style="max-height: 420px;">
-                            <div class="simplebar-wrapper" style="margin: 0px;">
-                                <div class="simplebar-height-auto-observer-wrapper">
-                                    <div class="simplebar-height-auto-observer"></div>
-                                </div>
-                                <div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="right: -20px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; padding-right: 20px; padding-bottom: 0px; overflow: hidden scroll;">
-                                            <div class="simplebar-content loading-content-data-pengaduan" style="padding: 0px;">
-                                                <ul class="verti-timeline list-unstyled datas-pengaduan" id="datas-pengaduan">
-
-                                                </ul>
-                                                <div class="text-center mt-4"><a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="simplebar-placeholder" style="width: auto; height: 504px;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-                                <div class="simplebar-scrollbar" style="height: 292px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
