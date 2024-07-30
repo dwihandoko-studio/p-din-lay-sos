@@ -341,10 +341,10 @@
                     $('.total_p3ke_sudah_verval').html("0");
                     $('.total_p3ke_belum_verval').html("0");
                 } else {
-                    $('.total_p3ke_keluarga').html(resul.data.total_keluarga);
-                    $('.total_p3ke_individu').html(resul.data.total_individu);
-                    $('.total_p3ke_sudah_verval').html(resul.data.total_sudah_verval);
-                    $('.total_p3ke_belum_verval').html(resul.data.total_belum_verval);
+                    $('.total_p3ke_keluarga').html(resul.data.total_keluarga.toLocaleString());
+                    $('.total_p3ke_individu').html(resul.data.total_individu.toLocaleString());
+                    $('.total_p3ke_sudah_verval').html(resul.data.total_sudah_verval.toLocaleString());
+                    $('.total_p3ke_belum_verval').html(resul.data.total_belum_verval.toLocaleString());
                 }
             }
         });
