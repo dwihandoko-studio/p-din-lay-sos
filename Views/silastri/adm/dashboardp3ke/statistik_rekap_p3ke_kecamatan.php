@@ -55,8 +55,8 @@
                                         <tfoot>
                                             <tr>
                                                 <td>&nbsp;</td>
-                                                <td style="text-align: center;">TOTAL</td>
-                                                <td style="text-align: right;"><?= number_format($totalData) ?></td>
+                                                <th style="text-align: center;">TOTAL</th>
+                                                <th style="text-align: right;"><?= number_format($totalData) ?></th>
                                                 <td>&nbsp;</td>
                                             </tr>
                                         </tfoot>
