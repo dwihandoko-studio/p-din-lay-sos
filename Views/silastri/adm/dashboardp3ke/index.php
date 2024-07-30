@@ -21,20 +21,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex">
-                    <h4 class="card-title mb-4 flex-grow-1">STATISTIK PENGADUAN</h4>
+                    <h4 class="card-title mb-4 flex-grow-1">STATISTIK P3KE</h4>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Antrian</p>
+                                <p class="text-muted fw-medium">P3KE Keluarga</p>
                                 <h4 class="mb-0">0</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                                <div data-colors='["--bs-primary", "--bs-transparent"]' dir="ltr" id="total_p3ke_keluarga_charts"></div>
                             </div>
                         </div>
                     </div>
@@ -43,17 +43,17 @@
                     </div> -->
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Selesai</p>
+                                <p class="text-muted fw-medium">P3KE Individu</p>
                                 <h4 class="mb-0">0</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="new_application_charts"></div>
+                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="total_p3ke_individu_charts"></div>
                             </div>
                         </div>
                     </div>
@@ -62,17 +62,17 @@
                     </div> -->
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Ditolak</p>
+                                <p class="text-muted fw-medium">P3KE Sudah Verval</p>
                                 <h4 class="mb-0">0</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_rejected_charts"></div>
+                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="total_p3ke_sudah_verval_charts"></div>
                             </div>
                         </div>
                     </div>
@@ -81,63 +81,17 @@
                     </div> -->
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="d-flex">
-                    <h4 class="card-title mb-4 flex-grow-1">STATISTIK PERMOHONAN</h4>
-                </div>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Antrian</p>
+                                <p class="text-muted fw-medium">P3KE Belum Verval</p>
                                 <h4 class="mb-0">0</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="card-body border-top py-3">
-                        <p class="mb-0"> <span class="badge badge-soft-info me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 0%</span> Increase last month</p>
-                    </div> -->
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Selesai</p>
-                                <h4 class="mb-0">0</h4>
-                            </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="new_application_charts"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="card-body border-top py-3">
-                        <p class="mb-0"> <span class="badge badge-soft-success me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 24.07%</span> Increase last month</p>
-                    </div> -->
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Ditolak</p>
-                                <h4 class="mb-0">0</h4>
-                            </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_rejected_charts"></div>
+                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_p3ke_belum_verval_charts"></div>
                             </div>
                         </div>
                     </div>
