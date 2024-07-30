@@ -34,7 +34,12 @@
                         <li><a <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "pengaduan" && $uri->getSegment(4) == "asesmenppks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/adm/pengaduan/asesmenppks') ?>" key="t-pengaduan-asesmenppks">Assesment PPKS</a></li>
                     </ul>
                 </li>
-
+                <li <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "dashboardp3ke") ? ' class="mm-active"' : '' ?>>
+                    <a href="<?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "dashboardp3ke") ? 'javascript: void(0);' : base_url('silastri/adm/dashboardp3ke') ?>" class="waves-effect <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "dashboardp3ke") ? ' mm-active' : '' ?>">
+                        <i class="fas fa-dungeon"></i>
+                        <span key="t-dashboards">Dashboard P3KE</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

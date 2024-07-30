@@ -11,14 +11,14 @@
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" data-bs-toggle="tab" href="#datatab" role="tab" aria-selected="true">
-                                <span class="d-block d-sm-none"><i class="far fa-file-text"></i></span>
-                                <span class="d-none d-sm-block"><i class="far fa-file-text"></i>DATA</span>
+                                <span class="d-block d-sm-none"><i class="fas fa-file-text"></i></span>
+                                <span class="d-none d-sm-block"><i class="fas fa-file-text"></i>DATA</span>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" href="#grafiktab" role="tab" aria-selected="false" tabindex="-1">
-                                <span class="d-block d-sm-none"><i class="fa fa-bar-chart"></i></span>
-                                <span class="d-none d-sm-block"><i class="fa fa-bar-chart"></i>GRAFIK</span>
+                                <span class="d-block d-sm-none"><i class="fas fa-bar-chart"></i></span>
+                                <span class="d-none d-sm-block"><i class="fas fa-bar-chart"></i>GRAFIK</span>
                             </a>
                         </li>
                     </ul>
