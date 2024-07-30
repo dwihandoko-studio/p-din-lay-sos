@@ -116,16 +116,14 @@
                         <div class="card-body p-4">
                             <div class="text-center mb-3">
                                 <img src="<?= base_url() ?>/assets/icon_silastri/rekap-pengaduan-wilayah.png" alt="" class="avatar-sm">
-                                <span class="text-body">
-                                    <h5 class="mt-4 mb-2 font-size-15 text-body">Rekap P3KE Per-Kecamatan</h5>
-                                </span>
+                                <h5 class="mt-4 mb-2 font-size-15 text-body">Rekap P3KE Per-Kecamatan</h5>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="javascript:actionDetail('rekap_p3ke_perkecamatan');">
+                <a href="javascript:actionDetail('rekap_p3ke_verval');">
                     <div class="card menu_button_p3ke" style="min-height: 172px;">
                         <div class="card-body p-4">
                             <div class="text-center mb-3">
@@ -137,148 +135,148 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-air-minum.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('air_minum');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-air-minum.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Air Minum</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-bahan-bakar.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('bahan_bakar_memasak');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-bahan-bakar.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Bahan Bakar Memasak</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-disabilitas.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('disabilitas');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-disabilitas.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Disabilitas</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-ijazah.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('ijazah');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-ijazah.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Ijazah</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-jenis-dinding.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('jenis_dinding');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-jenis-dinding.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Jenis Dinding</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('kepemilikan_tempat');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-kepemilikan-tempat.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Kepemilikan Tempat</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('partisipasi_sekolah');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-partisipasi-sekolah.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Partisipasi Sekolah</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-pekerjaan.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('pekerjaan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-pekerjaan.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Pekerjaan</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-pendidikan.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('pendidikan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-pendidikan.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Pendidikan</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-penyakit-kronis.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('penyakit_kronis');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-penyakit-kronis.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Penyakit Kronis</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-status-kawin.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('status_perkawinan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-status-kawin.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Status Perkawinan</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3">
-                <div class="card" style="min-height: 172px;">
-                    <div class="card-body p-4">
-                        <div class="text-center mb-3">
-                            <img src="<?= base_url() ?>/assets/icon_silastri/profil-sumber-penerangan.png" alt="" class="avatar-sm">
-                            <a href="#" class="text-body">
+                <a href="javascript:actionDetail('sumber_penerangan');">
+                    <div class="card menu_button_p3ke" style="min-height: 172px;">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <img src="<?= base_url() ?>/assets/icon_silastri/profil-sumber-penerangan.png" alt="" class="avatar-sm">
                                 <h5 class="mt-4 mb-2 font-size-15">Sumber Penerangan</h5>
-                            </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>
