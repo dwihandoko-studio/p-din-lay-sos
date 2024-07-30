@@ -208,6 +208,44 @@ class Dashboardp3ke extends BaseController
                         $response->data = view('silastri/adm/dashboardp3ke/statistik_rekap_p3ke_bahan_bakar_memasak', $x);
                         return json_encode($response);
                         break;
+                    case 'disabilitas':
+                        $result = $this->_db->table('ref_p3ke_keluarga a')
+                            ->select("bahan_bakar_memasak, count(bahan_bakar_memasak) as jumlah")
+                            ->groupBy('bahan_bakar_memasak')
+                            ->get()
+                            ->getResult();
+
+                        $totalData = array_reduce($result, function ($carry, $item) {
+                            return $carry + $item->jumlah;
+                        }, 0);
+
+                        $x['data'] = $result;
+                        $x['total_data'] = $totalData;
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->message = "dikenali.";
+                        $response->data = view('silastri/adm/dashboardp3ke/statistik_rekap_p3ke_disabilitas', $x);
+                        return json_encode($response);
+                        break;
+                    case 'ijazah':
+                        $result = $this->_db->table('ref_p3ke_individu a')
+                            ->select("pendidikan, count(pendidikan) as jumlah")
+                            ->groupBy('pendidikan')
+                            ->get()
+                            ->getResult();
+
+                        $totalData = array_reduce($result, function ($carry, $item) {
+                            return $carry + $item->jumlah;
+                        }, 0);
+
+                        $x['data'] = $result;
+                        $x['total_data'] = $totalData;
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->message = "dikenali.";
+                        $response->data = view('silastri/adm/dashboardp3ke/statistik_rekap_p3ke_pendidikan', $x);
+                        return json_encode($response);
+                        break;
 
                     default:
                         $response = new \stdClass;

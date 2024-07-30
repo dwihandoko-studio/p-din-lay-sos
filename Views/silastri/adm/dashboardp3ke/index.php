@@ -158,7 +158,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <a href="javascript:actionDetail('disabilitas');">
                     <div class="card menu_button_p3ke" style="min-height: 172px;">
                         <div class="card-body p-4">
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
             <div class="col-lg-3">
                 <a href="javascript:actionDetail('ijazah');">
                     <div class="card menu_button_p3ke" style="min-height: 172px;">
