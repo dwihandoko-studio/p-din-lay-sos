@@ -401,6 +401,7 @@
     }
 
     .menu_button_p3ke {
+        border: none;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
     }
@@ -411,7 +412,13 @@
     }
 
     .menu_button_p3ke:hover h5 {
-        color: #fff;
+        color: #fff !important;
+        /* Add !important to override other styles */
+        transition: color 0.3s;
+    }
+
+    .menu_button_p3ke h5 {
+        transition: color 0.3s;
     }
 </style>
 <!-- <link href="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" /> -->
