@@ -66,7 +66,7 @@
                         </div>
                         <div class="tab-pane" id="grafiktab" role="tabpanel">
                             <h4 class="mb-4">Rekapitulasi Data P3KE Per-Kecamatan</h4>
-                            <div style="width: 80%; margin: auto;">
+                            <div style="width: 80%; margin: auto; padding-top: 20px;">
                                 <canvas id="bar_p3ke"></canvas>
                             </div>
                         </div>
