@@ -71,22 +71,22 @@ class Dashboardp3ke extends BaseController
                     return json_encode($response);
                 }
 
-                $keluarga = $this->_db->table('ref_p3ke_keluarga a')
-                    ->countAllResults();
-                $individu = $this->_db->table('ref_p3ke_individu a')
-                    ->countAllResults();
-                $sudah_verval = $this->_db->table('ref_p3ke_individu a')
-                    ->where("status_verval_individu != 'Belum Terverifikasi Pemda'")
-                    ->countAllResults();
-                $belum_verval = $this->_db->table('ref_p3ke_individu a')
-                    ->where("status_verval_individu = 'Belum Terverifikasi Pemda'")
-                    ->countAllResults();
+                $result = $this->_db->table('ref_p3ke_individu a')
+                    ->select("
+        COUNT(DISTINCT id_keluarga) as total_keluarga,
+        COUNT(*) as total_individu,
+        SUM(CASE WHEN status_verval_individu != 'Belum Terverifikasi Pemda' THEN 1 ELSE 0 END) as total_sudah_verval,
+        SUM(CASE WHEN status_verval_individu = 'Belum Terverifikasi Pemda' THEN 1 ELSE 0 END) as total_belum_verval
+    ")
+                    ->get()
+                    ->getRow();
 
+                // Menyimpan hasil ke dalam objek detail
                 $detail = new \stdClass;
-                $detail->total_keluarga = (int)$keluarga;
-                $detail->total_individu = (int)$individu;
-                $detail->total_sudah_verval = (int)$sudah_verval;
-                $detail->total_belum_verval = (int)$belum_verval;
+                $detail->total_keluarga = (int)$result->total_keluarga;
+                $detail->total_individu = (int)$result->total_individu;
+                $detail->total_sudah_verval = (int)$result->total_sudah_verval;
+                $detail->total_belum_verval = (int)$result->total_belum_verval;
 
                 $response = new \stdClass;
                 $response->status = 200;
