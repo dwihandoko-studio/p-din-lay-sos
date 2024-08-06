@@ -179,6 +179,9 @@ class Antrian extends BaseController
                         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
                         $response->data = view('silastri/adm/layanan/antrian/detail_lks', $data);
                         break;
+                    case 'PBI':
+                        $response->data = view('silastri/adm/layanan/antrian/detail_pbi', $data);
+                        break;
 
                     default:
                         $response->data = view('silastri/adm/layanan/antrian/detail', $data);
