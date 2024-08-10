@@ -16,6 +16,7 @@
 
         <div class="col-xl-12">
             <form id="formAddData" action="./addSave" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="_id_permohonan" name="_id_permohonan" value="" />
                 <div class="card mb-1">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Permohonan Izin LKS / LKSA</h4>
@@ -350,6 +351,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">SIMPAN</button>
+                        </div>
                     </div>
                 </div>
 
@@ -559,6 +563,7 @@
         // const indikator5 = $("input[type='radio'][name='_indikator_5']:checked").val();
         // const indikator6 = $("input[type='radio'][name='_indikator_6']:checked").val();
 
+        const id_permohonan = document.getElementsByName('_id_permohonan')[0].value;
         const nama = document.getElementsByName('_nama')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
         const kk = document.getElementsByName('_kk')[0].value;
@@ -598,20 +603,152 @@
         const koordinat = document.getElementsByName('_koordinat')[0].value;
         // const keterangan = document.getElementsByName('_jenis_detail')[0].value;
 
-        const fileKtpKetua = document.getElementsByName('_file_ktp_ketua')[0].value;
-        const fileKtpSekretaris = document.getElementsByName('_file_ktp_sekretaris')[0].value;
-        const fileKtpBendahara = document.getElementsByName('_file_ktp_bendahara')[0].value;
-        const fileAktaNotaris = document.getElementsByName('_file_akta_notaris')[0].value;
-        const filePengesahanKemenkumham = document.getElementsByName('_file_pengesahan_kemenkumham')[0].value;
-        const fileAdrt = document.getElementsByName('_file_adrt')[0].value;
-        const fileKeteranganDomisili = document.getElementsByName('_file_keterangan_domisili')[0].value;
-        const fileAkreditasi = document.getElementsByName('_file_akreditasi')[0].value;
-        const fileStrukturOrganisasi = document.getElementsByName('_file_struktur_organisasi')[0].value;
-        const fileNpwp = document.getElementsByName('_file_npwp')[0].value;
-        const fileFotoLokasi = document.getElementsByName('_file_foto_lokasi')[0].value;
-        const fileFotoUsahaEkonomiProduktif = document.getElementsByName('_file_foto_usaha_ekonomi_produktif')[0].value;
-        const fileLogoLembaga = document.getElementsByName('_file_logo_lembaga')[0].value;
-        const fileDataBinaan = document.getElementsByName('_file_data_binaan')[0].value;
+        if (id_permohonan === "" || id_permohonan === undefined) {
+
+        } else {
+            const fileKtpKetua = document.getElementsByName('_file_ktp_ketua')[0].value;
+            const fileKtpSekretaris = document.getElementsByName('_file_ktp_sekretaris')[0].value;
+            const fileKtpBendahara = document.getElementsByName('_file_ktp_bendahara')[0].value;
+            const fileAktaNotaris = document.getElementsByName('_file_akta_notaris')[0].value;
+            const filePengesahanKemenkumham = document.getElementsByName('_file_pengesahan_kemenkumham')[0].value;
+            const fileAdrt = document.getElementsByName('_file_adrt')[0].value;
+            const fileKeteranganDomisili = document.getElementsByName('_file_keterangan_domisili')[0].value;
+            const fileAkreditasi = document.getElementsByName('_file_akreditasi')[0].value;
+            const fileStrukturOrganisasi = document.getElementsByName('_file_struktur_organisasi')[0].value;
+            const fileNpwp = document.getElementsByName('_file_npwp')[0].value;
+            const fileFotoLokasi = document.getElementsByName('_file_foto_lokasi')[0].value;
+            const fileFotoUsahaEkonomiProduktif = document.getElementsByName('_file_foto_usaha_ekonomi_produktif')[0].value;
+            const fileLogoLembaga = document.getElementsByName('_file_logo_lembaga')[0].value;
+            const fileDataBinaan = document.getElementsByName('_file_data_binaan')[0].value;
+
+            if (fileKtpKetua === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen KTP Ketua.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileKtpSekretaris === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen KTP Sekretaris.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileKtpBendahara === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen KTP Bendahara.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileAktaNotaris === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Akta Notaris.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (filePengesahanKemenkumham === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Pengesahan Kemenkumham.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileAdrt === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen ADRT.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileKeteranganDomisili === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Keterangan Domisili.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileAkreditasi === "") {
+                if (akreditasi_lembaga !== "Belum Terakreditasi") {
+                    Swal.fire(
+                        'Peringatan..!!',
+                        "Silahkan lampirkan dokumen Akreditasi.",
+                        'warning'
+                    );
+                    return;
+                }
+            }
+
+            if (fileStrukturOrganisasi === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Struktur Organisasi.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileNpwp === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen NPWP Lembaga.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileFotoLokasi === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Foto Lokasi.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileFotoUsahaEkonomiProduktif === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Foto Usaha Ekonomi Produktif (UEP).",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileLogoLembaga === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan dokumen Logo Lembaga.",
+                    'warning'
+                );
+                return;
+            }
+
+            if (fileDataBinaan === "") {
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan data binaan.",
+                    'warning'
+                );
+                return;
+            }
+        }
 
         if (nama_lembaga === "" || nama_lembaga === undefined) {
             $("input#_nama_lembaga").css("color", "#dc3545");
@@ -1042,167 +1179,44 @@
             return false;
         }
 
-        if (fileKtpKetua === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen KTP Ketua.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileKtpSekretaris === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen KTP Sekretaris.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileKtpBendahara === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen KTP Bendahara.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileAktaNotaris === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Akta Notaris.",
-                'warning'
-            );
-            return;
-        }
-
-        if (filePengesahanKemenkumham === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Pengesahan Kemenkumham.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileAdrt === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen ADRT.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileKeteranganDomisili === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Keterangan Domisili.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileAkreditasi === "") {
-            if (akreditasi_lembaga !== "Belum Terakreditasi") {
-                Swal.fire(
-                    'Peringatan..!!',
-                    "Silahkan lampirkan dokumen Akreditasi.",
-                    'warning'
-                );
-                return;
-            }
-        }
-
-        if (fileStrukturOrganisasi === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Struktur Organisasi.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileNpwp === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen NPWP Lembaga.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileFotoLokasi === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Foto Lokasi.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileFotoUsahaEkonomiProduktif === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Foto Usaha Ekonomi Produktif (UEP).",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileLogoLembaga === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Logo Lembaga.",
-                'warning'
-            );
-            return;
-        }
-
-        if (fileDataBinaan === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan data binaan.",
-                'warning'
-            );
-            return;
-        }
-
         const formUpload = new FormData();
 
-        const file_ktp_ketua = document.getElementsByName('_file_ktp_ketua')[0].files[0];
-        formUpload.append('_file_ktp_ketua', file_ktp_ketua);
-        const file_ktp_sekretaris = document.getElementsByName('_file_ktp_sekretaris')[0].files[0];
-        formUpload.append('_file_ktp_sekretaris', file_ktp_sekretaris);
-        const file_ktp_bendahara = document.getElementsByName('_file_ktp_bendahara')[0].files[0];
-        formUpload.append('_file_ktp_bendahara', file_ktp_bendahara);
-        const file_akta_notaris = document.getElementsByName('_file_akta_notaris')[0].files[0];
-        formUpload.append('_file_akta_notaris', file_akta_notaris);
-        const file_pengesahan_kemenkumham = document.getElementsByName('_file_pengesahan_kemenkumham')[0].files[0];
-        formUpload.append('_file_pengesahan_kemenkumham', file_pengesahan_kemenkumham);
-        const file_adrt = document.getElementsByName('_file_adrt')[0].files[0];
-        formUpload.append('_file_adrt', file_adrt);
-        const file_keterangan_domisili = document.getElementsByName('_file_keterangan_domisili')[0].files[0];
-        formUpload.append('_file_keterangan_domisili', file_keterangan_domisili);
-        if (akreditasi_lembaga !== "Belum Terakreditasi") {
-            const file_akreditasi = document.getElementsByName('_file_akreditasi')[0].files[0];
-            formUpload.append('_file_akreditasi', file_akreditasi);
-        }
-        const file_struktur_organisasi = document.getElementsByName('_file_struktur_organisasi')[0].files[0];
-        formUpload.append('_file_struktur_organisasi', file_struktur_organisasi);
-        const file_npwp = document.getElementsByName('_file_npwp')[0].files[0];
-        formUpload.append('_file_npwp', file_npwp);
-        const file_foto_lokasi = document.getElementsByName('_file_foto_lokasi')[0].files[0];
-        formUpload.append('_file_foto_lokasi', file_foto_lokasi);
-        const file_foto_usaha_ekonomi_produktif = document.getElementsByName('_file_foto_usaha_ekonomi_produktif')[0].files[0];
-        formUpload.append('_file_foto_usaha_ekonomi_produktif', file_foto_usaha_ekonomi_produktif);
-        const file_logo_lembaga = document.getElementsByName('_file_logo_lembaga')[0].files[0];
-        formUpload.append('_file_logo_lembaga', file_logo_lembaga);
-        const file_data_binaan = document.getElementsByName('_file_data_binaan')[0].files[0];
-        formUpload.append('_file_data_binaan', file_data_binaan);
+        if (id_permohonan === "" || id_permohonan === undefined) {
 
+        } else {
+            const file_ktp_ketua = document.getElementsByName('_file_ktp_ketua')[0].files[0];
+            formUpload.append('_file_ktp_ketua', file_ktp_ketua);
+            const file_ktp_sekretaris = document.getElementsByName('_file_ktp_sekretaris')[0].files[0];
+            formUpload.append('_file_ktp_sekretaris', file_ktp_sekretaris);
+            const file_ktp_bendahara = document.getElementsByName('_file_ktp_bendahara')[0].files[0];
+            formUpload.append('_file_ktp_bendahara', file_ktp_bendahara);
+            const file_akta_notaris = document.getElementsByName('_file_akta_notaris')[0].files[0];
+            formUpload.append('_file_akta_notaris', file_akta_notaris);
+            const file_pengesahan_kemenkumham = document.getElementsByName('_file_pengesahan_kemenkumham')[0].files[0];
+            formUpload.append('_file_pengesahan_kemenkumham', file_pengesahan_kemenkumham);
+            const file_adrt = document.getElementsByName('_file_adrt')[0].files[0];
+            formUpload.append('_file_adrt', file_adrt);
+            const file_keterangan_domisili = document.getElementsByName('_file_keterangan_domisili')[0].files[0];
+            formUpload.append('_file_keterangan_domisili', file_keterangan_domisili);
+            if (akreditasi_lembaga !== "Belum Terakreditasi") {
+                const file_akreditasi = document.getElementsByName('_file_akreditasi')[0].files[0];
+                formUpload.append('_file_akreditasi', file_akreditasi);
+            }
+            const file_struktur_organisasi = document.getElementsByName('_file_struktur_organisasi')[0].files[0];
+            formUpload.append('_file_struktur_organisasi', file_struktur_organisasi);
+            const file_npwp = document.getElementsByName('_file_npwp')[0].files[0];
+            formUpload.append('_file_npwp', file_npwp);
+            const file_foto_lokasi = document.getElementsByName('_file_foto_lokasi')[0].files[0];
+            formUpload.append('_file_foto_lokasi', file_foto_lokasi);
+            const file_foto_usaha_ekonomi_produktif = document.getElementsByName('_file_foto_usaha_ekonomi_produktif')[0].files[0];
+            formUpload.append('_file_foto_usaha_ekonomi_produktif', file_foto_usaha_ekonomi_produktif);
+            const file_logo_lembaga = document.getElementsByName('_file_logo_lembaga')[0].files[0];
+            formUpload.append('_file_logo_lembaga', file_logo_lembaga);
+            const file_data_binaan = document.getElementsByName('_file_data_binaan')[0].files[0];
+            formUpload.append('_file_data_binaan', file_data_binaan);
+        }
+
+        formUpload.append('id_permohonan', id_permohonan);
         formUpload.append('nama', nama);
         formUpload.append('nik', nik);
         formUpload.append('kk', kk);
@@ -1316,15 +1330,25 @@
                             }
                         } else {
                             // ambilId("status").innerHTML = resul.message;
-                            ambilId("status").style.color = "green";
-                            ambilId("progressBar").value = 100;
-                            Swal.fire(
-                                'SELAMAT!',
-                                resul.message,
-                                'success'
-                            ).then((valRes) => {
-                                reloadPage(resul.redirect);
-                            })
+                            if (resul.next) {
+                                ambilId("status").style.color = "green";
+                                ambilId("progressBar").value = 100;
+                                Swal.fire(
+                                    'SELAMAT!',
+                                    resul.message,
+                                    'success'
+                                );
+                            } else {
+                                ambilId("status").style.color = "green";
+                                ambilId("progressBar").value = 100;
+                                Swal.fire(
+                                    'SELAMAT!',
+                                    resul.message,
+                                    'success'
+                                ).then((valRes) => {
+                                    reloadPage(resul.redirect);
+                                })
+                            }
                         }
                     },
                     error: function(erro) {

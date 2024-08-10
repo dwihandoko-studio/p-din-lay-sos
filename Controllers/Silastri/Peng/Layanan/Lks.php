@@ -490,216 +490,6 @@ class Lks extends BaseController
             ],
         ];
 
-        $filenamelampiranKtpKetua = dot_array_search('_file_ktp_ketua.name', $_FILES);
-        if ($filenamelampiranKtpKetua != '') {
-            $lampiranValKtpKetua = [
-                '_file_ktp_ketua' => [
-                    'rules' => 'uploaded[_file_ktp_ketua]|max_size[_file_ktp_ketua,2048]|mime_in[_file_ktp_ketua,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen KTP Ketua terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KTP Ketua terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValKtpKetua);
-        }
-
-        $filenamelampiranKtpSekretaris = dot_array_search('_file_ktp_sekretaris.name', $_FILES);
-        if ($filenamelampiranKtpSekretaris != '') {
-            $lampiranValKtpSekretaris = [
-                '_file_ktp_sekretaris' => [
-                    'rules' => 'uploaded[_file_ktp_sekretaris]|max_size[_file_ktp_sekretaris,2048]|mime_in[_file_ktp_sekretaris,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen KTP Sekretaris terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KTP Sekretaris terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValKtpSekretaris);
-        }
-
-        $filenamelampiranKtpBendahara = dot_array_search('_file_ktp_bendahara.name', $_FILES);
-        if ($filenamelampiranKtpBendahara != '') {
-            $lampiranValKtpBendahara = [
-                '_file_ktp_bendahara' => [
-                    'rules' => 'uploaded[_file_ktp_bendahara]|max_size[_file_ktp_bendahara,2048]|mime_in[_file_ktp_bendahara,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen KTP Bendahara terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KTP Bendahara terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValKtpBendahara);
-        }
-
-        $filenamelampiranAktaNotaris = dot_array_search('_file_akta_notaris.name', $_FILES);
-        if ($filenamelampiranAktaNotaris != '') {
-            $lampiranValAktaNotaris = [
-                '_file_akta_notaris' => [
-                    'rules' => 'uploaded[_file_akta_notaris]|max_size[_file_akta_notaris,10240]|mime_in[_file_akta_notaris,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Akta Notaris terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Akta Notaris terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValAktaNotaris);
-        }
-
-        $filenamelampiranPengesahanKemenkumham = dot_array_search('_file_pengesahan_kemenkumham.name', $_FILES);
-        if ($filenamelampiranPengesahanKemenkumham != '') {
-            $lampiranValPengesahanKemenkumham = [
-                '_file_pengesahan_kemenkumham' => [
-                    'rules' => 'uploaded[_file_pengesahan_kemenkumham]|max_size[_file_pengesahan_kemenkumham,2048]|mime_in[_file_pengesahan_kemenkumham,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Pengesahan Kemenkumham terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Pengesahan Kemenkumham terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValPengesahanKemenkumham);
-        }
-
-        $filenamelampiranAdrt = dot_array_search('_file_adrt.name', $_FILES);
-        if ($filenamelampiranAdrt != '') {
-            $lampiranValAdrt = [
-                '_file_adrt' => [
-                    'rules' => 'uploaded[_file_adrt]|max_size[_file_adrt,10480]|mime_in[_file_adrt,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen ADRT terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen ADRT terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValAdrt);
-        }
-
-        $filenamelampiranKeteranganDomisili = dot_array_search('_file_keterangan_domisili.name', $_FILES);
-        if ($filenamelampiranKeteranganDomisili != '') {
-            $lampiranValKeteranganDomisili = [
-                '_file_keterangan_domisili' => [
-                    'rules' => 'uploaded[_file_keterangan_domisili]|max_size[_file_keterangan_domisili,2048]|mime_in[_file_keterangan_domisili,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Keterangan Domisili terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Keterangan Domisili terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValKeteranganDomisili);
-        }
-
-        $filenamelampiranAkreditasi = dot_array_search('_file_akreditasi.name', $_FILES);
-        if ($filenamelampiranAkreditasi != '') {
-            $lampiranValAkreditasi = [
-                '_file_akreditasi' => [
-                    'rules' => 'uploaded[_file_akreditasi]|max_size[_file_akreditasi,2048]|mime_in[_file_akreditasi,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Akreditasi terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Akreditasi terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValAkreditasi);
-        }
-
-        $filenamelampiranStrukturOrganisasi = dot_array_search('_file_struktur_organisasi.name', $_FILES);
-        if ($filenamelampiranStrukturOrganisasi != '') {
-            $lampiranValStrukturOrganisasi = [
-                '_file_struktur_organisasi' => [
-                    'rules' => 'uploaded[_file_struktur_organisasi]|max_size[_file_struktur_organisasi,2048]|mime_in[_file_struktur_organisasi,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Struktur Organisasi terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Struktur Organisasi terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValStrukturOrganisasi);
-        }
-
-        $filenamelampiranNpwp = dot_array_search('_file_npwp.name', $_FILES);
-        if ($filenamelampiranNpwp != '') {
-            $lampiranValNpwp = [
-                '_file_npwp' => [
-                    'rules' => 'uploaded[_file_npwp]|max_size[_file_npwp,2048]|mime_in[_file_npwp,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen NPWP terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen NPWP terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValNpwp);
-        }
-
-        $filenamelampiranFotoLokasi = dot_array_search('_file_foto_lokasi.name', $_FILES);
-        if ($filenamelampiranFotoLokasi != '') {
-            $lampiranValFotoLokasi = [
-                '_file_foto_lokasi' => [
-                    'rules' => 'uploaded[_file_foto_lokasi]|max_size[_file_foto_lokasi,2048]|mime_in[_file_foto_lokasi,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Foto Lokasi terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Foto Lokasi terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValFotoLokasi);
-        }
-
-        $filenamelampiranFotoUsahaEkonomiProduktif = dot_array_search('_file_foto_usaha_ekonomi_produktif.name', $_FILES);
-        if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-            $lampiranValFotoUsahaEkonomiProduktif = [
-                '_file_foto_usaha_ekonomi_produktif' => [
-                    'rules' => 'uploaded[_file_foto_usaha_ekonomi_produktif]|max_size[_file_foto_usaha_ekonomi_produktif,2048]|mime_in[_file_foto_usaha_ekonomi_produktif,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Foto Usaha Ekonomi Produktif terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Foto Usaha Ekonomi Produktif terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValFotoUsahaEkonomiProduktif);
-        }
-
-        $filenamelampiranLogoLembaga = dot_array_search('_file_logo_lembaga.name', $_FILES);
-        if ($filenamelampiranLogoLembaga != '') {
-            $lampiranValLogoLembaga = [
-                '_file_logo_lembaga' => [
-                    'rules' => 'uploaded[_file_logo_lembaga]|max_size[_file_logo_lembaga,2048]|mime_in[_file_logo_lembaga,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen Logo Lembaga terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen Logo Lembaga terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValLogoLembaga);
-        }
-
-        $filenamelampiranDataBinaan = dot_array_search('_file_data_binaan.name', $_FILES);
-        if ($filenamelampiranDataBinaan != '') {
-            $lampiranValDataBinaan = [
-                '_file_data_binaan' => [
-                    'rules' => 'uploaded[_file_data_binaan]|max_size[_file_data_binaan,2048]|mime_in[_file_data_binaan,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/excel,application/download,application/vnd.ms-office,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/zip,application/x-zip]',
-                    'errors' => [
-                        'uploaded' => 'Pilih Data Binaan Lembaga terlebih dahulu. ',
-                        'max_size' => 'Ukuran Data Binaan Lembaga terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi xls atau xlsx. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValDataBinaan);
-        }
-
         if (!$this->validate($rules)) {
             $response = new \stdClass;
             $response->status = 400;
@@ -766,6 +556,8 @@ class Lks extends BaseController
                 return json_encode($response);
             }
 
+            $id_permohonan = htmlspecialchars($this->request->getVar('id_permohonan'), true);
+
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             $nama_lembaga = htmlspecialchars($this->request->getVar('nama_lembaga'), true);
@@ -803,504 +595,848 @@ class Lks extends BaseController
             $jumlah_binaan_luar_lembaga = htmlspecialchars($this->request->getVar('jumlah_binaan_luar_lembaga'), true);
             $koordinat = htmlspecialchars($this->request->getVar('koordinat'), true);
 
-            $uuidLib = new Uuid();
+            if ($id_permohonan === "" || $id_permohonan === NULL) {
 
-            $kodeUsulan = "LKS-" . $user->data->nik . '-' . time();
+                $uuidLib = new Uuid();
 
-            $data = [
-                'id' => $uuidLib->v4(),
-                'kode_permohonan' => $kodeUsulan,
-                'kelurahan' => $user->data->kelurahan,
-                'ttd' => 'kadis',
-                'nik' => $user->data->nik,
-                'nama' => $user->data->fullname,
-                'user_id' => $user->data->id,
-                'jenis' => "Rekomendasi LKS/LKSA",
-                'layanan' => "LKS",
-                'status_permohonan' => 0,
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
+                $kodeUsulan = "LKS-" . $user->data->nik . '-' . time();
 
-            $dataLks = [
-                'id_permohonan' => $data['id'],
-                'nama_lembaga' => $nama_lembaga,
-                'jenis_lembaga' => $jenis_lembaga,
-                'tgl_berdiri_lembaga' => $tgl_berdiri,
-                'nama_notaris_lembaga' => $nama_notaris,
-                'nomor_notaris_lembaga' => $no_tanggal_notaris,
-                'nomor_kemenkumham_lembaga' => $no_pendaftaran_kemenkumham,
-                'akreditasi_lembaga' => $akreditasi_lembaga,
-                'nomor_surat_akreditasi_lembaga' => $no_surat_akreditasi,
-                'tgl_expired_akreditasi_lembaga' => $tgl_habis_berlaku_akreditasi,
-                'npwp_lembaga' => $nomor_wajib_pajak,
-                'modal_usaha_lembaga' => $modal_usaha,
-                'status_lembaga' => $status_lembaga,
-                'lingkup_wilayah_kerja_lembaga' => $lingkup_wilayah_kerja,
-                'bidang_kegiatan_lembaga' => $bidang_kegiatan,
-                'no_telp_lembaga' => $no_telp_lembaga,
-                'email_lembaga' => $email_lembaga,
-                'lat_long_lembaga' => $koordinat,
-                'alamat_lembaga' => $alamat_lembaga,
-                'rt_lembaga' => $rt_lembaga,
-                'rw_lembaga' => $rw_lembaga,
-                'kecamatan_lembaga' => $kecamatan_lembaga,
-                'kelurahan_lembaga' => $kelurahan_lembaga,
-                'nama_ketua_pengurus' => $nama_ketua,
-                'nik_ketua_pengurus' => $nik_ketua,
-                'nohp_ketua_pengurus' => $nohp_ketua,
-                'nama_sekretaris_pengurus' => $nama_sekretaris,
-                'nik_sekretaris_pengurus' => $nik_sekretaris,
-                'nohp_sekretaris_pengurus' => $nohp_sekretaris,
-                'nama_bendahara_pengurus' => $nama_bendahara,
-                'nik_bendahara_pengurus' => $nik_bendahara,
-                'nohp_bendahara_pengurus' => $nohp_bendahara,
-                'jumlah_pengurus' => $jumlah_pengurus,
-                'jumlah_binaan_dalam' => $jumlah_binaan_dalam_lembaga,
-                'jumlah_binaan_luar' => $jumlah_binaan_luar_lembaga,
-                'created_at' => $data['created_at']
-            ];
+                $data = [
+                    'id' => $uuidLib->v4(),
+                    'kode_permohonan' => $kodeUsulan,
+                    'kelurahan' => $user->data->kelurahan,
+                    'ttd' => 'kadis',
+                    'nik' => $user->data->nik,
+                    'nama' => $user->data->fullname,
+                    'user_id' => $user->data->id,
+                    'jenis' => "Rekomendasi LKS/LKSA",
+                    'layanan' => "LKS",
+                    'status_permohonan' => 0,
+                    'created_at' => date('Y-m-d H:i:s'),
+                ];
 
-            $dir = FCPATH . "uploads/lks";
+                $dataLks = [
+                    'id_permohonan' => $data['id'],
+                    'nama_lembaga' => $nama_lembaga,
+                    'jenis_lembaga' => $jenis_lembaga,
+                    'tgl_berdiri_lembaga' => $tgl_berdiri,
+                    'nama_notaris_lembaga' => $nama_notaris,
+                    'nomor_notaris_lembaga' => $no_tanggal_notaris,
+                    'nomor_kemenkumham_lembaga' => $no_pendaftaran_kemenkumham,
+                    'akreditasi_lembaga' => $akreditasi_lembaga,
+                    'nomor_surat_akreditasi_lembaga' => $no_surat_akreditasi,
+                    'tgl_expired_akreditasi_lembaga' => $tgl_habis_berlaku_akreditasi,
+                    'npwp_lembaga' => $nomor_wajib_pajak,
+                    'modal_usaha_lembaga' => $modal_usaha,
+                    'status_lembaga' => $status_lembaga,
+                    'lingkup_wilayah_kerja_lembaga' => $lingkup_wilayah_kerja,
+                    'bidang_kegiatan_lembaga' => $bidang_kegiatan,
+                    'no_telp_lembaga' => $no_telp_lembaga,
+                    'email_lembaga' => $email_lembaga,
+                    'lat_long_lembaga' => $koordinat,
+                    'alamat_lembaga' => $alamat_lembaga,
+                    'rt_lembaga' => $rt_lembaga,
+                    'rw_lembaga' => $rw_lembaga,
+                    'kecamatan_lembaga' => $kecamatan_lembaga,
+                    'kelurahan_lembaga' => $kelurahan_lembaga,
+                    'nama_ketua_pengurus' => $nama_ketua,
+                    'nik_ketua_pengurus' => $nik_ketua,
+                    'nohp_ketua_pengurus' => $nohp_ketua,
+                    'nama_sekretaris_pengurus' => $nama_sekretaris,
+                    'nik_sekretaris_pengurus' => $nik_sekretaris,
+                    'nohp_sekretaris_pengurus' => $nohp_sekretaris,
+                    'nama_bendahara_pengurus' => $nama_bendahara,
+                    'nik_bendahara_pengurus' => $nik_bendahara,
+                    'nohp_bendahara_pengurus' => $nohp_bendahara,
+                    'jumlah_pengurus' => $jumlah_pengurus,
+                    'jumlah_binaan_dalam' => $jumlah_binaan_dalam_lembaga,
+                    'jumlah_binaan_luar' => $jumlah_binaan_luar_lembaga,
+                    'created_at' => $data['created_at']
+                ];
 
-            if ($filenamelampiranKtpKetua != '') {
-                $lampiranKtpKetua = $this->request->getFile('_file_ktp_ketua');
-                $filesNamelampiranKtpKetua = $lampiranKtpKetua->getName();
-                $newNamelampiranKtpKetua = _create_name_foto($filesNamelampiranKtpKetua);
-
-                if ($lampiranKtpKetua->isValid() && !$lampiranKtpKetua->hasMoved()) {
-                    $lampiranKtpKetua->move($dir, $newNamelampiranKtpKetua);
-                    $dataLks['lampiran_ktp_ketua'] = $newNamelampiranKtpKetua;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran KTP Ketua.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranKtpSekretaris != '') {
-                $lampiranKtpSekretaris = $this->request->getFile('_file_ktp_sekretaris');
-                $filesNamelampiranKtpSekretaris = $lampiranKtpSekretaris->getName();
-                $newNamelampiranKtpSekretaris = _create_name_foto($filesNamelampiranKtpSekretaris);
-
-                if ($lampiranKtpSekretaris->isValid() && !$lampiranKtpSekretaris->hasMoved()) {
-                    $lampiranKtpSekretaris->move($dir, $newNamelampiranKtpSekretaris);
-                    $dataLks['lampiran_ktp_sekretaris'] = $newNamelampiranKtpSekretaris;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran KTP Sekretaris.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranKtpBendahara != '') {
-                $lampiranKtpBendahara = $this->request->getFile('_file_ktp_bendahara');
-                $filesNamelampiranKtpBendahara = $lampiranKtpBendahara->getName();
-                $newNamelampiranKtpBendahara = _create_name_foto($filesNamelampiranKtpBendahara);
-
-                if ($lampiranKtpBendahara->isValid() && !$lampiranKtpBendahara->hasMoved()) {
-                    $lampiranKtpBendahara->move($dir, $newNamelampiranKtpBendahara);
-                    $dataLks['lampiran_ktp_bendahara'] = $newNamelampiranKtpBendahara;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran KTP Bendahara.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranAktaNotaris != '') {
-                $lampiranAktaNotaris = $this->request->getFile('_file_akta_notaris');
-                $filesNamelampiranAktaNotaris = $lampiranAktaNotaris->getName();
-                $newNamelampiranAktaNotaris = _create_name_foto($filesNamelampiranAktaNotaris);
-
-                if ($lampiranAktaNotaris->isValid() && !$lampiranAktaNotaris->hasMoved()) {
-                    $lampiranAktaNotaris->move($dir, $newNamelampiranAktaNotaris);
-                    $dataLks['lampiran_akta_notaris'] = $newNamelampiranAktaNotaris;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Akta Notaris.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranPengesahanKemenkumham != '') {
-                $lampiranPengesahanKemenkumham = $this->request->getFile('_file_pengesahan_kemenkumham');
-                $filesNamelampiranPengesahanKemenkumham = $lampiranPengesahanKemenkumham->getName();
-                $newNamelampiranPengesahanKemenkumham = _create_name_foto($filesNamelampiranPengesahanKemenkumham);
-
-                if ($lampiranPengesahanKemenkumham->isValid() && !$lampiranPengesahanKemenkumham->hasMoved()) {
-                    $lampiranPengesahanKemenkumham->move($dir, $newNamelampiranPengesahanKemenkumham);
-                    $dataLks['lampiran_kemenkumham'] = $newNamelampiranPengesahanKemenkumham;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Pengesahan Kemenkumham.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranAdrt != '') {
-                $lampiranAdrt = $this->request->getFile('_file_adrt');
-                $filesNamelampiranAdrt = $lampiranAdrt->getName();
-                $newNamelampiranAdrt = _create_name_foto($filesNamelampiranAdrt);
-
-                if ($lampiranAdrt->isValid() && !$lampiranAdrt->hasMoved()) {
-                    $lampiranAdrt->move($dir, $newNamelampiranAdrt);
-                    $dataLks['lampiran_adrt'] = $newNamelampiranAdrt;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran ADRT.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranKeteranganDomisili != '') {
-                $lampiranKeteranganDomisili = $this->request->getFile('_file_keterangan_domisili');
-                $filesNamelampiranKeteranganDomisili = $lampiranKeteranganDomisili->getName();
-                $newNamelampiranKeteranganDomisili = _create_name_foto($filesNamelampiranKeteranganDomisili);
-
-                if ($lampiranKeteranganDomisili->isValid() && !$lampiranKeteranganDomisili->hasMoved()) {
-                    $lampiranKeteranganDomisili->move($dir, $newNamelampiranKeteranganDomisili);
-                    $dataLks['lampiran_domisili'] = $newNamelampiranKeteranganDomisili;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Keterangan Domisili.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranAkreditasi != '') {
-                $lampiranAkreditasi = $this->request->getFile('_file_akreditasi');
-                $filesNamelampiranAkreditasi = $lampiranAkreditasi->getName();
-                $newNamelampiranAkreditasi = _create_name_foto($filesNamelampiranAkreditasi);
-
-                if ($lampiranAkreditasi->isValid() && !$lampiranAkreditasi->hasMoved()) {
-                    $lampiranAkreditasi->move($dir, $newNamelampiranAkreditasi);
-                    $dataLks['lampiran_akreditasi'] = $newNamelampiranAkreditasi;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Akreditasi.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranStrukturOrganisasi != '') {
-                $lampiranStrukturOrganisasi = $this->request->getFile('_file_struktur_organisasi');
-                $filesNamelampiranStrukturOrganisasi = $lampiranStrukturOrganisasi->getName();
-                $newNamelampiranStrukturOrganisasi = _create_name_foto($filesNamelampiranStrukturOrganisasi);
-
-                if ($lampiranStrukturOrganisasi->isValid() && !$lampiranStrukturOrganisasi->hasMoved()) {
-                    $lampiranStrukturOrganisasi->move($dir, $newNamelampiranStrukturOrganisasi);
-                    $dataLks['lampiran_struktur_organisasi'] = $newNamelampiranStrukturOrganisasi;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Struktur Organisasi.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranNpwp != '') {
-                $lampiranNpwp = $this->request->getFile('_file_npwp');
-                $filesNamelampiranNpwp = $lampiranNpwp->getName();
-                $newNamelampiranNpwp = _create_name_foto($filesNamelampiranNpwp);
-
-                if ($lampiranNpwp->isValid() && !$lampiranNpwp->hasMoved()) {
-                    $lampiranNpwp->move($dir, $newNamelampiranNpwp);
-                    $dataLks['lampiran_npwp'] = $newNamelampiranNpwp;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran NPWP.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranFotoLokasi != '') {
-                $lampiranFotoLokasi = $this->request->getFile('_file_foto_lokasi');
-                $filesNamelampiranFotoLokasi = $lampiranFotoLokasi->getName();
-                $newNamelampiranFotoLokasi = _create_name_foto($filesNamelampiranFotoLokasi);
-
-                if ($lampiranFotoLokasi->isValid() && !$lampiranFotoLokasi->hasMoved()) {
-                    $lampiranFotoLokasi->move($dir, $newNamelampiranFotoLokasi);
-                    $dataLks['lampiran_foto_lokasi'] = $newNamelampiranFotoLokasi;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Foto Lokasi.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-                $lampiranFotoUsahaEkonomiProduktif = $this->request->getFile('_file_foto_usaha_ekonomi_produktif');
-                $filesNamelampiranFotoUsahaEkonomiProduktif = $lampiranFotoUsahaEkonomiProduktif->getName();
-                $newNamelampiranFotoUsahaEkonomiProduktif = _create_name_foto($filesNamelampiranFotoUsahaEkonomiProduktif);
-
-                if ($lampiranFotoUsahaEkonomiProduktif->isValid() && !$lampiranFotoUsahaEkonomiProduktif->hasMoved()) {
-                    $lampiranFotoUsahaEkonomiProduktif->move($dir, $newNamelampiranFotoUsahaEkonomiProduktif);
-                    $dataLks['lampiran_foto_usaha'] = $newNamelampiranFotoUsahaEkonomiProduktif;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Foto Usaha Ekonomi Produktif.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranLogoLembaga != '') {
-                $lampiranLogoLembaga = $this->request->getFile('_file_logo_lembaga');
-                $filesNamelampiranLogoLembaga = $lampiranLogoLembaga->getName();
-                $newNamelampiranLogoLembaga = _create_name_foto($filesNamelampiranLogoLembaga);
-
-                if ($lampiranLogoLembaga->isValid() && !$lampiranLogoLembaga->hasMoved()) {
-                    $lampiranLogoLembaga->move($dir, $newNamelampiranLogoLembaga);
-                    $dataLks['lampiran_logo'] = $newNamelampiranLogoLembaga;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Logo Lembaga.";
-                    return json_encode($response);
-                }
-            }
-
-            if ($filenamelampiranDataBinaan != '') {
-                $lampiranDataBinaan = $this->request->getFile('_file_data_binaan');
-                $filesNamelampiranDataBinaan = $lampiranDataBinaan->getName();
-                $newNamelampiranDataBinaan = _create_name_excel($filesNamelampiranDataBinaan);
-
-                if ($lampiranDataBinaan->isValid() && !$lampiranDataBinaan->hasMoved()) {
-                    $lampiranDataBinaan->move($dir, $newNamelampiranDataBinaan);
-                    $dataLks['lampiran_data_binaan'] = $newNamelampiranDataBinaan;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload lampiran Data Binaan Lembaga.";
-                    return json_encode($response);
-                }
-            }
-
-            $this->_db->transBegin();
-            try {
-                $this->_db->table('_permohonan_temp')->insert($data);
-            } catch (\Exception $e) {
-                if ($filenamelampiranKtpKetua != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpKetua);
-                }
-                if ($filenamelampiranKtpSekretaris != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpSekretaris);
-                }
-                if ($filenamelampiranKtpBendahara != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpBendahara);
-                }
-                if ($filenamelampiranAktaNotaris != '') {
-                    unlink($dir . '/' . $newNamelampiranAktaNotaris);
-                }
-                if ($filenamelampiranPengesahanKemenkumham != '') {
-                    unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
-                }
-                if ($filenamelampiranAdrt != '') {
-                    unlink($dir . '/' . $newNamelampiranAdrt);
-                }
-                if ($filenamelampiranKeteranganDomisili != '') {
-                    unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
-                }
-                if ($filenamelampiranAkreditasi != '') {
-                    unlink($dir . '/' . $newNamelampiranAkreditasi);
-                }
-                if ($filenamelampiranStrukturOrganisasi != '') {
-                    unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
-                }
-                if ($filenamelampiranNpwp != '') {
-                    unlink($dir . '/' . $newNamelampiranNpwp);
-                }
-                if ($filenamelampiranFotoLokasi != '') {
-                    unlink($dir . '/' . $newNamelampiranFotoLokasi);
-                }
-                if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-                    unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
-                }
-                if ($filenamelampiranLogoLembaga != '') {
-                    unlink($dir . '/' . $newNamelampiranLogoLembaga);
-                }
-                if ($filenamelampiranDataBinaan != '') {
-                    unlink($dir . '/' . $newNamelampiranDataBinaan);
-                }
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal menyimpan permohonan baru.";
-                return json_encode($response);
-            }
-
-            if ($this->_db->affectedRows() > 0) {
+                $this->_db->transBegin();
                 try {
-                    $this->_db->table('_permohonan_lksa')->insert($dataLks);
+                    $this->_db->table('_permohonan_temp')->insert($data);
                 } catch (\Exception $e) {
-                    if ($filenamelampiranKtpKetua != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpKetua);
-                    }
-                    if ($filenamelampiranKtpSekretaris != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpSekretaris);
-                    }
-                    if ($filenamelampiranKtpBendahara != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpBendahara);
-                    }
-                    if ($filenamelampiranAktaNotaris != '') {
-                        unlink($dir . '/' . $newNamelampiranAktaNotaris);
-                    }
-                    if ($filenamelampiranPengesahanKemenkumham != '') {
-                        unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
-                    }
-                    if ($filenamelampiranAdrt != '') {
-                        unlink($dir . '/' . $newNamelampiranAdrt);
-                    }
-                    if ($filenamelampiranKeteranganDomisili != '') {
-                        unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
-                    }
-                    if ($filenamelampiranAkreditasi != '') {
-                        unlink($dir . '/' . $newNamelampiranAkreditasi);
-                    }
-                    if ($filenamelampiranStrukturOrganisasi != '') {
-                        unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
-                    }
-                    if ($filenamelampiranNpwp != '') {
-                        unlink($dir . '/' . $newNamelampiranNpwp);
-                    }
-                    if ($filenamelampiranFotoLokasi != '') {
-                        unlink($dir . '/' . $newNamelampiranFotoLokasi);
-                    }
-                    if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-                        unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
-                    }
-                    if ($filenamelampiranLogoLembaga != '') {
-                        unlink($dir . '/' . $newNamelampiranLogoLembaga);
-                    }
-                    if ($filenamelampiranDataBinaan != '') {
-                        unlink($dir . '/' . $newNamelampiranDataBinaan);
-                    }
                     $this->_db->transRollback();
                     $response = new \stdClass;
                     $response->status = 400;
-                    $response->message = "Gagal menyimpan permohonan baru lksa.";
+                    $response->message = "Gagal menyimpan permohonan baru.";
                     return json_encode($response);
                 }
+
                 if ($this->_db->affectedRows() > 0) {
-                    $this->_db->transCommit();
-                    $riwayatLib = new Riwayatpermohonanlib();
                     try {
-                        $riwayatLib->create($user->data->id, "Mengirim permohonan dengan kode antrian: " . $data['kode_permohonan'], "submit", "bx bx-send", "riwayat/detailpermohonan?token=" . $data['id'], $data['id']);
-                    } catch (\Throwable $th) {
-                        //throw $th;
+                        $this->_db->table('_permohonan_lksa')->insert($dataLks);
+                    } catch (\Exception $e) {
+
+                        $this->_db->transRollback();
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Gagal menyimpan permohonan baru lksa.";
+                        return json_encode($response);
                     }
-                    $response = new \stdClass;
-                    $response->status = 200;
-                    $response->message = "Permohonan Berhasil di Ajukan.";
-                    $response->redirect = base_url('silastri/peng/riwayat');
-                    return json_encode($response);
+                    if ($this->_db->affectedRows() > 0) {
+                        $this->_db->transCommit();
+                        $riwayatLib = new Riwayatpermohonanlib();
+                        try {
+                            $riwayatLib->create($user->data->id, "Mengirim permohonan dengan kode antrian: " . $data['kode_permohonan'], "submit", "bx bx-send", "riwayat/detailpermohonan?token=" . $data['id'], $data['id']);
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->message = "Permohonan Berhasil di Ajukan.";
+                        $response->next = true;
+                        return json_encode($response);
+                    } else {
+                        $this->_db->transRollback();
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Gagal mengajukan permohonan lksa.";
+                        return json_encode($response);
+                    }
                 } else {
-                    if ($filenamelampiranKtpKetua != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpKetua);
-                    }
-                    if ($filenamelampiranKtpSekretaris != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpSekretaris);
-                    }
-                    if ($filenamelampiranKtpBendahara != '') {
-                        unlink($dir . '/' . $newNamelampiranKtpBendahara);
-                    }
-                    if ($filenamelampiranAktaNotaris != '') {
-                        unlink($dir . '/' . $newNamelampiranAktaNotaris);
-                    }
-                    if ($filenamelampiranPengesahanKemenkumham != '') {
-                        unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
-                    }
-                    if ($filenamelampiranAdrt != '') {
-                        unlink($dir . '/' . $newNamelampiranAdrt);
-                    }
-                    if ($filenamelampiranKeteranganDomisili != '') {
-                        unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
-                    }
-                    if ($filenamelampiranAkreditasi != '') {
-                        unlink($dir . '/' . $newNamelampiranAkreditasi);
-                    }
-                    if ($filenamelampiranStrukturOrganisasi != '') {
-                        unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
-                    }
-                    if ($filenamelampiranNpwp != '') {
-                        unlink($dir . '/' . $newNamelampiranNpwp);
-                    }
-                    if ($filenamelampiranFotoLokasi != '') {
-                        unlink($dir . '/' . $newNamelampiranFotoLokasi);
-                    }
-                    if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-                        unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
-                    }
-                    if ($filenamelampiranLogoLembaga != '') {
-                        unlink($dir . '/' . $newNamelampiranLogoLembaga);
-                    }
-                    if ($filenamelampiranDataBinaan != '') {
-                        unlink($dir . '/' . $newNamelampiranDataBinaan);
-                    }
                     $this->_db->transRollback();
                     $response = new \stdClass;
                     $response->status = 400;
-                    $response->message = "Gagal mengajukan permohonan lksa.";
+                    $response->message = "Gagal mengajukan permohonan.";
                     return json_encode($response);
                 }
             } else {
+                $rules_next = [];
+
+                $filenamelampiranKtpKetua = dot_array_search('_file_ktp_ketua.name', $_FILES);
                 if ($filenamelampiranKtpKetua != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpKetua);
+                    $lampiranValKtpKetua = [
+                        '_file_ktp_ketua' => [
+                            'rules' => 'uploaded[_file_ktp_ketua]|max_size[_file_ktp_ketua,2048]|mime_in[_file_ktp_ketua,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen KTP Ketua terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen KTP Ketua terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValKtpKetua);
                 }
+
+                $filenamelampiranKtpSekretaris = dot_array_search('_file_ktp_sekretaris.name', $_FILES);
                 if ($filenamelampiranKtpSekretaris != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpSekretaris);
+                    $lampiranValKtpSekretaris = [
+                        '_file_ktp_sekretaris' => [
+                            'rules' => 'uploaded[_file_ktp_sekretaris]|max_size[_file_ktp_sekretaris,2048]|mime_in[_file_ktp_sekretaris,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen KTP Sekretaris terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen KTP Sekretaris terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValKtpSekretaris);
                 }
+
+                $filenamelampiranKtpBendahara = dot_array_search('_file_ktp_bendahara.name', $_FILES);
                 if ($filenamelampiranKtpBendahara != '') {
-                    unlink($dir . '/' . $newNamelampiranKtpBendahara);
+                    $lampiranValKtpBendahara = [
+                        '_file_ktp_bendahara' => [
+                            'rules' => 'uploaded[_file_ktp_bendahara]|max_size[_file_ktp_bendahara,2048]|mime_in[_file_ktp_bendahara,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen KTP Bendahara terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen KTP Bendahara terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValKtpBendahara);
                 }
+
+                $filenamelampiranAktaNotaris = dot_array_search('_file_akta_notaris.name', $_FILES);
                 if ($filenamelampiranAktaNotaris != '') {
-                    unlink($dir . '/' . $newNamelampiranAktaNotaris);
+                    $lampiranValAktaNotaris = [
+                        '_file_akta_notaris' => [
+                            'rules' => 'uploaded[_file_akta_notaris]|max_size[_file_akta_notaris,10240]|mime_in[_file_akta_notaris,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Akta Notaris terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Akta Notaris terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValAktaNotaris);
                 }
+
+                $filenamelampiranPengesahanKemenkumham = dot_array_search('_file_pengesahan_kemenkumham.name', $_FILES);
                 if ($filenamelampiranPengesahanKemenkumham != '') {
-                    unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
+                    $lampiranValPengesahanKemenkumham = [
+                        '_file_pengesahan_kemenkumham' => [
+                            'rules' => 'uploaded[_file_pengesahan_kemenkumham]|max_size[_file_pengesahan_kemenkumham,2048]|mime_in[_file_pengesahan_kemenkumham,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Pengesahan Kemenkumham terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Pengesahan Kemenkumham terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValPengesahanKemenkumham);
                 }
+
+                $filenamelampiranAdrt = dot_array_search('_file_adrt.name', $_FILES);
                 if ($filenamelampiranAdrt != '') {
-                    unlink($dir . '/' . $newNamelampiranAdrt);
+                    $lampiranValAdrt = [
+                        '_file_adrt' => [
+                            'rules' => 'uploaded[_file_adrt]|max_size[_file_adrt,10480]|mime_in[_file_adrt,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen ADRT terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen ADRT terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValAdrt);
                 }
+
+                $filenamelampiranKeteranganDomisili = dot_array_search('_file_keterangan_domisili.name', $_FILES);
                 if ($filenamelampiranKeteranganDomisili != '') {
-                    unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
+                    $lampiranValKeteranganDomisili = [
+                        '_file_keterangan_domisili' => [
+                            'rules' => 'uploaded[_file_keterangan_domisili]|max_size[_file_keterangan_domisili,2048]|mime_in[_file_keterangan_domisili,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Keterangan Domisili terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Keterangan Domisili terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValKeteranganDomisili);
                 }
+
+                $filenamelampiranAkreditasi = dot_array_search('_file_akreditasi.name', $_FILES);
                 if ($filenamelampiranAkreditasi != '') {
-                    unlink($dir . '/' . $newNamelampiranAkreditasi);
+                    $lampiranValAkreditasi = [
+                        '_file_akreditasi' => [
+                            'rules' => 'uploaded[_file_akreditasi]|max_size[_file_akreditasi,2048]|mime_in[_file_akreditasi,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Akreditasi terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Akreditasi terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValAkreditasi);
                 }
+
+                $filenamelampiranStrukturOrganisasi = dot_array_search('_file_struktur_organisasi.name', $_FILES);
                 if ($filenamelampiranStrukturOrganisasi != '') {
-                    unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
+                    $lampiranValStrukturOrganisasi = [
+                        '_file_struktur_organisasi' => [
+                            'rules' => 'uploaded[_file_struktur_organisasi]|max_size[_file_struktur_organisasi,2048]|mime_in[_file_struktur_organisasi,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Struktur Organisasi terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Struktur Organisasi terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValStrukturOrganisasi);
                 }
+
+                $filenamelampiranNpwp = dot_array_search('_file_npwp.name', $_FILES);
                 if ($filenamelampiranNpwp != '') {
-                    unlink($dir . '/' . $newNamelampiranNpwp);
+                    $lampiranValNpwp = [
+                        '_file_npwp' => [
+                            'rules' => 'uploaded[_file_npwp]|max_size[_file_npwp,2048]|mime_in[_file_npwp,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen NPWP terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen NPWP terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValNpwp);
                 }
+
+                $filenamelampiranFotoLokasi = dot_array_search('_file_foto_lokasi.name', $_FILES);
                 if ($filenamelampiranFotoLokasi != '') {
-                    unlink($dir . '/' . $newNamelampiranFotoLokasi);
+                    $lampiranValFotoLokasi = [
+                        '_file_foto_lokasi' => [
+                            'rules' => 'uploaded[_file_foto_lokasi]|max_size[_file_foto_lokasi,2048]|mime_in[_file_foto_lokasi,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Foto Lokasi terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Foto Lokasi terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValFotoLokasi);
                 }
+
+                $filenamelampiranFotoUsahaEkonomiProduktif = dot_array_search('_file_foto_usaha_ekonomi_produktif.name', $_FILES);
                 if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
-                    unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
+                    $lampiranValFotoUsahaEkonomiProduktif = [
+                        '_file_foto_usaha_ekonomi_produktif' => [
+                            'rules' => 'uploaded[_file_foto_usaha_ekonomi_produktif]|max_size[_file_foto_usaha_ekonomi_produktif,2048]|mime_in[_file_foto_usaha_ekonomi_produktif,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Foto Usaha Ekonomi Produktif terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Foto Usaha Ekonomi Produktif terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValFotoUsahaEkonomiProduktif);
                 }
+
+                $filenamelampiranLogoLembaga = dot_array_search('_file_logo_lembaga.name', $_FILES);
                 if ($filenamelampiranLogoLembaga != '') {
-                    unlink($dir . '/' . $newNamelampiranLogoLembaga);
+                    $lampiranValLogoLembaga = [
+                        '_file_logo_lembaga' => [
+                            'rules' => 'uploaded[_file_logo_lembaga]|max_size[_file_logo_lembaga,2048]|mime_in[_file_logo_lembaga,image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih dokumen Logo Lembaga terlebih dahulu. ',
+                                'max_size' => 'Ukuran dokumen Logo Lembaga terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValLogoLembaga);
                 }
+
+                $filenamelampiranDataBinaan = dot_array_search('_file_data_binaan.name', $_FILES);
                 if ($filenamelampiranDataBinaan != '') {
-                    unlink($dir . '/' . $newNamelampiranDataBinaan);
+                    $lampiranValDataBinaan = [
+                        '_file_data_binaan' => [
+                            'rules' => 'uploaded[_file_data_binaan]|max_size[_file_data_binaan,2048]|mime_in[_file_data_binaan,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/excel,application/download,application/vnd.ms-office,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/zip,application/x-zip]',
+                            'errors' => [
+                                'uploaded' => 'Pilih Data Binaan Lembaga terlebih dahulu. ',
+                                'max_size' => 'Ukuran Data Binaan Lembaga terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi xls atau xlsx. '
+                            ]
+                        ],
+                    ];
+                    $rules_next = array_merge($rules_next, $lampiranValDataBinaan);
                 }
-                $this->_db->transRollback();
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengajukan permohonan.";
-                return json_encode($response);
+
+                if (!$this->validate($rules_next)) {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = $this->validator->getError('_file_ktp_ketua')
+                        . $this->validator->getError('_file_ktp_sekretaris')
+                        . $this->validator->getError('_file_ktp_bendahara')
+                        . $this->validator->getError('_file_akta_notaris')
+                        . $this->validator->getError('_file_pengesahan_kemenkumham')
+                        . $this->validator->getError('_file_adrt')
+                        . $this->validator->getError('_file_keterangan_domisili')
+                        . $this->validator->getError('_file_akreditasi')
+                        . $this->validator->getError('_file_struktur_organisasi')
+                        . $this->validator->getError('_file_npwp')
+                        . $this->validator->getError('_file_foto_lokasi')
+                        . $this->validator->getError('_file_foto_usaha_ekonomi_produktif')
+                        . $this->validator->getError('_file_logo_lembaga')
+                        . $this->validator->getError('_file_data_binaan');
+                    return json_encode($response);
+                } else {
+                    $oldData = $this->_db->table('_permohonan_temp')->where('id', $id_permohonan)->get()->getRowArray();
+
+                    if (!$oldData) {
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Data permohonan tidak ditemukan.";
+                        return json_encode($response);
+                    }
+
+                    $data = [
+                        'kelurahan' => $user->data->kelurahan,
+                        'ttd' => 'kadis',
+                        'nik' => $user->data->nik,
+                        'nama' => $user->data->fullname,
+                        'user_id' => $user->data->id,
+                        'jenis' => "Rekomendasi LKS/LKSA",
+                        'layanan' => "LKS",
+                        'status_permohonan' => 0,
+                        'created_at' => date('Y-m-d H:i:s'),
+                    ];
+
+                    $dataLks = [
+                        'nama_lembaga' => $nama_lembaga,
+                        'jenis_lembaga' => $jenis_lembaga,
+                        'tgl_berdiri_lembaga' => $tgl_berdiri,
+                        'nama_notaris_lembaga' => $nama_notaris,
+                        'nomor_notaris_lembaga' => $no_tanggal_notaris,
+                        'nomor_kemenkumham_lembaga' => $no_pendaftaran_kemenkumham,
+                        'akreditasi_lembaga' => $akreditasi_lembaga,
+                        'nomor_surat_akreditasi_lembaga' => $no_surat_akreditasi,
+                        'tgl_expired_akreditasi_lembaga' => $tgl_habis_berlaku_akreditasi,
+                        'npwp_lembaga' => $nomor_wajib_pajak,
+                        'modal_usaha_lembaga' => $modal_usaha,
+                        'status_lembaga' => $status_lembaga,
+                        'lingkup_wilayah_kerja_lembaga' => $lingkup_wilayah_kerja,
+                        'bidang_kegiatan_lembaga' => $bidang_kegiatan,
+                        'no_telp_lembaga' => $no_telp_lembaga,
+                        'email_lembaga' => $email_lembaga,
+                        'lat_long_lembaga' => $koordinat,
+                        'alamat_lembaga' => $alamat_lembaga,
+                        'rt_lembaga' => $rt_lembaga,
+                        'rw_lembaga' => $rw_lembaga,
+                        'kecamatan_lembaga' => $kecamatan_lembaga,
+                        'kelurahan_lembaga' => $kelurahan_lembaga,
+                        'nama_ketua_pengurus' => $nama_ketua,
+                        'nik_ketua_pengurus' => $nik_ketua,
+                        'nohp_ketua_pengurus' => $nohp_ketua,
+                        'nama_sekretaris_pengurus' => $nama_sekretaris,
+                        'nik_sekretaris_pengurus' => $nik_sekretaris,
+                        'nohp_sekretaris_pengurus' => $nohp_sekretaris,
+                        'nama_bendahara_pengurus' => $nama_bendahara,
+                        'nik_bendahara_pengurus' => $nik_bendahara,
+                        'nohp_bendahara_pengurus' => $nohp_bendahara,
+                        'jumlah_pengurus' => $jumlah_pengurus,
+                        'jumlah_binaan_dalam' => $jumlah_binaan_dalam_lembaga,
+                        'jumlah_binaan_luar' => $jumlah_binaan_luar_lembaga,
+                        'created_at' => $data['created_at']
+                    ];
+
+                    $dir = FCPATH . "uploads/lks";
+
+                    if ($filenamelampiranKtpKetua != '') {
+                        $lampiranKtpKetua = $this->request->getFile('_file_ktp_ketua');
+                        $filesNamelampiranKtpKetua = $lampiranKtpKetua->getName();
+                        $newNamelampiranKtpKetua = _create_name_foto($filesNamelampiranKtpKetua);
+
+                        if ($lampiranKtpKetua->isValid() && !$lampiranKtpKetua->hasMoved()) {
+                            $lampiranKtpKetua->move($dir, $newNamelampiranKtpKetua);
+                            $dataLks['lampiran_ktp_ketua'] = $newNamelampiranKtpKetua;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran KTP Ketua.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranKtpSekretaris != '') {
+                        $lampiranKtpSekretaris = $this->request->getFile('_file_ktp_sekretaris');
+                        $filesNamelampiranKtpSekretaris = $lampiranKtpSekretaris->getName();
+                        $newNamelampiranKtpSekretaris = _create_name_foto($filesNamelampiranKtpSekretaris);
+
+                        if ($lampiranKtpSekretaris->isValid() && !$lampiranKtpSekretaris->hasMoved()) {
+                            $lampiranKtpSekretaris->move($dir, $newNamelampiranKtpSekretaris);
+                            $dataLks['lampiran_ktp_sekretaris'] = $newNamelampiranKtpSekretaris;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran KTP Sekretaris.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranKtpBendahara != '') {
+                        $lampiranKtpBendahara = $this->request->getFile('_file_ktp_bendahara');
+                        $filesNamelampiranKtpBendahara = $lampiranKtpBendahara->getName();
+                        $newNamelampiranKtpBendahara = _create_name_foto($filesNamelampiranKtpBendahara);
+
+                        if ($lampiranKtpBendahara->isValid() && !$lampiranKtpBendahara->hasMoved()) {
+                            $lampiranKtpBendahara->move($dir, $newNamelampiranKtpBendahara);
+                            $dataLks['lampiran_ktp_bendahara'] = $newNamelampiranKtpBendahara;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran KTP Bendahara.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranAktaNotaris != '') {
+                        $lampiranAktaNotaris = $this->request->getFile('_file_akta_notaris');
+                        $filesNamelampiranAktaNotaris = $lampiranAktaNotaris->getName();
+                        $newNamelampiranAktaNotaris = _create_name_foto($filesNamelampiranAktaNotaris);
+
+                        if ($lampiranAktaNotaris->isValid() && !$lampiranAktaNotaris->hasMoved()) {
+                            $lampiranAktaNotaris->move($dir, $newNamelampiranAktaNotaris);
+                            $dataLks['lampiran_akta_notaris'] = $newNamelampiranAktaNotaris;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Akta Notaris.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranPengesahanKemenkumham != '') {
+                        $lampiranPengesahanKemenkumham = $this->request->getFile('_file_pengesahan_kemenkumham');
+                        $filesNamelampiranPengesahanKemenkumham = $lampiranPengesahanKemenkumham->getName();
+                        $newNamelampiranPengesahanKemenkumham = _create_name_foto($filesNamelampiranPengesahanKemenkumham);
+
+                        if ($lampiranPengesahanKemenkumham->isValid() && !$lampiranPengesahanKemenkumham->hasMoved()) {
+                            $lampiranPengesahanKemenkumham->move($dir, $newNamelampiranPengesahanKemenkumham);
+                            $dataLks['lampiran_kemenkumham'] = $newNamelampiranPengesahanKemenkumham;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Pengesahan Kemenkumham.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranAdrt != '') {
+                        $lampiranAdrt = $this->request->getFile('_file_adrt');
+                        $filesNamelampiranAdrt = $lampiranAdrt->getName();
+                        $newNamelampiranAdrt = _create_name_foto($filesNamelampiranAdrt);
+
+                        if ($lampiranAdrt->isValid() && !$lampiranAdrt->hasMoved()) {
+                            $lampiranAdrt->move($dir, $newNamelampiranAdrt);
+                            $dataLks['lampiran_adrt'] = $newNamelampiranAdrt;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran ADRT.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranKeteranganDomisili != '') {
+                        $lampiranKeteranganDomisili = $this->request->getFile('_file_keterangan_domisili');
+                        $filesNamelampiranKeteranganDomisili = $lampiranKeteranganDomisili->getName();
+                        $newNamelampiranKeteranganDomisili = _create_name_foto($filesNamelampiranKeteranganDomisili);
+
+                        if ($lampiranKeteranganDomisili->isValid() && !$lampiranKeteranganDomisili->hasMoved()) {
+                            $lampiranKeteranganDomisili->move($dir, $newNamelampiranKeteranganDomisili);
+                            $dataLks['lampiran_domisili'] = $newNamelampiranKeteranganDomisili;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Keterangan Domisili.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranAkreditasi != '') {
+                        $lampiranAkreditasi = $this->request->getFile('_file_akreditasi');
+                        $filesNamelampiranAkreditasi = $lampiranAkreditasi->getName();
+                        $newNamelampiranAkreditasi = _create_name_foto($filesNamelampiranAkreditasi);
+
+                        if ($lampiranAkreditasi->isValid() && !$lampiranAkreditasi->hasMoved()) {
+                            $lampiranAkreditasi->move($dir, $newNamelampiranAkreditasi);
+                            $dataLks['lampiran_akreditasi'] = $newNamelampiranAkreditasi;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Akreditasi.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranStrukturOrganisasi != '') {
+                        $lampiranStrukturOrganisasi = $this->request->getFile('_file_struktur_organisasi');
+                        $filesNamelampiranStrukturOrganisasi = $lampiranStrukturOrganisasi->getName();
+                        $newNamelampiranStrukturOrganisasi = _create_name_foto($filesNamelampiranStrukturOrganisasi);
+
+                        if ($lampiranStrukturOrganisasi->isValid() && !$lampiranStrukturOrganisasi->hasMoved()) {
+                            $lampiranStrukturOrganisasi->move($dir, $newNamelampiranStrukturOrganisasi);
+                            $dataLks['lampiran_struktur_organisasi'] = $newNamelampiranStrukturOrganisasi;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Struktur Organisasi.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranNpwp != '') {
+                        $lampiranNpwp = $this->request->getFile('_file_npwp');
+                        $filesNamelampiranNpwp = $lampiranNpwp->getName();
+                        $newNamelampiranNpwp = _create_name_foto($filesNamelampiranNpwp);
+
+                        if ($lampiranNpwp->isValid() && !$lampiranNpwp->hasMoved()) {
+                            $lampiranNpwp->move($dir, $newNamelampiranNpwp);
+                            $dataLks['lampiran_npwp'] = $newNamelampiranNpwp;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran NPWP.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranFotoLokasi != '') {
+                        $lampiranFotoLokasi = $this->request->getFile('_file_foto_lokasi');
+                        $filesNamelampiranFotoLokasi = $lampiranFotoLokasi->getName();
+                        $newNamelampiranFotoLokasi = _create_name_foto($filesNamelampiranFotoLokasi);
+
+                        if ($lampiranFotoLokasi->isValid() && !$lampiranFotoLokasi->hasMoved()) {
+                            $lampiranFotoLokasi->move($dir, $newNamelampiranFotoLokasi);
+                            $dataLks['lampiran_foto_lokasi'] = $newNamelampiranFotoLokasi;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Foto Lokasi.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
+                        $lampiranFotoUsahaEkonomiProduktif = $this->request->getFile('_file_foto_usaha_ekonomi_produktif');
+                        $filesNamelampiranFotoUsahaEkonomiProduktif = $lampiranFotoUsahaEkonomiProduktif->getName();
+                        $newNamelampiranFotoUsahaEkonomiProduktif = _create_name_foto($filesNamelampiranFotoUsahaEkonomiProduktif);
+
+                        if ($lampiranFotoUsahaEkonomiProduktif->isValid() && !$lampiranFotoUsahaEkonomiProduktif->hasMoved()) {
+                            $lampiranFotoUsahaEkonomiProduktif->move($dir, $newNamelampiranFotoUsahaEkonomiProduktif);
+                            $dataLks['lampiran_foto_usaha'] = $newNamelampiranFotoUsahaEkonomiProduktif;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Foto Usaha Ekonomi Produktif.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranLogoLembaga != '') {
+                        $lampiranLogoLembaga = $this->request->getFile('_file_logo_lembaga');
+                        $filesNamelampiranLogoLembaga = $lampiranLogoLembaga->getName();
+                        $newNamelampiranLogoLembaga = _create_name_foto($filesNamelampiranLogoLembaga);
+
+                        if ($lampiranLogoLembaga->isValid() && !$lampiranLogoLembaga->hasMoved()) {
+                            $lampiranLogoLembaga->move($dir, $newNamelampiranLogoLembaga);
+                            $dataLks['lampiran_logo'] = $newNamelampiranLogoLembaga;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Logo Lembaga.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    if ($filenamelampiranDataBinaan != '') {
+                        $lampiranDataBinaan = $this->request->getFile('_file_data_binaan');
+                        $filesNamelampiranDataBinaan = $lampiranDataBinaan->getName();
+                        $newNamelampiranDataBinaan = _create_name_excel($filesNamelampiranDataBinaan);
+
+                        if ($lampiranDataBinaan->isValid() && !$lampiranDataBinaan->hasMoved()) {
+                            $lampiranDataBinaan->move($dir, $newNamelampiranDataBinaan);
+                            $dataLks['lampiran_data_binaan'] = $newNamelampiranDataBinaan;
+                        } else {
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupload lampiran Data Binaan Lembaga.";
+                            return json_encode($response);
+                        }
+                    }
+
+                    $this->_db->transBegin();
+                    try {
+                        $this->_db->table('_permohonan_temp')->where('id', $oldData['id'])->update($data);
+                    } catch (\Exception $e) {
+                        if ($filenamelampiranKtpKetua != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpKetua);
+                        }
+                        if ($filenamelampiranKtpSekretaris != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpSekretaris);
+                        }
+                        if ($filenamelampiranKtpBendahara != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpBendahara);
+                        }
+                        if ($filenamelampiranAktaNotaris != '') {
+                            unlink($dir . '/' . $newNamelampiranAktaNotaris);
+                        }
+                        if ($filenamelampiranPengesahanKemenkumham != '') {
+                            unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
+                        }
+                        if ($filenamelampiranAdrt != '') {
+                            unlink($dir . '/' . $newNamelampiranAdrt);
+                        }
+                        if ($filenamelampiranKeteranganDomisili != '') {
+                            unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
+                        }
+                        if ($filenamelampiranAkreditasi != '') {
+                            unlink($dir . '/' . $newNamelampiranAkreditasi);
+                        }
+                        if ($filenamelampiranStrukturOrganisasi != '') {
+                            unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
+                        }
+                        if ($filenamelampiranNpwp != '') {
+                            unlink($dir . '/' . $newNamelampiranNpwp);
+                        }
+                        if ($filenamelampiranFotoLokasi != '') {
+                            unlink($dir . '/' . $newNamelampiranFotoLokasi);
+                        }
+                        if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
+                            unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
+                        }
+                        if ($filenamelampiranLogoLembaga != '') {
+                            unlink($dir . '/' . $newNamelampiranLogoLembaga);
+                        }
+                        if ($filenamelampiranDataBinaan != '') {
+                            unlink($dir . '/' . $newNamelampiranDataBinaan);
+                        }
+                        $this->_db->transRollback();
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Gagal mengupdate permohonan baru.";
+                        return json_encode($response);
+                    }
+
+                    if ($this->_db->affectedRows() > 0) {
+                        try {
+                            $this->_db->table('_permohonan_lksa')->where('id_permohonan', $oldData['id'])->update($dataLks);
+                        } catch (\Exception $e) {
+                            if ($filenamelampiranKtpKetua != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpKetua);
+                            }
+                            if ($filenamelampiranKtpSekretaris != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpSekretaris);
+                            }
+                            if ($filenamelampiranKtpBendahara != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpBendahara);
+                            }
+                            if ($filenamelampiranAktaNotaris != '') {
+                                unlink($dir . '/' . $newNamelampiranAktaNotaris);
+                            }
+                            if ($filenamelampiranPengesahanKemenkumham != '') {
+                                unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
+                            }
+                            if ($filenamelampiranAdrt != '') {
+                                unlink($dir . '/' . $newNamelampiranAdrt);
+                            }
+                            if ($filenamelampiranKeteranganDomisili != '') {
+                                unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
+                            }
+                            if ($filenamelampiranAkreditasi != '') {
+                                unlink($dir . '/' . $newNamelampiranAkreditasi);
+                            }
+                            if ($filenamelampiranStrukturOrganisasi != '') {
+                                unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
+                            }
+                            if ($filenamelampiranNpwp != '') {
+                                unlink($dir . '/' . $newNamelampiranNpwp);
+                            }
+                            if ($filenamelampiranFotoLokasi != '') {
+                                unlink($dir . '/' . $newNamelampiranFotoLokasi);
+                            }
+                            if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
+                                unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
+                            }
+                            if ($filenamelampiranLogoLembaga != '') {
+                                unlink($dir . '/' . $newNamelampiranLogoLembaga);
+                            }
+                            if ($filenamelampiranDataBinaan != '') {
+                                unlink($dir . '/' . $newNamelampiranDataBinaan);
+                            }
+                            $this->_db->transRollback();
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengupdate permohonan baru lksa.";
+                            return json_encode($response);
+                        }
+                        if ($this->_db->affectedRows() > 0) {
+                            $this->_db->transCommit();
+                            $riwayatLib = new Riwayatpermohonanlib();
+                            try {
+                                $riwayatLib->create($user->data->id, "Mengupate permohonan dengan kode antrian: " . $data['kode_permohonan'], "submit", "bx bx-send", "riwayat/detailpermohonan?token=" . $data['id'], $data['id']);
+                            } catch (\Throwable $th) {
+                                //throw $th;
+                            }
+                            $response = new \stdClass;
+                            $response->status = 200;
+                            $response->message = "Permohonan Berhasil di Ajukan.";
+                            $response->redirect = base_url('silastri/peng/riwayat');
+                            return json_encode($response);
+                        } else {
+                            if ($filenamelampiranKtpKetua != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpKetua);
+                            }
+                            if ($filenamelampiranKtpSekretaris != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpSekretaris);
+                            }
+                            if ($filenamelampiranKtpBendahara != '') {
+                                unlink($dir . '/' . $newNamelampiranKtpBendahara);
+                            }
+                            if ($filenamelampiranAktaNotaris != '') {
+                                unlink($dir . '/' . $newNamelampiranAktaNotaris);
+                            }
+                            if ($filenamelampiranPengesahanKemenkumham != '') {
+                                unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
+                            }
+                            if ($filenamelampiranAdrt != '') {
+                                unlink($dir . '/' . $newNamelampiranAdrt);
+                            }
+                            if ($filenamelampiranKeteranganDomisili != '') {
+                                unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
+                            }
+                            if ($filenamelampiranAkreditasi != '') {
+                                unlink($dir . '/' . $newNamelampiranAkreditasi);
+                            }
+                            if ($filenamelampiranStrukturOrganisasi != '') {
+                                unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
+                            }
+                            if ($filenamelampiranNpwp != '') {
+                                unlink($dir . '/' . $newNamelampiranNpwp);
+                            }
+                            if ($filenamelampiranFotoLokasi != '') {
+                                unlink($dir . '/' . $newNamelampiranFotoLokasi);
+                            }
+                            if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
+                                unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
+                            }
+                            if ($filenamelampiranLogoLembaga != '') {
+                                unlink($dir . '/' . $newNamelampiranLogoLembaga);
+                            }
+                            if ($filenamelampiranDataBinaan != '') {
+                                unlink($dir . '/' . $newNamelampiranDataBinaan);
+                            }
+                            $this->_db->transRollback();
+                            $response = new \stdClass;
+                            $response->status = 400;
+                            $response->message = "Gagal mengajukan permohonan lksa.";
+                            return json_encode($response);
+                        }
+                    } else {
+                        if ($filenamelampiranKtpKetua != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpKetua);
+                        }
+                        if ($filenamelampiranKtpSekretaris != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpSekretaris);
+                        }
+                        if ($filenamelampiranKtpBendahara != '') {
+                            unlink($dir . '/' . $newNamelampiranKtpBendahara);
+                        }
+                        if ($filenamelampiranAktaNotaris != '') {
+                            unlink($dir . '/' . $newNamelampiranAktaNotaris);
+                        }
+                        if ($filenamelampiranPengesahanKemenkumham != '') {
+                            unlink($dir . '/' . $newNamelampiranPengesahanKemenkumham);
+                        }
+                        if ($filenamelampiranAdrt != '') {
+                            unlink($dir . '/' . $newNamelampiranAdrt);
+                        }
+                        if ($filenamelampiranKeteranganDomisili != '') {
+                            unlink($dir . '/' . $newNamelampiranKeteranganDomisili);
+                        }
+                        if ($filenamelampiranAkreditasi != '') {
+                            unlink($dir . '/' . $newNamelampiranAkreditasi);
+                        }
+                        if ($filenamelampiranStrukturOrganisasi != '') {
+                            unlink($dir . '/' . $newNamelampiranStrukturOrganisasi);
+                        }
+                        if ($filenamelampiranNpwp != '') {
+                            unlink($dir . '/' . $newNamelampiranNpwp);
+                        }
+                        if ($filenamelampiranFotoLokasi != '') {
+                            unlink($dir . '/' . $newNamelampiranFotoLokasi);
+                        }
+                        if ($filenamelampiranFotoUsahaEkonomiProduktif != '') {
+                            unlink($dir . '/' . $newNamelampiranFotoUsahaEkonomiProduktif);
+                        }
+                        if ($filenamelampiranLogoLembaga != '') {
+                            unlink($dir . '/' . $newNamelampiranLogoLembaga);
+                        }
+                        if ($filenamelampiranDataBinaan != '') {
+                            unlink($dir . '/' . $newNamelampiranDataBinaan);
+                        }
+                        $this->_db->transRollback();
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Gagal mengajukan permohonan.";
+                        return json_encode($response);
+                    }
+                }
             }
         }
     }
