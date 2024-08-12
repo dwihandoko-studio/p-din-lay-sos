@@ -351,7 +351,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">SIMPAN</button>
                         </div>
                     </div>
