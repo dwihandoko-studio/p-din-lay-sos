@@ -226,7 +226,7 @@
     });
 
     function actionDownload(e) {
-        downloadPDF('<?= base64_encode($data->file_dokumen_tte) ?>', '<?= $data->kode_permohonan ?>');
+        downloadPDF('<?= base64_encode($data->file_dokumen_tte) ?>', '<?= $data->kode_permohonan . '.pdf' ?>');
     }
 
     function initSelect2(event, parrent) {

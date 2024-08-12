@@ -341,7 +341,7 @@
                                     <div class="input-group input-group-merge">
                                         <input type="hidden" name="_latitude" id="_latitude">
                                         <input type="hidden" name="_longitude" id="_longitude">
-                                        <input type="text" class="form-control koordinat" style="padding-left: 15px;" name="_koordinat" id="_koordinat" onFocus="inputFocus(this);" readonly>
+                                        <input type="text" class="form-control koordinat" style="padding-left: 15px;" name="_koordinat" id="_koordinat" onFocus="inputFocus(this);" required>
                                         <div class="input-group-append action-location" onmouseover="actionMouseHoverLocation(this)" onmouseout="actionMouseOutHoverLocation(this)" onclick="pickCoordinat()">
                                             <span class="input-group-text action-location-icon" style="background-color: transparent;"><i class="fas fa-map-marker"></i></span>
                                         </div>
