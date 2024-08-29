@@ -157,9 +157,6 @@ class Apilib
 
             $result = json_decode($send_data);
 
-            var_dump($result);
-            die;
-
 
             if (isset($result->error)) {
                 return false;
