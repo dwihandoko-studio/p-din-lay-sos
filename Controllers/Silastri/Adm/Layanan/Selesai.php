@@ -263,6 +263,9 @@ class Selesai extends BaseController
 
             $result = $apiLib->downloadLaporanPbi($tgl_awal, $tgl_akhir, $layanan, $type_file);
 
+            var_dump($result);
+            die;
+
             if ($result) {
                 if ($result->status == 200) {
                     if (isset($result->data)) {
