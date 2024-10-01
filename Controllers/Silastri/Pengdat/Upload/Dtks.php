@@ -230,7 +230,12 @@ class Dtks extends BaseController
             // Loop through the rows of the spreadsheet
             for ($row = 2; $row <= $highestRow; $row++) {
                 $rowData = $sheet->rangeToArray("A{$row}:{$highestColumn}{$row}", null, true, true, true);
-                $nik = $rowData[$row]['C'];
+                $nik = isset($rowData[$row]['C']) ? trim($rowData[$row]['C']) : null;
+
+                // Skip row if NIK is empty or null
+                if (empty($nik)) {
+                    continue;
+                }
 
                 // Prepare data for insert or update
                 $data = [

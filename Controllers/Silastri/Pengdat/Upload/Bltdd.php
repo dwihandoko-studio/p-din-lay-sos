@@ -227,7 +227,12 @@ class Bltdd extends BaseController
             // Loop through the rows of the spreadsheet
             for ($row = 7; $row <= $highestRow; $row++) {
                 $rowData = $sheet->rangeToArray("A{$row}:{$highestColumn}{$row}", null, true, true, true);
-                $nik = $rowData[$row]['B'];
+                $nik = isset($rowData[$row]['B']) ? trim($rowData[$row]['B']) : null;
+
+                // Skip row if NIK is empty or null
+                if (empty($nik)) {
+                    continue;
+                }
 
                 // Prepare data for insert or update
                 $data = [
