@@ -120,7 +120,7 @@ class Dtks extends BaseController
         $data['user'] = $user->data;
         $data['data'] = $user->data;
 
-        return view('silastri/pengdat/upload/pkh/index', $data);
+        return view('silastri/pengdat/upload/dtks/index', $data);
     }
 
     public function upload()
