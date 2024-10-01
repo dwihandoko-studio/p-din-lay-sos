@@ -228,8 +228,8 @@ class Dtks extends BaseController
 
         try {
             // Loop through the rows of the spreadsheet
-            for ($row = 1; $row <= $highestRow; $row++) {
-                $rowData = $sheet->rangeToArray("B{$row}:{$highestColumn}{$row}", null, true, true, true);
+            for ($row = 2; $row <= $highestRow; $row++) {
+                $rowData = $sheet->rangeToArray("A{$row}:{$highestColumn}{$row}", null, true, true, true);
                 $nik = $rowData[$row]['C'];
 
                 // Prepare data for insert or update
