@@ -12,7 +12,7 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript:actionAdd(this);" class="btn btn-primary btn-rounded waves-effect waves-light">Upload Data</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:actionUpload(this);" class="btn btn-primary btn-rounded waves-effect waves-light">Upload Data</a></li>
                         </ol>
                     </div>
 
@@ -102,7 +102,7 @@
 <script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <script>
-    function actionAdd(event) {
+    function actionUpload(event) {
         $.ajax({
             url: "./upload",
             type: 'POST',
@@ -142,6 +142,62 @@
                 );
             }
         });
+    }
+
+    function actionHapus(id, filename) {
+        Swal.fire({
+            title: 'Apakah anda yakin ingin menghapus data ini?',
+            text: "Hapus File Matching : " + filename,
+            showCancelButton: true,
+            icon: 'question',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "./delete",
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        filename: filename,
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $('div.main-content').block({
+                            message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+                        });
+                    },
+                    success: function(resul) {
+                        $('div.main-content').unblock();
+
+                        if (resul.status !== 200) {
+                            Swal.fire(
+                                'Failed!',
+                                resul.message,
+                                'warning'
+                            );
+                        } else {
+                            Swal.fire(
+                                'SELAMAT!',
+                                resul.message,
+                                'success'
+                            ).then((valRes) => {
+                                reloadPage();
+                            })
+                        }
+                    },
+                    error: function() {
+                        $('div.main-content').unblock();
+                        Swal.fire(
+                            'Failed!',
+                            "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+                            'warning'
+                        );
+                    }
+                });
+            }
+        })
     }
 
     function changeValidation(event) {
