@@ -103,12 +103,12 @@ class Dtks extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('silastri/pengdat/upload/pkh/data'));
+        return redirect()->to(base_url('silastri/pengdat/upload/dtks/data'));
     }
 
     public function data()
     {
-        $data['title'] = 'Upload Data PKH';
+        $data['title'] = 'Upload Data DTKS';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
         if ($user->status != 200) {
@@ -151,7 +151,7 @@ class Dtks extends BaseController
             $response = new \stdClass;
             $response->status = 200;
             $response->message = "Permintaan diizinkan";
-            $response->data = view('silastri/pengdat/upload/pkh/upload');
+            $response->data = view('silastri/pengdat/upload/dtks/upload');
             return json_encode($response);
         }
     }
@@ -362,7 +362,7 @@ class Dtks extends BaseController
                 return json_encode($response);
             }
 
-            $current = $this->_db->table('tb_matching_lanjutkantw')
+            $current = $this->_db->table('tb_matching_dtks')
                 ->where('id', $id)
                 ->get()->getRowObject();
 
@@ -370,7 +370,7 @@ class Dtks extends BaseController
 
                 $this->_db->transBegin();
                 try {
-                    $this->_db->table('tb_matching_lanjutkantw')->where('id', $current->id)->delete();
+                    $this->_db->table('tb_matching_dtks')->where('id', $current->id)->delete();
                 } catch (\Throwable $th) {
                     $this->_db->transRollback();
                     $response = new \stdClass;
@@ -384,8 +384,7 @@ class Dtks extends BaseController
                     $this->_db->transCommit();
                     try {
                         $file = $current->filename;
-                        unlink(FCPATH . "upload/matching-lanjutkantw/$file.json");
-                        unlink(FCPATH . "upload/matching-lanjutkantw/$file");
+                        unlink(FCPATH . "upload/matching-dtks/$file");
                     } catch (\Throwable $th) {
                         //throw $th;
                     }
