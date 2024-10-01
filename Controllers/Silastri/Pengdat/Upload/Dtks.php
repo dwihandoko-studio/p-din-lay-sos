@@ -308,7 +308,7 @@ class Dtks extends BaseController
         // Save the matching file information
         $data = [
             'filename' => $newNamelampiran,
-            'jumlah' => $highestRow,
+            'jumlah' => $highestRow - 1,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
