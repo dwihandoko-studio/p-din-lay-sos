@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Silastri\Pendat\Upload;
+namespace App\Controllers\Silastri\Pengdat\Upload;
 
 use App\Controllers\BaseController;
 use CodeIgniter\API\ResponseTrait;
