@@ -16,8 +16,9 @@
                         <span key="t-uploads">Upload</span>
                     </a>
                     <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
-                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/p3ke') ?>" key="t-uploads-p3ke">P3KE</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "dtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/dtks') ?>" key="t-uploads-dtks">DTKS</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bltdd") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bltdd') ?>" key="t-uploads-bltdd">BLT DD</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/p3ke') ?>" key="t-uploads-p3ke">P3KE</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "padandtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/padandtks') ?>" key="t-uploads-padandtks">Padan DTKS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bpjs') ?>" key="t-uploads-bpjs">BPJS</a></li>
                     </ul>

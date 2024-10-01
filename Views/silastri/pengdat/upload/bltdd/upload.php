@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mt-3">
-                            <label for="_file" class="form-label">Upload Data DTKS: </label>
+                            <label for="_file" class="form-label">Upload Data BLT DD: </label>
                             <input class="form-control" type="file" id="_file" name="_file" onFocus="inputFocus(this);" accept=".xls, .xlsx, .csv" onchange="loadFile()">
                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="xls, xlsx">Files</code> and Maximum File Size <code>5 Mb</code></p>
                             <div class="help-block _file" for="_file"></div>
