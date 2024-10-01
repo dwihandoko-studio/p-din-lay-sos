@@ -104,10 +104,10 @@
 <script>
     function actionAdd(event) {
         $.ajax({
-            url: "./add",
+            url: "./upload",
             type: 'POST',
             data: {
-                id: 'add',
+                id: 'upload',
             },
             dataType: 'JSON',
             beforeSend: function() {
