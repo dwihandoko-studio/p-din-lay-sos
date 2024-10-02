@@ -167,11 +167,11 @@ class Padandtks extends BaseController
         // File upload validation rules
         $rules = [
             '_file' => [
-                'rules' => 'uploaded[_file]|max_size[_file,10240]|mime_in[_file,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv]',
+                'rules' => 'uploaded[_file]|max_size[_file,10240]|ext_in[_file,csv,xls,xlsx]',
                 'errors' => [
                     'uploaded' => 'Pilih file terlebih dahulu.',
                     'max_size' => 'Ukuran file terlalu besar, maksimum 10Mb.',
-                    'mime_in' => 'Ekstensi yang diperbolehkan hanya xls, xlsx, atau csv.',
+                    'ext_in' => 'Ekstensi yang diperbolehkan hanya xls, xlsx, atau csv.',
                 ]
             ],
         ];
