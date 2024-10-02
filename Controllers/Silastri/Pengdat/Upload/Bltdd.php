@@ -295,7 +295,7 @@ class Bltdd extends BaseController
 
         // Handle file upload
         $dir = FCPATH . "upload/matching-bltdd";
-        $newNamelampiran = _create_name_file_import($lampiran->getName(), "PKH");
+        $newNamelampiran = _create_name_file_import($lampiran->getName(), "BLTDD");
 
         if ($lampiran->isValid() && !$lampiran->hasMoved()) {
             $lampiran->move($dir, $newNamelampiran);
