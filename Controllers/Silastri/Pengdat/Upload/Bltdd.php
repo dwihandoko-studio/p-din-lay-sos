@@ -278,7 +278,7 @@ class Bltdd extends BaseController
 
             // Insert/update any remaining rows
             if (!empty($dataToInsert)) {
-                $this->_insertIgnoreBatch('ref_dtks', $dataToInsert);
+                $this->_insertIgnoreBatch('ref_bltdd', $dataToInsert);
                 // $this->_db->table('ref_bltdd')->insertBatch($dataToInsert);
             }
             if (!empty($dataToUpdate)) {
