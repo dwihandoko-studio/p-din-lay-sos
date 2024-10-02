@@ -253,7 +253,7 @@ class Bpjs extends BaseController
                     'kepersertaan_bpjs' => $rowData[$row]['Q'],
                     'status_bpjs' => $rowData[$row]['R'],
                     'tgl_lahir' => $rowData[$row]['S'],
-                    'padan_capil' => $rowData[$row]['T'],
+                    'padan_siak' => $rowData[$row]['T'],
                     'jk' => $rowData[$row]['U'],
                     'hubungan_keluarga' => $rowData[$row]['V'],
                     'status_kawin' => $rowData[$row]['W'],
