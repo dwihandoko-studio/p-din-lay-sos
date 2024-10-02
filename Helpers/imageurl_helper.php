@@ -69,6 +69,9 @@ if (!function_exists('_create_name_file_import')) {
         } elseif ($exts == 'XLSX') {
             $fileName = str_replace(".XLSX", "", $fileName);
             $ext = '.xlsx';
+        } elseif ($exts == 'CSV') {
+            $fileName = str_replace(".CSV", "", $fileName);
+            $ext = '.csv';
         } else {
             $ext = '.txt';
         }

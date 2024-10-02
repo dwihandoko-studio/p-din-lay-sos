@@ -85,9 +85,6 @@ class Dtks extends BaseController
             // $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama));
             $row[] = $list->filename;
             $row[] = $list->jumlah;
-            $row[] = $list->lolos;
-            $row[] = $list->gagal;
-            $row[] = $list->done;
             $row[] = $list->created_at;
 
             $data[] = $row;

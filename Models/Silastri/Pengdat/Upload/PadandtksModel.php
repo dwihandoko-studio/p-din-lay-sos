@@ -5,9 +5,9 @@ namespace App\Models\Silastri\Pengdat\Upload;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\Model;
 
-class DtksModel extends Model
+class PadandtksModel extends Model
 {
-    protected $table = "tb_matching_dtks a";
+    protected $table = "tb_matching_padandtks a";
     protected $column_order = array(null, null, 'a.fullname', 'a.jumlah', 'a.created_at');
     protected $column_search = array('a.filename');
     protected $order = array('a.filename' => 'desc');
