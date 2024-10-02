@@ -225,9 +225,9 @@ class Bpjs extends BaseController
 
         try {
             // Loop through the rows of the spreadsheet
-            for ($row = 7; $row <= $highestRow; $row++) {
+            for ($row = 2; $row <= $highestRow; $row++) {
                 $rowData = $sheet->rangeToArray("A{$row}:{$highestColumn}{$row}", null, true, true, true);
-                $nik = isset($rowData[$row]['B']) ? trim($rowData[$row]['B']) : null;
+                $nik = isset($rowData[$row]['O']) ? trim($rowData[$row]['O']) : null;
 
                 // Skip row if NIK is empty or null
                 if (empty($nik)) {
@@ -237,19 +237,38 @@ class Bpjs extends BaseController
                 // Prepare data for insert or update
                 $data = [
                     'nik' => $nik,
-                    'nama' => $rowData[$row]['C'],
-                    'jenis_kelamin' => $rowData[$row]['D'],
-                    'tanggal_lahir' => $rowData[$row]['E'],
-                    'jumlah_anggota_keluarga' => $rowData[$row]['F'],
-                    'alamat' => $rowData[$row]['G'],
-                    'rt' => $rowData[$row]['H'],
-                    'rw' => $rowData[$row]['I'],
-                    'jenis_pekerjaan' => $rowData[$row]['J'],
-                    'kode_jp' => $rowData[$row]['K'],
-                    'kriteria_blt' => $rowData[$row]['L'],
-                    'kode_kriteria' => $rowData[$row]['M'],
-                    'metode_pembayaran' => $rowData[$row]['N'],
-                    'kode_bayar' => $rowData[$row]['O'],
+                    'id_keluarga' => $rowData[$row]['B'],
+                    'tahun_pemutakhiran' => $rowData[$row]['C'],
+                    'provinsi' => $rowData[$row]['D'],
+                    'kabupaten' => $rowData[$row]['E'],
+                    'kecamatan' => $rowData[$row]['F'],
+                    'kelurahan' => $rowData[$row]['G'],
+                    'kode_kemdagri' => $rowData[$row]['H'],
+                    'desil_kesejahteraan' => $rowData[$row]['I'],
+                    'persentil' => $rowData[$row]['J'],
+                    'alamat' => $rowData[$row]['K'],
+                    'prioritas_verval' => $rowData[$row]['M'],
+                    'nama' => $rowData[$row]['N'],
+                    'no_kk' => $rowData[$row]['P'],
+                    'kepersertaan_bpjs' => $rowData[$row]['Q'],
+                    'status_bpjs' => $rowData[$row]['R'],
+                    'tgl_lahir' => $rowData[$row]['S'],
+                    'padan_capil' => $rowData[$row]['T'],
+                    'jk' => $rowData[$row]['U'],
+                    'hubungan_keluarga' => $rowData[$row]['V'],
+                    'status_kawin' => $rowData[$row]['W'],
+                    'pekerjaan' => $rowData[$row]['X'],
+                    'status_pekerjaan' => $rowData[$row]['Y'],
+                    'pendidikan' => $rowData[$row]['Z'],
+                    'usia' => $rowData[$row]['AA'],
+                    'kelompok_usia' => $rowData[$row]['AB'],
+                    'penerima_bpnt' => $rowData[$row]['AC'],
+                    'penerima_bpum' => $rowData[$row]['AD'],
+                    'penerima_bst' => $rowData[$row]['AE'],
+                    'penerima_pkh' => $rowData[$row]['AF'],
+                    'penerima_sembako' => $rowData[$row]['AG'],
+                    'penerima_prakerja' => $rowData[$row]['AH'],
+                    'penerima_kur' => $rowData[$row]['AI'],
                 ];
 
                 if (in_array($nik, $existingniks)) {
