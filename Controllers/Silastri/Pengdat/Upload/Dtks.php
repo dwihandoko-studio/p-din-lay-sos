@@ -277,8 +277,14 @@ class Dtks extends BaseController
 
                 // Process in batches of 1000 rows
                 if ($row % 1000 === 0) {
-                    $this->_db->table('ref_dtks')->insertBatch($dataToInsert);
-                    $this->_db->table('ref_dtks')->updateBatch($dataToUpdate, 'nik');
+                    if (!empty($dataToInsert)) {
+                        // Insert batch with IGNORE for duplicate handling
+                        $this->_insertIgnoreBatch('ref_dtks', $dataToInsert);
+                    }
+                    // $this->_db->table('ref_dtks')->insertBatch($dataToInsert);
+                    if (!empty($dataToUpdate)) {
+                        $this->_db->table('ref_dtks')->updateBatch($dataToUpdate, 'nik');
+                    }
                     $dataToInsert = [];
                     $dataToUpdate = [];
                 }
@@ -286,7 +292,8 @@ class Dtks extends BaseController
 
             // Insert/update any remaining rows
             if (!empty($dataToInsert)) {
-                $this->_db->table('ref_dtks')->insertBatch($dataToInsert);
+                $this->_insertIgnoreBatch('ref_dtks', $dataToInsert);
+                // $this->_db->table('ref_dtks')->insertBatch($dataToInsert);
             }
             if (!empty($dataToUpdate)) {
                 $this->_db->table('ref_dtks')->updateBatch($dataToUpdate, 'nik');
@@ -320,6 +327,22 @@ class Dtks extends BaseController
         $this->_db->table('tb_matching_dtks')->insert($data);
 
         return $this->respond(['status' => 200, 'message' => "Data berhasil disimpan."]);
+    }
+
+    protected function _insertIgnoreBatch($tableName, $data)
+    {
+        if (empty($data)) {
+            return;
+        }
+
+        $fields = array_keys($data[0]);
+        $placeholders = implode(',', array_fill(0, count($fields), '?'));
+
+        $sql = "INSERT IGNORE INTO {$tableName} (" . implode(',', $fields) . ") VALUES ({$placeholders})";
+
+        foreach ($data as $row) {
+            $this->_db->query($sql, array_values($row));
+        }
     }
 
     public function delete()
