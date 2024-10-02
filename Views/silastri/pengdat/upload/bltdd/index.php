@@ -1,4 +1,4 @@
-<?= $this->extend('t-silastri/adm/index'); ?>
+<?= $this->extend('t-silastri/pengdat/index'); ?>
 
 <?= $this->section('content'); ?>
 <div class="page-content">
