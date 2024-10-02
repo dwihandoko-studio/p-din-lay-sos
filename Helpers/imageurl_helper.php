@@ -42,14 +42,13 @@ if (!function_exists('_create_name_file')) {
     }
 }
 if (!function_exists('_create_name_file_import')) {
-    function _create_name_file_import($string, $title = "")
+    function _create_name_file_import($fileName, $title = "")
     {
-        $file_parts = pathinfo($string);
+        $file_parts = pathinfo($fileName);
         $exts = $file_parts['extension'];
+        $originalName = $file_parts['filename'];
 
-        // $filenames = explode(" ", $string);
-
-        $date = 'file-' . date('Y-m-d') . '-at-' . date('H-i-s') . '-' . rand(1000000, 9999999);
+        $date = $originalName . '-' . date('Y-m-d') . '-at-' . date('H-i-s') . '-' . rand(1000000, 9999999);
 
         if ($title !== "") {
             $date = $title . "-" . $date;
@@ -59,28 +58,28 @@ if (!function_exists('_create_name_file_import')) {
 
         $replace = '-';
         if ($exts == 'xls') {
-            $string = str_replace(".xls", "", $string);
+            $fileName = str_replace(".xls", "", $fileName);
             $ext = '.xls';
         } elseif ($exts == 'XLS') {
-            $string = str_replace(".XLS", "", $string);
+            $fileName = str_replace(".XLS", "", $fileName);
             $ext = '.xls';
         } elseif ($exts == 'xlsx') {
-            $string = str_replace(".xlsx", "", $string);
+            $fileName = str_replace(".xlsx", "", $fileName);
             $ext = '.xlsx';
         } elseif ($exts == 'XLSX') {
-            $string = str_replace(".XLSX", "", $string);
+            $fileName = str_replace(".XLSX", "", $fileName);
             $ext = '.xlsx';
         } else {
             $ext = '.txt';
         }
-        $string = strtolower($string);
+        $string = strtolower($fileName);
         //replace / and . with white space     
-        $string = preg_replace("/[\/\.]/", " ", $string);
-        $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+        $string = preg_replace("/[\/\.]/", " ", $fileName);
+        $string = preg_replace("/[^a-z0-9_\s-]/", "", $fileName);
         //remove multiple dashes or whitespaces     
-        $string = preg_replace("/[\s-]+/", " ", $string);
+        $string = preg_replace("/[\s-]+/", " ", $fileName);
         //convert whitespaces and underscore to $replace     
-        $string = preg_replace("/[\s_]/", $replace, $string);
+        $string = preg_replace("/[\s_]/", $replace, $fileName);
         //limit the slug size     
         $string = substr($string, 0, 100);
         //text is generated     
