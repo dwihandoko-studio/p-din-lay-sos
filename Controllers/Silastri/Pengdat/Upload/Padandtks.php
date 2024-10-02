@@ -299,7 +299,7 @@ class Padandtks extends BaseController
         // Save the matching file information
         $data = [
             'filename' => $newNamelampiran,
-            'jumlah' => $highestRow - 1,
+            'jumlah' => $highestRow - 2,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
