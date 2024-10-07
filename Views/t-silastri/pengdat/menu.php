@@ -18,9 +18,9 @@
                     <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "dtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/dtks') ?>" key="t-uploads-dtks">DTKS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bltdd") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bltdd') ?>" key="t-uploads-bltdd">BLT DD</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bpjs') ?>" key="t-uploads-bpjs">BPJS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/p3ke') ?>" key="t-uploads-p3ke">P3KE</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "padandtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/padandtks') ?>" key="t-uploads-padandtks">Padan DTKS</a></li>
-                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bpjs') ?>" key="t-uploads-bpjs">BPJS</a></li>
                     </ul>
                 </li>
                 <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata") ? ' class="mm-active"' : '' ?>>
@@ -31,9 +31,9 @@
                     <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "dtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/dtks') ?>" key="t-sumberdatas-dtks">DTKS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "bltdd") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/bltdd') ?>" key="t-sumberdatas-bltdd">BLT DD</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/bpjs') ?>" key="t-sumberdatas-bpjs">BPJS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/p3ke') ?>" key="t-sumberdatas-p3ke">P3KE</a></li>
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "padandtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/padandtks') ?>" key="t-sumberdatas-padandtks">Padan DTKS</a></li>
-                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/bpjs') ?>" key="t-sumberdatas-bpjs">BPJS</a></li>
                     </ul>
                 </li>
                 <!-- <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' class="mm-active"' : '' ?>>
