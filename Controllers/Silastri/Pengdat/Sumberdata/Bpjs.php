@@ -3,7 +3,7 @@
 namespace App\Controllers\Silastri\Pengdat\Sumberdata;
 
 use App\Controllers\BaseController;
-use App\Models\Silastri\Pengdat\Sumberdata\BltddModel;
+use App\Models\Silastri\Pengdat\Sumberdata\BpjsModel;
 use Config\Services;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -29,7 +29,7 @@ class Bpjs extends BaseController
     public function getAll()
     {
         $request = Services::request();
-        $datamodel = new BltddModel($request);
+        $datamodel = new BpjsModel($request);
 
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
