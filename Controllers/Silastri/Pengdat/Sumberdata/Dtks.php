@@ -75,7 +75,7 @@ class Dtks extends BaseController
             $row[] = $list->pkh;
             $row[] = $list->pbi;
             $row[] = $list->rst;
-            $row[] = $list->blt_elnino;
+            $row[] = $list->blt_elino;
             $row[] = $list->sembako_adaptif;
             $row[] = $list->blt_migor;
             $row[] = $list->yatim_piatu;
