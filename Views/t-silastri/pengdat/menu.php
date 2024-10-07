@@ -23,6 +23,19 @@
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/upload/bpjs') ?>" key="t-uploads-bpjs">BPJS</a></li>
                     </ul>
                 </li>
+                <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata") ? ' class="mm-active"' : '' ?>>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-package"></i>
+                        <span key="t-sumberdatas">Sumber Data</span>
+                    </a>
+                    <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "dtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/dtks') ?>" key="t-sumberdatas-dtks">DTKS</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "bltdd") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/bltdd') ?>" key="t-sumberdatas-bltdd">BLT DD</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/p3ke') ?>" key="t-sumberdatas-p3ke">P3KE</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "padandtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/padandtks') ?>" key="t-sumberdatas-padandtks">Padan DTKS</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "bpjs") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/bpjs') ?>" key="t-sumberdatas-bpjs">BPJS</a></li>
+                    </ul>
+                </li>
                 <!-- <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' class="mm-active"' : '' ?>>
                     <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' mm-active' : '' ?>">
                         <i class="bx bx-package"></i>
