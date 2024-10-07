@@ -70,7 +70,7 @@ class P3ke extends BaseController
             $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama));
             $row[] = $list->hubungan_keluarga;
             $row[] = $list->alamat;
-            $row[] = $list->kampung;
+            $row[] = $list->kelurahan;
             $row[] = $list->kecamatan;
             $row[] = $list->desil_kesejahteraan;
             $row[] = $list->persentil;
