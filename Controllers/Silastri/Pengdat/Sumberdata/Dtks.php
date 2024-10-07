@@ -119,7 +119,7 @@ class Dtks extends BaseController
 
         // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
 
-        return view('silastri/pengdat/sumberdata/dkts/index', $data);
+        return view('silastri/pengdat/sumberdata/dtks/index', $data);
     }
 
     public function detail()
