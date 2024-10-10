@@ -36,6 +36,15 @@
                         <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "sumberdata" && $uri->getSegment(4) == "padandtks") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/sumberdata/padandtks') ?>" key="t-sumberdatas-padandtks">Padan DTKS</a></li>
                     </ul>
                 </li>
+                <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata") ? ' class="mm-active"' : '' ?>>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-package"></i>
+                        <span key="t-masterdatas">Master Data</span>
+                    </a>
+                    <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "slrt") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/masterdata/dtks') ?>" key="t-masterdatas-slrt">SLRT</a></li>
+                    </ul>
+                </li>
                 <!-- <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' class="mm-active"' : '' ?>>
                     <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' mm-active' : '' ?>">
                         <i class="bx bx-package"></i>
