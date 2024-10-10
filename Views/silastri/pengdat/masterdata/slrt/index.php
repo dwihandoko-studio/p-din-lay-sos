@@ -124,12 +124,13 @@
 <script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <script>
-    function actionUpload(event) {
+    function actionDetail(event, name) {
         $.ajax({
-            url: "./upload",
+            url: "./detail",
             type: 'POST',
             data: {
-                id: 'upload',
+                id: event,
+                nama: name,
             },
             dataType: 'JSON',
             beforeSend: function() {
@@ -146,7 +147,7 @@
                         'warning'
                     );
                 } else {
-                    $('#content-detailModalLabel').html('UPLOAD DATA BLT DD');
+                    $('#content-detailModalLabel').html('PROFIL KELUARGA : ' + event);
                     $('.contentBodyModal').html(resul.data);
                     $('.content-detailModal').modal({
                         backdrop: 'static',

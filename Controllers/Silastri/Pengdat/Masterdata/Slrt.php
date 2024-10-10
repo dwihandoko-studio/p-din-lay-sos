@@ -54,7 +54,7 @@ class Slrt extends BaseController
             //                 <a class="dropdown-item" href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><i class="bx bx-transfer-alt font-size-16 align-middle"></i> &nbsp;Sync Dapodik</a>
             //             </div>
             //         </div>';
-            $action = '<a href="javascript:actionDetail(\'' . $list->nik . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
+            $action = '<a href="javascript:actionDetail(\'' . $list->no_kk . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
                 <i class="bx bxs-show font-size-16 align-middle"></i> DETAIL</button>
                 </a>';
             //     <a href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><button type="button" class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
@@ -149,12 +149,6 @@ class Slrt extends BaseController
                     'required' => 'Id tidak boleh kosong. ',
                 ]
             ],
-            'nik' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'NIK tidak boleh kosong. ',
-                ]
-            ],
             'nama' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -167,49 +161,24 @@ class Slrt extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('id')
-                . $this->validator->getError('nik')
                 . $this->validator->getError('nama');
             return json_encode($response);
         } else {
             $id = htmlspecialchars($this->request->getVar('id'), true);
-            $nik = htmlspecialchars($this->request->getVar('nik'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
 
-            $current = $this->_db->table('_permohonan_temp a')
-                ->select("a.*, 
-                b.nik as nik_pemohon, 
-                b.kk as kk, 
-                b.email as email, 
-                b.no_hp as no_hp, 
-                b.tempat_lahir, 
-                b.tgl_lahir, 
-                b.jenis_kelamin, 
-                b.alamat, 
-                c.id as id_kecamatan, 
-                c.kecamatan as nama_kecamatan, 
-                d.id as id_kelurahan, 
-                d.kelurahan as nama_kelurahan")
-                ->join('_profil_users_tb b', 'b.id = a.user_id')
-                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
-                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-                ->where(['a.id' => $id, 'a.status_permohonan' => 0])->get()->getRowObject();
+            $current = $this->_db->table('ref_master_data a')
+                ->select("a.*")
+                // ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->where(['a.no_kk' => $id])
+                ->get()->getResult();
 
-            if ($current) {
+            if (count($current) > 0) {
                 $data['data'] = $current;
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                // $response->data = view('silastri/peng/permohonan/antrian/detail', $data);
-                switch ($current->layanan) {
-                    case 'LKS':
-                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
-                        $response->data = view('silastri/peng/permohonan/antrian/detail_lks', $data);
-                        break;
-
-                    default:
-                        $response->data = view('silastri/peng/permohonan/antrian/detail', $data);
-                        break;
-                }
+                $response->data = view('silastri/pengdat/masterdata/slrt/detail', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
