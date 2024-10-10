@@ -20,6 +20,30 @@
                 </div>
             </div>
             <div class="col-lg-6">
+                <label class="col-form-label">Tanggal Lahir:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $orang->tgl_lahir ?>" readonly />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="col-form-label">Jenis Kelamin:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $orang->jk ?>" readonly />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="col-form-label">Status Kawin:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $orang->status_kawin ?>" readonly />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="col-form-label">Padan Siak:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $orang->padan_siak ?>" readonly />
+                </div>
+            </div>
+            <div class="col-lg-6">
                 <label class="col-form-label">Alamat:</label>
                 <textarea class="form-control" readonly><?= $orang->alamat ?></textarea>
             </div>
