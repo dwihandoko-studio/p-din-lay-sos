@@ -2,7 +2,7 @@
     <?php $orang = $data[0]; ?>
     <div class="modal-body">
         <div class="row">
-            <h2>DATA PENGADU</h2>
+            <h2>DATA KEPALA KELUARGA</h2>
             <div class="col-lg-6">
                 <label class="col-form-label">Nama Lengkap:</label>
                 <input type="text" class="form-control" value="<?= str_replace('&#039;', "`", str_replace("'", "`", $orang->nama)) ?>" readonly />
