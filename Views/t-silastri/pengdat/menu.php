@@ -42,7 +42,7 @@
                         <span key="t-masterdatas">Master Data</span>
                     </a>
                     <ul class="sub-menu  <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
-                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "slrt") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/masterdata/dtks') ?>" key="t-masterdatas-slrt">SLRT</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "slrt") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/pengdat/masterdata/slrt') ?>" key="t-masterdatas-slrt">SLRT</a></li>
                     </ul>
                 </li>
                 <!-- <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "layanan") ? ' class="mm-active"' : '' ?>>
