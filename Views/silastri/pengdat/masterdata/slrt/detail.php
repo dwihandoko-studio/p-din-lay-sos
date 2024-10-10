@@ -1,34 +1,35 @@
 <?php if (isset($data)) { ?>
+    <?php $orang = $data[0]; ?>
     <div class="modal-body">
         <div class="row">
             <h2>DATA PENGADU</h2>
             <div class="col-lg-6">
                 <label class="col-form-label">Nama Lengkap:</label>
-                <input type="text" class="form-control" value="<?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?>" readonly />
+                <input type="text" class="form-control" value="<?= str_replace('&#039;', "`", str_replace("'", "`", $orang->nama)) ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">NIK:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" aria-describedby="nik" aria-label="NIK" value="<?= $data->nik ?>" readonly />
+                    <input type="text" class="form-control" aria-describedby="nik" aria-label="NIK" value="<?= $orang->nik ?>" readonly />
                 </div>
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">No KK:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $data->no_kk ?>" readonly />
+                    <input type="text" class="form-control" aria-describedby="nohp" aria-label="NO HP" value="<?= $orang->no_kk ?>" readonly />
                 </div>
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Alamat:</label>
-                <textarea class="form-control" readonly><?= $data->alamat ?></textarea>
+                <textarea class="form-control" readonly><?= $orang->alamat ?></textarea>
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Kecamatan:</label>
-                <input type="text" class="form-control" value="<?= getNamaKecamatan($data->kecamatan) ?>" readonly />
+                <input type="text" class="form-control" value="<?= getNamaKecamatan($orang->kecamatan) ?>" readonly />
             </div>
             <div class="col-lg-6">
                 <label class="col-form-label">Kampung:</label>
-                <input type="text" class="form-control" value="<?= getNamaKelurahan($data->kampung) ?>" readonly />
+                <input type="text" class="form-control" value="<?= getNamaKelurahan($orang->kampung) ?>" readonly />
             </div>
         </div>
         <hr />
