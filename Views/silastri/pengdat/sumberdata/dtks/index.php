@@ -52,30 +52,30 @@
                             <thead>
                                 <tr>
                                     <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
-                                    <th>NIK</th>
-                                    <th>No KK</th>
-                                    <th>Nama</th>
-                                    <th>Hubungan Keluarga</th>
-                                    <th>alamat</th>
-                                    <th>kampung</th>
-                                    <th>kecamatan</th>
-                                    <th>Sembako</th>
-                                    <th>PKH</th>
-                                    <th>PBI</th>
-                                    <th>RST</th>
-                                    <th>BTL Elnino</th>
-                                    <th>Sembako Adaptif</th>
-                                    <th>BLT Migor</th>
-                                    <th>Yatim Piatu</th>
-                                    <th>Permakanan</th>
-                                    <th>Pena</th>
-                                    <th>BPNT PPKM</th>
-                                    <th>BST</th>
-                                    <th>Atensi</th>
-                                    <th>Ket Meninggal</th>
-                                    <th>Ket Disabilitas</th>
-                                    <th>Keterangan</th>
+                                    <!-- <th data-orderable="false">Aksi</th> -->
+                                    <th data-orderable="false">NIK</th>
+                                    <th data-orderable="false">No KK</th>
+                                    <th data-orderable="false">Nama</th>
+                                    <th data-orderable="false">Hubungan Keluarga</th>
+                                    <th data-orderable="false">alamat</th>
+                                    <th data-orderable="false">kampung</th>
+                                    <th data-orderable="false">kecamatan</th>
+                                    <th data-orderable="false">Sembako</th>
+                                    <th data-orderable="false">PKH</th>
+                                    <th data-orderable="false">PBI</th>
+                                    <th data-orderable="false">RST</th>
+                                    <th data-orderable="false">BTL Elnino</th>
+                                    <th data-orderable="false">Sembako Adaptif</th>
+                                    <th data-orderable="false">BLT Migor</th>
+                                    <th data-orderable="false">Yatim Piatu</th>
+                                    <th data-orderable="false">Permakanan</th>
+                                    <th data-orderable="false">Pena</th>
+                                    <th data-orderable="false">BPNT PPKM</th>
+                                    <th data-orderable="false">BST</th>
+                                    <th data-orderable="false">Atensi</th>
+                                    <th data-orderable="false">Ket Meninggal</th>
+                                    <th data-orderable="false">Ket Disabilitas</th>
+                                    <th data-orderable="false">Keterangan</th>
                                 </tr>
                             </thead>
                         </table>

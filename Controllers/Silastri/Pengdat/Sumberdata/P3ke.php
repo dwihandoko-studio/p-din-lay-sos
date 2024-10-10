@@ -63,7 +63,7 @@ class P3ke extends BaseController
             //     <a href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk . '\');" class="delete" id="delete"><button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
             //     <i class="bx bx-trash font-size-16 align-middle"></i></button>
             //     </a>';
-            $row[] = $action;
+            // $row[] = $action;
             $row[] = $list->tahun_pemutakhiran;
             $row[] = $list->nik;
             // $row[] = $list->no_kk;

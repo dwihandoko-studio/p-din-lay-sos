@@ -52,32 +52,32 @@
                             <thead>
                                 <tr>
                                     <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
+                                    <!-- <th data-orderable="false">Aksi</th> -->
                                     <th>Tahun Update</th>
-                                    <th>NIK</th>
-                                    <!-- <th>No KK</th> -->
-                                    <th>Nama</th>
-                                    <th>Hubungan Keluarga</th>
-                                    <th>alamat</th>
-                                    <th>kampung</th>
-                                    <th>kecamatan</th>
-                                    <th>Desil</th>
-                                    <th>Persentil</th>
-                                    <th>Padan Capil</th>
-                                    <th>JK</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Pekerjaan</th>
-                                    <th>Status Pekerjaan</th>
-                                    <th>Pendidikan</th>
-                                    <th>Status Kawin</th>
-                                    <th>Usia</th>
-                                    <th>BPNT</th>
-                                    <th>BST</th>
-                                    <th>PKH</th>
-                                    <th>Sembako</th>
-                                    <th>Prakerja</th>
-                                    <th>KUR</th>
-                                    <th>CBP</th>
+                                    <th data-orderable="false">NIK</th>
+                                    <!-- <th data-orderable="false">No KK</th> -->
+                                    <th data-orderable="false">Nama</th>
+                                    <th data-orderable="false">Hubungan Keluarga</th>
+                                    <th data-orderable="false">alamat</th>
+                                    <th data-orderable="false">kampung</th>
+                                    <th data-orderable="false">kecamatan</th>
+                                    <th data-orderable="false">Desil</th>
+                                    <th data-orderable="false">Persentil</th>
+                                    <th data-orderable="false">Padan Capil</th>
+                                    <th data-orderable="false">JK</th>
+                                    <th data-orderable="false">Tanggal Lahir</th>
+                                    <th data-orderable="false">Pekerjaan</th>
+                                    <th data-orderable="false">Status Pekerjaan</th>
+                                    <th data-orderable="false">Pendidikan</th>
+                                    <th data-orderable="false">Status Kawin</th>
+                                    <th data-orderable="false">Usia</th>
+                                    <th data-orderable="false">BPNT</th>
+                                    <th data-orderable="false">BST</th>
+                                    <th data-orderable="false">PKH</th>
+                                    <th data-orderable="false">Sembako</th>
+                                    <th data-orderable="false">Prakerja</th>
+                                    <th data-orderable="false">KUR</th>
+                                    <th data-orderable="false">CBP</th>
                                 </tr>
                             </thead>
                         </table>

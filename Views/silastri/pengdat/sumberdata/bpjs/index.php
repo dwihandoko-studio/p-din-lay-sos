@@ -52,24 +52,24 @@
                             <thead>
                                 <tr>
                                     <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
-                                    <th>NIK</th>
-                                    <th>No KK</th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Pekerjaan</th>
-                                    <th>Pendidikan</th>
-                                    <th>Prioritas Verval</th>
-                                    <th>Padan Capil</th>
-                                    <th>kepersertaan BPJS</th>
-                                    <th>Status BPJS</th>
-                                    <th>Hubungan Keluarga</th>
-                                    <th>Usia</th>
-                                    <th>Kelompok Usia</th>
-                                    <th>Kecamatan</th>
-                                    <th>Kelurahan</th>
-                                    <th>Kode Kemendagri</th>
+                                    <!-- <th data-orderable="false">Aksi</th> -->
+                                    <th data-orderable="false">NIK</th>
+                                    <th data-orderable="false">No KK</th>
+                                    <th data-orderable="false">Nama</th>
+                                    <th data-orderable="false">Jenis Kelamin</th>
+                                    <th data-orderable="false">Tanggal Lahir</th>
+                                    <th data-orderable="false">Pekerjaan</th>
+                                    <th data-orderable="false">Pendidikan</th>
+                                    <th data-orderable="false">Prioritas Verval</th>
+                                    <th data-orderable="false">Padan Capil</th>
+                                    <th data-orderable="false">kepersertaan BPJS</th>
+                                    <th data-orderable="false">Status BPJS</th>
+                                    <th data-orderable="false">Hubungan Keluarga</th>
+                                    <th data-orderable="false">Usia</th>
+                                    <th data-orderable="false">Kelompok Usia</th>
+                                    <th data-orderable="false">Kecamatan</th>
+                                    <th data-orderable="false">Kelurahan</th>
+                                    <th data-orderable="false">Kode Kemendagri</th>
                                 </tr>
                             </thead>
                         </table>

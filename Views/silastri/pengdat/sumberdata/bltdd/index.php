@@ -52,17 +52,17 @@
                             <thead>
                                 <tr>
                                     <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
-                                    <th>NIK</th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Anggota Keluarga</th>
-                                    <th>Alamat</th>
-                                    <th>RT</th>
-                                    <th>RW</th>
-                                    <th>Jenis Pekerjaan</th>
-                                    <th>Kriteria BLT</th>
+                                    <!-- <th data-orderable="false">Aksi</th> -->
+                                    <th data-orderable="false">NIK</th>
+                                    <th data-orderable="false">Nama</th>
+                                    <th data-orderable="false">Jenis Kelamin</th>
+                                    <th data-orderable="false">Tanggal Lahir</th>
+                                    <th data-orderable="false">Anggota Keluarga</th>
+                                    <th data-orderable="false">Alamat</th>
+                                    <th data-orderable="false">RT</th>
+                                    <th data-orderable="false">RW</th>
+                                    <th data-orderable="false">Jenis Pekerjaan</th>
+                                    <th data-orderable="false">Kriteria BLT</th>
                                 </tr>
                             </thead>
                         </table>
