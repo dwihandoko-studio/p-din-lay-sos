@@ -49,7 +49,7 @@
                     </div>
                     <div class="table-responsive">
                         <div class="card-body">
-                            <table id="data-datatables" class="table table-bordered nowrap w-100">
+                            <table id="data-datatables" class="table table-bordered nowrap w-100 dtr-inline">
                                 <thead>
                                     <tr>
                                         <th data-orderable="false">#</th>
