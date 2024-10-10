@@ -47,38 +47,40 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="card-body">
-                        <table id="data-datatables" class="table table-bordered dt-responsive  nowrap w-100">
-                            <thead>
-                                <tr>
-                                    <th data-orderable="false">#</th>
-                                    <th data-orderable="false">Aksi</th>
-                                    <th>NIK</th>
-                                    <th>No KK</th>
-                                    <th>Nama</th>
-                                    <th>Hubungan Keluarga</th>
-                                    <th>alamat</th>
-                                    <th>kampung</th>
-                                    <th>kecamatan</th>
-                                    <th>Sembako</th>
-                                    <th>PKH</th>
-                                    <th>PBI</th>
-                                    <th>RST</th>
-                                    <th>BTL Elnino</th>
-                                    <th>Sembako Adaptif</th>
-                                    <th>BLT Migor</th>
-                                    <th>Yatim Piatu</th>
-                                    <th>Permakanan</th>
-                                    <th>Pena</th>
-                                    <th>BPNT PPKM</th>
-                                    <th>BST</th>
-                                    <th>Atensi</th>
-                                    <th>Ket Meninggal</th>
-                                    <th>Ket Disabilitas</th>
-                                    <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div class="table-responsive">
+                        <div class="card-body">
+                            <table id="data-datatables" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th data-orderable="false">#</th>
+                                        <th data-orderable="false">Aksi</th>
+                                        <th>NIK</th>
+                                        <th>No KK</th>
+                                        <th>Nama</th>
+                                        <th>Hubungan Keluarga</th>
+                                        <th>alamat</th>
+                                        <th>kampung</th>
+                                        <th>kecamatan</th>
+                                        <th>Sembako</th>
+                                        <th>PKH</th>
+                                        <th>PBI</th>
+                                        <th>RST</th>
+                                        <th>BTL Elnino</th>
+                                        <th>Sembako Adaptif</th>
+                                        <th>BLT Migor</th>
+                                        <th>Yatim Piatu</th>
+                                        <th>Permakanan</th>
+                                        <th>Pena</th>
+                                        <th>BPNT PPKM</th>
+                                        <th>BST</th>
+                                        <th>Atensi</th>
+                                        <th>Ket Meninggal</th>
+                                        <th>Ket Disabilitas</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
