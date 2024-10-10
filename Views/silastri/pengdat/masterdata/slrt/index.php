@@ -47,9 +47,9 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <div class="card-body">
-                            <table id="data-datatables" class="table table-bordered nowrap w-100 dtr-inline">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="data-datatables" class="table table-hover nowrap w-100">
                                 <thead>
                                     <tr>
                                         <th data-orderable="false">#</th>
