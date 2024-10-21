@@ -21,7 +21,7 @@ class Dashboardpendidikan extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('silastri/adm/dashboardpendidikan/data'));
+        return redirect()->to(base_url('silastri/pengdat/dashboardpendidikan/data'));
     }
 
     public function data()
