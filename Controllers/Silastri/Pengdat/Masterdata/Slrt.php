@@ -175,6 +175,10 @@ class Slrt extends BaseController
 
             if (count($current) > 0) {
                 $data['data'] = $current;
+                $data['assesments'] = $this->_db->table('_data_assesment a')
+                    ->select("a.*")
+                    ->where(['a.nik' => $current[0]->nik])
+                    ->get()->getResult();
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
