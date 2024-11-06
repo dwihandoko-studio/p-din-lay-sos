@@ -177,7 +177,7 @@ class Slrt extends BaseController
                 $data['data'] = $current;
                 $data['assesments'] = $this->_db->table('_data_assesment a')
                     ->select("a.*")
-                    ->where(['a.nik' => $current[0]->nik])
+                    ->where(['a.nik_orang_assesment' => $current[0]->nik])
                     ->get()->getResult();
                 $response = new \stdClass;
                 $response->status = 200;
