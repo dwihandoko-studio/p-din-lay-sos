@@ -16,6 +16,12 @@
                         <span key="t-dashboards">Dashboard Pendidikan</span>
                     </a>
                 </li>
+                <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "home") ? ' class="mm-active"' : '' ?>>
+                    <a href="<?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "dashboardkesehatan") ? 'javascript: void(0);' : base_url('silastri/pengdat/dashboardkesehatan') ?>" class="waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "dashboardkesehatan") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-home-circle"></i>
+                        <span key="t-dashboards">Dashboard Kesehatan</span>
+                    </a>
+                </li>
                 <li <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload") ? ' class="mm-active"' : '' ?>>
                     <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "pengdat" && $uri->getSegment(3) == "upload") ? ' mm-active' : '' ?>">
                         <i class="bx bx-package"></i>
