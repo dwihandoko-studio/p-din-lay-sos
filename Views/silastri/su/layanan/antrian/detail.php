@@ -109,7 +109,7 @@
     <div class="modal-footer">
         <div class="row" style="justify-content: flex-end;">
             <div class="col-md-4" style="justify-content: flex-start;">
-                <a href="<?= base_url('silastri/su/layanan/antrian/printPdf') ?>" target="_blank" class="btn btn-primary waves-effect">Download / Print</a>
+                <a href="<?= base_url('silastri/su/layanan/antrian/printPdf') . '?id=' . $data->kode_permohonan ?>" target="_blank" class="btn btn-primary waves-effect">Download / Print</a>
             </div>
             <div class="col-md-8" style="justify-content: flex-end;">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
