@@ -183,6 +183,83 @@ class Antrian extends BaseController
         }
     }
 
+    public function printPdf()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'NIK tidak boleh kosong. ',
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id')
+                . $this->validator->getError('nik')
+                . $this->validator->getError('nama');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+            $nik = htmlspecialchars($this->request->getVar('nik'), true);
+            $nama = htmlspecialchars($this->request->getVar('nama'), true);
+
+            $current = $this->_db->table('_permohonan_temp a')
+                ->select("a.*, 
+                b.nik as nik_pemohon, 
+                b.kk as kk, 
+                b.email as email, 
+                b.no_hp as no_hp, 
+                b.tempat_lahir, 
+                b.tgl_lahir, 
+                b.jenis_kelamin, 
+                b.alamat, 
+                c.id as id_kecamatan, 
+                c.kecamatan as nama_kecamatan, 
+                d.id as id_kelurahan, 
+                d.kelurahan as nama_kelurahan")
+                ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                ->where(['a.id' => $id, 'a.status_permohonan' => 0])->get()->getRowObject();
+
+            if ($current) {
+                $data['data'] = $current;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = view('silastri/su/layanan/antrian/print', $data);
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
+                return json_encode($response);
+            }
+        }
+    }
+
     public function proses()
     {
         if ($this->request->getMethod() != 'post') {

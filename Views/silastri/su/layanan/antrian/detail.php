@@ -107,9 +107,16 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
-        <button type="button" onclick="actionTolak(this)" class="btn btn-danger waves-effect waves-light">Tolak Permohonan</button>
-        <button type="button" onclick="actionApprove(this)" class="btn btn-success waves-effect waves-light">Proses Permohonan</button>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="<?= base_url('silastri/su/layanan/antrian/printPdf') ?>" target="_blank" class="btn btn-primary waves-effect">Download / Print</a>
+            </div>
+            <div class="col-md-9">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="actionTolak(this)" class="btn btn-danger waves-effect waves-light">Tolak Permohonan</button>
+                <button type="button" onclick="actionApprove(this)" class="btn btn-success waves-effect waves-light">Proses Permohonan</button>
+            </div>
+        </div>
     </div>
     <script>
         function actionTolak(e) {

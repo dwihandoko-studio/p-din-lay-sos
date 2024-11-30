@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Kesehatan BPJS</title>
+  <title>Dashboard Kesehatan</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
   <style>
     * {
