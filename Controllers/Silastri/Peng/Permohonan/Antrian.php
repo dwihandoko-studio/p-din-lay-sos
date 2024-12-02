@@ -280,7 +280,7 @@ class Antrian extends BaseController
                                             <tr>
                                                 <td width="35%" align="" style="padding-left: 10px;">Kode Permohonan</td>
                                                 <td width="5%" align="center">:</td>
-                                                <td width="60%" align="left"><?= $data->kode_permohonan ?></td>
+                                                <td width="60%" align="left">' . $current->kode_permohonan . '</td>
                                                 <td rowspan="7" style="border: none" width="10%">
                                                     &nbsp;
                                                 </td>
@@ -288,37 +288,43 @@ class Antrian extends BaseController
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Nama Lengkap</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?></td>
+                                                <td align="left">' . str_replace('&#039;', "`", str_replace("'", "`", $current->nama)) . '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">NIK</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->nik ?></td>
+                                                <td align="left">' . $current->nik . '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Tempat Lahir</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->tempat_lahir ?></td>
+                                                <td align="left">' . $current->tempat_lahir . '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Tanggal Lahir</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= tgl_indo2($data->tgl_lahir) ?></td>
+                                                <td align="left">' . tgl_indo2($current->tgl_lahir) . '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Jenis Kelamin</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= ($data->jenis_kelamin == 'L') ? "Laki-Laki" : "Perempuan"; ?></td>
+                                                <td align="left">';
+            if ($current->jenis_kelamin == 'L') {
+                $html .= "Laki-Laki";
+            } else {
+                $html .= "Perempuan";
+            }
+            $html .= '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">No Handphone</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->no_hp ?></td>
+                                                <td align="left"><?= $current->no_hp ?></td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Email</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->email ?></td>
+                                                <td align="left"><?= $current->email ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -329,7 +335,7 @@ class Antrian extends BaseController
                                             <tr>
                                                 <td colspan="5" align="left">&nbsp;&nbsp;&nbsp;<b>Daftar Layanan</b></td>
                                                 <td rowspan="6" style="border: none" width="10%">
-                                                    <img class="img" src="http://192.168.33.16:8020/generate?data=<?= base_url() ?>/verifiqrcode?token=<?= $data->id ?>" ec="H" style="width: 20mm; background-color: white; color: black;">
+                                                    <img class="img" src="http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcode?token=' . $current->id . '" ec="H" style="width: 20mm; background-color: white; color: black;">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -337,20 +343,20 @@ class Antrian extends BaseController
                                                 <td width="30%" align="">Kode Permohonan</td>
                                                 <td width="5%" align="center">:</td>
                                                 <td width="60%" align="left">
-                                                    <?= $data->kode_permohonan ?>
+                                                    ' . $current->kode_permohonan . '
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td align="">Nama Layanan</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->layanan ?></td>
+                                                <td align="left">' . $current->layanan . '</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td align="">Jenis Layanan</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $data->jenis ?></td>
+                                                <td align="left">' . $current->jenis . '</td>
                                             </tr>
                                         </tbody>
                                     </table>
