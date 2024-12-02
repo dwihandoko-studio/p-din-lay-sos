@@ -105,7 +105,7 @@
                         <td width="30%" align="">Kode Permohonan</td>
                         <td width="5%" align="center">:</td>
                         <td width="60%" align="left">
-                            <span class="badge badge-info"><?= $data->kode_permohonan ?></span>
+                            <?= $data->kode_permohonan ?>
                         </td>
                     </tr>
                     <tr>
