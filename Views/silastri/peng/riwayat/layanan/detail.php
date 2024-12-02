@@ -494,7 +494,10 @@
                                                                 <h5 class="mb-4">5</h5>
                                                             </div>
                                                             <div class="event-down-icon">
-                                                                <i class="bx bx-timer h1 text-primary down-arrow-icon"></i>
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light w-sm">
+                                                                    <i class="mdi mdi-download d-block font-size-16"></i> Download
+                                                                </button>
+                                                                <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
                                                             </div>
 
                                                             <div class="mt-3 px-3">
