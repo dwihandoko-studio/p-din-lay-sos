@@ -26,7 +26,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Data Riwayat Permohonan</h4> 
+                        <h4 class="card-title mb-4">Data Riwayat Permohonan</h4>
                         <div data-simplebar="init" style="max-height: 420px;">
                             <div class="simplebar-wrapper" style="margin: 0px;">
                                 <div class="simplebar-height-auto-observer-wrapper">
@@ -212,9 +212,9 @@
                         // );
                     }
                 } else {
-                    const ulPengaduan = document.querySelector('.datas-permohonan');
+                    const ulPermohonan = document.querySelector('.datas-permohonan');
                     for (let index = 0; index < resul.data.length; index++) {
-                        ulPengaduan.appendChild('<li class="event-list">' +
+                        ulPermohonan.appendChild('<li class="event-list">' +
                             '<div class="event-timeline-dot">' +
                             '<i class="' + resul.data[index].icon + ' font-size-18"></i>' +
                             '</div>' +
