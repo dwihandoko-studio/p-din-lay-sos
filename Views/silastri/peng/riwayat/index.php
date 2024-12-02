@@ -220,7 +220,7 @@
 
                         // Set the inner HTML of the <li> element
                         liElement.innerHTML = `
-                            <a href="javascript:alert("This is a default alert!");">
+                            <a href="<?= base_url('peng/riwayat/detailLayanan') ?>?id=${resul.data[index].id_permohonan}">
                             <div class="event-timeline-dot">
                                 <i class="bx bx-right-arrow-circle font-size-18"></i>
                             </div>
