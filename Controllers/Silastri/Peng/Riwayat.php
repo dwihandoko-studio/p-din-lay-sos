@@ -180,6 +180,10 @@ class Riwayat extends BaseController
                     $data['status_permohonan'] = 'proses';
                 } else if ((int)$current1->status_permohonan === 5) {
                     $data['status_permohonan'] = 'pengesahan';
+                    $fileSelesai = $this->_db->table('_file_tte')->where('id', $current1->id)->get()->getRowObject();
+                    if ($fileSelesai) {
+                        $data['file_selesai'] = $fileSelesai;
+                    }
                 } else {
                     $data['status_permohonan'] = 'ditolak';
                 }

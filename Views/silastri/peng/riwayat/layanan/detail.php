@@ -494,7 +494,7 @@
                                                                 <h5 class="mb-4">5</h5>
                                                             </div>
                                                             <div class="event-down-icon">
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light w-sm">
+                                                                <button type="button" onclick="downloadPDF('<?= isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' ?>','<?= $data->kode_permohonan ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
                                                                     <i class="mdi mdi-download d-block font-size-16"></i> Download
                                                                 </button>
                                                                 <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
@@ -618,6 +618,16 @@
 <script src="<?= base_url() ?>/assets/libs/owl.carousel/owl.carousel.min.js"></script>
 
 <script>
+    function downloadPDF(pdf, filename) {
+        // const linkSource = `data:application/pdf;base64,${pdf}`;
+        const linkSource = `data:application/octet-stream;base64,${pdf}`;
+        const downloadLink = document.createElement("a");
+        const fileName = filename;
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+    }
+
     function ambilId(id) {
         return document.getElementById(id);
     }
