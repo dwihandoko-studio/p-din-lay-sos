@@ -268,8 +268,7 @@ class Antrian extends BaseController
                                 <div class="row">
                                     <div style="text-align: center;margin-top: 30px; border:1px solid black;">
                                         <h3 style="margin: 0rem;font-size: 14px;">KARTU TANDA DAFTAR LAYANAN</h3>
-                                        <h3 style="margin: 0rem;font-size: 14px;">USULAN PENCAIRAN TUNJANGAN PROFESI GURU (TPG)</h3>
-                                        <h3 style="margin: 0rem;font-size: 12px;">NOMOR: ';
+                                        <h3 style="margin: 0rem;font-size: 12px;">NOMOR : ';
             $html   .=                          $current->kode_permohonan;
             $html   .=                          '</h3>
                                     </div>
@@ -319,12 +318,12 @@ class Antrian extends BaseController
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">No Handphone</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $current->no_hp ?></td>
+                                                <td align="left">' . $current->no_hp . '</td>
                                             </tr>
                                             <tr>
                                                 <td align="" style="padding-left: 10px;">Email</td>
                                                 <td align="center">:</td>
-                                                <td align="left"><?= $current->email ?></td>
+                                                <td align="left">' . $current->email . '</td>
                                             </tr>
                                         </tbody>
                                     </table>
