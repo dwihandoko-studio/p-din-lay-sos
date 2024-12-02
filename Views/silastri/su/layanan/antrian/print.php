@@ -70,7 +70,7 @@
                     <tr>
                         <td align="" style="padding-left: 10px;">Tanggal Lahir</td>
                         <td align="center">:</td>
-                        <td align="left"><?= tgl_indo2($data->tanggal_lahir) ?></td>
+                        <td align="left"><?= tgl_indo2($data->tgl_lahir) ?></td>
                     </tr>
                     <tr>
                         <td align="" style="padding-left: 10px;">Jenis Kelamin</td>
