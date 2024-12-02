@@ -335,7 +335,7 @@ class Antrian extends BaseController
                                             <tr>
                                                 <td colspan="5" align="left">&nbsp;&nbsp;&nbsp;<b>Daftar Layanan</b></td>
                                                 <td rowspan="6" style="border: none" width="10%">
-                                                    <img class="img" src="http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcode?token=' . $current->id . '" ec="H" style="width: 20mm; background-color: white; color: black;">
+                                                    <img class="image-responsive" width="100px" height="100px" src="' . $qrCode . '"/>
                                                 </td>
                                             </tr>
                                             <tr>
