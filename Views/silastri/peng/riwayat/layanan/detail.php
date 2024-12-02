@@ -137,14 +137,7 @@
                                 </div>
                             <?php } ?>
                         </div>
-                        <hr />
-                        <div class="row mt-2">
-                            <div class="col-lg-12">
-                                <button type="button" onclick="actionTolak(this)" class="btn btn-danger waves-effect waves-light">Tolak Permohonan</button>
-                                <!-- <button type="button" onclick="actionApproveTemp(this)" class="btn btn-success waves-effect waves-light">Proses Lanjutkan Ke TTE Kadis</button> -->
-                                <button type="button" onclick="actionApproveUpload(this)" class="btn btn-success waves-effect waves-light">Lanjutkan Proses</button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
