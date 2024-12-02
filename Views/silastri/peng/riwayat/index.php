@@ -220,24 +220,26 @@
 
                         // Set the inner HTML of the <li> element
                         liElement.innerHTML = `
-        <div class="event-timeline-dot">
-            <i class="bx bx-right-arrow-circle font-size-18"></i>
-        </div>
-        <div class="d-flex">
-            <div class="flex-shrink-0 me-3">
-                <div class="avatar-xs">
-                    <div class="avatar-title bg-primary text-primary bg-soft rounded-circle">
-                        <i class="${resul.data[index].icon} font-size-14"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-grow-1">
-                <div>${resul.data[index].keterangan}
-                    <p class="text-muted mb-0">${getTimeAgo(resul.data[index].created_at)}</p>
-                </div>
-            </div>
-        </div>
-    `;
+                            <a href="javascript:alert("This is a default alert!");">
+                            <div class="event-timeline-dot">
+                                <i class="bx bx-right-arrow-circle font-size-18"></i>
+                            </div>
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-xs">
+                                        <div class="avatar-title bg-primary text-primary bg-soft rounded-circle">
+                                            <i class="${resul.data[index].icon} font-size-14"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div>${resul.data[index].keterangan}
+                                        <p class="text-muted mb-0">${getTimeAgo(resul.data[index].created_at)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        `;
 
                         // Append the <li> element to the <ul> element
                         ulPermohonan.appendChild(liElement);
