@@ -98,7 +98,7 @@
                     <tr>
                         <td colspan="5" align="left">&nbsp;&nbsp;&nbsp;<b>Daftar Layanan</b></td>
                         <td rowspan="6" style="border: none" width="10%">
-                            <img class="img" src="http://192.168.33.16:8020/generate?data=<?= base_url() ?>/verifiqrcode?token=<?= $data->id ?>" ec="H" style="width: 25mm; background-color: white; color: black;">
+                            <img class="img" src="http://192.168.33.16:8020/generate?data=<?= base_url() ?>/verifiqrcode?token=<?= $data->id ?>" ec="H" style="width: 20mm; background-color: white; color: black;">
                         </td>
                     </tr>
                     <tr>
