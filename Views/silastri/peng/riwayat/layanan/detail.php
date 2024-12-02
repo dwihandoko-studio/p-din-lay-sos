@@ -612,7 +612,7 @@
 <?= $this->section('scriptBottom'); ?>
 <script src="<?= base_url() ?>/assets/libs/select2/js/select2.min.js"></script>
 <script src="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-<script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="<?= base_url() ?>/assets/libs/owl.carousel/owl.carousel.min.js"></script>
 
 <script>
     function ambilId(id) {
@@ -631,7 +631,22 @@
     }
 
     $(document).ready(function() {
-
+        $("#timeline-carousel").owlCarousel({
+            items: 1,
+            loop: !1,
+            margin: 0,
+            nav: !0,
+            navText: ["<i class='mdi mdi-chevron-left'></i>", "<i class='mdi mdi-chevron-right'></i>"],
+            dots: !1,
+            responsive: {
+                576: {
+                    items: 3
+                },
+                768: {
+                    items: 6
+                }
+            }
+        });
     });
 </script>
 <?= $this->endSection(); ?>
@@ -639,6 +654,11 @@
 <?= $this->section('scriptTop'); ?>
 <link href="<?= base_url() ?>/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+<link href="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.carousel.min.css">
+
+<link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.theme.default.min.css">
 
 <style>
     .preview-image-upload {
