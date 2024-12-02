@@ -1,15 +1,11 @@
-<?php ob_start();
-// $siswa = json_decode($data->details);
-?>
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-<link rel="stylesheet" href="<?= base_url(''); ?>/assets/css/bootstrap.min.css">
-<link rel="shortcut icon" href="<?= base_url(''); ?>/favicon/favicon.ico">
-
 <!DOCTYPE html>
 
 <html>
 
 <head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <link rel="stylesheet" href="<?= base_url(''); ?>/assets/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="<?= base_url(''); ?>/favicon/favicon.ico">
     <title>BUKTI DAFTAR LAYANAN <?= $data->layanan ?></title>
     <style>
         @page {
@@ -20,10 +16,15 @@
             margin: 20px;
         }
     </style>
+    <script type="text/javascript">
+        function printpage() {
+            window.print();
+        }
+    </script>
 </head>
 
-<body>
-    <div style="border: 2px  dashed #cbd4dd;">
+<body topmargin="0" leftmargin="0" onload="printpage()">
+    <div style=" border: 2px dashed #cbd4dd;">
         <div style="max-width: 100%; padding-top: 12px; padding-bottom: 5px; padding-left: 10px; padding-right: 8px;">
             <table width="100%" style="border: solid #cbd4dd; font-size: 12px">
                 <tr>
@@ -124,25 +125,8 @@
                 </tbody>
             </table>
         </div>
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-<?php
-$html = ob_get_clean();
-require_once "/var/www/vendor/autoload.php";
-
-$tanggalLnya = date('Y');
-
-use Dompdf\Dompdf;
-
-$dompdf = new Dompdf();
-$options = $dompdf->getOptions();
-$options->set(array('isRemoteEnabled' => true));
-$dompdf->setOptions($options);
-$dompdf->loadHtml($html);
-$dompdf->setPaper('PENDAFTARAN', 'portrait');
-$dompdf->render();
-$dompdf->stream("DAFTAR_LAYANAN_" . $data->kode_permohonan . ".pdf", array("Attachment" => false));
-exit(0);
-?>
