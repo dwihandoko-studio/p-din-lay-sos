@@ -117,6 +117,78 @@ class Riwayat extends BaseController
         return view('silastri/peng/riwayat/index', $data);
     }
 
+    public function detailLayanan()
+    {
+        $id = htmlspecialchars($this->request->getGet('id'), true);
+
+        $current = $this->_db->table('_permohonan_temp a')
+            ->select("a.*, 
+                b.nik as nik_pemohon, 
+                b.kk as kk, 
+                b.email as email, 
+                b.no_hp as no_hp, 
+                b.tempat_lahir, 
+                b.tgl_lahir, 
+                b.jenis_kelamin, 
+                b.alamat, 
+                c.id as id_kecamatan, 
+                c.kecamatan as nama_kecamatan, 
+                d.id as id_kelurahan, 
+                d.kelurahan as nama_kelurahan")
+            ->join('_profil_users_tb b', 'b.id = a.user_id')
+            ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+            ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+            ->where(['a.id' => $id])->get()->getRowObject();
+
+        if ($current) {
+            $data['data'] = $current;
+            switch ($current->layanan) {
+                case 'LKS':
+                    $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+                    return view('silastri/peng/riwayat/layanan/detail_lks', $data);
+                    break;
+
+                default:
+                    return view('silastri/peng/riwayat/layanan/detail', $data);
+                    break;
+            }
+        } else {
+            $current1 = $this->_db->table('_permohonan a')
+                ->select("a.*, 
+                b.nik as nik_pemohon, 
+                b.kk as kk, 
+                b.email as email, 
+                b.no_hp as no_hp, 
+                b.tempat_lahir, 
+                b.tgl_lahir, 
+                b.jenis_kelamin, 
+                b.alamat, 
+                c.id as id_kecamatan, 
+                c.kecamatan as nama_kecamatan, 
+                d.id as id_kelurahan, 
+                d.kelurahan as nama_kelurahan")
+                ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                ->where(['a.id' => $id])->get()->getRowObject();
+            if ($current1) {
+                $data['data'] = $current1;
+                switch ($current1->layanan) {
+                    case 'LKS':
+                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current1->id)->get()->getRowObject();
+                        return view('silastri/peng/riwayat/layanan/detail_lks', $data);
+                        break;
+
+                    default:
+                        return view('silastri/peng/riwayat/layanan/detail', $data);
+                        break;
+                }
+            } else {
+                return view('404');
+            }
+        }
+    }
+
     public function getNotifShowed()
     {
         $Profilelib = new Profilelib();
