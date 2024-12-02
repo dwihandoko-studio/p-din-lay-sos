@@ -369,5 +369,6 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+            <a href="<?= base_url('silastri/peng/permohonan/proses/printPdf') . '?id=' . $data->id ?>" target="_blank" class="btn btn-primary waves-effect">Download / Print</a>
         </div>
     <?php } ?>
