@@ -332,6 +332,7 @@ class Antrian extends BaseController
                     $builder = $this->_db->table('_permohonan');
                     $builder->where('id', $id)->update([
                         'status_permohonan' => 5,
+                        'date_tte' => $dateNya,
                         'updated_at' => $dateNya,
                     ]);
                     if ($this->_db->affectedRows() > 0) {

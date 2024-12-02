@@ -248,8 +248,8 @@ class Proses extends BaseController
             $date = date('Y-m-d H:i:s');
 
             $oldData['updated_at'] = $date;
-            $oldData['date_approve'] = $date;
-            $oldData['admin_approve'] = $user->data->id;
+            $oldData['date_proses'] = $date;
+            $oldData['admin_proses'] = $user->data->id;
             $oldData['status_permohonan'] = 2;
 
             $contentCreator = [
@@ -392,8 +392,8 @@ class Proses extends BaseController
             $date = date('Y-m-d H:i:s');
 
             $oldData['updated_at'] = $date;
-            $oldData['date_approve'] = $date;
-            $oldData['admin_approve'] = $user->data->id;
+            $oldData['date_proses'] = $date;
+            $oldData['admin_proses'] = $user->data->id;
             $oldData['status_permohonan'] = 2;
 
             $this->_db->transBegin();
