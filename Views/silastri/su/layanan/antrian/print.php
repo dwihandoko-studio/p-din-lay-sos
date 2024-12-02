@@ -130,7 +130,7 @@
 </html>
 <?php
 $html = ob_get_clean();
-require_once ROOTPATH . "vendor/autoload.php";
+require_once "require_once(/var/www/vendor/autoload.php)";
 
 $tanggalLnya = date('Y');
 
