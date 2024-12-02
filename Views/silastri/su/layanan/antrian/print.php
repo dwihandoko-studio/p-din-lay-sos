@@ -33,9 +33,8 @@
                     </td>
                     <td style="text-align: center;">
                         <span style="margin-top: 8px; font-size: 20px;">KARTU TANDA DAFTAR LAYANAN</span><br>
-                        <span style="margin-top: 8px; font-size: 18px;">DINAS SOSIAL</span><br>
-                        <span style="margin-top: 8px; font-size: 18px;">KABUPATEN LAMPUNG TENGAH</span><br>
-                        <span style="margin-top: 8px; font-size: 16;">PROVINSI LAMPUNG</span>
+                        <span style="margin-top: 8px; font-size: 18px;">DINAS SOSIAL KABUPATEN LAMPUNG TENGAH</span><br>
+                        <span style="margin-top: 8px; font-size: 18px;">PROVINSI LAMPUNG</span><br>
                     </td>
                 </tr>
             </table>
