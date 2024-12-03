@@ -233,7 +233,13 @@ function nama_bulan($tgl)
 function hari($tgl)
 {
 	$hari = array(
-		0 => 'Minggu', 1 => 'Senin', 2 => 'Selasa', 3 => 'Rabu', 4 => 'Kamis', 5 => 'Jumat', 6 => 'Sabtu'
+		0 => 'Minggu',
+		1 => 'Senin',
+		2 => 'Selasa',
+		3 => 'Rabu',
+		4 => 'Kamis',
+		5 => 'Jumat',
+		6 => 'Sabtu'
 	);
 	$dayofweek = date('w', $tgl);
 	return $hari[$dayofweek];
@@ -857,6 +863,18 @@ function getGrantedAccessLayanan($user_id)
 	}
 
 	return [""];
+}
+
+function cekGrantedPengaduan($user_id, $bidang)
+{
+	// SELECT COUNT(*) as total FROM _tb_pendaftar WHERE peserta_didik_id = ? AND via_jalur = 'PELIMPAHAN'
+	$db      = \Config\Database::connect();
+
+	$grandted = $db->table('hak_access_pengaduan')->where(['user_id' => $user_id, 'bidang' => $bidang])->get()->getRowObject();
+	if (!$grandted) {
+		return false;
+	}
+	return true;
 }
 
 function getBidangNaungan($user_id)

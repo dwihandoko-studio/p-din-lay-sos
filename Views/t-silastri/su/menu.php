@@ -20,6 +20,7 @@
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "peksos") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/peksos') ?>" key="t-masterdata-refsdm">Referensi SDM</a></li>
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "p3ke") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/padandtks') ?>" key="t-masterdata-refsdm">Referensi Padan DTKS</a></li>
                         <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "accesspengguna") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/accesspengguna') ?>" key="t-masterdata-accesspengguna">Akses Pengguna</a></li>
+                        <li><a <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "accesspengaduan") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/su/masterdata/accesspengaduan') ?>" key="t-masterdata-accesspengaduan">Akses Pengaduan</a></li>
                     </ul>
                 </li>
                 <li <?= ($uri->getSegment(2) == "su" && $uri->getSegment(3) == "layanan") ? ' class="mm-active"' : '' ?>>
