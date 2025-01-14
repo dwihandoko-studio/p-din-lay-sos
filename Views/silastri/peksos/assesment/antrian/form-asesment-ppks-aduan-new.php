@@ -1892,7 +1892,7 @@
         function loadKategoriPPKS(selectElement, groupId) {
             $.ajax({
                 url: './getKategoriPpks', // Replace with your actual endpoint
-                type: 'GET',
+                type: 'POST',
                 data: {
                     group_id: groupId
                 },
