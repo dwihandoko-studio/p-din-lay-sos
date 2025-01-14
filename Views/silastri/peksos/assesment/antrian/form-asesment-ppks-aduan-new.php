@@ -398,13 +398,24 @@
                 <h4>Kondisi PPKS</h4>
                 <div class="col-lg-12 mb-2 mt-2">
                     <div id="ppks-container">
-                        <table border="1" width="100%">
+                        <table border="1" width="100%" role="grid">
+                            <thead>
+                                <tr>
+                                    <th width="43%" scope="col">Group PPKS</th>
+                                    <th width="43%" scope="col">Kategori PPKS</th>
+                                    <th width="14%" scope="col">Aksi</th>
+                                </tr>
+                            </thead>
                             <tbody id="ppks-rows">
                                 <tr class="ppks-row" data-row="1">
-                                    <td width="43%">
+                                    <td>
                                         <div class="col-lg-12 mb-2 mt-2">
-                                            <label class="form-label">Group PPKS:</label>
-                                            <select class="form-control select2 select2-table group_ppks" name="_group_ppks[]" style="width: 100%">
+                                            <label for="group_ppks_1" class="form-label">Group PPKS:</label>
+                                            <select class="form-control select2 select2-table group_ppks"
+                                                id="group_ppks_1"
+                                                name="_group_ppks[]"
+                                                style="width: 100%"
+                                                aria-label="Pilih Group PPKS">
                                                 <option value=""> --- Pilih Group PPKS --- </option>
                                                 <?php if (isset($group_ppks)) { ?>
                                                     <?php if (count($group_ppks) > 0) { ?>
@@ -414,34 +425,42 @@
                                                     <?php } ?>
                                                 <?php } ?>
                                             </select>
-                                            <div class="help-block"></div>
+                                            <div class="help-block help-block-ppks" role="alert"></div>
                                         </div>
                                     </td>
-                                    <td width="43%">
+                                    <td>
                                         <div class="col-lg-12 mb-2 mt-2">
-                                            <label class="form-label">Kategori PPKS:</label>
-                                            <select class="form-control select2 select2-table kategori_ppks" name="_kategori_ppks[]" style="width: 100%">
+                                            <label for="kategori_ppks_1" class="form-label">Kategori PPKS:</label>
+                                            <select class="form-control select2 select2-table kategori_ppks"
+                                                id="kategori_ppks_1"
+                                                name="_kategori_ppks[]"
+                                                style="width: 100%"
+                                                aria-label="Pilih Kategori PPKS">
                                                 <option value=""> --- Pilih Kategori PPKS --- </option>
                                             </select>
-                                            <div class="help-block"></div>
+                                            <div class="help-block help-block-ppks" role="alert"></div>
                                         </div>
                                     </td>
-                                    <td width="14%">
+                                    <td>
                                         <div class="col-lg-12 mb-2 mt-2">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light mt-4 btn-add-row-ppks">
-                                                <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
+                                            <button type="button"
+                                                class="btn btn-primary waves-effect waves-light mt-4 btn-add-row-ppks"
+                                                aria-label="Tambah baris baru">
+                                                <i class="fas fa-plus font-size-16 align-middle me-2" aria-hidden="true"></i> Tambah
                                             </button>
-                                            <button type="button" class="btn btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks" style="display: none;">
-                                                <i class="fas fa-trash font-size-16 align-middle me-2"></i> Hapus
+                                            <button type="button"
+                                                class="btn btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks"
+                                                style="display: none;"
+                                                aria-label="Hapus baris ini">
+                                                <i class="fas fa-trash font-size-16 align-middle me-2" aria-hidden="true"></i> Hapus
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
 
-                    <!-- <table border="1" width="100%">
+                        <!-- <table border="1" width="100%">
                         <tr>
                             <td width="43%">
                                 <div class="col-lg-12 mb-2 mt-2">
@@ -477,411 +496,411 @@
                             </td>
                         </tr>
                     </table> -->
-                </div>
+                    </div>
 
-                <div class="col-lg-4 mb-2 mt-2">
-                    <label class="form-label">Kondisi Fisik PPKS:</label>
-                    <select class="form-control select2 kondisi_fisik_ppks" id="_kondisi_fisik_ppks" name="_kondisi_fisik_ppks" style="width: 100%">
-                        <option value=""> --- Pilih --- </option>
-                        <option value="Sehat"> Sehat </option>
-                        <option value="Sakit"> Sakit </option>
-                    </select>
-                    <div class="help-block _kondisi_fisik_ppks"></div>
-                </div>
-                <div class="col-lg-8">
-                    <label class="col-form-label">Jelaskan Kondisi Fisik (Penjelasan terkait kondisi kesehatan, kemampuan mobilitas, dst):</label>
-                    <textarea rows="3" class="form-control" id="_detail_kondisi_fisik_ppks" name="_detail_kondisi_fisik_ppks"></textarea>
-                    <div class="help-block _detail_kondisi_fisik_ppks"></div>
-                </div>
-                <hr style="margin-top: 10px;" />
-                <h4>Kondisi Perekonomi</h4>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_penghasilan_ekonomi" class="col-form-label">Rata - Rata Penghasilan Kepala Keluarga Perbulan:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 penghasilan_ekonomi" id="_penghasilan_ekonomi" name="_penghasilan_ekonomi" style="width: 100%">
+                    <div class="col-lg-4 mb-2 mt-2">
+                        <label class="form-label">Kondisi Fisik PPKS:</label>
+                        <select class="form-control select2 kondisi_fisik_ppks" id="_kondisi_fisik_ppks" name="_kondisi_fisik_ppks" style="width: 100%">
                             <option value=""> --- Pilih --- </option>
-                            <option value="1">Lebih dari 3 Jt</option>
-                            <option value="2">500 Rb s/d 3 Jt</option>
-                            <option value="3">Kurang dari 500 Rb</option>
+                            <option value="Sehat"> Sehat </option>
+                            <option value="Sakit"> Sakit </option>
                         </select>
-                        <div class="help-block _penghasilan_ekonomi"></div>
+                        <div class="help-block _kondisi_fisik_ppks"></div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_penghasilan_makan_ekonomi" class="col-form-label">Penghasilan dan Makan:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 penghasilan_makan_ekonomi" id="_penghasilan_makan_ekonomi" name="_penghasilan_makan_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Sebagaian besar untuk investasi</option>
-                            <option value="2">Sebagian besar untuk konsumsi dasar</option>
-                        </select>
-                        <div class="help-block _penghasilan_makan_ekonomi"></div>
+                    <div class="col-lg-8">
+                        <label class="col-form-label">Jelaskan Kondisi Fisik (Penjelasan terkait kondisi kesehatan, kemampuan mobilitas, dst):</label>
+                        <textarea rows="3" class="form-control" id="_detail_kondisi_fisik_ppks" name="_detail_kondisi_fisik_ppks"></textarea>
+                        <div class="help-block _detail_kondisi_fisik_ppks"></div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_makan_ekonomi" class="col-form-label">Makan:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 makan_ekonomi" id="_makan_ekonomi" name="_makan_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Tiga kali/hari</option>
-                            <option value="2">Dua kali/hari</option>
-                            <option value="3">Satu kali/hari</option>
-                        </select>
-                        <div class="help-block _makan_ekonomi"></div>
+                    <hr style="margin-top: 10px;" />
+                    <h4>Kondisi Perekonomi</h4>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_penghasilan_ekonomi" class="col-form-label">Rata - Rata Penghasilan Kepala Keluarga Perbulan:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 penghasilan_ekonomi" id="_penghasilan_ekonomi" name="_penghasilan_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Lebih dari 3 Jt</option>
+                                <option value="2">500 Rb s/d 3 Jt</option>
+                                <option value="3">Kurang dari 500 Rb</option>
+                            </select>
+                            <div class="help-block _penghasilan_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_kemampuan_pakaian_ekonomi" class="col-form-label">Kemampuan membeli pakaian:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 kemampuan_pakaian_ekonomi" id="_kemampuan_pakaian_ekonomi" name="_kemampuan_pakaian_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Tiga kali pertahun</option>
-                            <option value="2">Dua kali pertahun</option>
-                            <option value="3">Satu kali pertahun</option>
-                        </select>
-                        <div class="help-block _kemampuan_pakaian_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_penghasilan_makan_ekonomi" class="col-form-label">Penghasilan dan Makan:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 penghasilan_makan_ekonomi" id="_penghasilan_makan_ekonomi" name="_penghasilan_makan_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Sebagaian besar untuk investasi</option>
+                                <option value="2">Sebagian besar untuk konsumsi dasar</option>
+                            </select>
+                            <div class="help-block _penghasilan_makan_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_tempat_tinggal_ekonomi" class="col-form-label">Tempat Tinggal Saat ini:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 tempat_tinggal_ekonomi" id="_tempat_tinggal_ekonomi" name="_tempat_tinggal_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Milik sendiri</option>
-                            <option value="2">Sewa</option>
-                            <option value="3">Menumpang</option>
-                            <option value="4">Lembaga</option>
-                            <option value="5">Terlantar / Menggelandang</option>
-                        </select>
-                        <div class="help-block _tempat_tinggal_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_makan_ekonomi" class="col-form-label">Makan:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 makan_ekonomi" id="_makan_ekonomi" name="_makan_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Tiga kali/hari</option>
+                                <option value="2">Dua kali/hari</option>
+                                <option value="3">Satu kali/hari</option>
+                            </select>
+                            <div class="help-block _makan_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_tinggal_bersama_ekonomi" class="col-form-label">Tinggal Bersama:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 tinggal_bersama_ekonomi" id="_tinggal_bersama_ekonomi" name="_tinggal_bersama_ekonomi" style="width: 100%" onchange="changeTinggalBersamaEkonomi(this)">
-                            <option value="">&nbsp;</option>
-                            <option value="Sendiri"> Sendiri </option>
-                            <option value="Keluarga Inti">Keluarga Inti </option>
-                            <option value="Keluarga Besar">Keluarga Besar </option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                        <input type="text" style="display: none; margin-top: 10px;" class="form-control tinggal_bersama_ekonomi-detail" id="_tinggal_bersama_ekonomi_detail" name="_tinggal_bersama_ekonomi_detail" placeholder="Input tinggal bersama..." onfocusin="inputFocus(this);">
-                        <div class="help-block _tinggal_bersama_ekonomi"></div>
-                        <div class="help-block _tinggal_bersama_ekonomi_detail"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_kemampuan_pakaian_ekonomi" class="col-form-label">Kemampuan membeli pakaian:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 kemampuan_pakaian_ekonomi" id="_kemampuan_pakaian_ekonomi" name="_kemampuan_pakaian_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Tiga kali pertahun</option>
+                                <option value="2">Dua kali pertahun</option>
+                                <option value="3">Satu kali pertahun</option>
+                            </select>
+                            <div class="help-block _kemampuan_pakaian_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_luas_lantai_ekonomi" class="col-form-label">Luas lantai (yang beratap) bangunan tempat tinggal:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 luas_lantai_ekonomi" id="_luas_lantai_ekonomi" name="_luas_lantai_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Lebih dari 8 m²</option>
-                            <option value="2">Sampai dengan 8 m²</option>
-                        </select>
-                        <div class="help-block _luas_lantai_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_tempat_tinggal_ekonomi" class="col-form-label">Tempat Tinggal Saat ini:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 tempat_tinggal_ekonomi" id="_tempat_tinggal_ekonomi" name="_tempat_tinggal_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Milik sendiri</option>
+                                <option value="2">Sewa</option>
+                                <option value="3">Menumpang</option>
+                                <option value="4">Lembaga</option>
+                                <option value="5">Terlantar / Menggelandang</option>
+                            </select>
+                            <div class="help-block _tempat_tinggal_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_jenis_lantai_ekonomi" class="col-form-label">Jenis lantai terluas:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 jenis_lantai_ekonomi" id="_jenis_lantai_ekonomi" name="_jenis_lantai_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Marmer / Granit</option>
-                            <option value="2">Keramik</option>
-                            <option value="3">Parket / Vinil / Permadani</option>
-                            <option value="4">Ubin / Tegel / Teraso kondisi bagus</option>
-                            <option value="5">Kayu / Papan kualitas tinggi</option>
-                            <option value="6">Ubin / Tegel / Teraso kondisi jelek/rusak</option>
-                            <option value="7">Kayu / Papan kualitas rendah</option>
-                            <option value="8">Semen/bata merah</option>
-                            <option value="9">Bambu</option>
-                            <option value="10">Tanah</option>
-                        </select>
-                        <div class="help-block _jenis_lantai_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_tinggal_bersama_ekonomi" class="col-form-label">Tinggal Bersama:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 tinggal_bersama_ekonomi" id="_tinggal_bersama_ekonomi" name="_tinggal_bersama_ekonomi" style="width: 100%" onchange="changeTinggalBersamaEkonomi(this)">
+                                <option value="">&nbsp;</option>
+                                <option value="Sendiri"> Sendiri </option>
+                                <option value="Keluarga Inti">Keluarga Inti </option>
+                                <option value="Keluarga Besar">Keluarga Besar </option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <input type="text" style="display: none; margin-top: 10px;" class="form-control tinggal_bersama_ekonomi-detail" id="_tinggal_bersama_ekonomi_detail" name="_tinggal_bersama_ekonomi_detail" placeholder="Input tinggal bersama..." onfocusin="inputFocus(this);">
+                            <div class="help-block _tinggal_bersama_ekonomi"></div>
+                            <div class="help-block _tinggal_bersama_ekonomi_detail"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_jenis_dinding_ekonomi" class="col-form-label">Jenis dinding terluas:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 jenis_dinding_ekonomi" id="_jenis_dinding_ekonomi" name="_jenis_dinding_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Tembok kondisi bagus</option>
-                            <option value="2">Plesteran anyaman bambu/kawat kondisi bagus</option>
-                            <option value="3">Kayu/papan/gypsum/GRC kondisi bagus</option>
-                            <option value="4">Tembok kondisi jelek/rusak</option>
-                            <option value="5">Plesteran anyaman bambu/kawat kondisi jelek/rusak</option>
-                            <option value="6">Kayu/papan/gypsum/GRC kondisi jelek/rusak</option>
-                            <option value="7">Anyaman bamboo</option>
-                            <option value="8">Batang kayu</option>
-                            <option value="9">Bambu</option>
-                        </select>
-                        <div class="help-block _jenis_dinding_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_luas_lantai_ekonomi" class="col-form-label">Luas lantai (yang beratap) bangunan tempat tinggal:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 luas_lantai_ekonomi" id="_luas_lantai_ekonomi" name="_luas_lantai_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Lebih dari 8 m²</option>
+                                <option value="2">Sampai dengan 8 m²</option>
+                            </select>
+                            <div class="help-block _luas_lantai_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_jenis_atap_ekonomi" class="col-form-label">Jenis Atap terluas:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 jenis_atap_ekonomi" id="_jenis_atap_ekonomi" name="_jenis_atap_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Beton / Genteng beton</option>
-                            <option value="2">Genteng keramik</option>
-                            <option value="3">Genteng metal</option>
-                            <option value="4">Genteng tanah liat kondisi bagus</option>
-                            <option value="5">Genteng tanah liat kondisi jelek</option>
-                            <option value="6">Seng</option>
-                            <option value="7">Sirap</option>
-                            <option value="8">Jerami/ijuk/daun daunan/rumbia</option>
-                            <option value="9">Asbes</option>
-                            <option value="10">Lainnya</option>
-                        </select>
-                        <div class="help-block _jenis_atap_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_jenis_lantai_ekonomi" class="col-form-label">Jenis lantai terluas:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 jenis_lantai_ekonomi" id="_jenis_lantai_ekonomi" name="_jenis_lantai_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Marmer / Granit</option>
+                                <option value="2">Keramik</option>
+                                <option value="3">Parket / Vinil / Permadani</option>
+                                <option value="4">Ubin / Tegel / Teraso kondisi bagus</option>
+                                <option value="5">Kayu / Papan kualitas tinggi</option>
+                                <option value="6">Ubin / Tegel / Teraso kondisi jelek/rusak</option>
+                                <option value="7">Kayu / Papan kualitas rendah</option>
+                                <option value="8">Semen/bata merah</option>
+                                <option value="9">Bambu</option>
+                                <option value="10">Tanah</option>
+                            </select>
+                            <div class="help-block _jenis_lantai_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_milik_wc_ekonomi" class="col-form-label">Kepemilikan dan penggunaan fasilitas tempat buang air besar:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 milik_wc_ekonomi" id="_milik_wc_ekonomi" name="_milik_wc_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Ada, digunakan hanya anggota keluarga sendiri</option>
-                            <option value="2">Ada, digunakan bersama anggota keluarga dari keluarga tertentu</option>
-                            <option value="3">Ada, di MCK komunal</option>
-                            <option value="4">Ada, di MCK umum/siapapun menggunakan</option>
-                            <option value="5">Ada, anggota keluarga tidak menggunakan</option>
-                            <option value="6">Tidak ada fasilitas</option>
-                        </select>
-                        <div class="help-block _milik_wc_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_jenis_dinding_ekonomi" class="col-form-label">Jenis dinding terluas:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 jenis_dinding_ekonomi" id="_jenis_dinding_ekonomi" name="_jenis_dinding_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Tembok kondisi bagus</option>
+                                <option value="2">Plesteran anyaman bambu/kawat kondisi bagus</option>
+                                <option value="3">Kayu/papan/gypsum/GRC kondisi bagus</option>
+                                <option value="4">Tembok kondisi jelek/rusak</option>
+                                <option value="5">Plesteran anyaman bambu/kawat kondisi jelek/rusak</option>
+                                <option value="6">Kayu/papan/gypsum/GRC kondisi jelek/rusak</option>
+                                <option value="7">Anyaman bamboo</option>
+                                <option value="8">Batang kayu</option>
+                                <option value="9">Bambu</option>
+                            </select>
+                            <div class="help-block _jenis_dinding_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_jenis_wc_ekonomi" class="col-form-label">Jenis kloset (tempat buang air besar):</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 jenis_wc_ekonomi" id="_jenis_wc_ekonomi" name="_jenis_wc_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Duduk / Leher angsa</option>
-                            <option value="2">Plengsengan</option>
-                            <option value="3">Cemplung/cubluk</option>
-                            <option value="4">Tidak pakai</option>
-                        </select>
-                        <div class="help-block _jenis_wc_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_jenis_atap_ekonomi" class="col-form-label">Jenis Atap terluas:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 jenis_atap_ekonomi" id="_jenis_atap_ekonomi" name="_jenis_atap_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Beton / Genteng beton</option>
+                                <option value="2">Genteng keramik</option>
+                                <option value="3">Genteng metal</option>
+                                <option value="4">Genteng tanah liat kondisi bagus</option>
+                                <option value="5">Genteng tanah liat kondisi jelek</option>
+                                <option value="6">Seng</option>
+                                <option value="7">Sirap</option>
+                                <option value="8">Jerami/ijuk/daun daunan/rumbia</option>
+                                <option value="9">Asbes</option>
+                                <option value="10">Lainnya</option>
+                            </select>
+                            <div class="help-block _jenis_atap_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_penerangan_ekonomi" class="col-form-label">Sumber penerangan utama:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 penerangan_ekonomi" id="_penerangan_ekonomi" name="_penerangan_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Listrik PLN > 2.200 volt ampere</option>
-                            <option value="2">Listrik PLN 2.200 volt ampere</option>
-                            <option value="3">Listrik PLN 1.300 volt ampere</option>
-                            <option value="4">Listrik Non PLN > 2.200 volt ampere</option>
-                            <option value="5">Listrik Non PLN 2.200 volt ampere</option>
-                            <option value="6">Listrik Non PLN 1.300 volt ampere</option>
-                            <option value="7">Listrik PLN 900 volt ampere</option>
-                            <option value="8">Listrik Non PLN 900 volt ampere</option>
-                            <option value="9">Listrik PLN 450 volt ampere</option>
-                            <option value="10">Listrik Non PLN 450 volt ampere</option>
-                            <option value="11">Bukan Listrik</option>
-                        </select>
-                        <div class="help-block _penerangan_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_milik_wc_ekonomi" class="col-form-label">Kepemilikan dan penggunaan fasilitas tempat buang air besar:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 milik_wc_ekonomi" id="_milik_wc_ekonomi" name="_milik_wc_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Ada, digunakan hanya anggota keluarga sendiri</option>
+                                <option value="2">Ada, digunakan bersama anggota keluarga dari keluarga tertentu</option>
+                                <option value="3">Ada, di MCK komunal</option>
+                                <option value="4">Ada, di MCK umum/siapapun menggunakan</option>
+                                <option value="5">Ada, anggota keluarga tidak menggunakan</option>
+                                <option value="6">Tidak ada fasilitas</option>
+                            </select>
+                            <div class="help-block _milik_wc_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_sumber_air_minum_ekonomi" class="col-form-label">Sumber air minum:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 sumber_air_minum_ekonomi" id="_sumber_air_minum_ekonomi" name="_sumber_air_minum_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Air kemasan bermerk</option>
-                            <option value="2">Air isi ulang</option>
-                            <option value="3">Leding</option>
-                            <option value="4">Sumur bor/pompa</option>
-                            <option value="5">Sumur terlindungi</option>
-                            <option value="6">Sumur tak terlindungi</option>
-                            <option value="7">Mata air terlindungi</option>
-                            <option value="8">Mata air tak terlindungi</option>
-                            <option value="9">Air permukaan (Sungai/danau/waduk/kolam/irigasi)</option>
-                            <option value="10">Air hujan</option>
-                            <option value="11">Lainnya</option>
-                        </select>
-                        <div class="help-block _sumber_air_minum_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_jenis_wc_ekonomi" class="col-form-label">Jenis kloset (tempat buang air besar):</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 jenis_wc_ekonomi" id="_jenis_wc_ekonomi" name="_jenis_wc_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Duduk / Leher angsa</option>
+                                <option value="2">Plengsengan</option>
+                                <option value="3">Cemplung/cubluk</option>
+                                <option value="4">Tidak pakai</option>
+                            </select>
+                            <div class="help-block _jenis_wc_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_bahan_bakar_masak_ekonomi" class="col-form-label">Bahan bakar/energi utama untuk memasak:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 bahan_bakar_masak_ekonomi" id="_bahan_bakar_masak_ekonomi" name="_bahan_bakar_masak_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Listrik</option>
-                            <option value="2">Gas > 3 Kg</option>
-                            <option value="3">Gas kota / biogas</option>
-                            <option value="4">Gas 3 Kg</option>
-                            <option value="5">Minyak tanah</option>
-                            <option value="6">Briket</option>
-                            <option value="7">Arang</option>
-                            <option value="8">Kayu bakar</option>
-                            <option value="9">Tidak memasak di rumah</option>
-                        </select>
-                        <div class="help-block _bahan_bakar_masak_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_penerangan_ekonomi" class="col-form-label">Sumber penerangan utama:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 penerangan_ekonomi" id="_penerangan_ekonomi" name="_penerangan_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Listrik PLN > 2.200 volt ampere</option>
+                                <option value="2">Listrik PLN 2.200 volt ampere</option>
+                                <option value="3">Listrik PLN 1.300 volt ampere</option>
+                                <option value="4">Listrik Non PLN > 2.200 volt ampere</option>
+                                <option value="5">Listrik Non PLN 2.200 volt ampere</option>
+                                <option value="6">Listrik Non PLN 1.300 volt ampere</option>
+                                <option value="7">Listrik PLN 900 volt ampere</option>
+                                <option value="8">Listrik Non PLN 900 volt ampere</option>
+                                <option value="9">Listrik PLN 450 volt ampere</option>
+                                <option value="10">Listrik Non PLN 450 volt ampere</option>
+                                <option value="11">Bukan Listrik</option>
+                            </select>
+                            <div class="help-block _penerangan_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_berobat_ekonomi" class="col-form-label">Kemampuan berobat:</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 berobat_ekonomi" id="_berobat_ekonomi" name="_berobat_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Dokter</option>
-                            <option value="2">Mantri</option>
-                            <option value="3">Puskesmas</option>
-                        </select>
-                        <div class="help-block _berobat_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_sumber_air_minum_ekonomi" class="col-form-label">Sumber air minum:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 sumber_air_minum_ekonomi" id="_sumber_air_minum_ekonomi" name="_sumber_air_minum_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Air kemasan bermerk</option>
+                                <option value="2">Air isi ulang</option>
+                                <option value="3">Leding</option>
+                                <option value="4">Sumur bor/pompa</option>
+                                <option value="5">Sumur terlindungi</option>
+                                <option value="6">Sumur tak terlindungi</option>
+                                <option value="7">Mata air terlindungi</option>
+                                <option value="8">Mata air tak terlindungi</option>
+                                <option value="9">Air permukaan (Sungai/danau/waduk/kolam/irigasi)</option>
+                                <option value="10">Air hujan</option>
+                                <option value="11">Lainnya</option>
+                            </select>
+                            <div class="help-block _sumber_air_minum_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-2 mt-2">
-                    <label for="_rata_pendidikan_ekonomi" class="col-form-label">Rata - rata tingkat pendidikan keluarga (berdasarkan kepemilikan ijazah):</label>
-                    <div class="col-sm-8 mt-2">
-                        <select class="form-control select2 rata_pendidikan_ekonomi" id="_rata_pendidikan_ekonomi" name="_rata_pendidikan_ekonomi" style="width: 100%">
-                            <option value=""> --- Pilih --- </option>
-                            <option value="1">Perguruan tinggi</option>
-                            <option value="2">SMA/sederajat</option>
-                            <option value="3">SMP/sederajat</option>
-                            <option value="4">SD/sederajat</option>
-                            <option value="5">Tidak bersekolah</option>
-                        </select>
-                        <div class="help-block _rata_pendidikan_ekonomi"></div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_bahan_bakar_masak_ekonomi" class="col-form-label">Bahan bakar/energi utama untuk memasak:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 bahan_bakar_masak_ekonomi" id="_bahan_bakar_masak_ekonomi" name="_bahan_bakar_masak_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Listrik</option>
+                                <option value="2">Gas > 3 Kg</option>
+                                <option value="3">Gas kota / biogas</option>
+                                <option value="4">Gas 3 Kg</option>
+                                <option value="5">Minyak tanah</option>
+                                <option value="6">Briket</option>
+                                <option value="7">Arang</option>
+                                <option value="8">Kayu bakar</option>
+                                <option value="9">Tidak memasak di rumah</option>
+                            </select>
+                            <div class="help-block _bahan_bakar_masak_ekonomi"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Catatan tambahan lainnya:</label>
-                    <textarea rows="3" class="form-control" id="_catatan_tambahan" name="_catatan_tambahan"></textarea>
-                    <div class="help-block _catatan_tambahan"></div>
-                </div>
-                <hr style="margin-top: 10px;" />
-                <h4>Laporan Assesment</h4>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Gambaran Kasus:</label>
-                    <textarea rows="3" class="form-control" id="_gambaran_kasus" name="_gambaran_kasus"></textarea>
-                    <div class="help-block _gambaran_kasus"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Kondisi Kesehatan:</label>
-                    <textarea rows="3" class="form-control" id="_kondisi_kesehatan" name="_kondisi_kesehatan"></textarea>
-                    <div class="help-block _kondisi_kesehatan"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Kondisi Perekonomian Keluarga:</label>
-                    <textarea rows="3" class="form-control" id="_kondisi_perekonomian_keluarga" name="_kondisi_perekonomian_keluarga"></textarea>
-                    <div class="help-block _kondisi_perekonomian_keluarga"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Permasalahan:</label>
-                    <textarea rows="3" class="form-control" id="_permasalahan" name="_permasalahan"></textarea>
-                    <div class="help-block _permasalahan"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Identifikasi Kebutuhan:</label>
-                    <textarea rows="3" class="form-control" id="_identifikasi_kebutuhan" name="_identifikasi_kebutuhan"></textarea>
-                    <div class="help-block _identifikasi_kebutuhan"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Intervernsi yang Telah Dilakukan:</label>
-                    <textarea rows="3" class="form-control" id="_intervensi_telah_dilakukan" name="_intervensi_telah_dilakukan"></textarea>
-                    <div class="help-block _intervensi_telah_dilakukan"></div>
-                </div>
-                <div class="col-lg-12">
-                    <label class="col-form-label">Uraian Saran / Rencana Tindak Lanjut:</label>
-                    <textarea rows="3" class="form-control" id="_saran_tindak_lanjut" name="_saran_tindak_lanjut"></textarea>
-                    <div class="help-block _saran_tindak_lanjut"></div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="row mt-2">
-                        <label for="_tembusan" class="col-sm-3 col-form-label">Tembusan :</label>
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-check form-checkbox-outline form-check-primary mb-3">
-                                        <input class="form-check-input" type="checkbox" id="_kepala_dinas" name="_kepala_dinas" onchange="changeTembusan(this)">
-                                        <label class="form-check-label" for="_kepala_dinas">
-                                            Kepala Dinas
-                                        </label>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_berobat_ekonomi" class="col-form-label">Kemampuan berobat:</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 berobat_ekonomi" id="_berobat_ekonomi" name="_berobat_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Dokter</option>
+                                <option value="2">Mantri</option>
+                                <option value="3">Puskesmas</option>
+                            </select>
+                            <div class="help-block _berobat_ekonomi"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-2 mt-2">
+                        <label for="_rata_pendidikan_ekonomi" class="col-form-label">Rata - rata tingkat pendidikan keluarga (berdasarkan kepemilikan ijazah):</label>
+                        <div class="col-sm-8 mt-2">
+                            <select class="form-control select2 rata_pendidikan_ekonomi" id="_rata_pendidikan_ekonomi" name="_rata_pendidikan_ekonomi" style="width: 100%">
+                                <option value=""> --- Pilih --- </option>
+                                <option value="1">Perguruan tinggi</option>
+                                <option value="2">SMA/sederajat</option>
+                                <option value="3">SMP/sederajat</option>
+                                <option value="4">SD/sederajat</option>
+                                <option value="5">Tidak bersekolah</option>
+                            </select>
+                            <div class="help-block _rata_pendidikan_ekonomi"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Catatan tambahan lainnya:</label>
+                        <textarea rows="3" class="form-control" id="_catatan_tambahan" name="_catatan_tambahan"></textarea>
+                        <div class="help-block _catatan_tambahan"></div>
+                    </div>
+                    <hr style="margin-top: 10px;" />
+                    <h4>Laporan Assesment</h4>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Gambaran Kasus:</label>
+                        <textarea rows="3" class="form-control" id="_gambaran_kasus" name="_gambaran_kasus"></textarea>
+                        <div class="help-block _gambaran_kasus"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Kondisi Kesehatan:</label>
+                        <textarea rows="3" class="form-control" id="_kondisi_kesehatan" name="_kondisi_kesehatan"></textarea>
+                        <div class="help-block _kondisi_kesehatan"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Kondisi Perekonomian Keluarga:</label>
+                        <textarea rows="3" class="form-control" id="_kondisi_perekonomian_keluarga" name="_kondisi_perekonomian_keluarga"></textarea>
+                        <div class="help-block _kondisi_perekonomian_keluarga"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Permasalahan:</label>
+                        <textarea rows="3" class="form-control" id="_permasalahan" name="_permasalahan"></textarea>
+                        <div class="help-block _permasalahan"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Identifikasi Kebutuhan:</label>
+                        <textarea rows="3" class="form-control" id="_identifikasi_kebutuhan" name="_identifikasi_kebutuhan"></textarea>
+                        <div class="help-block _identifikasi_kebutuhan"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Intervernsi yang Telah Dilakukan:</label>
+                        <textarea rows="3" class="form-control" id="_intervensi_telah_dilakukan" name="_intervensi_telah_dilakukan"></textarea>
+                        <div class="help-block _intervensi_telah_dilakukan"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Saran / Rencana Tindak Lanjut:</label>
+                        <textarea rows="3" class="form-control" id="_saran_tindak_lanjut" name="_saran_tindak_lanjut"></textarea>
+                        <div class="help-block _saran_tindak_lanjut"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row mt-2">
+                            <label for="_tembusan" class="col-sm-3 col-form-label">Tembusan :</label>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-check form-checkbox-outline form-check-primary mb-3">
+                                            <input class="form-check-input" type="checkbox" id="_kepala_dinas" name="_kepala_dinas" onchange="changeTembusan(this)">
+                                            <label class="form-check-label" for="_kepala_dinas">
+                                                Kepala Dinas
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="mb-3 _kepala_dinas_pilihan_content" id="_kepala_dinas_pilihan_content" style="display: none;">
-                                        <label class="form-label">Pilih Kepala Dinas :</label>
-                                        <select class="form-control select2" id="_kepala_dinas_pilihan" name="_kepala_dinas_pilihan" style="width: 100%">
-                                            <option value=""> --- Pilih Kepala Dinas --- </option>
-                                            <?php if (isset($dinass)) { ?>
-                                                <?php if (count($dinass) > 0) { ?>
-                                                    <?php foreach ($dinass as $key => $value) { ?>
-                                                        <option value="<?= $value->id ?>"><?= $value->instansi ?></option>
+                                    <div class="col-sm-8">
+                                        <div class="mb-3 _kepala_dinas_pilihan_content" id="_kepala_dinas_pilihan_content" style="display: none;">
+                                            <label class="form-label">Pilih Kepala Dinas :</label>
+                                            <select class="form-control select2" id="_kepala_dinas_pilihan" name="_kepala_dinas_pilihan" style="width: 100%">
+                                                <option value=""> --- Pilih Kepala Dinas --- </option>
+                                                <?php if (isset($dinass)) { ?>
+                                                    <?php if (count($dinass) > 0) { ?>
+                                                        <?php foreach ($dinass as $key => $value) { ?>
+                                                            <option value="<?= $value->id ?>"><?= $value->instansi ?></option>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </select>
-                                        <div class="help-block _kepala_dinas_pilihan"></div>
+                                            </select>
+                                            <div class="help-block _kepala_dinas_pilihan"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-check form-checkbox-outline form-check-primary mb-3">
+                                            <input class="form-check-input" type="checkbox" id="_camat" name="_camat" onchange="changeTembusan(this)">
+                                            <label class="form-check-label" for="_camat">
+                                                Camat
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="mb-3 _camat_pilihan_content" id="_camat_pilihan_content" style="display: none;">
+                                            <label class="form-label">Pilih Camat :</label>
+                                            <select class="form-control select2 camat_pilihan" onchange="changeKecamatan(this)" id="_camat_pilihan" name="_camat_pilihan" style="width: 100%">
+                                                <option value=""> --- Pilih Camat --- </option>
+                                                <?php if (isset($kecamatans)) { ?>
+                                                    <?php if (count($kecamatans) > 0) { ?>
+                                                        <?php foreach ($kecamatans as $key => $value) { ?>
+                                                            <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="help-block _camat_pilihan"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-check form-checkbox-outline form-check-primary mb-3">
+                                            <input class="form-check-input" type="checkbox" id="_kampung" name="_kampung" onchange="changeTembusan(this)">
+                                            <label class="form-check-label" for="_kampung">
+                                                Kepala Kampung
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="mb-3 _kampung_pilihan_content" id="_kampung_pilihan_content" style="display: none;">
+                                            <label class="form-label">Pilih Kepala Kampung :</label>
+                                            <select class="form-control select2 kampung_pilihan" id="_kampung_pilihan" name="_kampung_pilihan" style="width: 100%">
+                                                <option value=""> --- Pilih Kepala Kampung --- </option>
+                                                <?php if (isset($kelurahans)) { ?>
+                                                    <?php if (count($kelurahans) > 0) { ?>
+                                                        <?php foreach ($kelurahans as $key => $value) { ?>
+                                                            <option value="<?= $value->id ?>"><?= $value->kelurahan ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="help-block _kampung_pilihan"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-check form-checkbox-outline form-check-primary mb-3">
-                                        <input class="form-check-input" type="checkbox" id="_camat" name="_camat" onchange="changeTembusan(this)">
-                                        <label class="form-check-label" for="_camat">
-                                            Camat
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="mb-3 _camat_pilihan_content" id="_camat_pilihan_content" style="display: none;">
-                                        <label class="form-label">Pilih Camat :</label>
-                                        <select class="form-control select2 camat_pilihan" onchange="changeKecamatan(this)" id="_camat_pilihan" name="_camat_pilihan" style="width: 100%">
-                                            <option value=""> --- Pilih Camat --- </option>
-                                            <?php if (isset($kecamatans)) { ?>
-                                                <?php if (count($kecamatans) > 0) { ?>
-                                                    <?php foreach ($kecamatans as $key => $value) { ?>
-                                                        <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            <?php } ?>
-                                        </select>
-                                        <div class="help-block _camat_pilihan"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-check form-checkbox-outline form-check-primary mb-3">
-                                        <input class="form-check-input" type="checkbox" id="_kampung" name="_kampung" onchange="changeTembusan(this)">
-                                        <label class="form-check-label" for="_kampung">
-                                            Kepala Kampung
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="mb-3 _kampung_pilihan_content" id="_kampung_pilihan_content" style="display: none;">
-                                        <label class="form-label">Pilih Kepala Kampung :</label>
-                                        <select class="form-control select2 kampung_pilihan" id="_kampung_pilihan" name="_kampung_pilihan" style="width: 100%">
-                                            <option value=""> --- Pilih Kepala Kampung --- </option>
-                                            <?php if (isset($kelurahans)) { ?>
-                                                <?php if (count($kelurahans) > 0) { ?>
-                                                    <?php foreach ($kelurahans as $key => $value) { ?>
-                                                        <option value="<?= $value->id ?>"><?= $value->kelurahan ?></option>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            <?php } ?>
-                                        </select>
-                                        <div class="help-block _kampung_pilihan"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <!-- <div class="col-lg-12 mt-2">
+                    <!-- <div class="col-lg-12 mt-2">
                     <label class="col-form-label"><b>Bantuan Sosial yang Pernah / Sedang diterima saat ini:</b></label>
                     <table id="table-bansos-identitas-1" class="table-bansos-identitas-1">
                         <thead>
@@ -899,79 +918,79 @@
                         </tbody>
                     </table>
                 </div> -->
-                <div class="col-lg-12">
-                    <h4>Lampiran Dokumen Assesment</h4>
-                    <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen assesment (KTP, KK, Foto Rumah 4 Sisi).</p>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_ktp" class="form-label">Lampiran KTP : </label>
-                                <input class="form-control" type="file" id="_file_ktp" name="_file_ktp" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_ktp', 'KTP PPKS')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_ktp" for="_file_ktp"></div>
+                    <div class="col-lg-12">
+                        <h4>Lampiran Dokumen Assesment</h4>
+                        <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen assesment (KTP, KK, Foto Rumah 4 Sisi).</p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_ktp" class="form-label">Lampiran KTP : </label>
+                                    <input class="form-control" type="file" id="_file_ktp" name="_file_ktp" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_ktp', 'KTP PPKS')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_ktp" for="_file_ktp"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_kk" class="form-label">Lampiran Kartu Keluarga : </label>
-                                <input class="form-control" type="file" id="_file_kk" name="_file_kk" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_kk', 'Kartu Keluarga')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_kk" for="_file_kk"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_kk" class="form-label">Lampiran Kartu Keluarga : </label>
+                                    <input class="form-control" type="file" id="_file_kk" name="_file_kk" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_kk', 'Kartu Keluarga')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_kk" for="_file_kk"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_foto_ppks" class="form-label">Lampiran Foto PPKS : </label>
-                                <input class="form-control" type="file" id="_file_foto_ppks" name="_file_foto_ppks" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_foto_ppks', 'Foto PPKS')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_foto_ppks" for="_file_foto_ppks"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_foto_ppks" class="form-label">Lampiran Foto PPKS : </label>
+                                    <input class="form-control" type="file" id="_file_foto_ppks" name="_file_foto_ppks" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_foto_ppks', 'Foto PPKS')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_foto_ppks" for="_file_foto_ppks"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_rumah_depan" class="form-label">Lampiran Foto Rumah Tampak Depan : </label>
-                                <input class="form-control" type="file" id="_file_rumah_depan" name="_file_rumah_depan" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_depan', 'Foto Rumah Tampak Depan')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_rumah_depan" for="_file_rumah_depan"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_rumah_depan" class="form-label">Lampiran Foto Rumah Tampak Depan : </label>
+                                    <input class="form-control" type="file" id="_file_rumah_depan" name="_file_rumah_depan" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_depan', 'Foto Rumah Tampak Depan')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_rumah_depan" for="_file_rumah_depan"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_rumah_kiri" class="form-label">Lampiran Foto Rumah Tampak Kiri : </label>
-                                <input class="form-control" type="file" id="_file_rumah_kiri" name="_file_rumah_kiri" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_kiri', 'Foto Rumah Tampak Kiri')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_rumah_kiri" for="_file_rumah_kiri"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_rumah_kiri" class="form-label">Lampiran Foto Rumah Tampak Kiri : </label>
+                                    <input class="form-control" type="file" id="_file_rumah_kiri" name="_file_rumah_kiri" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_kiri', 'Foto Rumah Tampak Kiri')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_rumah_kiri" for="_file_rumah_kiri"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_rumah_kanan" class="form-label">Lampiran Foto Rumah Tampak Kanan : </label>
-                                <input class="form-control" type="file" id="_file_rumah_kanan" name="_file_rumah_kanan" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_kanan', 'Foto Rumah Tampak Kanan')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_rumah_kanan" for="_file_rumah_kanan"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_rumah_kanan" class="form-label">Lampiran Foto Rumah Tampak Kanan : </label>
+                                    <input class="form-control" type="file" id="_file_rumah_kanan" name="_file_rumah_kanan" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_kanan', 'Foto Rumah Tampak Kanan')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_rumah_kanan" for="_file_rumah_kanan"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_rumah_belakang" class="form-label">Lampiran Foto Rumah Tampak Belakang : </label>
-                                <input class="form-control" type="file" id="_file_rumah_belakang" name="_file_rumah_belakang" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_belakang', 'Foto Rumah Tampak Belakang')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_rumah_belakang" for="_file_rumah_belakang"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_rumah_belakang" class="form-label">Lampiran Foto Rumah Tampak Belakang : </label>
+                                    <input class="form-control" type="file" id="_file_rumah_belakang" name="_file_rumah_belakang" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_rumah_belakang', 'Foto Rumah Tampak Belakang')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_rumah_belakang" for="_file_rumah_belakang"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file_asset" class="form-label">Lampiran Foto Asset Yang Dimiliki : </label>
-                                <input class="form-control" type="file" id="_file_asset" name="_file_asset" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_asset', 'Foto Asset Yang Dimiliki')">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                <div class="help-block _file_asset" for="_file_asset"></div>
+                            <div class="col-lg-6">
+                                <div class="mt-3">
+                                    <label for="_file_asset" class="form-label">Lampiran Foto Asset Yang Dimiliki : </label>
+                                    <input class="form-control" type="file" id="_file_asset" name="_file_asset" onFocus="inputFocus(this);" accept="image/*" onchange="loadFile('_file_asset', 'Foto Asset Yang Dimiliki')">
+                                    <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                    <div class="help-block _file_asset" for="_file_asset"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr />
             </div>
-            <hr />
-        </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
@@ -1890,6 +1909,10 @@
         }
 
         function loadKategoriPPKS(selectElement, groupId) {
+            const loadingText = 'Memuat data...';
+            selectElement.html(`<option>${loadingText}</option>`);
+            selectElement.prop('disabled', true);
+
             $.ajax({
                 url: './getKategoriPpks', // Replace with your actual endpoint
                 type: 'POST',
@@ -1907,9 +1930,12 @@
                     }
 
                     selectElement.html(options);
+                    selectElement.prop('disabled', false);
                     selectElement.trigger('change');
                 },
                 error: function() {
+                    selectElement.html('<option value=""> --- Pilih Kategori PPKS --- </option>');
+                    selectElement.prop('disabled', false);
                     Swal.fire({
                         title: 'Error!',
                         text: 'Gagal mengambil data kategori PPKS',
@@ -1920,8 +1946,18 @@
             });
         }
 
+        function initializeSelect2(context = document) {
+            $(context).find('.select2-table').each(function() {
+                const select = $(this);
+                select.select2({
+                    dropdownParent: ".contentApproveBodyModal",
+                    width: '100%'
+                });
+            });
+        }
+
         $(document).ready(function() {
-            initSelect2("select2-table", ".contentApproveBodyModal");
+            // initSelect2("select2-table", ".contentApproveBodyModal");
             initSelect2("_kecamatan_ktp", ".contentApproveBodyModal");
             initSelect2("_kelurahan_ktp", ".contentApproveBodyModal");
             initSelect2("_kecamatan_domisili", ".contentApproveBodyModal");
@@ -1931,6 +1967,8 @@
             initSelect2("_kepala_dinas_pilihan", ".contentApproveBodyModal");
             initSelect2("_camat_pilihan", ".contentApproveBodyModal");
             initSelect2("_kampung_pilihan", ".contentApproveBodyModal");
+
+            initializeSelect2();
 
             $("#btnAddRowBansosIdentitas").on("click", function() {
                 addRowIdentitas('table-bansos-identitas');
@@ -1955,26 +1993,20 @@
 
             $(document).on('click', '.btn-add-row-ppks', function() {
                 const container = $('#ppks-rows');
-                const newRow = container.find('.ppks-row').first().clone();
                 const rowCount = container.find('.ppks-row').length + 1;
-
-                // Reset selects
-                newRow.find('select').val('').trigger('change');
+                const newRow = createNewRow(rowCount);
 
                 // Show delete button for all rows
                 $('.btn-delete-row-ppks').show();
 
-                // Reset help blocks
-                newRow.find('.help-block-ppks').empty();
-
-                // Update row identifier
-                newRow.attr('data-row', rowCount);
-
                 // Append new row
                 container.append(newRow);
 
-                // Reinitialize select2 for new elements
-                newRow.find('.select2-table').select2();
+                // Initialize select2 for new row
+                initializeSelect2(newRow);
+
+                // Set focus to the new group select
+                newRow.find('.group_ppks').select2('focus');
             });
 
             // Delete row
@@ -1989,9 +2021,78 @@
                     if (container.find('.ppks-row').length === 1) {
                         container.find('.btn-delete-row-ppks').first().hide();
                     }
+
+                    // Renumber remaining rows
+                    updateRowNumbers();
                 }
             });
         });
+
+        function createNewRow(rowCount) {
+            const template = `
+        <tr class="ppks-row" data-row="${rowCount}">
+            <td>
+                <div class="col-lg-12 mb-2 mt-2">
+                    <label for="group_ppks_${rowCount}" class="form-label">Group PPKS:</label>
+                    <select class="form-control select2 select2-table group_ppks" 
+                            id="group_ppks_${rowCount}" 
+                            name="_group_ppks[]" 
+                            style="width: 100%"
+                            aria-label="Pilih Group PPKS">
+                        <option value=""> --- Pilih Group PPKS --- </option>
+                        <?php if (isset($group_ppks)) { ?>
+                            <?php if (count($group_ppks) > 0) { ?>
+                                <?php foreach ($group_ppks as $key => $value) { ?>
+                                    <option value="<?= $value->group_id ?>"><?= $value->group_name ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                    <div class="help-block" role="alert"></div>
+                </div>
+            </td>
+            <td>
+                <div class="col-lg-12 mb-2 mt-2">
+                    <label for="kategori_ppks_${rowCount}" class="form-label">Kategori PPKS:</label>
+                    <select class="form-control select2 select2-table kategori_ppks" 
+                            id="kategori_ppks_${rowCount}" 
+                            name="_kategori_ppks[]" 
+                            style="width: 100%"
+                            aria-label="Pilih Kategori PPKS">
+                        <option value=""> --- Pilih Kategori PPKS --- </option>
+                    </select>
+                    <div class="help-block" role="alert"></div>
+                </div>
+            </td>
+            <td>
+                <div class="col-lg-12 mb-2 mt-2">
+                    <button type="button" 
+                            class="btn btn-primary waves-effect waves-light mt-4 btn-add-row-ppks"
+                            aria-label="Tambah baris baru">
+                        <i class="fas fa-plus font-size-16 align-middle me-2" aria-hidden="true"></i> Tambah
+                    </button>
+                    <button type="button" 
+                            class="btn btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks"
+                            aria-label="Hapus baris ini">
+                        <i class="fas fa-trash font-size-16 align-middle me-2" aria-hidden="true"></i> Hapus
+                    </button>
+                </div>
+            </td>
+        </tr>
+    `;
+            return $(template);
+        }
+
+        function updateRowNumbers() {
+            $('#ppks-rows .ppks-row').each(function(index) {
+                const rowNum = index + 1;
+                $(this).attr('data-row', rowNum);
+                $(this).find('.group_ppks').attr('id', `group_ppks_${rowNum}`);
+                $(this).find('label').first().attr('for', `group_ppks_${rowNum}`);
+                $(this).find('.kategori_ppks').attr('id', `kategori_ppks_${rowNum}`);
+                $(this).find('label').last().attr('for', `kategori_ppks_${rowNum}`);
+            });
+        }
 
         function changeTembusan(event) {
             const kadis = $(event).attr('id');
