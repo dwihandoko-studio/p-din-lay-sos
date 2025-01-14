@@ -399,7 +399,7 @@
                 <div class="col-lg-12 mb-2 mt-2">
                     <table border="1" width="100%">
                         <tr>
-                            <td width="40%">
+                            <td width="43%">
                                 <div class="col-lg-12 mb-2 mt-2">
                                     <label class="form-label">Group PPKS:</label>
                                     <select class="form-control select2 group_ppks_1" id="_group_ppks_1" name="_group_ppks[]" style="width: 100%">
@@ -415,7 +415,7 @@
                                     <div class="help-block _group_ppks_1"></div>
                                 </div>
                             </td>
-                            <td width="40%">
+                            <td width="43%">
                                 <div class="col-lg-12 mb-2 mt-2">
                                     <label class="form-label">Kategori PPKS:</label>
                                     <select class="form-control select2 _kategori_ppks_1" id="_kategori_ppks_1" name="_kategori_ppks[]" style="width: 100%">
@@ -424,10 +424,12 @@
                                     <div class="help-block _kategori_ppks_1"></div>
                                 </div>
                             </td>
-                            <td width="20%">
-                                <button type="button" class="btn btn-primary waves-effect waves-light">
-                                    <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
-                                </button>
+                            <td width="14%">
+                                <div class="col-lg-12 mb-2 mt-2">
+                                    <button type="button" class="btn btn-primary waves-effect waves-light">
+                                        <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </table>
