@@ -1902,7 +1902,7 @@
 
                     if (response.data && response.data.length > 0) {
                         response.data.forEach(function(item) {
-                            options += `<option value="${item.id}">${item.name}</option>`;
+                            options += `<option value="${item.id}">${item.sub_jenis}</option>`;
                         });
                     }
 

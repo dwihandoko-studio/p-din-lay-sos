@@ -2596,6 +2596,50 @@ class Antrian extends BaseController
         }
     }
 
+    public function getKategoriPpks()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'group_id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Group Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('group_id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('group_id'), true);
+
+            $kategoris = $this->_db->table('ref_kategori_ppks')->where('group_id', $id)->orderBy('sub_jenis', 'ASC')->get()->getResult();
+
+            if (count($kategoris) > 0) {
+                $x['kategoris'] = $kategoris;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = $kategoris;
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
+                return json_encode($response);
+            }
+        }
+    }
+
     public function getSdm()
     {
         if ($this->request->getMethod() != 'post') {
