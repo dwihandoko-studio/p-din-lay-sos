@@ -258,6 +258,7 @@
                         <div class="col-sm-8 mt-2">
                             <select class="form-control select2 pekerjaan" id="_hubungan_pengampu" name="_hubungan_pengampu" style="width: 100%" onchange="changeHubungan(this)">
                                 <option value=""> --- Pilih Hubungan ---</option>
+                                <option value="Suami/Istri">Suami/Istri</option>
                                 <option value="Ayah">Ayah</option>
                                 <option value="Ibu">Ibu</option>
                                 <option value="Kakek">Kakek</option>
