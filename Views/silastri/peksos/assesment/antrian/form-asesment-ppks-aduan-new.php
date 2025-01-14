@@ -400,7 +400,7 @@
                     <table border="1">
                         <tr>
                             <td>
-                                <div class="col-lg-4 mb-2 mt-2">
+                                <div class="col-lg-12 mb-2 mt-2">
                                     <label class="form-label">Group PPKS:</label>
                                     <select class="form-control select2 group_ppks_1" id="_group_ppks_1" name="_group_ppks[]" style="width: 100%">
                                         <option value=""> --- Pilih Group PPKS --- </option>
@@ -416,7 +416,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="col-lg-4 mb-2 mt-2">
+                                <div class="col-lg-12 mb-2 mt-2">
                                     <label class="form-label">Kategori PPKS:</label>
                                     <select class="form-control select2 _kategori_ppks_1" id="_kategori_ppks_1" name="_kategori_ppks[]" style="width: 100%">
                                         <option value=""> --- Pilih Kategori PPKS --- </option>
