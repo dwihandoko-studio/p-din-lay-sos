@@ -398,7 +398,7 @@
                 <h4>Kondisi PPKS</h4>
                 <div class="col-lg-12 mb-2 mt-2">
                     <div id="ppks-container">
-                        <table border="1" width="100%" role="grid">
+                        <table class="table mb-0" width="100%" role="grid">
                             <thead>
                                 <tr>
                                     <th width="43%" scope="col">Group PPKS</th>
