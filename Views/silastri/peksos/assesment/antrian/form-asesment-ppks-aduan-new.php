@@ -426,7 +426,8 @@
                             </td>
                             <td width="14%">
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <button type="button" class="btn btn-primary waves-effect waves-light">
+                                    <!-- <label class="form-label">Aksi</label> -->
+                                    <button type="button" class="btn btn-primary waves-effect waves-light mt-2">
                                         <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
                                     </button>
                                 </div>
