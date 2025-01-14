@@ -403,7 +403,7 @@ class Antrian extends BaseController
                     ],
                 ];
 
-                $data['group_ppks'] = $this->_db->table('ref_kategori_ppks')->select("group_id, group_name")->orderBy('group_id', 'ASC')->get()->getResult();
+                $data['group_ppks'] = $this->_db->table('ref_kategori_ppks')->select("group_id, group_name")->groupBy('group_id')->orderBy('group_id', 'ASC')->get()->getResult();
 
                 $response = new \stdClass;
                 $response->status = 200;
