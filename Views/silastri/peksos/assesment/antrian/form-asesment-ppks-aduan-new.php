@@ -2067,14 +2067,14 @@
             <td>
                 <div class="col-lg-12 mb-2 mt-2">
                     <button type="button" 
-                            class="btn btn-primary waves-effect waves-light mt-4 btn-add-row-ppks"
+                            class="btn btn-sm btn-primary waves-effect waves-light mt-4 btn-add-row-ppks"
                             aria-label="Tambah baris baru">
-                        <i class="fas fa-plus font-size-16 align-middle me-2" aria-hidden="true"></i> Tambah
+                        <i class="fas fa-plus font-size-16 align-middle me-2" aria-hidden="true"></i>
                     </button>
                     <button type="button" 
-                            class="btn btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks"
+                            class="btn btn-sm btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks"
                             aria-label="Hapus baris ini">
-                        <i class="fas fa-trash font-size-16 align-middle me-2" aria-hidden="true"></i> Hapus
+                        <i class="fas fa-trash font-size-16 align-middle me-2" aria-hidden="true"></i>
                     </button>
                 </div>
             </td>
