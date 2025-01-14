@@ -1882,10 +1882,16 @@ function getNameKategoriPPKSNew($val)
 		$datas = "";
 		foreach ($data as $key => $value) {
 			if ($key == 0) {
-				$datas .= $value;
+				$datas .= $value->sub_jenis;
+				$datas .= '(';
+				$datas .= $value->jenis_ppks;
+				$datas .= ')';
 			} else {
 				$datas .= ", ";
-				$datas .= $value;
+				$datas .= $value->sub_jenis;
+				$datas .= '(';
+				$datas .= $value->jenis_ppks;
+				$datas .= ')';
 			}
 		}
 		return $datas;
