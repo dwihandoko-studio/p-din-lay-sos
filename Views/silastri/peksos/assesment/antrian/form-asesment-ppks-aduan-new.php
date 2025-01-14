@@ -1544,13 +1544,13 @@
                 document.querySelector('._pengeluaran_perbulan_pengampu').innerHTML = '';
             }
 
-            if (kategori_ppks.trim() === '') {
-                console.log(50);
-                isValid = false;
-                document.querySelector('._kategori_ppks').innerHTML = '<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">Kategori PPKS tidak boleh kosong.</li></ul>';
-            } else {
-                document.querySelector('._kategori_ppks').innerHTML = '';
-            }
+            // if (kategori_ppks.trim() === '') {
+            //     console.log(50);
+            //     isValid = false;
+            //     document.querySelector('._kategori_ppks').innerHTML = '<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">Kategori PPKS tidak boleh kosong.</li></ul>';
+            // } else {
+            //     document.querySelector('._kategori_ppks').innerHTML = '';
+            // }
 
             if (kondisi_fisik_ppks.trim() === '') {
                 console.log(51);
