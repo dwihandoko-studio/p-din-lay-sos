@@ -351,7 +351,7 @@ class Selesai extends BaseController
         $template_processor->setValue('ALAMAT_ADUAN', $dataAssesment['alamat_domisili_orang_assesment'] ?? "-");
         $template_processor->setValue('KECAMATAN_ADUAN', getNamaKecamatan($dataAssesment['kecamatan_domisili_orang_assesment']));
         $template_processor->setValue('KELURAHAN_ADUAN', getNamaKelurahan($dataAssesment['kelurahan_domisili_orang_assesment']));
-        $template_processor->setValue('KATEGORI_PPKS', getNameKategoriPPKS($dataAssesment['kategori_ppks']));
+        $template_processor->setValue('KATEGORI_PPKS', getNameKategoriPPKSNew($dataAssesment['kategori_ppks']));
 
         $kepersertaan_bansos_fix = [];
         if (count($kepersertaan_bansos) > 0) {
