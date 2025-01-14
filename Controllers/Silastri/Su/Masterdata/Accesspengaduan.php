@@ -246,4 +246,10 @@ class Accesspengaduan extends BaseController
             }
         }
     }
+
+    public function testIp()
+    {
+        var_dump($this->request->getIPAddress());
+        die;
+    }
 }

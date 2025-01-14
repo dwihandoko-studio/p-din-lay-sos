@@ -401,31 +401,27 @@
                         <tr>
                             <td>
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <label class="form-label">Kategori PPKS:</label>
-                                    <select class="form-control select2 kategori_ppks" id="_kategori_ppks_1" name="_kategori_ppks" style="width: 100%">
-                                        <option value=""> --- Pilih Kategori --- </option>
-                                        <?php if (isset($kategori_ppkss)) { ?>
-                                            <?php if (count($kategori_ppkss) > 0) { ?>
-                                                <?php foreach ($kategori_ppkss as $kat) { ?>
-                                                    <optgroup label="<?= $kat['name'] ?>">
-                                                        <?php foreach ($kat['value'] as $val) { ?>
-                                                            <option value="<?= $kat['id'] . '--' . $val ?>"><?= $val ?></option>
-                                                        <?php } ?>
-                                                    </optgroup>
+                                    <label class="form-label">Group PPKS:</label>
+                                    <select class="form-control select2 group_ppks_1" id="_group_ppks_1" name="_group_ppks[]" style="width: 100%">
+                                        <option value=""> --- Pilih Group PPKS --- </option>
+                                        <?php if (isset($group_ppks)) { ?>
+                                            <?php if (count($group_ppks) > 0) { ?>
+                                                <?php foreach ($group_ppks as $key => $value) { ?>
+                                                    <option value="<?= $value->group_id ?>"><?= $value->group_name ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
                                     </select>
-                                    <div class="help-block _kategori_ppks"></div>
+                                    <div class="help-block _group_ppks_1"></div>
                                 </div>
                             </td>
                             <td>
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <label class="form-label">Sub Kategori PPKS:</label>
-                                    <select class="form-control select2 sub_kategori_ppks" id="_sub_kategori_ppks_1" name="_sub_kategori_ppks[]" style="width: 100%">
-                                        <option value=""> --- Pilih Sub Kategori --- </option>
+                                    <label class="form-label">Kategori PPKS:</label>
+                                    <select class="form-control select2 _kategori_ppks_1" id="_kategori_ppks_1" name="_kategori_ppks[]" style="width: 100%">
+                                        <option value=""> --- Pilih Kategori PPKS --- </option>
                                     </select>
-                                    <div class="help-block _sub_kategori_ppks"></div>
+                                    <div class="help-block _kategori_ppks_1"></div>
                                 </div>
                             </td>
                             <td>
@@ -436,24 +432,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-lg-12 mb-2 mt-2">
-                    <label class="form-label">Kategori PPKS:</label>
-                    <select class="form-control select2 kategori_ppks" id="_kategori_ppks" name="_kategori_ppks" style="width: 100%">
-                        <option value=""> --- Pilih Kategori --- </option>
-                        <?php if (isset($kategori_ppkss)) { ?>
-                            <?php if (count($kategori_ppkss) > 0) { ?>
-                                <?php foreach ($kategori_ppkss as $kat) { ?>
-                                    <optgroup label="<?= $kat['name'] ?>">
-                                        <?php foreach ($kat['value'] as $val) { ?>
-                                            <option value="<?= $kat['id'] . '--' . $val ?>"><?= $val ?></option>
-                                        <?php } ?>
-                                    </optgroup>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                    <div class="help-block _kategori_ppks"></div>
-                </div>
+
                 <div class="col-lg-4 mb-2 mt-2">
                     <label class="form-label">Kondisi Fisik PPKS:</label>
                     <select class="form-control select2 kondisi_fisik_ppks" id="_kondisi_fisik_ppks" name="_kondisi_fisik_ppks" style="width: 100%">
