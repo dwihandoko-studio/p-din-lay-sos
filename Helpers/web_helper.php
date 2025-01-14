@@ -1869,6 +1869,48 @@ function getNameKategoriPPKS($val)
 	}
 }
 
+function getNameKategoriPPKSNew($val)
+{
+	$ppkss = explode(",", $val);
+
+	$db      = \Config\Database::connect();
+
+	$data = $db->table('ref_kategori_ppks')
+		->whereIn('id', $ppkss)
+		->get()->getResult();
+	if (count($data) > 0) {
+		$datas = "";
+		foreach ($data as $key => $value) {
+			if ($key == 0) {
+				$datas .= $value;
+			} else {
+				$datas .= ", ";
+				$datas .= $value;
+			}
+		}
+		return $datas;
+	}
+
+	return "-";
+
+
+
+	// try {
+	// 	$vals = explode("--", $val);
+	// 	if ($vals[0] == "1") {
+	// 		return "ANAK - " . $vals[1];
+	// 	} else if ($vals[0] == "2") {
+	// 		return "LANJUT USIA - " . $vals[1];
+	// 	} else if ($vals[0] == "3") {
+	// 		return "Penyandang Disabilitas - " . $vals[1];
+	// 	} else if ($vals[0] == "4") {
+	// 		return "BENCANA - " . $vals[1];
+	// 	}
+	// } catch (\Throwable $th) {
+	// 	return $val;
+	// }
+}
+
 function getNamePenghasilanEkonomi($val)
 {
 	try {

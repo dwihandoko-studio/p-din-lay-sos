@@ -949,12 +949,12 @@ class Antrian extends BaseController
                     'required' => 'Pengeluaran perbulan pengampu PPKS tidak boleh kosong. ',
                 ]
             ],
-            '_kategori_ppks' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Kategori PPKS tidak boleh kosong. ',
-                ]
-            ],
+            // '_kategori_ppks' => [
+            //     'rules' => 'required|trim',
+            //     'errors' => [
+            //         'required' => 'Kategori PPKS tidak boleh kosong. ',
+            //     ]
+            // ],
             '_kondisi_fisik_ppks' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -1290,7 +1290,7 @@ class Antrian extends BaseController
                 . $this->validator->getError('_status_kawin_pengampu')
                 . $this->validator->getError('_pekerjaan_pengampu')
                 . $this->validator->getError('_pengeluaran_perbulan_pengampu')
-                . $this->validator->getError('_kategori_ppks')
+                // . $this->validator->getError('_kategori_ppks')
                 . $this->validator->getError('_kondisi_fisik_ppks')
                 . $this->validator->getError('_detail_kondisi_fisik_ppks')
                 . $this->validator->getError('_penghasilan_ekonomi')
@@ -1333,6 +1333,10 @@ class Antrian extends BaseController
             $satuan_bansos_identitas = $this->request->getVar('satuan_bansos_identitas');
             $sumber_anggaran_identitas = $this->request->getVar('sumber_anggaran_identitas');
             $keterangan_identitas = $this->request->getVar('keterangan_identitas');
+
+            $kategori_ppkss = $this->request->getVar('_kategori_ppks');
+
+            $kategori_ppks = implode(",", $kategori_ppkss);
 
             $Profilelib = new Profilelib();
             $user = $Profilelib->user();
@@ -1431,7 +1435,7 @@ class Antrian extends BaseController
             $status_kawin_pengampu = htmlspecialchars($this->request->getVar('_status_kawin_pengampu'), true) ?? NULL;
             $pekerjaan_pengampu = htmlspecialchars($this->request->getVar('_pekerjaan_pengampu'), true) ?? NULL;
             $pengeluaran_perbulan_pengampu = htmlspecialchars($this->request->getVar('_pengeluaran_perbulan_pengampu'), true) ?? NULL;
-            $kategori_ppks = htmlspecialchars($this->request->getVar('_kategori_ppks'), true) ?? NULL;
+            // $kategori_ppks = htmlspecialchars($this->request->getVar('_kategori_ppks'), true) ?? NULL;
             $kondisi_fisik_ppks = htmlspecialchars($this->request->getVar('_kondisi_fisik_ppks'), true) ?? NULL;
             $detail_kondisi_fisik_ppks = htmlspecialchars($this->request->getVar('_detail_kondisi_fisik_ppks'), true) ?? NULL;
             $penghasilan_ekonomi = htmlspecialchars($this->request->getVar('_penghasilan_ekonomi'), true) ?? NULL;
@@ -2206,7 +2210,7 @@ class Antrian extends BaseController
         $template_processor->setValue('ALAMAT_ADUAN', $dataAssesment['alamat_domisili_orang_assesment'] ?? "-");
         $template_processor->setValue('KECAMATAN_ADUAN', getNamaKecamatan($dataAssesment['kecamatan_domisili_orang_assesment']));
         $template_processor->setValue('KELURAHAN_ADUAN', getNamaKelurahan($dataAssesment['kelurahan_domisili_orang_assesment']));
-        $template_processor->setValue('KATEGORI_PPKS', getNameKategoriPPKS($dataAssesment['kategori_ppks']));
+        $template_processor->setValue('KATEGORI_PPKS', getNameKategoriPPKSNew($dataAssesment['kategori_ppks']));
 
         $kepersertaan_bansos_fix = [];
         if (count($kepersertaan_bansos) > 0) {

@@ -415,7 +415,7 @@
                                                 id="group_ppks_1"
                                                 name="_group_ppks[]"
                                                 style="width: 100%"
-                                                aria-label="Pilih Group PPKS">
+                                                aria-label="Pilih Group PPKS" required>
                                                 <option value=""> --- Pilih Group PPKS --- </option>
                                                 <?php if (isset($group_ppks)) { ?>
                                                     <?php if (count($group_ppks) > 0) { ?>
@@ -435,7 +435,7 @@
                                                 id="kategori_ppks_1"
                                                 name="_kategori_ppks[]"
                                                 style="width: 100%"
-                                                aria-label="Pilih Kategori PPKS">
+                                                aria-label="Pilih Kategori PPKS" required>
                                                 <option value=""> --- Pilih Kategori PPKS --- </option>
                                             </select>
                                             <div class="help-block help-block-ppks" role="alert"></div>
@@ -1244,6 +1244,8 @@
                 document.querySelector('._dtks_identitas').innerHTML = '';
             }
 
+
+
             if (identitasRows.length > 0) {
 
                 identitasRows.forEach(function(row, index) {
@@ -2038,7 +2040,7 @@
                             id="group_ppks_${rowCount}" 
                             name="_group_ppks[]" 
                             style="width: 100%"
-                            aria-label="Pilih Group PPKS">
+                            aria-label="Pilih Group PPKS" required>
                         <option value=""> --- Pilih Group PPKS --- </option>
                         <?php if (isset($group_ppks)) { ?>
                             <?php if (count($group_ppks) > 0) { ?>
@@ -2058,7 +2060,7 @@
                             id="kategori_ppks_${rowCount}" 
                             name="_kategori_ppks[]" 
                             style="width: 100%"
-                            aria-label="Pilih Kategori PPKS">
+                            aria-label="Pilih Kategori PPKS" required>
                         <option value=""> --- Pilih Kategori PPKS --- </option>
                     </select>
                     <div class="help-block" role="alert"></div>
