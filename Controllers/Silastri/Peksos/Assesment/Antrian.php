@@ -407,7 +407,7 @@ class Antrian extends BaseController
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
                 $data['sdm'] = $this->_db->table('ref_sdm')->orderBy('jenis', 'ASC')->orderBy('nama', 'ASC')->get()->getResult();
-                $response->data = view('silastri/peksos/assesment/antrian/form-asesment-ppks-aduan', $data);
+                $response->data = view('silastri/peksos/assesment/antrian/form-asesment-ppks-aduan-new', $data);
             } else {
                 $oldData = $this->_db->table('_permohonan a')
                     ->select("a.*,b.peserta_spt, b.tgl_spt, b.lokasi_spt, c.kecamatan, c.alamat")
