@@ -1090,7 +1090,7 @@
             const pekerjaan_pengampu_detail = document.getElementById('_pekerjaan_pengampu_detail').value;
             const pengeluaran_perbulan_pengampu = document.getElementById('_pengeluaran_perbulan_pengampu').value;
 
-            const kategori_ppks = document.getElementById('_kategori_ppks').value;
+            // const kategori_ppks = document.getElementById('_kategori_ppks').value;
             const kondisi_fisik_ppks = document.getElementById('_kondisi_fisik_ppks').value;
             const detail_kondisi_fisik_ppks = document.getElementById('_detail_kondisi_fisik_ppks').value;
 
