@@ -397,12 +397,56 @@
                 <hr style="margin-top: 10px;" />
                 <h4>Kondisi PPKS</h4>
                 <div class="col-lg-12 mb-2 mt-2">
-                    <table border="1" width="100%">
+                    <div id="ppks-container">
+                        <table border="1" width="100%">
+                            <tbody id="ppks-rows">
+                                <tr class="ppks-row" data-row="1">
+                                    <td width="43%">
+                                        <div class="col-lg-12 mb-2 mt-2">
+                                            <label class="form-label">Group PPKS:</label>
+                                            <select class="form-control select2 select2-table group_ppks" name="_group_ppks[]" style="width: 100%">
+                                                <option value=""> --- Pilih Group PPKS --- </option>
+                                                <?php if (isset($group_ppks)) { ?>
+                                                    <?php if (count($group_ppks) > 0) { ?>
+                                                        <?php foreach ($group_ppks as $key => $value) { ?>
+                                                            <option value="<?= $value->group_id ?>"><?= $value->group_name ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="help-block"></div>
+                                        </div>
+                                    </td>
+                                    <td width="43%">
+                                        <div class="col-lg-12 mb-2 mt-2">
+                                            <label class="form-label">Kategori PPKS:</label>
+                                            <select class="form-control select2 select2-table kategori_ppks" name="_kategori_ppks[]" style="width: 100%">
+                                                <option value=""> --- Pilih Kategori PPKS --- </option>
+                                            </select>
+                                            <div class="help-block"></div>
+                                        </div>
+                                    </td>
+                                    <td width="14%">
+                                        <div class="col-lg-12 mb-2 mt-2">
+                                            <button type="button" class="btn btn-primary waves-effect waves-light mt-4 btn-add-row-ppks">
+                                                <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
+                                            </button>
+                                            <button type="button" class="btn btn-danger waves-effect waves-light mt-4 btn-delete-row-ppks" style="display: none;">
+                                                <i class="fas fa-trash font-size-16 align-middle me-2"></i> Hapus
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- <table border="1" width="100%">
                         <tr>
                             <td width="43%">
                                 <div class="col-lg-12 mb-2 mt-2">
                                     <label class="form-label">Group PPKS:</label>
-                                    <select class="form-control select2 group_ppks_1" id="_group_ppks_1" name="_group_ppks[]" style="width: 100%">
+                                    <select class="form-control select2 group_ppks_1" onchange="" id="_group_ppks_1" name="_group_ppks[]" style="width: 100%">
                                         <option value=""> --- Pilih Group PPKS --- </option>
                                         <?php if (isset($group_ppks)) { ?>
                                             <?php if (count($group_ppks) > 0) { ?>
@@ -426,14 +470,13 @@
                             </td>
                             <td width="14%">
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <!-- <label class="form-label">Aksi</label> -->
-                                    <button type="button" class="btn btn-primary waves-effect waves-light mt-2">
+                                    <button type="button" class="btn btn-primary waves-effect waves-light mt-4">
                                         <i class="fas fa-plus font-size-16 align-middle me-2"></i> Tambah
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                    </table>
+                    </table> -->
                 </div>
 
                 <div class="col-lg-4 mb-2 mt-2">
@@ -1846,7 +1889,39 @@
             }
         }
 
+        function loadKategoriPPKS(selectElement, groupId) {
+            $.ajax({
+                url: './getKategoriPpks', // Replace with your actual endpoint
+                type: 'GET',
+                data: {
+                    group_id: groupId
+                },
+                dataType: 'json',
+                success: function(response) {
+                    let options = '<option value=""> --- Pilih Kategori PPKS --- </option>';
+
+                    if (response.data && response.data.length > 0) {
+                        response.data.forEach(function(item) {
+                            options += `<option value="${item.id}">${item.name}</option>`;
+                        });
+                    }
+
+                    selectElement.html(options);
+                    selectElement.trigger('change');
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Gagal mengambil data kategori PPKS',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
         $(document).ready(function() {
+            initSelect2("select2-table", ".contentApproveBodyModal");
             initSelect2("_kecamatan_ktp", ".contentApproveBodyModal");
             initSelect2("_kelurahan_ktp", ".contentApproveBodyModal");
             initSelect2("_kecamatan_domisili", ".contentApproveBodyModal");
@@ -1863,6 +1938,58 @@
 
             $("#btnAddRowBansosPengampu").on("click", function() {
                 addRowPengampu('table-bansos-pengampu');
+            });
+
+            $(document).on('change', '.group_ppks', function() {
+                const row = $(this).closest('.ppks-row');
+                const kategoriSelect = row.find('.kategori_ppks');
+                const groupId = $(this).val();
+
+                if (groupId) {
+                    loadKategoriPPKS(kategoriSelect, groupId);
+                } else {
+                    kategoriSelect.html('<option value=""> --- Pilih Kategori PPKS --- </option>');
+                    kategoriSelect.trigger('change');
+                }
+            });
+
+            $(document).on('click', '.btn-add-row-ppks', function() {
+                const container = $('#ppks-rows');
+                const newRow = container.find('.ppks-row').first().clone();
+                const rowCount = container.find('.ppks-row').length + 1;
+
+                // Reset selects
+                newRow.find('select').val('').trigger('change');
+
+                // Show delete button for all rows
+                $('.btn-delete-row-ppks').show();
+
+                // Reset help blocks
+                newRow.find('.help-block-ppks').empty();
+
+                // Update row identifier
+                newRow.attr('data-row', rowCount);
+
+                // Append new row
+                container.append(newRow);
+
+                // Reinitialize select2 for new elements
+                newRow.find('.select2-table').select2();
+            });
+
+            // Delete row
+            $(document).on('click', '.btn-delete-row-ppks', function() {
+                const container = $('#ppks-rows');
+                const row = $(this).closest('.ppks-row');
+
+                if (container.find('.ppks-row').length > 1) {
+                    row.remove();
+
+                    // Hide delete button if only one row remains
+                    if (container.find('.ppks-row').length === 1) {
+                        container.find('.btn-delete-row-ppks').first().hide();
+                    }
+                }
             });
         });
 
