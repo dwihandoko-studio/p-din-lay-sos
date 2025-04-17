@@ -826,19 +826,20 @@
                 'warning'
             );
             return false;
-        }
+        } else {
 
-        if (no_surat_akreditasi === "" || no_surat_akreditasi === undefined) {
-            $("input#_no_surat_akreditasi").css("color", "#dc3545");
-            $("input#_no_surat_akreditasi").css("border-color", "#dc3545");
-            $('._no_surat_akreditasi').html('Masukkan no surat akreditasi');
+            if (no_surat_akreditasi === "" || no_surat_akreditasi === undefined) {
+                $("input#_no_surat_akreditasi").css("color", "#dc3545");
+                $("input#_no_surat_akreditasi").css("border-color", "#dc3545");
+                $('._no_surat_akreditasi').html('Masukkan no surat akreditasi');
 
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan masukkan no surat akreditasi.",
-                'warning'
-            );
-            return false;
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan masukkan no surat akreditasi.",
+                    'warning'
+                );
+                return false;
+            }
         }
 
         if (tgl_habis_berlaku_akreditasi === "" || tgl_habis_berlaku_akreditasi === undefined) {

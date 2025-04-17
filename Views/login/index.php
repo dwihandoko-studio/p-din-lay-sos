@@ -1,301 +1,319 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title><?= isset($title) ? $title : "Administrator" ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" name="description" />
-    <meta content="handokowae.my.id" name="author" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="keywords" content="portal, layanan, portal layanan, portal layanan dinsos, dinsos, disdik, lampung, lampung tengah lampung tengah, dinas sosial, dinas Sosial lampung tengah, kabupaten lampung tengah">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= isset($title) ? $title : "Login - Sistem Layanan Sosial Terintegrasi" ?></title>
+  <meta content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" name="description" />
+  <meta content="handokowae.my.id" name="author" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="keywords" content="portal, layanan, portal layanan, portal layanan dinsos, dinsos, disdik, lampung, lampung tengah lampung tengah, dinas sosial, dinas Sosial lampung tengah, kabupaten lampung tengah">
 
-    <meta property="og:title" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
-    <meta property="og:url" content="<?= base_url() ?>" />
-    <meta property="og:image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
-    <meta property="og:description" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
+  <meta property="og:title" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
+  <meta property="og:url" content="<?= base_url() ?>" />
+  <meta property="og:image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
+  <meta property="og:description" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
 
-    <meta itemprop="name" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
-    <meta itemprop="description" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
-    <meta itemprop="image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
+  <meta itemprop="name" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
+  <meta itemprop="description" content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" />
+  <meta itemprop="image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
 
-    <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('favicon/apple-icon-57x57.png'); ?>">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url('favicon/apple-icon-60x60.png'); ?>">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url('favicon/apple-icon-72x72.png'); ?>">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('favicon/apple-icon-76x76.png'); ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url('favicon/apple-icon-114x114.png'); ?>">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('favicon/apple-icon-120x120.png'); ?>">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('favicon/apple-icon-144x144.png'); ?>">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('favicon/apple-icon-152x152.png'); ?>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('favicon/apple-icon-180x180.png'); ?>">
-    <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('favicon/android-icon-192x192.png'); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('favicon/favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('favicon/favicon-96x96.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('favicon/favicon-16x16.png'); ?>">
-    <link rel="manifest" href="<?= base_url('favicon/manifest.json'); ?>">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?= base_url('favicon/ms-icon-144x144.png'); ?>">
-    <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('favicon/apple-icon-57x57.png'); ?>">
+  <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url('favicon/apple-icon-60x60.png'); ?>">
+  <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url('favicon/apple-icon-72x72.png'); ?>">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('favicon/apple-icon-76x76.png'); ?>">
+  <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url('favicon/apple-icon-114x114.png'); ?>">
+  <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('favicon/apple-icon-120x120.png'); ?>">
+  <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('favicon/apple-icon-144x144.png'); ?>">
+  <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('favicon/apple-icon-152x152.png'); ?>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('favicon/apple-icon-180x180.png'); ?>">
+  <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('favicon/android-icon-192x192.png'); ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('favicon/favicon-32x32.png'); ?>">
+  <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('favicon/favicon-96x96.png'); ?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('favicon/favicon-16x16.png'); ?>">
+  <link rel="manifest" href="<?= base_url('favicon/manifest.json'); ?>">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="<?= base_url('favicon/ms-icon-144x144.png'); ?>">
+  <meta name="theme-color" content="#ffffff">
+  <link href="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
 
-    <link href="<?= base_url() ?>/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.theme.default.min.css">
-    <link href="<?= base_url() ?>/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url() ?>/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .gradient-bg {
+      background: linear-gradient(-45deg, #e63946, #d62839, #ba181b, #a4161a);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    .card-enter {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .card-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease;
+    }
+
+    .input-focus-effect:focus {
+      box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.5);
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
 
-<body class="auth-body-bg">
-
-    <div>
-        <div class="container-fluid p-0 content-loading">
-            <div class="row g-0">
-
-                <div class="col-xl-9">
-                    <div class="auth-full-bg pt-lg-5 p-4">
-                        <div class="w-100">
-                            <div class="bg-overlay"></div>
-                            <div class="d-flex h-100 flex-column">
-
-                                <div class="p-4 mt-auto">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-7">
-                                            <div class="text-center">
-
-                                                <!-- <h4 class="mb-3"><i class="bx bxs-quote-alt-left text-primary h1 align-middle me-3"></i><span class="text-primary">Dinas Sosial </span>Kabupaten Lampung Tengah</h4> -->
-
-                                                <div dir="ltr">
-                                                    <div class="owl-carousel owl-theme auth-review-carousel" id="auth-review-carousel">
-                                                        <div class="item">
-                                                            <div class="py-3">
-                                                                <p class="font-size-16 mb-4">" <b>Sinergitas melayani</b>, memberikan yang tebaik untuk masyarakat menuju <b>Lampung Tengah Berjaya.</b> "</p>
-
-                                                                <div>
-                                                                    <h4 class="font-size-16 text-primary">Dinas Sosial</h4>
-                                                                    <p class="font-size-14 mb-0">Kabupaten Lampung Tengah</p>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <!-- <div class="item">
-                                                            <div class="py-3">
-                                                                <p class="font-size-16 mb-4">" If Every Vendor on Envato are as supportive as Themesbrand, Development with be a nice experience. You guys are Wonderful. Keep us the good work. "</p>
-
-                                                                <div>
-                                                                    <h4 class="font-size-16 text-primary">nezerious</h4>
-                                                                    <p class="font-size-14 mb-0">- Skote User</p>
-                                                                </div>
-                                                            </div>
-
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end col -->
-
-                <div class="col-xl-3">
-                    <div class="auth-full-page-content p-md-5 p-4">
-                        <div class="w-100">
-
-                            <div class="d-flex flex-column h-100">
-                                <!-- <div class="mb-4 mb-md-5">
-                                    <a href="index.html" class="d-block auth-logo">
-                                        <img src="assets/images/logo-dark.png" alt="" height="18" class="auth-logo-dark">
-                                        <img src="assets/images/logo-light.png" alt="" height="18" class="auth-logo-light">
-                                    </a>
-                                </div> -->
-                                <div class="my-auto">
-
-                                    <div>
-                                        <h5 class="text-primary">Selamat Datang Kembali !</h5>
-                                        <p class="text-muted">Silahkan Login Dulu Untuk Menggunakan Layanan.</p>
-                                    </div>
-
-                                    <div class="mt-4">
-                                        <form action="/auth/login" method="post">
-
-                                            <div class="mb-3">
-                                                <label for="username" class="form-label">Email/NIK/No HP</label>
-                                                <input type="text" class="form-control" id="username" name="username" placeholder="Email / NIK / No HP">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <div class="float-end">
-                                                    <a href="<?= base_url('auth/lupapassword') ?>" class="text-muted">Lupa password?</a>
-                                                </div>
-                                                <label class="form-label">Password</label>
-                                                <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
-                                                    <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember-check">
-                                                <label class="form-check-label" for="remember-check">
-                                                    Ingat Saya
-                                                </label>
-                                            </div>
-
-                                            <div class="mt-3 d-grid">
-                                                <button class="btn btn-primary waves-effect waves-light" type="submit">MASUK</button>
-                                            </div>
-
-
-                                            <div class="mt-4 text-center">
-                                                <h5 class="font-size-14 mb-3">Masuk Dengan</h5>
-
-                                                <ul class="list-inline">
-                                                    <!-- <li class="list-inline-item">
-                                                        <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
-                                                            <i class="mdi mdi-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
-                                                            <i class="mdi mdi-twitter"></i>
-                                                        </a>
-                                                    </li> -->
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                                                            <i class="mdi mdi-google"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                        </form>
-                                        <div class="mt-5 text-center">
-                                            <p>Belum punya akun ? <a href="./auth/register" class="fw-medium text-primary"> Daftar Sekarang </a> </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-4 mt-md-5 text-center">
-                                    <p class="mb-0">© <script>
-                                            document.write(new Date().getFullYear())
-                                        </script> Dinsos Kab. Lampung Tengah. Supported <i class="mdi mdi-heart text-danger"></i> by <a href="https://kntechline.id">KNTechline</a></p>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
-        </div>
-        <!-- end container-fluid -->
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full flex justify-between items-center opacity-20">
+      <div class="w-32 h-32 rounded-full bg-red-500 mix-blend-multiply filter blur-xl opacity-70 animate-bounce"></div>
+      <div class="w-24 h-24 rounded-full bg-red-400 mix-blend-multiply filter blur-xl opacity-70 animate-bounce animation-delay-200"></div>
+      <div class="w-20 h-20 rounded-full bg-red-300 mix-blend-multiply filter blur-xl opacity-70 animate-bounce animation-delay-400"></div>
     </div>
-    <!-- end account-pages -->
+  </div>
 
-    <!-- JAVASCRIPT -->
-    <script src="<?= base_url() ?>/assets/libs/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/blockUI.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/node-waves/waves.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/owl.carousel/owl.carousel.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/pages/auth-2-carousel.init.js"></script>
+  <div class="relative max-w-md w-full mx-auto card-enter">
+    <div class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden border border-white/20 pulse">
+      <div class="px-10 py-12">
+        <div class="flex justify-center mb-8">
+          <div class="bg-red p-4 shadow-lg floating">
+            <img src="<?= base_url() ?>/assets/images/lastri.svg" alt="Logo" class="w-50 h-32">
+          </div>
+        </div>
 
-    <script src="<?= base_url() ?>/assets/js/app.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.js"></script>
-    <script>
-        <?php if (isset($error)) { ?>
-            Swal.fire(
-                "Peringatan!",
-                '<?= $error ?>',
-                "warning"
-            );
-        <?php } ?>
-        $("form").on("submit", function(e) {
+        <!-- <h1 class="text-2xl font-bold text-center text-white mb-2">Sistem Layanan Sosial Terintegrasi</h1>
+        <p class="text-center text-white/80 mb-8">Dinas Sosial Kabupaten Lampung Tengah</p> -->
 
-            e.preventDefault();
-            var dataString = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: '/auth/login',
-                data: dataString,
-                dataType: 'JSON',
-                beforeSend: function() {
-                    loading = true;
-                    $('div.content-loading').block({
-                        message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                    });
-                },
-                success: function(msg) {
-                    console.log(msg);
-                    if (msg.status != 200) {
-                        if (msg.status !== 201) {
-                            if (msg.status !== 202) {
-                                $('div.content-loading').unblock();
-                                loading = false;
-                                Swal.fire(
-                                    "Gagal!",
-                                    msg.message,
-                                    "warning"
-                                );
-                            } else {
-                                Swal.fire(
-                                    "Warning!",
-                                    msg.message,
-                                    "warning"
-                                ).then((valRes) => {
-                                    // setTimeout(function() {
-                                    document.location.href = msg.url;
-                                    // }, 2000);
+        <form class="space-y-6" action="/auth/login" method="post">
+          <div>
+            <label for="username" class="block text-sm font-medium text-white/90 mb-1">Email/NIK/No HP</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-red-300"></i>
+              </div>
+              <input id="username" name="username" type="text" required class="input-focus-effect pl-10 w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/50 border border-white/30 focus:outline-none transition duration-300" placeholder="Masukkan Email / NIK / No HP">
+            </div>
+          </div>
 
-                                })
-                            }
-                        } else {
-                            Swal.fire(
-                                'Berhasil!',
-                                msg.message,
-                                'success'
-                            ).then((valRes) => {
-                                // setTimeout(function() {
-                                document.location.href = msg.url;
-                                // }, 2000);
-                            })
-                        }
-                    } else {
-                        Swal.fire(
-                            'Berhasil!',
-                            msg.message,
-                            'success'
-                        ).then((valRes) => {
-                            // setTimeout(function() {
-                            document.location.href = msg.url;
-                            // }, 2000);
-                            // document.location.href = window.location.href + "dashboard";
-                        })
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                    loading = false;
-                    $('div.content-loading').unblock();
-                    Swal.fire(
-                        'Gagal!',
-                        "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                        'warning'
-                    );
-                }
-            });
+          <div>
+            <label for="password" class="block text-sm font-medium text-white/90 mb-1">Password</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-lock text-red-300"></i>
+              </div>
+              <input id="password" name="password" type="password" required class="input-focus-effect pl-10 w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/50 border border-white/30 focus:outline-none transition duration-300" placeholder="Masukkan password">
+            </div>
+          </div>
 
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-red-500 focus:ring-red-500 border-white/30 rounded">
+              <label for="remember-me" class="ml-2 block text-sm text-white/80">
+                Ingat saya
+              </label>
+            </div>
+
+            <div class="text-sm">
+              <a href="#" class="font-medium text-white hover:text-red-200 transition duration-300">
+                Lupa password?
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-300 transform hover:scale-105">
+              Masuk
+            </button>
+          </div>
+        </form>
+
+
+
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-white/30"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-transparent text-white/80">
+                Belum punya akun?
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <a href="./auth/register" class="w-full inline-flex justify-center py-2 px-4 border border-white/30 rounded-lg shadow-sm bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-300">
+              <i class="fas fa-sign-in-alt mr-2"></i> Daftar Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-8 py-4 bg-white/5 text-center">
+        <p class="text-xs text-white/60">
+          © 2024 Dinas Sosial Kabupaten Lampung Tengah. All rights reserved. Version 2.0
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="<?= base_url() ?>/assets/libs/jquery/jquery.min.js"></script>
+  <script src="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add animation class to form elements
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach((input, index) => {
+        input.style.transitionDelay = `${index * 100}ms`;
+        input.classList.add('card-enter');
+      });
+
+      const button = document.querySelector('button[type="submit"]');
+      button.style.transitionDelay = `${inputs.length * 100}ms`;
+      button.classList.add('card-enter');
+
+      // Trigger animations
+      setTimeout(() => {
+        document.querySelectorAll('.card-enter').forEach(el => {
+          el.classList.add('card-enter-active');
         });
-    </script>
+      }, 100);
+    });
+
+    <?php if (isset($error)) { ?>
+      Swal.fire(
+        "Peringatan!",
+        '<?= $error ?>',
+        "warning"
+      );
+    <?php } ?>
+    $("form").on("submit", function(e) {
+
+      e.preventDefault();
+      var dataString = $(this).serialize();
+      $.ajax({
+        type: "POST",
+        url: '/auth/login',
+        data: dataString,
+        dataType: 'JSON',
+        beforeSend: function() {
+          Swal.fire({
+            title: 'Sedang Loading . . .',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+        },
+        success: function(msg) {
+          console.log(msg);
+          if (msg.status != 200) {
+            if (msg.status !== 201) {
+              if (msg.status !== 202) {
+                Swal.fire(
+                  "Gagal!",
+                  msg.message,
+                  "warning"
+                );
+              } else {
+                Swal.fire(
+                  "Warning!",
+                  msg.message,
+                  "warning"
+                ).then((valRes) => {
+                  // setTimeout(function() {
+                  document.location.href = msg.url;
+                  // }, 2000);
+
+                })
+              }
+            } else {
+              Swal.fire(
+                'Berhasil!',
+                msg.message,
+                'success'
+              ).then((valRes) => {
+                // setTimeout(function() {
+                document.location.href = msg.url;
+                // }, 2000);
+              })
+            }
+          } else {
+            Swal.fire(
+              'Berhasil!',
+              msg.message,
+              'success'
+            ).then((valRes) => {
+              // setTimeout(function() {
+              document.location.href = msg.url;
+              // }, 2000);
+              // document.location.href = window.location.href + "dashboard";
+            })
+          }
+        },
+        error: function(data) {
+          console.log(data);
+          Swal.fire(
+            'Gagal!',
+            "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+            'warning'
+          );
+        }
+      });
+
+    });
+  </script>
 </body>
 
 </html>
