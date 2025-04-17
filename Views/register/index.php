@@ -137,7 +137,7 @@
       <div class="px-10 py-8">
         <div class="flex justify-center mb-6">
           <div class="bg-red p-4 shadow-lg floating">
-            <img src="./lastri.svg" alt="Logo" class="w-50 h-32">
+            <img src="<?= base_url() ?>/assets/images/lastri.svg" alt="Logo" class="w-50 h-32">
           </div>
         </div>
 
@@ -246,7 +246,7 @@
           </div>
 
           <div class="mt-6">
-            <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-white/30 rounded-lg shadow-sm bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-300">
+            <a href="./auth" class="w-full inline-flex justify-center py-2 px-4 border border-white/30 rounded-lg shadow-sm bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-300">
               <i class="fas fa-sign-in-alt mr-2"></i> Masuk ke akun Anda
             </a>
           </div>
