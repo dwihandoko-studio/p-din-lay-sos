@@ -40,6 +40,15 @@
                         <span key="t-dashboards">Dashboard P3KE</span>
                     </a>
                 </li>
+                <li <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "masterdata") ? ' class="mm-active"' : '' ?>>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "masterdata") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-package"></i>
+                        <span key="t-masterdatas">Master Data</span>
+                    </a>
+                    <ul class="sub-menu  <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "masterdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
+                        <li><a <?= ($uri->getSegment(2) == "adm" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "slrt") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/adm/masterdata/slrt') ?>" key="t-masterdatas-slrt">SLRT</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

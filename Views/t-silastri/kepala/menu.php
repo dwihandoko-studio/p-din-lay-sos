@@ -21,6 +21,15 @@
                         <li><a <?= ($uri->getSegment(2) == "kepala" && $uri->getSegment(3) == "layanan" && $uri->getSegment(4) == "ditolak") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/kepala/layanan/ditolak') ?>" key="t-layanan-ditolak">Ditolak</a></li>
                     </ul>
                 </li>
+                <li <?= ($uri->getSegment(2) == "kepala" && $uri->getSegment(3) == "masterdata") ? ' class="mm-active"' : '' ?>>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect <?= ($uri->getSegment(2) == "kepala" && $uri->getSegment(3) == "masterdata") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-package"></i>
+                        <span key="t-masterdatas">Master Data</span>
+                    </a>
+                    <ul class="sub-menu  <?= ($uri->getSegment(2) == "kepala" && $uri->getSegment(3) == "masterdata") ? ' mm-collapse mm-active' : '' ?>" aria-expanded="false">
+                        <li><a <?= ($uri->getSegment(2) == "kepala" && $uri->getSegment(3) == "masterdata" && $uri->getSegment(4) == "slrt") ? ' class="mm-active"' : '' ?> href="<?= base_url('silastri/kepala/masterdata/slrt') ?>" key="t-masterdatas-slrt">SLRT</a></li>
+                    </ul>
+                </li>
                 <!-- 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
