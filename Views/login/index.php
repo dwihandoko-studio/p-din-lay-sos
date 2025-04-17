@@ -157,12 +157,12 @@
           </div>
 
           <div class="flex items-center justify-between">
-            <div class="flex items-center">
+            <!-- <div class="flex items-center">
               <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-red-500 focus:ring-red-500 border-white/30 rounded">
               <label for="remember-me" class="ml-2 block text-sm text-white/80">
                 Ingat saya
               </label>
-            </div>
+            </div> -->
 
             <div class="text-sm">
               <a href="#" class="font-medium text-white hover:text-red-200 transition duration-300">
