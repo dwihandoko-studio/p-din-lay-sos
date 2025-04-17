@@ -246,7 +246,7 @@
           </div>
 
           <div class="mt-6">
-            <a href="./auth" class="w-full inline-flex justify-center py-2 px-4 border border-white/30 rounded-lg shadow-sm bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-300">
+            <a href="./" class="w-full inline-flex justify-center py-2 px-4 border border-white/30 rounded-lg shadow-sm bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-300">
               <i class="fas fa-sign-in-alt mr-2"></i> Masuk ke akun Anda
             </a>
           </div>
