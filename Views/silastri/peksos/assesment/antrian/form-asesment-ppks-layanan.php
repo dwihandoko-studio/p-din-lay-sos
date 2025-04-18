@@ -429,7 +429,7 @@
                     <div class="help-block _detail_kondisi_fisik_ppks"></div>
                 </div>
                 <hr style="margin-top: 10px;" />
-                <h4>Kondisi Perekonomi</h4>
+                <h4>Kondisi Perekonomian</h4>
                 <div class="col-lg-6 mb-2 mt-2">
                     <label for="_penghasilan_ekonomi" class="col-form-label">Rata - Rata Penghasilan Kepala Keluarga Perbulan:</label>
                     <div class="col-sm-8 mt-2">
