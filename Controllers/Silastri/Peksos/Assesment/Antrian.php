@@ -2600,6 +2600,50 @@ class Antrian extends BaseController
         }
     }
 
+    public function getUraianKebutuhanLayanan()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'kategori_id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kategori ppks tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('kategori_id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('kategori_id'), true);
+
+            $intervensis = $this->_db->table('ref_uraian_kebutuhan_layanan')->where(['kategori_id' => $id, 'status' => 1])->orderBy('kebutuhan_layanan', 'ASC')->get()->getResult();
+
+            if (count($intervensis) > 0) {
+                $x['intervensis'] = $intervensis;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = $intervensis;
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
+                return json_encode($response);
+            }
+        }
+    }
+
     public function getKategoriPpks()
     {
         if ($this->request->getMethod() != 'post') {

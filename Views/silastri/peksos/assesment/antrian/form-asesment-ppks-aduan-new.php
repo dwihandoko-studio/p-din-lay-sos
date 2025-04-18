@@ -799,9 +799,19 @@
                     </div>
                     <div class="col-lg-12">
                         <label class="col-form-label">Uraian Identifikasi Kebutuhan:</label>
-                        <textarea rows="3" class="form-control" id="_identifikasi_kebutuhan" name="_identifikasi_kebutuhan"></textarea>
+                        <select class="form-control select2"
+                            id="_identifikasi_kebutuhan"
+                            name="_identifikasi_kebutuhan"
+                            style="width: 100%">
+                            <option value="">--- Pilih Kebutuhan ---</option>
+                        </select>
                         <div class="help-block _identifikasi_kebutuhan"></div>
                     </div>
+                    <!-- <div class="col-lg-12">
+                        <label class="col-form-label">Uraian Identifikasi Kebutuhan:</label>
+                        <textarea rows="3" class="form-control" id="_identifikasi_kebutuhan" name="_identifikasi_kebutuhan"></textarea>
+                        <div class="help-block _identifikasi_kebutuhan"></div>
+                    </div> -->
                     <div class="col-lg-12">
                         <label class="col-form-label">Uraian Intervernsi yang Telah Dilakukan:</label>
                         <textarea rows="3" class="form-control" id="_intervensi_telah_dilakukan" name="_intervensi_telah_dilakukan"></textarea>
@@ -1971,6 +1981,8 @@
             initSelect2("_camat_pilihan", ".contentApproveBodyModal");
             initSelect2("_kampung_pilihan", ".contentApproveBodyModal");
 
+            initSelect2("_identifikasi_kebutuhan", ".contentApproveBodyModal");
+
             initializeSelect2();
 
             $("#btnAddRowBansosIdentitas").on("click", function() {
@@ -2027,6 +2039,79 @@
 
                     // Renumber remaining rows
                     updateRowNumbers();
+                }
+            });
+
+
+            var loadedKebutuhanOptions = {};
+            // Function to load kebutuhan based on kategori_ppks
+            function loadKebutuhan(kategoriId, rowNumber) {
+                if (kategoriId && !loadedKebutuhanOptions[kategoriId]) {
+                    $.ajax({
+                        url: './getUraianKebutuhanLayanan', // Replace with your endpoint
+                        type: 'POST',
+                        data: {
+                            kategori_id: kategoriId
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                loadedKebutuhanOptions[kategoriId] = response.data;
+                                updateKebutuhanDropdown();
+                            }
+                        }
+                    });
+                } else if (loadedKebutuhanOptions[kategoriId]) {
+                    updateKebutuhanDropdown();
+                }
+            }
+
+            // Function to update kebutuhan dropdown
+            function updateKebutuhanDropdown() {
+                var $dropdown = $('#_identifikasi_kebutuhan');
+                $dropdown.empty().append('<option value="">--- Pilih Indetifikasi Kebutuhan ---</option>');
+
+                // Combine options from all loaded kategori_ppks
+                Object.values(loadedKebutuhanOptions).forEach(function(options) {
+                    options.forEach(function(option) {
+                        $dropdown.append($('<option>', {
+                            value: option.id,
+                            text: option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")"
+                        }));
+                    });
+                });
+
+                $dropdown.trigger('change');
+            }
+
+            // Handle kategori_ppks change event for all rows
+            $(document).on('change', '.kategori_ppks', function() {
+                var rowNumber = $(this).closest('.ppks-row').data('row');
+                var kategoriId = $(this).val();
+                loadKebutuhan(kategoriId, rowNumber);
+            });
+
+            // Handle row deletion
+            $(document).on('click', '.btn-delete-row-ppks', function() {
+                var $row = $(this).closest('.ppks-row');
+                var rowNumber = $row.data('row');
+                var kategoriId = $row.find('.kategori_ppks').val();
+
+                // Remove the kategori from loaded options if it exists
+                if (kategoriId && loadedKebutuhanOptions[kategoriId]) {
+                    delete loadedKebutuhanOptions[kategoriId];
+                    updateKebutuhanDropdown();
+                }
+
+                // Your existing row deletion logic here
+                $row.remove();
+            });
+
+            // Initialize for existing rows on page load
+            $('.kategori_ppks').each(function() {
+                var kategoriId = $(this).val();
+                if (kategoriId) {
+                    loadKebutuhan(kategoriId, $(this).closest('.ppks-row').data('row'));
                 }
             });
         });
