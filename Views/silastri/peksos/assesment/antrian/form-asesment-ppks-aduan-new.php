@@ -802,6 +802,7 @@
                         <select class="form-control select2"
                             id="_identifikasi_kebutuhan"
                             name="_identifikasi_kebutuhan"
+                            multiple="multiple"
                             style="width: 100%">
                             <option value="">--- Pilih Kebutuhan ---</option>
                         </select>
@@ -1981,7 +1982,14 @@
             initSelect2("_camat_pilihan", ".contentApproveBodyModal");
             initSelect2("_kampung_pilihan", ".contentApproveBodyModal");
 
-            initSelect2("_identifikasi_kebutuhan", ".contentApproveBodyModal");
+            $('#_identifikasi_kebutuhan').select2({
+                dropdownParent: "contentApproveBodyModal",
+                placeholder: "--- Pilih Indetifikasi Kebutuhan ---",
+                allowClear: true,
+                closeOnSelect: false
+            });
+
+            // initSelect2("_identifikasi_kebutuhan", ".contentApproveBodyModal");
 
             initializeSelect2();
 
@@ -2066,54 +2074,104 @@
                 }
             }
 
-            // Function to update kebutuhan dropdown
             function updateKebutuhanDropdown() {
                 var $dropdown = $('#_identifikasi_kebutuhan');
-                $dropdown.empty().append('<option value="">--- Pilih Indetifikasi Kebutuhan ---</option>');
 
-                // Combine options from all loaded kategori_ppks
+                // Store currently selected values
+                var selectedValues = $dropdown.val() || [];
+
+                // Clear and rebuild options
+                $dropdown.empty();
+
+                // Add options from all loaded kategori_ppks
                 Object.values(loadedKebutuhanOptions).forEach(function(options) {
                     options.forEach(function(option) {
-                        $dropdown.append($('<option>', {
-                            value: option.id,
-                            text: option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")"
-                        }));
+                        var newOption = new Option(option.name, option.id, false, false);
+                        $dropdown.append(newOption);
                     });
                 });
 
-                $dropdown.trigger('change');
+                // Restore selected values
+                $dropdown.val(selectedValues).trigger('change');
             }
 
-            // Handle kategori_ppks change event for all rows
+            // Handle kategori_ppks change event
             $(document).on('change', '.kategori_ppks', function() {
-                var rowNumber = $(this).closest('.ppks-row').data('row');
                 var kategoriId = $(this).val();
-                loadKebutuhan(kategoriId, rowNumber);
+                loadKebutuhan(kategoriId);
             });
 
             // Handle row deletion
             $(document).on('click', '.btn-delete-row-ppks', function() {
                 var $row = $(this).closest('.ppks-row');
-                var rowNumber = $row.data('row');
                 var kategoriId = $row.find('.kategori_ppks').val();
 
-                // Remove the kategori from loaded options if it exists
                 if (kategoriId && loadedKebutuhanOptions[kategoriId]) {
+                    // Get currently selected values that aren't from this kategori
+                    var currentSelected = $('#_identifikasi_kebutuhan').val() || [];
+                    var optionsToKeep = loadedKebutuhanOptions[kategoriId].map(opt => opt.id.toString());
+                    var newSelected = currentSelected.filter(val => !optionsToKeep.includes(val));
+
+                    // Remove the kategori options
                     delete loadedKebutuhanOptions[kategoriId];
+
+                    // Update dropdown and restore valid selections
                     updateKebutuhanDropdown();
+                    $('#_identifikasi_kebutuhan').val(newSelected).trigger('change');
                 }
 
-                // Your existing row deletion logic here
+                // Your existing row deletion logic
                 $row.remove();
             });
 
-            // Initialize for existing rows on page load
-            $('.kategori_ppks').each(function() {
-                var kategoriId = $(this).val();
-                if (kategoriId) {
-                    loadKebutuhan(kategoriId, $(this).closest('.ppks-row').data('row'));
-                }
-            });
+            // // Function to update kebutuhan dropdown
+            // function updateKebutuhanDropdown() {
+            //     var $dropdown = $('#_identifikasi_kebutuhan');
+            //     $dropdown.empty().append('<option value="">--- Pilih Indetifikasi Kebutuhan ---</option>');
+
+            //     // Combine options from all loaded kategori_ppks
+            //     Object.values(loadedKebutuhanOptions).forEach(function(options) {
+            //         options.forEach(function(option) {
+            //             $dropdown.append($('<option>', {
+            //                 value: option.id,
+            //                 text: option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")"
+            //             }));
+            //         });
+            //     });
+
+            //     $dropdown.trigger('change');
+            // }
+
+            // // Handle kategori_ppks change event for all rows
+            // $(document).on('change', '.kategori_ppks', function() {
+            //     var rowNumber = $(this).closest('.ppks-row').data('row');
+            //     var kategoriId = $(this).val();
+            //     loadKebutuhan(kategoriId, rowNumber);
+            // });
+
+            // // Handle row deletion
+            // $(document).on('click', '.btn-delete-row-ppks', function() {
+            //     var $row = $(this).closest('.ppks-row');
+            //     var rowNumber = $row.data('row');
+            //     var kategoriId = $row.find('.kategori_ppks').val();
+
+            //     // Remove the kategori from loaded options if it exists
+            //     if (kategoriId && loadedKebutuhanOptions[kategoriId]) {
+            //         delete loadedKebutuhanOptions[kategoriId];
+            //         updateKebutuhanDropdown();
+            //     }
+
+            //     // Your existing row deletion logic here
+            //     $row.remove();
+            // });
+
+            // // Initialize for existing rows on page load
+            // $('.kategori_ppks').each(function() {
+            //     var kategoriId = $(this).val();
+            //     if (kategoriId) {
+            //         loadKebutuhan(kategoriId, $(this).closest('.ppks-row').data('row'));
+            //     }
+            // });
         });
 
         function createNewRow(rowCount) {
