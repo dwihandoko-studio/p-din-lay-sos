@@ -2086,7 +2086,7 @@
                 // Add options from all loaded kategori_ppks
                 Object.values(loadedKebutuhanOptions).forEach(function(options) {
                     options.forEach(function(option) {
-                        var newOption = new Option(option.name, option.id, false, false);
+                        var newOption = new Option(option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")", option.id, false, false);
                         $dropdown.append(newOption);
                     });
                 });
