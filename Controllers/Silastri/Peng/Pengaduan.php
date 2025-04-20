@@ -894,9 +894,9 @@ class Pengaduan extends BaseController
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td align="">Keluhan Aduan</td>
+                                                <td align="">Uraian Aduan</td>
                                                 <td align="center">:</td>
-                                                <td align="left">' . $current->kelurahan_aduan . '</td>
+                                                <td align="left">' . $current->uraian_aduan . '</td>
                                             </tr>
                                         </tbody>
                                     </table>
