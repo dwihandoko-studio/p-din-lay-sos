@@ -519,7 +519,7 @@
                                                     <div class="item event-list">
                                                         <div>
                                                             <div class="event-date">
-                                                                <div class="text-Opacity mb-1"><?= $data->date_tte ?></div>
+                                                                <div class="text-Opacity mb-1"><?= $data->updated_at ?></div>
                                                                 <h5 class="mb-4">4</h5>
                                                             </div>
                                                             <div class="event-down-icon">
@@ -626,7 +626,7 @@
                                                     <div class="item event-list">
                                                         <div>
                                                             <div class="event-date">
-                                                                <div class="text-Opacity mb-1"><?= $data->date_tte ?></div>
+                                                                <div class="text-Opacity mb-1"><?= $data->updated_at ?></div>
                                                                 <h5 class="mb-4">4</h5>
                                                             </div>
                                                             <div class="event-down-icon">
