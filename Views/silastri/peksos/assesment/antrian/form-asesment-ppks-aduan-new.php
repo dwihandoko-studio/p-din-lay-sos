@@ -2075,24 +2075,24 @@
             }
 
             function updateKebutuhanDropdown() {
-                var $dropdown = $('#_identifikasi_kebutuhan');
+                var $dropdownUraian = $('#_identifikasi_kebutuhan');
 
                 // Store currently selected values
-                var selectedValues = $dropdown.val() || [];
+                var selectedValuesUraian = $dropdownUraian.val() || [];
 
                 // Clear and rebuild options
-                $dropdown.empty();
+                $dropdownUraian.empty();
 
                 // Add options from all loaded kategori_ppks
                 Object.values(loadedKebutuhanOptions).forEach(function(options) {
                     options.forEach(function(option) {
-                        var newOption = new Option(option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")", option.id, false, false);
-                        $dropdown.append(newOption);
+                        var newOptionUraian = new Option(option.kebutuhan_layanan + " (Rencana Interversi: " + option.rencana_intervensi + ")", option.id, false, false);
+                        $dropdownUraian.append(newOptionUraian);
                     });
                 });
 
                 // Restore selected values
-                $dropdown.val(selectedValues).trigger('change');
+                $dropdownUraian.val(selectedValuesUraian).trigger('change');
             }
 
             // Handle kategori_ppks change event
