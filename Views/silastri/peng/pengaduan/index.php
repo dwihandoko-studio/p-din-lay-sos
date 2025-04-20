@@ -136,7 +136,7 @@
                         'warning'
                     );
                 } else {
-                    $('#content-detailModalLabel').html('DETAIL PERMOHONAN ' + nama + ' (' + nik + ')');
+                    $('#content-detailModalLabel').html('DETAIL PENGADUAN ' + nama + ' (' + nik + ')');
                     $('.contentBodyModal').html(resul.data);
                     $('.content-detailModal').modal({
                         backdrop: 'static',
