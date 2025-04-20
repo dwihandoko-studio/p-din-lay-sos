@@ -148,6 +148,7 @@
 
                         // Set the inner HTML of the <li> element
                         liElement.innerHTML = `
+                        <a href="<?= base_url('silastri/peng/riwayat/detailLayanan') ?>?id=${resul.data[index].id_permohonan}">
         <div class="event-timeline-dot">
             <i class="bx bx-right-arrow-circle font-size-18"></i>
         </div>
@@ -165,6 +166,7 @@
                 </div>
             </div>
         </div>
+        </a>
     `;
 
                         // Append the <li> element to the <ul> element
