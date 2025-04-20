@@ -2285,7 +2285,7 @@ class Antrian extends BaseController
         $template_processor->setValue('DETAIL_KONDISI_FISIK_PPKS', $dataAssesment['detail_kondisi_fisik_ppks'] ?? "-");
         $template_processor->setValue('KONDISI_PEREKONOMIAN', $dataTindakLanjut['kondisi_perekonomian_keluarga'] ?? "-");
         $template_processor->setValue('PERMASALAHAN', $dataTindakLanjut['permasalahan'] ?? "-");
-        $identifikasi_kebutuhans = explode(";", $dataTindakLanjut['identifikasi_kebutuhan']);
+        $identifikasi_kebutuhans = explode("###", $dataTindakLanjut['identifikasi_kebutuhan']);
         if (count($identifikasi_kebutuhans) > 0) {
             $identifikasi_kebutuhans_fix = [];
             foreach ($identifikasi_kebutuhans as $keyIK => $value) {
