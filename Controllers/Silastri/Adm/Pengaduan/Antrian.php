@@ -216,6 +216,12 @@ class Antrian extends BaseController
                     'required' => 'Nama tidak boleh kosong. ',
                 ]
             ],
+            'with_assessment' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Pilihan assesment tidak boleh kosong. ',
+                ]
+            ],
         ];
 
         if (!$this->validate($rules)) {
@@ -244,6 +250,7 @@ class Antrian extends BaseController
 
             $id = htmlspecialchars($this->request->getVar('id'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
+            $with_assessment = htmlspecialchars($this->request->getVar('with_assessment'), true);
 
             $oldData = $this->_db->table('_pengaduan')->where(['id' => $id])->get()->getRowObject();
             if (!$oldData) {
@@ -272,16 +279,23 @@ class Antrian extends BaseController
             $response->status = 200;
             $response->message = "Permintaan diizinkan";
 
-            switch ($oldData->kategori) {
-                case 'Pengaduan Pemerlu Pelayanan Kesejahteraan Sosial (PPKS)':
-                    $data['sdm'] = $this->_db->table('ref_sdm')->orderBy('jenis', 'ASC')->orderBy('nama', 'ASC')->get()->getResult();
-                    $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan-ppks', $data);
-                    break;
-
-                default:
-                    $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan', $data);
-                    break;
+            if ((int)$with_assessment == 1) {
+                $data['sdm'] = $this->_db->table('ref_sdm')->orderBy('jenis', 'ASC')->orderBy('nama', 'ASC')->get()->getResult();
+                $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan-ppks', $data);
+            } else {
+                $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan', $data);
             }
+
+            // switch ($oldData->kategori) {
+            //     case 'Pengaduan Pemerlu Pelayanan Kesejahteraan Sosial (PPKS)':
+            //         $data['sdm'] = $this->_db->table('ref_sdm')->orderBy('jenis', 'ASC')->orderBy('nama', 'ASC')->get()->getResult();
+            //         $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan-ppks', $data);
+            //         break;
+
+            //     default:
+            //         $response->data = view('silastri/adm/pengaduan/antrian/form-tanggapan', $data);
+            //         break;
+            // }
             return json_encode($response);
         }
     }

@@ -271,78 +271,163 @@
             });
         };
 
-        function actionApprove(e) {
-            const id = '<?= $data->id ?>';
-            const nama = '<?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?>';
-            const kode = '<?= str_replace('&#039;', "`", str_replace("'", "`", $data->kode_aduan)) ?>';
-            Swal.fire({
-                title: 'Apakah anda yakin ingin menanggapi pengaduan layanan ini?',
-                text: "Tanggapi Pengaduan : <?= $data->kategori ?> - dari : <?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?> , dengan Kode Aduan: <?= $data->kode_aduan ?>",
-                showCancelButton: true,
-                icon: 'question',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Tanggapi!'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: "./proses",
-                        type: 'POST',
-                        data: {
-                            id: id,
-                            nama: nama,
-                        },
-                        dataType: 'JSON',
-                        beforeSend: function() {
-                            e.disabled = true;
-                            $('div.modal-content-loading').block({
-                                message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-                            });
-                        },
-                        success: function(resul) {
-                            $('div.modal-content-loading').unblock();
+        Swal.fire({
+            title: 'Apakah anda yakin ingin menanggapi pengaduan layanan ini?',
+            text: "Tanggapi Pengaduan : <?= $data->kategori ?> - dari : <?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?> , dengan Kode Aduan: <?= $data->kode_aduan ?>",
+            showCancelButton: true,
+            icon: 'question',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tanggapi!'
+        }).then((firstResult) => {
+            if (firstResult.value) {
+                // Konfirmasi kedua untuk pilihan assessment
+                Swal.fire({
+                    title: 'Apakah akan melakukan assessment?',
+                    text: 'Pilih metode penanganan pengaduan ini',
+                    icon: 'question',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Lakukan Assessment',
+                    denyButtonText: 'Tidak, Lanjut Tanpa Assessment',
+                    cancelButtonText: 'Batal'
+                }).then((secondResult) => {
+                    if (secondResult.isConfirmed || secondResult.isDenied) {
+                        const withAssessment = secondResult.isConfirmed ? 1 : 0;
 
-                            if (resul.status !== 200) {
-                                if (resul.status === 401) {
-                                    Swal.fire(
-                                        'Failed!',
-                                        resul.message,
-                                        'warning'
-                                    ).then((valRes) => {
-                                        reloadPage();
-                                    });
-                                } else {
-                                    e.disabled = false;
-                                    Swal.fire(
-                                        'GAGAL!',
-                                        resul.message,
-                                        'warning'
-                                    );
-                                }
-                            } else {
-                                $('#content-approveModalLabel').html('TANGGAPI PENGADUAN LAYANAN <?= $data->kategori ?> dari ' + nama + ', dengan Kode Aduan: ' + kode);
-                                $('.contentApproveBodyModal').html(resul.data);
-                                $('.content-approveModal').modal({
-                                    backdrop: 'static',
-                                    keyboard: false,
+                        $.ajax({
+                            url: "./proses",
+                            type: 'POST',
+                            data: {
+                                id: id,
+                                nama: nama,
+                                with_assessment: withAssessment // Tambahkan parameter ini
+                            },
+                            dataType: 'JSON',
+                            beforeSend: function() {
+                                e.disabled = true;
+                                $('div.modal-content-loading').block({
+                                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
                                 });
-                                $('.content-approveModal').modal('show');
+                            },
+                            success: function(resul) {
+                                $('div.modal-content-loading').unblock();
+
+                                if (resul.status !== 200) {
+                                    if (resul.status === 401) {
+                                        Swal.fire(
+                                            'Failed!',
+                                            resul.message,
+                                            'warning'
+                                        ).then((valRes) => {
+                                            reloadPage();
+                                        });
+                                    } else {
+                                        e.disabled = false;
+                                        Swal.fire(
+                                            'GAGAL!',
+                                            resul.message,
+                                            'warning'
+                                        );
+                                    }
+                                } else {
+                                    $('#content-approveModalLabel').html('TANGGAPI PENGADUAN LAYANAN <?= $data->kategori ?> dari ' + nama + ', dengan Kode Aduan: ' + kode);
+                                    $('.contentApproveBodyModal').html(resul.data);
+                                    $('.content-approveModal').modal({
+                                        backdrop: 'static',
+                                        keyboard: false,
+                                    });
+                                    $('.content-approveModal').modal('show');
+                                }
+                            },
+                            error: function(erro) {
+                                console.log(erro);
+                                e.disabled = false;
+                                $('div.modal-content-loading').unblock();
+                                Swal.fire(
+                                    'PERINGATAN!',
+                                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+                                    'warning'
+                                );
                             }
-                        },
-                        error: function(erro) {
-                            console.log(erro);
-                            // e.attr('disabled', false);
-                            e.disabled = false
-                            $('div.modal-content-loading').unblock();
-                            Swal.fire(
-                                'PERINGATAN!',
-                                "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
-                                'warning'
-                            );
-                        }
-                    });
-                }
-            })
-        };
+                        });
+                    }
+                });
+            }
+        });
+
+        // function actionApprove(e) {
+        //     const id = '<?= $data->id ?>';
+        //     const nama = '<?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?>';
+        //     const kode = '<?= str_replace('&#039;', "`", str_replace("'", "`", $data->kode_aduan)) ?>';
+        //     Swal.fire({
+        //         title: 'Apakah anda yakin ingin menanggapi pengaduan layanan ini?',
+        //         text: "Tanggapi Pengaduan : <?= $data->kategori ?> - dari : <?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?> , dengan Kode Aduan: <?= $data->kode_aduan ?>",
+        //         showCancelButton: true,
+        //         icon: 'question',
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Ya, Tanggapi!'
+        //     }).then((result) => {
+        //         if (result.value) {
+        //             $.ajax({
+        //                 url: "./proses",
+        //                 type: 'POST',
+        //                 data: {
+        //                     id: id,
+        //                     nama: nama,
+        //                 },
+        //                 dataType: 'JSON',
+        //                 beforeSend: function() {
+        //                     e.disabled = true;
+        //                     $('div.modal-content-loading').block({
+        //                         message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+        //                     });
+        //                 },
+        //                 success: function(resul) {
+        //                     $('div.modal-content-loading').unblock();
+
+        //                     if (resul.status !== 200) {
+        //                         if (resul.status === 401) {
+        //                             Swal.fire(
+        //                                 'Failed!',
+        //                                 resul.message,
+        //                                 'warning'
+        //                             ).then((valRes) => {
+        //                                 reloadPage();
+        //                             });
+        //                         } else {
+        //                             e.disabled = false;
+        //                             Swal.fire(
+        //                                 'GAGAL!',
+        //                                 resul.message,
+        //                                 'warning'
+        //                             );
+        //                         }
+        //                     } else {
+        //                         $('#content-approveModalLabel').html('TANGGAPI PENGADUAN LAYANAN <?= $data->kategori ?> dari ' + nama + ', dengan Kode Aduan: ' + kode);
+        //                         $('.contentApproveBodyModal').html(resul.data);
+        //                         $('.content-approveModal').modal({
+        //                             backdrop: 'static',
+        //                             keyboard: false,
+        //                         });
+        //                         $('.content-approveModal').modal('show');
+        //                     }
+        //                 },
+        //                 error: function(erro) {
+        //                     console.log(erro);
+        //                     // e.attr('disabled', false);
+        //                     e.disabled = false
+        //                     $('div.modal-content-loading').unblock();
+        //                     Swal.fire(
+        //                         'PERINGATAN!',
+        //                         "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+        //                         'warning'
+        //                     );
+        //                 }
+        //             });
+        //         }
+        //     })
+        // };
     </script>
 <?php } ?>
