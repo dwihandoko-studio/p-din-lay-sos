@@ -122,37 +122,45 @@ class Riwayat extends BaseController
         $id = htmlspecialchars($this->request->getGet('id'), true);
 
         $current = $this->_db->table('_pengaduan a')
-            ->select("a.*, 
-                b.nik as nik_pemohon, 
+            ->select("a.*, b.nik as nik_pemohon, 
                 b.kk as kk, 
                 b.email as email, 
                 b.no_hp as no_hp, 
                 b.tempat_lahir, 
                 b.tgl_lahir, 
                 b.jenis_kelamin, 
-                b.alamat, 
-                c.id as id_kecamatan, 
-                c.kecamatan as nama_kecamatan, 
-                d.id as id_kelurahan, 
-                d.kelurahan as nama_kelurahan")
+                b.alamat")
+            // ->select("a.*, 
+            //     b.nik as nik_pemohon, 
+            //     b.kk as kk, 
+            //     b.email as email, 
+            //     b.no_hp as no_hp, 
+            //     b.tempat_lahir, 
+            //     b.tgl_lahir, 
+            //     b.jenis_kelamin, 
+            //     b.alamat, 
+            //     c.id as id_kecamatan, 
+            //     c.kecamatan as nama_kecamatan, 
+            //     d.id as id_kelurahan, 
+            //     d.kelurahan as nama_kelurahan")
             ->join('_profil_users_tb b', 'b.id = a.user_id')
-            ->join('ref_kecamatan c', 'c.id = b.kecamatan')
-            ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+            // ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+            // ->join('ref_kelurahan d', 'd.id = b.kelurahan')
             ->where(['a.id' => $id])->get()->getRowObject();
 
         if ($current) {
             $data['data'] = $current;
             $data['status_permohonan'] = 'antrian';
-            switch ($current->layanan) {
-                case 'LKS':
-                    $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
-                    return view('silastri/peng/riwayat/layanan/detail_lks', $data);
-                    break;
+            // switch ($current->layanan) {
+            //     case 'LKS':
+            //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+            //         return view('silastri/peng/riwayat/layanan/detail_lks', $data);
+            //         break;
 
-                default:
-                    return view('silastri/peng/riwayat/layanan/detail', $data);
-                    break;
-            }
+            //     default:
+            return view('silastri/peng/riwayat/pengaduan/detail', $data);
+            // break;
+            // }
         } else {
             $current1 = $this->_db->table('_permohonan a')
                 ->select("a.*, 
