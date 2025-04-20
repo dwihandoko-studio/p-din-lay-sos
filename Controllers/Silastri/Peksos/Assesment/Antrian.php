@@ -1480,6 +1480,13 @@ class Antrian extends BaseController
                 return json_encode($response);
             }
 
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->err = $identifikasi_kebutuhan;
+            $response->message = "vardump.";
+            return json_encode($response);
+
+
             $refUraianKebutuhan = $this->_db->table('ref_uraian_kebutuhan_layanan')
                 ->select("CONCAT(kebutuhan_layanan, ' (Rencana Interversi: ', rencana_intervensi, ')') as uraian_kebutuhan")
                 ->whereIn('id', $identifikasi_kebutuhan)
