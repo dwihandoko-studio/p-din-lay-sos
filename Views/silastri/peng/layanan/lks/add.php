@@ -487,7 +487,7 @@
                                         <div class="col-lg-12">
                                             <div class="mt-3">
                                                 <label for="_file_data_binaan" class="form-label">Lampiran Data Binaan : </label>
-                                                <p class="font-size-11">&nbsp;&nbsp;Template data binaan dapat di download pada : <a class="menu-badge badge-info" href="#">Link Berikut...</a></p>
+                                                <p class="font-size-11">&nbsp;&nbsp;Template data binaan dapat di download pada : <a class="menu-badge badge-info" href="<?= base_url('uploads') . '/template_data_binaan.xls' ?>">Link Berikut...</a></p>
                                                 <input class="form-control" type="file" id="_file_data_binaan" name="_file_data_binaan" onFocus="inputFocus(this);" accept=".xls, .xlsx" onchange="loadFileExcel('_file_data_binaan', 'Data Binaan')">
                                                 <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="xls, xlsx">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                                 <div class="help-block _file_data_binaan" for="_file_data_binaan"></div>
