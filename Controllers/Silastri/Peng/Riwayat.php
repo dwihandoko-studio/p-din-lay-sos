@@ -163,6 +163,9 @@ class Riwayat extends BaseController
                 case 3:
                     $data['status_aduan'] = 'assesment';
                     break;
+                case 5:
+                    $data['status_aduan'] = 'pengesahan';
+                    break;
                 //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
                 //         return view('silastri/peng/riwayat/layanan/detail_lks', $data);
                 //         break;
