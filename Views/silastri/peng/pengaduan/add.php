@@ -712,7 +712,7 @@
                 return false;
             }
 
-            if (file.size > 2 * 1024 * 1000) {
+            if (file.size > (5 * 1024 * 1000)) {
                 input.value = "";
                 $('.imagePreviewUpload' + preview).attr('src', '');
                 Swal.fire(
