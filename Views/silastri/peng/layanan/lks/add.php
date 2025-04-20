@@ -502,7 +502,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-3 justify-content-end">
-                                    <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">KIRIM</button>
+                                    <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">KIRIM & SIMPAN LAMPIRAN</button>
                                 </div>
                                 <div class="col-lg-9">
                                     <div>
@@ -830,18 +830,19 @@
             );
             return false;
         } else {
+            if (akreditasi_lembaga === "Belum Terakreditasi") {} else {
+                if (no_surat_akreditasi === "" || no_surat_akreditasi === undefined) {
+                    $("input#_no_surat_akreditasi").css("color", "#dc3545");
+                    $("input#_no_surat_akreditasi").css("border-color", "#dc3545");
+                    $('._no_surat_akreditasi').html('Masukkan no surat akreditasi');
 
-            if (no_surat_akreditasi === "" || no_surat_akreditasi === undefined) {
-                $("input#_no_surat_akreditasi").css("color", "#dc3545");
-                $("input#_no_surat_akreditasi").css("border-color", "#dc3545");
-                $('._no_surat_akreditasi').html('Masukkan no surat akreditasi');
-
-                Swal.fire(
-                    'Peringatan..!!',
-                    "Silahkan masukkan no surat akreditasi.",
-                    'warning'
-                );
-                return false;
+                    Swal.fire(
+                        'Peringatan..!!',
+                        "Silahkan masukkan no surat akreditasi.",
+                        'warning'
+                    );
+                    return false;
+                }
             }
         }
 
