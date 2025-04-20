@@ -1106,7 +1106,7 @@ class Antrian extends BaseController
                 ]
             ],
             '_identifikasi_kebutuhan' => [
-                'rules' => 'required|trim',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Identifikasi kebutuhan tidak boleh kosong. ',
                 ]
