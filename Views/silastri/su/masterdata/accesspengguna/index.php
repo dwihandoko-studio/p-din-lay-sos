@@ -66,10 +66,17 @@
                                             <th>NAMA</th>
                                             <th>EMAIL</th>
                                             <th>ROLE</th>
-                                            <th>SKDTKS</th>
+                                            <?php if (isset($layanans)) {
+                                                if (count($layanans) > 0) {
+                                                    foreach ($layanans as $key => $value) { ?>
+                                                        <th><?= $value->layanan_singkatan ?></th>
+                                            <?php }
+                                                }
+                                            } ?>
+                                            <!-- <th>SKDTKS</th>
                                             <th>SKTM</th>
                                             <th>PBI</th>
-                                            <th>LKS/LKSA</th>
+                                            <th>LKS/LKSA</th> -->
                                         </tr>
                                     </thead>
                                 </table>

@@ -28,7 +28,7 @@ class Accesspengguna extends BaseController
         $request = Services::request();
         $datamodel = new PenggunaModel($request);
 
-        $layanans = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResultArray();
+        $layanans = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResult();
 
 
         $lists = $datamodel->get_datatables();
@@ -127,6 +127,7 @@ class Accesspengguna extends BaseController
 
         $data['user'] = $user->data;
         $data['roles'] = $this->_db->table('_role_user')->whereIn('id', [2, 3, 4, 5, 6, 7])->get()->getResult();
+        $data['layanans'] = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResult();
 
         return view('silastri/su/masterdata/accesspengguna/index', $data);
     }
