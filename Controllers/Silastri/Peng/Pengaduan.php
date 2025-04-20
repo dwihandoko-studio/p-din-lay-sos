@@ -750,7 +750,7 @@ class Pengaduan extends BaseController
 
         $id = htmlspecialchars($this->request->getGet('id'), true);
 
-        $current = $this->_db->table('_permohonan a')
+        $current = $this->_db->table('_pengaduan a')
             ->select("a.*, 
                 b.nik as nik_pemohon, 
                 b.kk as kk, 
@@ -808,9 +808,9 @@ class Pengaduan extends BaseController
                                 </div>
                                 <div class="row">
                                     <div style="text-align: center;margin-top: 30px; border:1px solid black;">
-                                        <h3 style="margin: 0rem;font-size: 14px;">KARTU TANDA DAFTAR LAYANAN</h3>
+                                        <h3 style="margin: 0rem;font-size: 14px;">KARTU TANDA DAFTAR PENGADUAN</h3>
                                         <h3 style="margin: 0rem;font-size: 12px;">NOMOR : ';
-            $html   .=                          $current->kode_permohonan;
+            $html   .=                          $current->kode_aduan;
             $html   .=                          '</h3>
                                     </div>
                                 </div>
@@ -818,9 +818,9 @@ class Pengaduan extends BaseController
                                     <table width="100%" style="border: solid #cbd4dd; font-size: 12px">
                                         <tbody>
                                             <tr>
-                                                <td width="35%" align="" style="padding-left: 10px;">Kode Permohonan</td>
+                                                <td width="35%" align="" style="padding-left: 10px;">Kode Pengaduan</td>
                                                 <td width="5%" align="center">:</td>
-                                                <td width="60%" align="left">' . $current->kode_permohonan . '</td>
+                                                <td width="60%" align="left">' . $current->kode_aduan . '</td>
                                                 <td rowspan="7" style="border: none" width="10%">
                                                     &nbsp;
                                                 </td>
@@ -880,23 +880,23 @@ class Pengaduan extends BaseController
                                             </tr>
                                             <tr>
                                                 <td width="5%"></td>
-                                                <td width="30%" align="">Kode Permohonan</td>
+                                                <td width="30%" align="">Kode Pengaduan</td>
                                                 <td width="5%" align="center">:</td>
                                                 <td width="60%" align="left">
-                                                    ' . $current->kode_permohonan . '
+                                                    ' . $current->kode_aduan . '
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td align="">Nama Layanan</td>
+                                                <td align="">Kategori Pengaduan</td>
                                                 <td align="center">:</td>
-                                                <td align="left">' . $current->layanan . '</td>
+                                                <td align="left">' . $current->kategori . '</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td align="">Jenis Layanan</td>
+                                                <td align="">Keluhan Aduan</td>
                                                 <td align="center">:</td>
-                                                <td align="left">' . $current->jenis . '</td>
+                                                <td align="left">' . $current->kelurahan_aduan . '</td>
                                             </tr>
                                         </tbody>
                                     </table>
