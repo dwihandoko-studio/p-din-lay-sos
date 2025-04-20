@@ -1826,7 +1826,19 @@ class Antrian extends BaseController
 
             $skor_total = $skor_assesment['penghasilan'] + $skor_assesment['penghasilan_makan'] + $skor_assesment['makan'] + $skor_assesment['kemampuan_pakaian'] + $skor_assesment['tempat_tinggal'] + $skor_assesment['luas_lantai'] + $skor_assesment['jenis_lantai'] + $skor_assesment['jenis_dinding'] + $skor_assesment['jenis_atap'] + $skor_assesment['milik_wc'] + $skor_assesment['jenis_wc'] + $skor_assesment['penerangan'] + $skor_assesment['sumber_air_minum'] + $skor_assesment['bahan_bakar_masak'] + $skor_assesment['berobat'] + $skor_assesment['rata_pendidikan'];
 
-            $uraian_kebutuhan_fix = implode("###", $refUraianKebutuhan['uraian_kebutuhan']);
+            if (!empty($refUraianKebutuhan)) {
+                $uraian_kebutuhan_array = [];
+
+                foreach ($refUraianKebutuhan as $row) {
+                    if (isset($row['uraian_kebutuhan'])) {
+                        $uraian_kebutuhan_array[] = $row['uraian_kebutuhan'];
+                    }
+                }
+
+                $uraian_kebutuhan_fix = implode("###", $uraian_kebutuhan_array);
+            } else {
+                $uraian_kebutuhan_fix = '-'; // or some default value
+            }
             $this->_db->transBegin();
             $this->_db->table('_pengaduan')->where('id', $oldData->id)->update($upData);
             if ($this->_db->affectedRows() > 0) {
