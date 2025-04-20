@@ -614,6 +614,8 @@
 <script src="<?= base_url() ?>/assets/libs/owl.carousel/owl.carousel.min.js"></script>
 
 <script>
+    console.log("<?= $status_aduan ?>");
+
     function downloadPDF(pdf, filename) {
         // const linkSource = `data:application/pdf;base64,${pdf}`;
         const linkSource = `data:application/octet-stream;base64,${pdf}`;
