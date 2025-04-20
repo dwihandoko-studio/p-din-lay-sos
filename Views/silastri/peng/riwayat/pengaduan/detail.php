@@ -227,7 +227,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } else if ($status_permohonan === 'disposisi') { ?>
+                            <?php } else if ($status_aduan === 'disposisi') { ?>
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
@@ -319,7 +319,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } else if ($status_permohonan === 'proses') { ?>
+                            <?php } else if ($status_aduan === 'proses') { ?>
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
@@ -411,7 +411,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } else if ($status_permohonan === 'pengesahan') { ?>
+                            <?php } else if ($status_aduan === 'pengesahan') { ?>
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
