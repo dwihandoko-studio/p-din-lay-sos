@@ -55,7 +55,7 @@ class Pengaduan extends BaseController
             //                 <a class="dropdown-item" href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><i class="bx bx-transfer-alt font-size-16 align-middle"></i> &nbsp;Sync Dapodik</a>
             //             </div>
             //         </div>';
-            $action = '<a href="javascript:actionDetail(\'' . $list->id_permohonan . '\', \'' . $list->nik . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
+            $action = '<a href="javascript:actionDetail(\'' . $list->id_aduan . '\', \'' . $list->nik . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
                 <i class="bx bxs-show font-size-16 align-middle"></i> DETAIL</button>
                 </a>';
             //     <a href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><button type="button" class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
@@ -65,12 +65,13 @@ class Pengaduan extends BaseController
             //     <i class="bx bx-trash font-size-16 align-middle"></i></button>
             //     </a>';
             $row[] = $action;
-            $row[] = $list->layanan;
-            $row[] = $list->kode_permohonan;
+            $row[] = $list->kode_aduan;
             $row[] = $list->nik;
             $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama));
             $row[] = $list->kk;
-            $row[] = $list->jenis;
+            $row[] = $list->kategori;
+            $row[] = $list->nik_aduan;
+            $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama_aduan));
 
             $data[] = $row;
         }
@@ -146,7 +147,7 @@ class Pengaduan extends BaseController
 
         $id = htmlspecialchars($this->request->getGet('token') ?? "", true);
 
-        $current = $this->_db->table('_permohonan a')
+        $current = $this->_db->table('_pengaduan a')
             ->select("a.*, 
                 b.nik as nik_pemohon, 
                 b.kk as kk, 
@@ -163,7 +164,7 @@ class Pengaduan extends BaseController
             ->join('_profil_users_tb b', 'b.id = a.user_id')
             ->join('ref_kecamatan c', 'c.id = b.kecamatan')
             ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-            ->where(['a.id' => $id, 'a.status_permohonan' => 5])->get()->getRowObject();
+            ->where(['a.id' => $id])->get()->getRowObject();
 
         if ($current) {
             $data['data'] = $current;

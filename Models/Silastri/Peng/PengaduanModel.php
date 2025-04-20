@@ -7,10 +7,10 @@ use CodeIgniter\Model;
 
 class PengaduanModel extends Model
 {
-    protected $table = "_permohonan a";
-    protected $column_order = array(null, null, 'a.layanan', 'a.kode_permohonan', 'a.nik', 'a.nama', 'b.kk', 'a.jenis');
-    protected $column_search = array('a.nik', 'a.nama', 'a.kode_permohonan');
-    protected $order = array('a.created_at' => 'asc');
+    protected $table = "_pengaduan a";
+    protected $column_order = array(null, null, 'a.kode_aduan', 'a.nik', 'a.nama', 'b.kk', 'a.kategori', 'a.nik_aduan', 'b.nama_aduan');
+    protected $column_search = array('a.nik', 'a.nama', 'a.kode_aduan', 'a.nik_aduan', 'b.nama_aduan');
+    protected $order = array('a.created_at' => 'desc');
     protected $request;
     protected $db;
     protected $dt;
@@ -25,9 +25,9 @@ class PengaduanModel extends Model
     }
     private function _get_datatables_query()
     {
-        $this->dt->select("a.id as id_permohonan, a.layanan, a.kode_permohonan, a.user_id, a.nik, a.nama, a.jenis, a.kelurahan, b.kk");
+        $this->dt->select("a.id as id_aduan, a.kode_aduan, a.user_id, a.nik, a.nama, a.kategori, a.kelurahan, b.kk, a.nik_aduan, a.nama_aduan");
         $this->dt->join('_profil_users_tb b', 'b.id = a.user_id');
-        $this->dt->where("(a.status_permohonan = 5)");
+        // $this->dt->where("(a.status_aduan = 5)");
 
         $i = 0;
         foreach ($this->column_search as $item) {
@@ -57,12 +57,12 @@ class PengaduanModel extends Model
         // $this->dt->join('_ptk_tb b', 'a.id_ptk = b.id');
         // $this->dt->whereIn('a.status_usulan', [6]);
         $this->dt->where('a.user_id', $userId);
-        if ($this->request->getPost('layanan')) {
-            if ($this->request->getPost('layanan') !== "") {
+        // if ($this->request->getPost('layanan')) {
+        //     if ($this->request->getPost('layanan') !== "") {
 
-                $this->dt->where('a.layanan', $this->request->getPost('layanan'));
-            }
-        }
+        //         $this->dt->where('a.layanan', $this->request->getPost('layanan'));
+        //     }
+        // }
         $this->_get_datatables_query();
         if ($this->request->getPost('length') != -1)
             $this->dt->limit($this->request->getPost('length'), $this->request->getPost('start'));
@@ -76,12 +76,12 @@ class PengaduanModel extends Model
         // $this->dt->join('_ptk_tb b', 'a.id_ptk = b.id');
         // $this->dt->whereIn('a.status_usulan', [6]);
         $this->dt->where('a.user_id', $userId);
-        if ($this->request->getPost('layanan')) {
-            if ($this->request->getPost('layanan') !== "") {
+        // if ($this->request->getPost('layanan')) {
+        //     if ($this->request->getPost('layanan') !== "") {
 
-                $this->dt->where('a.layanan', $this->request->getPost('layanan'));
-            }
-        }
+        //         $this->dt->where('a.layanan', $this->request->getPost('layanan'));
+        //     }
+        // }
         $this->_get_datatables_query();
 
         return $this->dt->countAllResults();
@@ -93,12 +93,12 @@ class PengaduanModel extends Model
         // $this->dt->join('_ptk_tb b', 'a.id_ptk = b.id');
         // $this->dt->whereIn('a.status_usulan', [6]);
         $this->dt->where('a.user_id', $userId);
-        if ($this->request->getPost('layanan')) {
-            if ($this->request->getPost('layanan') !== "") {
+        // if ($this->request->getPost('layanan')) {
+        //     if ($this->request->getPost('layanan') !== "") {
 
-                $this->dt->where('a.layanan', $this->request->getPost('layanan'));
-            }
-        }
+        //         $this->dt->where('a.layanan', $this->request->getPost('layanan'));
+        //     }
+        // }
         $this->_get_datatables_query();
 
         return $this->dt->countAllResults();

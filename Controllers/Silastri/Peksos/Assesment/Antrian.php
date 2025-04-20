@@ -1460,7 +1460,7 @@ class Antrian extends BaseController
             $kondisi_kesehatan = htmlspecialchars($this->request->getVar('_kondisi_kesehatan'), true) ?? NULL;
             $kondisi_perekonomian_keluarga = htmlspecialchars($this->request->getVar('_kondisi_perekonomian_keluarga'), true) ?? NULL;
             $permasalahan = htmlspecialchars($this->request->getVar('_permasalahan'), true) ?? NULL;
-            $identifikasi_kebutuhan = htmlspecialchars($this->request->getVar('_identifikasi_kebutuhan'), true) ?? NULL;
+            $identifikasi_kebutuhan = $this->request->getVar('_identifikasi_kebutuhan') ?? NULL;
             $intervensi_telah_dilakukan = htmlspecialchars($this->request->getVar('_intervensi_telah_dilakukan'), true) ?? NULL;
             $saran_tindak_lanjut = htmlspecialchars($this->request->getVar('_saran_tindak_lanjut'), true) ?? NULL;
 
@@ -1477,6 +1477,20 @@ class Antrian extends BaseController
                 $response = new \stdClass;
                 $response->status = 400;
                 $response->message = "Pengaduan tidak ditemukan.";
+                return json_encode($response);
+            }
+
+            $refUraianKebutuhan = $this->_db->table('ref_uraian_kebutuhan_layanan')
+                ->select("CONCAT(kebutuhan_layanan, ' (Rencana Interversi: ', rencana_intervensi, ')') as uraian_kebutuhan")
+                ->whereIn('id', $identifikasi_kebutuhan)
+                ->where('status', 1)
+                ->get()->getResultArray();
+
+            if (count($refUraianKebutuhan) > 0) {
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Refensi uraian kebutuhan layanan tidak ditemukan.";
                 return json_encode($response);
             }
 
@@ -1803,6 +1817,7 @@ class Antrian extends BaseController
 
             $skor_total = $skor_assesment['penghasilan'] + $skor_assesment['penghasilan_makan'] + $skor_assesment['makan'] + $skor_assesment['kemampuan_pakaian'] + $skor_assesment['tempat_tinggal'] + $skor_assesment['luas_lantai'] + $skor_assesment['jenis_lantai'] + $skor_assesment['jenis_dinding'] + $skor_assesment['jenis_atap'] + $skor_assesment['milik_wc'] + $skor_assesment['jenis_wc'] + $skor_assesment['penerangan'] + $skor_assesment['sumber_air_minum'] + $skor_assesment['bahan_bakar_masak'] + $skor_assesment['berobat'] + $skor_assesment['rata_pendidikan'];
 
+            $uraian_kebutuhan_fix = implode("###", $refUraianKebutuhan['uraian_kebutuhan']);
             $this->_db->transBegin();
             $this->_db->table('_pengaduan')->where('id', $oldData->id)->update($upData);
             if ($this->_db->affectedRows() > 0) {
@@ -1817,7 +1832,8 @@ class Antrian extends BaseController
                         'kondisi_perekonomian_keluarga' => $kondisi_perekonomian_keluarga,
                         'permasalahan' => $permasalahan,
                         // 'media_pengaduan' => $oldData->media_pengaduan,
-                        'identifikasi_kebutuhan' => $identifikasi_kebutuhan,
+                        'kode_identifikasi_kebutuhan' => json_encode($identifikasi_kebutuhan),
+                        'identifikasi_kebutuhan' => $uraian_kebutuhan_fix,
                         'kepersertaan_bansos' => json_encode($kepersertaan_bansos),
                         'intervensi_telah_dilakukan' => $intervensi_telah_dilakukan,
                         // 'bansos_pengampu' => json_encode($bansosPengampu),
