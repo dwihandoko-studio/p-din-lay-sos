@@ -356,161 +356,162 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card mt-0 mb-1">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>Lampiran Dokumen Permohonan</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (KTP Pengurus, Akta Notaris, Pengesahan Kemenkumham, ADRT, Keterangan Domisili, Akreditasi, Struktur Organisasi, NPWP, Foto Lokasi Tampak Depan, Foto Usaha Ekonomi Produktif, Logo Lembaga, dan File Binaan).</p>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_ktp_ketua" class="form-label">Lampiran KTP Pengurus (Ketua) : </label>
-                                            <input class="form-control" type="file" id="_file_ktp_ketua" name="_file_ktp_ketua" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_ketua', 'KTP Ketua')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_ktp_ketua" for="_file_ktp_ketua"></div>
+                <div id="dokumen-lampiran-upload" class="dokumen-lampiran-upload" style="display:none;">
+                    <div class="card mt-0 mb-1">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4>Lampiran Dokumen Permohonan</h4>
+                                    <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (KTP Pengurus, Akta Notaris, Pengesahan Kemenkumham, ADRT, Keterangan Domisili, Akreditasi, Struktur Organisasi, NPWP, Foto Lokasi Tampak Depan, Foto Usaha Ekonomi Produktif, Logo Lembaga, dan File Binaan).</p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_ktp_ketua" class="form-label">Lampiran KTP Pengurus (Ketua) : </label>
+                                                <input class="form-control" type="file" id="_file_ktp_ketua" name="_file_ktp_ketua" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_ketua', 'KTP Ketua')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_ktp_ketua" for="_file_ktp_ketua"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_ktp_sekretaris" class="form-label">Lampiran KTP Pengurus (Sekretaris) : </label>
+                                                <input class="form-control" type="file" id="_file_ktp_sekretaris" name="_file_ktp_sekretaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_sekretaris', 'KTP Sekretaris')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_ktp_sekretaris" for="_file_ktp_sekretaris"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_ktp_sekretaris" class="form-label">Lampiran KTP Pengurus (Sekretaris) : </label>
-                                            <input class="form-control" type="file" id="_file_ktp_sekretaris" name="_file_ktp_sekretaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_sekretaris', 'KTP Sekretaris')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_ktp_sekretaris" for="_file_ktp_sekretaris"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_ktp_bendahara" class="form-label">Lampiran KTP Pengurus (Bendahara) : </label>
+                                                <input class="form-control" type="file" id="_file_ktp_bendahara" name="_file_ktp_bendahara" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_bendahara', 'KTP Bendahara')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_ktp_bendahara" for="_file_ktp_bendahara"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_akta_notaris" class="form-label">Lampiran Akta Notaris : </label>
+                                                <input class="form-control" type="file" id="_file_akta_notaris" name="_file_akta_notaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_akta_notaris', 'Akta Notaris')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
+                                                <div class="help-block _file_akta_notaris" for="_file_akta_notaris"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_ktp_bendahara" class="form-label">Lampiran KTP Pengurus (Bendahara) : </label>
-                                            <input class="form-control" type="file" id="_file_ktp_bendahara" name="_file_ktp_bendahara" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp_bendahara', 'KTP Bendahara')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_ktp_bendahara" for="_file_ktp_bendahara"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_pengesahan_kemenkumham" class="form-label">Lampiran Pengesahan Kemenkumham : </label>
+                                                <input class="form-control" type="file" id="_file_pengesahan_kemenkumham" name="_file_pengesahan_kemenkumham" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_pengesahan_kemenkumham', 'Pengesahan Kemenkumham')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_pengesahan_kemenkumham" for="_file_pengesahan_kemenkumham"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_adrt" class="form-label">Lampiran ADRT : </label>
+                                                <input class="form-control" type="file" id="_file_adrt" name="_file_adrt" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_adrt', 'ADRT')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
+                                                <div class="help-block _file_adrt" for="_file_adrt"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_akta_notaris" class="form-label">Lampiran Akta Notaris : </label>
-                                            <input class="form-control" type="file" id="_file_akta_notaris" name="_file_akta_notaris" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_akta_notaris', 'Akta Notaris')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
-                                            <div class="help-block _file_akta_notaris" for="_file_akta_notaris"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_keterangan_domisili" class="form-label">Lampiran Keterangan Domisili : </label>
+                                                <input class="form-control" type="file" id="_file_keterangan_domisili" name="_file_keterangan_domisili" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_keterangan_domisili', 'Keterangan Domisili')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_keterangan_domisili" for="_file_keterangan_domisili"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_akreditasi" class="form-label">Lampiran Akreditasi : </label>
+                                                <input class="form-control" type="file" id="_file_akreditasi" name="_file_akreditasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_akreditasi', 'Akreditasi')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
+                                                <div class="help-block _file_akreditasi" for="_file_akreditasi"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_pengesahan_kemenkumham" class="form-label">Lampiran Pengesahan Kemenkumham : </label>
-                                            <input class="form-control" type="file" id="_file_pengesahan_kemenkumham" name="_file_pengesahan_kemenkumham" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_pengesahan_kemenkumham', 'Pengesahan Kemenkumham')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_pengesahan_kemenkumham" for="_file_pengesahan_kemenkumham"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_struktur_organisasi" class="form-label">Lampiran Struktur Organisasi : </label>
+                                                <input class="form-control" type="file" id="_file_struktur_organisasi" name="_file_struktur_organisasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_struktur_organisasi', 'Struktur Organisasi')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_struktur_organisasi" for="_file_struktur_organisasi"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_npwp" class="form-label">Lampiran NPWP : </label>
+                                                <input class="form-control" type="file" id="_file_npwp" name="_file_npwp" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_npwp', 'NPWP')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_npwp" for="_file_npwp"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_adrt" class="form-label">Lampiran ADRT : </label>
-                                            <input class="form-control" type="file" id="_file_adrt" name="_file_adrt" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFileCustom('_file_adrt', 'ADRT')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>10 Mb</code></p>
-                                            <div class="help-block _file_adrt" for="_file_adrt"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_foto_lokasi" class="form-label">Lampiran Foto Lokasi : </label>
+                                                <input class="form-control" type="file" id="_file_foto_lokasi" name="_file_foto_lokasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_lokasi', 'Foto Lokasi')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_foto_lokasi" for="_file_foto_lokasi"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_foto_usaha_ekonomi_produktif" class="form-label">Lampiran Foto Usaha Ekonomi Produktif (UEP) : </label>
+                                                <input class="form-control" type="file" id="_file_foto_usaha_ekonomi_produktif" name="_file_foto_usaha_ekonomi_produktif" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_usaha_ekonomi_produktif', 'Foto Usaha Ekonomi Produktif')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
+                                                <div class="help-block _file_foto_usaha_ekonomi_produktif" for="_file_foto_usaha_ekonomi_produktif"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_keterangan_domisili" class="form-label">Lampiran Keterangan Domisili : </label>
-                                            <input class="form-control" type="file" id="_file_keterangan_domisili" name="_file_keterangan_domisili" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_keterangan_domisili', 'Keterangan Domisili')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_keterangan_domisili" for="_file_keterangan_domisili"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mt-3">
+                                                <label for="_file_logo_lembaga" class="form-label">Lampiran Logo Lembaga : </label>
+                                                <input class="form-control" type="file" id="_file_logo_lembaga" name="_file_logo_lembaga" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_logo_lembaga', 'Logo Lembaga')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
+                                                <div class="help-block _file_logo_lembaga" for="_file_logo_lembaga"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_akreditasi" class="form-label">Lampiran Akreditasi : </label>
-                                            <input class="form-control" type="file" id="_file_akreditasi" name="_file_akreditasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_akreditasi', 'Akreditasi')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
-                                            <div class="help-block _file_akreditasi" for="_file_akreditasi"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_struktur_organisasi" class="form-label">Lampiran Struktur Organisasi : </label>
-                                            <input class="form-control" type="file" id="_file_struktur_organisasi" name="_file_struktur_organisasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_struktur_organisasi', 'Struktur Organisasi')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_struktur_organisasi" for="_file_struktur_organisasi"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_npwp" class="form-label">Lampiran NPWP : </label>
-                                            <input class="form-control" type="file" id="_file_npwp" name="_file_npwp" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_npwp', 'NPWP')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_npwp" for="_file_npwp"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_foto_lokasi" class="form-label">Lampiran Foto Lokasi : </label>
-                                            <input class="form-control" type="file" id="_file_foto_lokasi" name="_file_foto_lokasi" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_lokasi', 'Foto Lokasi')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_foto_lokasi" for="_file_foto_lokasi"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_foto_usaha_ekonomi_produktif" class="form-label">Lampiran Foto Usaha Ekonomi Produktif (UEP) : </label>
-                                            <input class="form-control" type="file" id="_file_foto_usaha_ekonomi_produktif" name="_file_foto_usaha_ekonomi_produktif" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_usaha_ekonomi_produktif', 'Foto Usaha Ekonomi Produktif')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
-                                            <div class="help-block _file_foto_usaha_ekonomi_produktif" for="_file_foto_usaha_ekonomi_produktif"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_logo_lembaga" class="form-label">Lampiran Logo Lembaga : </label>
-                                            <input class="form-control" type="file" id="_file_logo_lembaga" name="_file_logo_lembaga" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_logo_lembaga', 'Logo Lembaga')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb (Jika Ada)</code></p>
-                                            <div class="help-block _file_logo_lembaga" for="_file_logo_lembaga"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mt-3">
-                                            <label for="_file_data_binaan" class="form-label">Lampiran Data Binaan : </label>
-                                            <p class="font-size-11">&nbsp;&nbsp;Template data binaan dapat di download pada : <a class="menu-badge badge-info" href="#">Link Berikut...</a></p>
-                                            <input class="form-control" type="file" id="_file_data_binaan" name="_file_data_binaan" onFocus="inputFocus(this);" accept=".xls, .xlsx" onchange="loadFileExcel('_file_data_binaan', 'Data Binaan')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="xls, xlsx">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_data_binaan" for="_file_data_binaan"></div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mt-3">
+                                                <label for="_file_data_binaan" class="form-label">Lampiran Data Binaan : </label>
+                                                <p class="font-size-11">&nbsp;&nbsp;Template data binaan dapat di download pada : <a class="menu-badge badge-info" href="#">Link Berikut...</a></p>
+                                                <input class="form-control" type="file" id="_file_data_binaan" name="_file_data_binaan" onFocus="inputFocus(this);" accept=".xls, .xlsx" onchange="loadFileExcel('_file_data_binaan', 'Data Binaan')">
+                                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="xls, xlsx">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                                <div class="help-block _file_data_binaan" for="_file_data_binaan"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mt-0 mb-1">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3 justify-content-end">
-                                <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">KIRIM</button>
-                            </div>
-                            <div class="col-lg-9">
-                                <div>
-                                    <progress id="progressBar" value="0" max="100" style="width:100%; display: none;"></progress>
+                    <div class="card mt-0 mb-1">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3 justify-content-end">
+                                    <button type="submit" id="save_button" name="save_button" class="btn btn-primary w-md save_button">KIRIM</button>
                                 </div>
-                                <div>
-                                    <h3 id="status" style="font-size: 15px; margin: 8px auto;"></h3>
-                                </div>
-                                <div>
-                                    <p id="loaded_n_total" style="margin-bottom: 0px;"></p>
+                                <div class="col-lg-9">
+                                    <div>
+                                        <progress id="progressBar" value="0" max="100" style="width:100%; display: none;"></progress>
+                                    </div>
+                                    <div>
+                                        <h3 id="status" style="font-size: 15px; margin: 8px auto;"></h3>
+                                    </div>
+                                    <div>
+                                        <p id="loaded_n_total" style="margin-bottom: 0px;"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1332,6 +1333,8 @@
                         } else {
                             // ambilId("status").innerHTML = resul.message;
                             if (resul.next) {
+                                document.getElementsByName("_id_permohonan")[0].value = resul.id_permohonan;
+                                document.getElementById("dokumen-lampiran-upload").style.display = "block";
                                 ambilId("status").style.color = "green";
                                 ambilId("progressBar").value = 100;
                                 Swal.fire(
