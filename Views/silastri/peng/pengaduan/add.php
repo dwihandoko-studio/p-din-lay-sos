@@ -84,7 +84,7 @@
                                                 }
                                             } ?>
                                         </select>
-                                        <textarea rows="3" style="display: none; margin-top: 10px;" id="_kategori_detail" name="_kategori_detail" class="form-control" placeholder="Masukan keterangan peruntukan SKTM.."></textarea>
+                                        <textarea rows="3" style="display: none; margin-top: 10px;" id="_kategori_detail" name="_kategori_detail" class="form-control" placeholder="Masukan kategori aduan.."></textarea>
                                         <div class="help-block _kategori"></div>
                                         <div class="help-block _kategori_detail"></div>
                                     </div>
