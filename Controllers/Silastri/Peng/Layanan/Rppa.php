@@ -14,7 +14,7 @@ use App\Libraries\Helplib;
 use App\Libraries\Uuid;
 use App\Libraries\Silastri\Riwayatpermohonanlib;
 
-class Ppa extends BaseController
+class Rppa extends BaseController
 {
     var $folderImage = 'masterdata';
     private $_db;
