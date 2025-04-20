@@ -150,7 +150,7 @@ class Riwayat extends BaseController
 
         if ($current) {
             $data['data'] = $current;
-            switch ((int)$current->status_aduan) {
+            switch ($current->status_aduan) {
                 case 0:
                     $data['status_aduan'] = 'antrian';
                 case 1:
