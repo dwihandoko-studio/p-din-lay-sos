@@ -803,7 +803,7 @@
                             id="_identifikasi_kebutuhan"
                             name="_identifikasi_kebutuhan"
                             multiple="multiple"
-                            style="width: 100%">
+                            style="width: 100%" required>
                             <option value="">--- Pilih Kebutuhan ---</option>
                         </select>
                         <div class="help-block _identifikasi_kebutuhan"></div>
@@ -1130,7 +1130,7 @@
             const kondisi_kesehatan = document.getElementById('_kondisi_kesehatan').value;
             const kondisi_perekonomian_keluarga = document.getElementById('_kondisi_perekonomian_keluarga').value;
             const permasalahan = document.getElementById('_permasalahan').value;
-            const identifikasi_kebutuhan = document.getElementById('_identifikasi_kebutuhan').value;
+            // const identifikasi_kebutuhan = document.getElementById('_identifikasi_kebutuhan').value;
             const intervensi_telah_dilakukan = document.getElementById('_intervensi_telah_dilakukan').value;
             const saran_tindak_lanjut = document.getElementById('_saran_tindak_lanjut').value;
 
@@ -1761,13 +1761,13 @@
             } else {
                 document.querySelector('._permasalahan').innerHTML = '';
             }
-            if (identifikasi_kebutuhan.trim() === '') {
-                console.log(71);
-                isValid = false;
-                document.querySelector('._identifikasi_kebutuhan').innerHTML = '<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">Uraian identifikasi kebutuhan tidak boleh kosong.</li></ul>';
-            } else {
-                document.querySelector('._identifikasi_kebutuhan').innerHTML = '';
-            }
+            // if (identifikasi_kebutuhan.trim() === '') {
+            //     console.log(71);
+            //     isValid = false;
+            //     document.querySelector('._identifikasi_kebutuhan').innerHTML = '<ul role="alert" style="color: #dc3545; list-style-type: none; margin-block-start: 0px; padding-inline-start: 10px;"><li style="color: #dc3545;">Uraian identifikasi kebutuhan tidak boleh kosong.</li></ul>';
+            // } else {
+            //     document.querySelector('._identifikasi_kebutuhan').innerHTML = '';
+            // }
             if (intervensi_telah_dilakukan.trim() === '') {
                 console.log(71);
                 isValid = false;
