@@ -280,7 +280,7 @@ class Pengaduan extends BaseController
         if ($filenamelampiran1 != '') {
             $lampiranVal1 = [
                 '_file_1' => [
-                    'rules' => 'uploaded[_file_1]|max_size[_file_1,2048]|mime_in[_file_1,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_1]|max_size[_file_1,5120]|mime_in[_file_1,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen pengaduan terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen pengaduan terlalu besar. ',
@@ -295,7 +295,7 @@ class Pengaduan extends BaseController
         if ($filenamelampiran2 != '') {
             $lampiranVal2 = [
                 '_file_2' => [
-                    'rules' => 'uploaded[_file_2]|max_size[_file_2,2048]|mime_in[_file_2,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_2]|max_size[_file_2,5120]|mime_in[_file_2,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen pengaduan terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen pengaduan terlalu besar. ',
@@ -310,7 +310,7 @@ class Pengaduan extends BaseController
         if ($filenamelampiran3 != '') {
             $lampiranVal3 = [
                 '_file_3' => [
-                    'rules' => 'uploaded[_file_3]|max_size[_file_3,2048]|mime_in[_file_3,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_3]|max_size[_file_3,5120]|mime_in[_file_3,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen pengaduan terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen pengaduan terlalu besar. ',
@@ -325,7 +325,7 @@ class Pengaduan extends BaseController
         if ($filenamelampiran4 != '') {
             $lampiranVal4 = [
                 '_file_4' => [
-                    'rules' => 'uploaded[_file_4]|max_size[_file_4,2048]|mime_in[_file_4,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_4]|max_size[_file_4,5120]|mime_in[_file_4,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen pengaduan terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen pengaduan terlalu besar. ',
@@ -340,7 +340,7 @@ class Pengaduan extends BaseController
         if ($filenamelampiran5 != '') {
             $lampiranVal5 = [
                 '_file_5' => [
-                    'rules' => 'uploaded[_file_5]|max_size[_file_5,2048]|mime_in[_file_5,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_5]|max_size[_file_5,5120]|mime_in[_file_5,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen pengaduan terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen pengaduan terlalu besar. ',

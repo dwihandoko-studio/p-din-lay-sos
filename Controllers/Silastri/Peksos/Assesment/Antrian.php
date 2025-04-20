@@ -1129,7 +1129,7 @@ class Antrian extends BaseController
         if ($filenamelampiranktp != '') {
             $lampiranValKtp = [
                 '_file_ktp' => [
-                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,2048]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,5120]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1144,7 +1144,7 @@ class Antrian extends BaseController
         if ($filenamelampirankk != '') {
             $lampiranValkk = [
                 '_file_kk' => [
-                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,2048]|mime_in[_file_kk,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,5120]|mime_in[_file_kk,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1159,7 +1159,7 @@ class Antrian extends BaseController
         if ($filenamelampiranfoto_ppks != '') {
             $lampiranValfoto_ppks = [
                 '_file_foto_ppks' => [
-                    'rules' => 'uploaded[_file_foto_ppks]|max_size[_file_foto_ppks,2048]|mime_in[_file_foto_ppks,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_foto_ppks]|max_size[_file_foto_ppks,5120]|mime_in[_file_foto_ppks,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1174,7 +1174,7 @@ class Antrian extends BaseController
         if ($filenamelampiranrumah_depan != '') {
             $lampiranValrumah_depan = [
                 '_file_rumah_depan' => [
-                    'rules' => 'uploaded[_file_rumah_depan]|max_size[_file_rumah_depan,2048]|mime_in[_file_rumah_depan,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_rumah_depan]|max_size[_file_rumah_depan,5120]|mime_in[_file_rumah_depan,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1189,7 +1189,7 @@ class Antrian extends BaseController
         if ($filenamelampiranrumah_kiri != '') {
             $lampiranValrumah_kiri = [
                 '_file_rumah_kiri' => [
-                    'rules' => 'uploaded[_file_rumah_kiri]|max_size[_file_rumah_kiri,2048]|mime_in[_file_rumah_kiri,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_rumah_kiri]|max_size[_file_rumah_kiri,5120]|mime_in[_file_rumah_kiri,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1204,7 +1204,7 @@ class Antrian extends BaseController
         if ($filenamelampiranrumah_kanan != '') {
             $lampiranValrumah_kanan = [
                 '_file_rumah_kanan' => [
-                    'rules' => 'uploaded[_file_rumah_kanan]|max_size[_file_rumah_kanan,2048]|mime_in[_file_rumah_kanan,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_rumah_kanan]|max_size[_file_rumah_kanan,5120]|mime_in[_file_rumah_kanan,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1219,7 +1219,7 @@ class Antrian extends BaseController
         if ($filenamelampiranrumah_belakang != '') {
             $lampiranValrumah_belakang = [
                 '_file_rumah_belakang' => [
-                    'rules' => 'uploaded[_file_rumah_belakang]|max_size[_file_rumah_belakang,2048]|mime_in[_file_rumah_belakang,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_rumah_belakang]|max_size[_file_rumah_belakang,5120]|mime_in[_file_rumah_belakang,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
@@ -1234,7 +1234,7 @@ class Antrian extends BaseController
         if ($filenamelampiranasset != '') {
             $lampiranValasset = [
                 '_file_asset' => [
-                    'rules' => 'uploaded[_file_asset]|max_size[_file_asset,2048]|mime_in[_file_asset,image/jpeg,image/jpg,image/png]',
+                    'rules' => 'uploaded[_file_asset]|max_size[_file_asset,5120]|mime_in[_file_asset,image/jpeg,image/jpg,image/png]',
                     'errors' => [
                         'uploaded' => 'Pilih lampiran dokumen terlebih dahulu. ',
                         'max_size' => 'Ukuran lampiran dokumen terlalu besar. ',
