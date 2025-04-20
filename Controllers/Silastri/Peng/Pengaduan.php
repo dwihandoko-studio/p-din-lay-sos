@@ -916,7 +916,7 @@ class Pengaduan extends BaseController
             // $m->addRaw($dompdf1->output());
 
             $dir = FCPATH . "upload/generate/pendaftaran";
-            $fileNya = $dir . '/' . $current->kode_permohonan . '.pdf';
+            $fileNya = $dir . '/' . $current->kode_aduan . '.pdf';
 
             file_put_contents($fileNya, $dompdf->output());
 
