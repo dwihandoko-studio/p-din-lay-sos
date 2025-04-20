@@ -231,7 +231,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+                                            <h4 class="card-title mb-4">Progress Pengajuan Pengaduan Anda</h4>
 
                                             <div class="hori-timeline">
                                                 <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
@@ -246,7 +246,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                                <p class="text-muted">Mengajukan Pengaduan</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -262,7 +262,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Disposisi Pengaduan oleh Operator.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -278,7 +278,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Proses Verifikasi Pengaduan oleh Admin.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -323,7 +323,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+                                            <h4 class="card-title mb-4">Progress Pengajuan Pengaduan Anda</h4>
 
                                             <div class="hori-timeline">
                                                 <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
@@ -338,7 +338,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                                <p class="text-muted">Mengajukan Pengaduan</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -354,7 +354,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Disposisi Pengaduan oleh Operator.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -370,7 +370,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Proses Verifikasi Pengaduan oleh Admin.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -415,7 +415,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+                                            <h4 class="card-title mb-4">Progress Pengajuan Pengaduan Anda</h4>
 
                                             <div class="hori-timeline">
                                                 <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
@@ -430,7 +430,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                                <p class="text-muted">Mengajukan Pengaduan</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -446,7 +446,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Disposisi Pengaduan oleh Admin.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -462,7 +462,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Proses Verifikasi Pengaduan oleh Admin.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -510,7 +510,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+                                            <h4 class="card-title mb-4">Progress Pengajuan Pengaduan Anda</h4>
 
                                             <div class="hori-timeline">
                                                 <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
@@ -525,7 +525,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                                <p class="text-muted">Mengajukan Pengaduan</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -541,7 +541,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Disposisi Pengaduan oleh Operator.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -557,7 +557,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                                <p class="text-muted">Proses Verifikasi Pengaduan oleh Admin.</p>
                                                             </div>
                                                         </div>
                                                     </div>
