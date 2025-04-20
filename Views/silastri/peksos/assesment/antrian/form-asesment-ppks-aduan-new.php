@@ -2435,8 +2435,18 @@
                 $('div.modal-content-loading-approve').block({
                     message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
                 });
+                const kebutuhanValuesSelected = $('#_identifikasi_kebutuhan').val() || [];
+
+
                 let formData = new FormData(document.getElementById('tindakLanjutPengaduanForm'));
                 // var formData = new FormData(e.form);
+
+                formData.delete('_identifikasi_kebutuhan');
+
+                // Append each selected value separately
+                kebutuhanValuesSelected.forEach(function(value) {
+                    formData.append('_identifikasi_kebutuhan[]', value);
+                });
 
                 // console.log("going send");
                 fetch('./simpanassesment', {
