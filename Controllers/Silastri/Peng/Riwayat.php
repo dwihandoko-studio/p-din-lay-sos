@@ -150,17 +150,22 @@ class Riwayat extends BaseController
 
         if ($current) {
             $data['data'] = $current;
-            $data['status_aduan'] = 'antrian';
-            // switch ($current->layanan) {
-            //     case 'LKS':
-            //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
-            //         return view('silastri/peng/riwayat/layanan/detail_lks', $data);
-            //         break;
+            switch ((int)$current->status_aduan) {
+                case 0:
+                    $data['status_aduan'] = 'antrian';
+                case 1:
+                    $data['status_aduan'] = 'disposisi';
+                case 1:
+                    $data['status_aduan'] = 'disposisi';
+                    //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
+                    //         return view('silastri/peng/riwayat/layanan/detail_lks', $data);
+                    //         break;
 
-            //     default:
+                default:
+                    $data['status_aduan'] = 'antrian';
+                    break;
+            }
             return view('silastri/peng/riwayat/pengaduan/detail', $data);
-            // break;
-            // }
         } else {
             $current1 = $this->_db->table('_permohonan a')
                 ->select("a.*, 
