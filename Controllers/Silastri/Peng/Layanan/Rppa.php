@@ -30,7 +30,7 @@ class Rppa extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('silastri/peng/layanan/ppa/add'));
+        return redirect()->to(base_url('silastri/peng/layanan/rppa/add'));
     }
 
     public function add()
@@ -47,7 +47,7 @@ class Rppa extends BaseController
         $data['user'] = $user->data;
         $data['data'] = $user->data;
 
-        return view('silastri/peng/layanan/ppa/add', $data);
+        return view('silastri/peng/layanan/rppa/add', $data);
     }
 
     public function addSave()
