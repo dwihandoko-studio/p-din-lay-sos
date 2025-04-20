@@ -34,9 +34,9 @@
                                     <label for="_filter_layanan" class="col-form-label">Filter Layanan:</label>
                                     <select class="form-control" id="_filter_layanan" name="_filter_layanan" required>
                                         <option value="">&nbsp;</option>
-                                        <?php if (isset($layanan)) {
-                                            if (count($layanan) > 0) {
-                                                foreach ($layanan as $key => $value) { ?>
+                                        <?php if (isset($layanans)) {
+                                            if (count($layanans) > 0) {
+                                                foreach ($layanans as $key => $value) { ?>
                                                     <option value="<?= $value->layanan_singkatan ?>"><?= $value->layanan_deskripsi ?></option>
                                         <?php }
                                             }
