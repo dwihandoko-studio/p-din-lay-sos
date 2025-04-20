@@ -646,13 +646,16 @@
                                                                 <h5 class="mb-4">5</h5>
                                                             </div>
                                                             <div class="event-down-icon">
-                                                                <!-- <button type="button" onclick="downloadPDF('<?php //echo isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' 
-                                                                                                                    ?>','<?php //echo $data->kode_permohonan 
-                                                                                                                                                                                                                ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+                                                            <!-- <div class="event-down-icon"> -->
+                                                            <!-- <button type="button" onclick="downloadPDF('<?php //echo isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' 
+                                                                                                                ?>','<?php //echo $data->kode_permohonan 
+                                                                                                                        ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
                                                                     <i class="mdi mdi-download d-block font-size-16"></i> Download
                                                                 </button> -->
-                                                                <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
-                                                            </div>
+                                                            <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
+                                                            <!-- </div> -->
 
                                                             <div class="mt-3 px-3">
                                                                 <p class="text-muted">Permohonan Layanan Selesai.</p>
