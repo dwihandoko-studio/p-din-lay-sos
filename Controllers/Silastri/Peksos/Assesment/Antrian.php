@@ -1489,11 +1489,11 @@ class Antrian extends BaseController
                 ->where("status = 1 AND id IN ($kebutuhanString)")
                 ->get()->getResultArray();
 
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->err = $refUraianKebutuhan;
-            $response->message = "vardump.";
-            return json_encode($response);
+            // $response = new \stdClass;
+            // $response->status = 400;
+            // $response->err = $refUraianKebutuhan;
+            // $response->message = "vardump.";
+            // return json_encode($response);
 
             if (count($refUraianKebutuhan) > 0) {
             } else {
@@ -1841,7 +1841,7 @@ class Antrian extends BaseController
                         'kondisi_perekonomian_keluarga' => $kondisi_perekonomian_keluarga,
                         'permasalahan' => $permasalahan,
                         // 'media_pengaduan' => $oldData->media_pengaduan,
-                        'kode_identifikasi_kebutuhan' => json_encode($identifikasi_kebutuhan),
+                        'kode_identifikasi_kebutuhan' => $kebutuhanString,
                         'identifikasi_kebutuhan' => $uraian_kebutuhan_fix,
                         'kepersertaan_bansos' => json_encode($kepersertaan_bansos),
                         'intervensi_telah_dilakukan' => $intervensi_telah_dilakukan,
