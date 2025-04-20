@@ -73,7 +73,7 @@
                     <?php if (isset($data->lampiran_ktp)) { ?>
                         <?php if ($data->lampiran_ktp === null || $data->lampiran_ktp === "") { ?>
                         <?php } else { ?>
-                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/sktm') . '/' . $data->lampiran_ktp ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/sktm') . '/' . $data->lampiran_ktp ?>" id="nik">
+                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_ktp ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_ktp ?>" id="nik">
                                 KTP
                             </a>
                         <?php } ?>
@@ -81,7 +81,7 @@
                     <?php if (isset($data->lampiran_kk)) { ?>
                         <?php if ($data->lampiran_kk === null || $data->lampiran_kk === "") { ?>
                         <?php } else { ?>
-                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/sktm') . '/' . $data->lampiran_kk ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/sktm') . '/' . $data->lampiran_kk ?>" id="nik">
+                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_kk ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_kk ?>" id="nik">
                                 Kartu Keluarga
                             </a>
                         <?php } ?>
@@ -89,7 +89,7 @@
                     <?php if (isset($data->lampiran_pernyataan)) { ?>
                         <?php if ($data->lampiran_pernyataan === null || $data->lampiran_pernyataan === "") { ?>
                         <?php } else { ?>
-                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/sktm') . '/' . $data->lampiran_pernyataan ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/sktm') . '/' . $data->lampiran_pernyataan ?>" id="nik">
+                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_pernyataan ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_pernyataan ?>" id="nik">
                                 Pernyataan
                             </a>
                         <?php } ?>
@@ -97,7 +97,7 @@
                     <?php if (isset($data->lampiran_foto_rumah)) { ?>
                         <?php if ($data->lampiran_foto_rumah === null || $data->lampiran_foto_rumah === "") { ?>
                         <?php } else { ?>
-                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads/sktm') . '/' . $data->lampiran_foto_rumah ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads/sktm') . '/' . $data->lampiran_foto_rumah ?>" id="nik">
+                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_foto_rumah ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_foto_rumah ?>" id="nik">
                                 Foto Rumah
                             </a>
                         <?php } ?>
