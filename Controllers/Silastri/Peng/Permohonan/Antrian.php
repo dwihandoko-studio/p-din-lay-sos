@@ -102,6 +102,7 @@ class Antrian extends BaseController
         $data['user'] = $user->data;
 
         // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
+        $data['layanans'] = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResult();
 
         return view('silastri/peng/permohonan/antrian/index', $data);
     }

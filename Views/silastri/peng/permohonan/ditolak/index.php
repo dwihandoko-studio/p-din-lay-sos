@@ -33,9 +33,14 @@
                                 <div class="mb-3">
                                     <label for="_filter_layanan" class="col-form-label">Filter Layanan:</label>
                                     <select class="form-control" id="_filter_layanan" name="_filter_layanan" required>
-                                        <option value="">--Pilih--</option>
-                                        <option value="SKDTKS">Surat Keterangan DTKS</option>
-                                        <option value="SKTM">Surat Keterangan Tidak Mampu</option>
+                                        <option value="">&nbsp;</option>
+                                        <?php if (isset($layanan)) {
+                                            if (count($layanan) > 0) {
+                                                foreach ($layanan as $key => $value) { ?>
+                                                    <option value="<?= $value->layanan_singkatan ?>"><?= $value->layanan_deskripsi ?></option>
+                                        <?php }
+                                            }
+                                        } ?>
                                     </select>
                                     <div class="help-block _filter_layanan"></div>
                                 </div>
