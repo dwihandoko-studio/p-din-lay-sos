@@ -1846,9 +1846,11 @@ function getPetugasFromNik($nik = null)
 
 function getLayananSilastri()
 {
-	$layanan = json_decode(file_get_contents(FCPATH . "uploads/layanans_silastri.json"), true);
-	$data = $layanan['layanans'];
-	return $data;
+	// $layanan = json_decode(file_get_contents(FCPATH . "uploads/layanans_silastri.json"), true);
+	// $data = $layanan['layanans'];
+	$db      = \Config\Database::connect();
+	$layanan = $db->table('ref_layanan')->where('layanan_status', 1)->get()->getResultArray();
+	return $layanan;
 }
 
 function getNameKategoriPPKS($val)

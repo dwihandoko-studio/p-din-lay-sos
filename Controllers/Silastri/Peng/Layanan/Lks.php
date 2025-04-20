@@ -687,6 +687,7 @@ class Lks extends BaseController
                         $response = new \stdClass;
                         $response->status = 200;
                         $response->message = "Permohonan Berhasil di Ajukan.";
+                        $response->id_permohonan = $data['id'];
                         $response->next = true;
                         return json_encode($response);
                     } else {
