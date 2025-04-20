@@ -150,7 +150,7 @@ class Riwayat extends BaseController
 
         if ($current) {
             $data['data'] = $current;
-            $data['status_permohonan'] = 'antrian';
+            $data['status_aduan'] = 'antrian';
             // switch ($current->layanan) {
             //     case 'LKS':
             //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
@@ -183,17 +183,17 @@ class Riwayat extends BaseController
             if ($current1) {
                 $data['data'] = $current1;
                 if ((int)$current1->status_permohonan === 1) {
-                    $data['status_permohonan'] = 'disposisi';
+                    $data['status_aduan'] = 'disposisi';
                 } else if ((int)$current1->status_permohonan === 2) {
-                    $data['status_permohonan'] = 'proses';
+                    $data['status_aduan'] = 'proses';
                 } else if ((int)$current1->status_permohonan === 5) {
-                    $data['status_permohonan'] = 'pengesahan';
+                    $data['status_aduan'] = 'pengesahan';
                     $fileSelesai = $this->_db->table('_file_tte')->where('id', $current1->id)->get()->getRowObject();
                     if ($fileSelesai) {
                         $data['file_selesai'] = $fileSelesai;
                     }
                 } else {
-                    $data['status_permohonan'] = 'ditolak';
+                    $data['status_aduan'] = 'ditolak';
                 }
                 switch ($current1->layanan) {
                     case 'LKS':
