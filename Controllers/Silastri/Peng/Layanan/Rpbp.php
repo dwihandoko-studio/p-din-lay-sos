@@ -214,7 +214,7 @@ class Rpbp extends BaseController
             // $indikator4 = (int)htmlspecialchars($this->request->getVar('indikator4'), true);
             // $indikator5 = (int)htmlspecialchars($this->request->getVar('indikator5'), true);
             // $indikator6 = (int)htmlspecialchars($this->request->getVar('indikator6'), true);
-            $keterangan = (int)htmlspecialchars($this->request->getVar('keterangan'), true);
+            // $keterangan = (int)htmlspecialchars($this->request->getVar('keterangan'), true);
 
             // if ($keterangan === NULL || $keterangan === "") {
             //     $jenisFix = $jenis;
