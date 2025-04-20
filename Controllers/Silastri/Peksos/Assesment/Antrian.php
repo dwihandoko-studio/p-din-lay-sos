@@ -1483,7 +1483,7 @@ class Antrian extends BaseController
             $refUraianKebutuhan = $this->_db->table('ref_uraian_kebutuhan_layanan')
                 ->select("CONCAT(kebutuhan_layanan, ' (Rencana Interversi: ', rencana_intervensi, ')') as uraian_kebutuhan")
                 ->whereIn('id', $identifikasi_kebutuhan)
-                ->where('status', 1)
+                ->where('statuss', 1)
                 ->get()->getResultArray();
 
             $response = new \stdClass;
