@@ -148,7 +148,7 @@
 
                         // Set the inner HTML of the <li> element
                         liElement.innerHTML = `
-                        <a href="<?= base_url('silastri/peng/riwayat/detailPengaduan') ?>?id=${resul.data[index].id_aduan}">
+                        <a href="<?= base_url('silastri/peng/riwayat/detailPengaduan') ?>?id=${resul.data[index].id}">
         <div class="event-timeline-dot">
             <i class="bx bx-right-arrow-circle font-size-18"></i>
         </div>
