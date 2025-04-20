@@ -202,7 +202,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                                <p class="text-muted">Proses Assesment.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -218,7 +218,23 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">6</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Pengaduan Selesai.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -294,7 +310,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                                <p class="text-muted">Proses Assesment.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -304,6 +320,22 @@
                                                             <div class="event-date">
                                                                 <div class="text-Opacity mb-1">...</div>
                                                                 <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">6</h5>
                                                             </div>
                                                             <div class="event-down-icon">
                                                                 <i class="bx bx-timer h1 text-Opacity"></i>
@@ -386,7 +418,7 @@
                                                             </div>
 
                                                             <div class="mt-3 px-3">
-                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                                <p class="text-muted">Proses Assesment.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -396,6 +428,130 @@
                                                             <div class="event-date">
                                                                 <div class="text-Opacity mb-1">...</div>
                                                                 <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">6</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if ($status_aduan === 'assesment') { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Pengaduan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Pengaduan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_approve ?></div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Pengaduan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1"><?= $data->updated_at ?></div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Pengaduan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1"><?= $data->date_tte ?></div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Assesment.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item event-list active">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1">...</div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-primary down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan Oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">6</h5>
                                                             </div>
                                                             <div class="event-down-icon">
                                                                 <i class="bx bx-timer h1 text-Opacity"></i>
