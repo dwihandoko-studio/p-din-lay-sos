@@ -646,9 +646,11 @@
                                                                 <h5 class="mb-4">5</h5>
                                                             </div>
                                                             <div class="event-down-icon">
-                                                                <button type="button" onclick="downloadPDF('<?= isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' ?>','<?= $data->kode_permohonan ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
+                                                                <!-- <button type="button" onclick="downloadPDF('<?php //echo isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' 
+                                                                                                                    ?>','<?php //echo $data->kode_permohonan 
+                                                                                                                                                                                                                ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
                                                                     <i class="mdi mdi-download d-block font-size-16"></i> Download
-                                                                </button>
+                                                                </button> -->
                                                                 <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
                                                             </div>
 
