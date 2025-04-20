@@ -189,8 +189,11 @@ class Home extends BaseController
             return redirect()->to(base_url('auth'));
         }
 
+        $layanan = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResultArray();
+
         $layanan = json_decode(file_get_contents(FCPATH . "uploads/layanans_silastri.json"), true);
-        $data['layanans'] = $layanan['layanans'];
+        // $data['layanans'] = $layanan['layanans'];
+        $data['layanans'] = $layanan;
         // var_dump("PENG");
         // die;
         $data['user'] = $user->data;
