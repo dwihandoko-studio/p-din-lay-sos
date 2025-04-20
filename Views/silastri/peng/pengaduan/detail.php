@@ -63,7 +63,8 @@
             </div>
             <!-- <div class="col-lg-6">
                 <label class="col-form-label">Jenis:</label>
-                <textarea rows="3" class="form-control" readonly><?= $data->jenis ?></textarea>
+                <textarea rows="3" class="form-control" readonly><?php //echo $data->jenis 
+                                                                    ?></textarea>
             </div> -->
 
             <?php if (isset($data->lampiran_1) || isset($data->lampiran_2) || isset($data->lampiran_3)  || isset($data->lampiran_4)  || isset($data->lampiran_5)) { ?>
