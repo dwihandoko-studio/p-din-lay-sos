@@ -2063,7 +2063,7 @@
                         },
                         dataType: 'json',
                         success: function(response) {
-                            if (response.success) {
+                            if (response.status == 200) {
                                 loadedKebutuhanOptions[kategoriId] = response.data;
                                 updateKebutuhanDropdown();
                             }
