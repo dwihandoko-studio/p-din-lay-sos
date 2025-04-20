@@ -416,7 +416,7 @@
 
         Swal.fire({
             title: 'Apakah anda yakin ingin mengajukan permohonan data ini?',
-            text: "Ajukan permohonan : Rekomendasi PBI",
+            text: "Ajukan permohonan : Rekomendasi Permohonan Pengangkatan Anak",
             showCancelButton: true,
             icon: 'question',
             confirmButtonColor: '#3085d6',
