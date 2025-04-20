@@ -799,7 +799,7 @@
                     </div>
                     <div class="col-lg-12">
                         <label class="col-form-label">Uraian Identifikasi Kebutuhan:</label>
-                        <select class="form-control select2"
+                        <select class="form-control select2 select2-table identifikasi-kebutuhan"
                             id="_identifikasi_kebutuhan"
                             name="_identifikasi_kebutuhan"
                             multiple="multiple"
