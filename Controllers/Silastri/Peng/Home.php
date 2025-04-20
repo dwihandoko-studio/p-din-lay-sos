@@ -97,8 +97,8 @@ class Home extends BaseController
             return redirect()->to(base_url('auth'));
         }
 
-        $userId = 'c0790cbb-1567-48fa-8949-fb5037866118';
-        // $userId = $user->data->id;
+        // $userId = 'c0790cbb-1567-48fa-8949-fb5037866118';
+        $userId = $user->data->id;
 
         $queryJumlahAll = $this->_db->query("SELECT 
         (SELECT COUNT(*) FROM _permohonan WHERE user_id = ?) +
