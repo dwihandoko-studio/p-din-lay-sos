@@ -204,7 +204,7 @@ class Rplrs extends BaseController
                 return json_encode($response);
             }
 
-            $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
+            // $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             // $indikator1 = (int)htmlspecialchars($this->request->getVar('indikator1'), true);
