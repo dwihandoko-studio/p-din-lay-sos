@@ -1460,9 +1460,13 @@ class Antrian extends BaseController
             $kondisi_kesehatan = htmlspecialchars($this->request->getVar('_kondisi_kesehatan'), true) ?? NULL;
             $kondisi_perekonomian_keluarga = htmlspecialchars($this->request->getVar('_kondisi_perekonomian_keluarga'), true) ?? NULL;
             $permasalahan = htmlspecialchars($this->request->getVar('_permasalahan'), true) ?? NULL;
-            $identifikasi_kebutuhan = $this->request->getVar('_identifikasi_kebutuhan') ?? NULL;
+            // $identifikasi_kebutuhan = $this->request->getVar('_identifikasi_kebutuhan') ?? NULL;
             $intervensi_telah_dilakukan = htmlspecialchars($this->request->getVar('_intervensi_telah_dilakukan'), true) ?? NULL;
             $saran_tindak_lanjut = htmlspecialchars($this->request->getVar('_saran_tindak_lanjut'), true) ?? NULL;
+
+            $identifikasiKebutuhan = $this->request->getPost('_identifikasi_kebutuhan');
+
+            $kebutuhanString = implode(',', $identifikasiKebutuhan);
 
             $lampiran = "";
 
@@ -1482,8 +1486,7 @@ class Antrian extends BaseController
 
             $refUraianKebutuhan = $this->_db->table('ref_uraian_kebutuhan_layanan')
                 ->select("CONCAT(kebutuhan_layanan, ' (Rencana Interversi: ', rencana_intervensi, ')') as uraian_kebutuhan")
-                ->whereIn('id', $identifikasi_kebutuhan)
-                ->where('statuss', 1)
+                ->where("statuss = 1 AND id IN ($kebutuhanString)")
                 ->get()->getResultArray();
 
             $response = new \stdClass;
