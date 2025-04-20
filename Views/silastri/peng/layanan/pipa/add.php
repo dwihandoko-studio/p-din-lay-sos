@@ -290,7 +290,7 @@
         const nik = document.getElementsByName('_nik')[0].value;
         const kk = document.getElementsByName('_kk')[0].value;
         // const jenis = document.getElementsByName('_jenis')[0].value;
-        const keterangan = document.getElementsByName('_jenis_detail')[0].value;
+        // const keterangan = document.getElementsByName('_jenis_detail')[0].value;
 
         const fileKtp = document.getElementsByName('_file_ktp')[0].value;
         const fileKk = document.getElementsByName('_file_kk')[0].value;
@@ -412,7 +412,7 @@
         // formUpload.append('indikator4', indikator4);
         // formUpload.append('indikator5', indikator5);
         // formUpload.append('indikator6', indikator6);
-        formUpload.append('keterangan', keterangan);
+        // formUpload.append('keterangan', keterangan);
 
         Swal.fire({
             title: 'Apakah anda yakin ingin mengajukan permohonan data ini?',
