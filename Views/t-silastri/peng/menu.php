@@ -74,8 +74,14 @@
 
                 <li <?= ($uri->getSegment(2) == "peng" && $uri->getSegment(3) == "pengaduan") ? ' class="mm-active"' : '' ?>>
                     <a href="<?= base_url('silastri/peng/pengaduan') ?>" class="waves-effect <?= ($uri->getSegment(2) == "peng" && $uri->getSegment(3) == "pengaduan") ? ' mm-active' : '' ?>">
-                        <i class="bx bx-chat"></i>
-                        <span key="t-chat">Pengaduan</span>
+                        <i class="bx bx-support"></i>
+                        <span key="t-pengaduan">Pengaduan</span>
+                    </a>
+                </li>
+                <li <?= ($uri->getSegment(2) == "peng" && $uri->getSegment(3) == "riwayat") ? ' class="mm-active"' : '' ?>>
+                    <a href="<?= base_url('silastri/peng/riwayat') ?>" class="waves-effect <?= ($uri->getSegment(2) == "peng" && $uri->getSegment(3) == "riwayat") ? ' mm-active' : '' ?>">
+                        <i class="bx bx-history"></i>
+                        <span key="t-history">Riwayat</span>
                     </a>
                 </li>
             </ul>
