@@ -87,7 +87,8 @@ class Approval extends BaseController
         }
 
         $data['user'] = $user->data;
-
+        $layanans = getGrantedAccessLayanan($user->data->id);
+        $data['layanans'] = $layanans;
         // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
 
         return view('silastri/operator/layanan/approval/index', $data);

@@ -1,4 +1,4 @@
-<?= $this->extend('t-silastri/kepala/index'); ?>
+<?= $this->extend('t-silastri/su/index'); ?>
 
 <?= $this->section('content'); ?>
 <div class="page-content">
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">ANTRIAN SURAT TTE</h4>
+                    <h4 class="mb-sm-0 font-size-18">SELESAI PERMOHONAN LAYANAN</h4>
 
                     <!-- <div class="page-title-right">
                         <ol class="breadcrumb m-0">
@@ -27,17 +27,18 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <h4 class="card-title">Data Antrian Permohonan Layanan Surat TTE</h4>
+                                <h4 class="card-title">Data Selesai Permohonan Layanan</h4>
+                                <div><a class="btn btn-sm btn-primary waves-effect waves-light" href="javascript:actionDownload(this);"><i class="bx bxs-cloud-download font-size-16 align-middle me-2"></i> Download</a>&nbsp;&nbsp;</div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="_filter_layanan" class="col-form-label">Filter Layanan:</label>
                                     <select class="form-control" id="_filter_layanan" name="_filter_layanan" required>
-                                        <option value="">--Pilih--</option>
+                                        <option value="" selected>--Pilih--</option>
                                         <?php if (isset($layanans)) { ?>
                                             <?php if (count($layanans) > 0) { ?>
-                                                <?php foreach ($layanans as $value) { ?>
-                                                    <option value="<?= $value ?>"><?= $value ?></option>
+                                                <?php foreach ($layanans as $key) { ?>
+                                                    <option value="<?= $key ?>"><?= $key ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
@@ -83,18 +84,6 @@
         </div>
     </div>
 </div>
-<div id="content-roleModal" class="modal fade content-roleModal" tabindex="-1" role="dialog" aria-labelledby="content-roleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-backdrop-gradient modal-content-loading">
-            <div class="modal-header">
-                <h5 class="modal-title" id="content-roleModalLabel">Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="contentroleBodyModal">
-            </div>
-        </div>
-    </div>
-</div>
 <div id="content-tolakModal" class="modal fade content-tolakModal" tabindex="-1" role="dialog" aria-labelledby="content-tolakModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-loading-tolak">
@@ -129,6 +118,48 @@
 <script src="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <script>
+    function actionDownload(event) {
+        $.ajax({
+            url: "./download",
+            type: 'POST',
+            data: {
+                id: 'download',
+            },
+            dataType: 'JSON',
+            beforeSend: function() {
+                $('div.main-content').block({
+                    message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+                });
+            },
+            success: function(resul) {
+                $('div.main-content').unblock();
+                if (resul.status !== 200) {
+                    Swal.fire(
+                        'Failed!',
+                        resul.message,
+                        'warning'
+                    );
+                } else {
+                    $('#content-detailModalLabel').html('DOWNLOAD DATA LAPORAN PERMOHONAN SELESAI');
+                    $('.contentBodyModal').html(resul.data);
+                    $('.content-detailModal').modal({
+                        backdrop: 'static',
+                        keyboard: false,
+                    });
+                    $('.content-detailModal').modal('show');
+                }
+            },
+            error: function() {
+                $('div.main-content').unblock();
+                Swal.fire(
+                    'Failed!',
+                    "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+                    'warning'
+                );
+            }
+        });
+    }
+
     function actionDetail(id, nik, nama) {
         $.ajax({
             url: "./detail",
@@ -153,7 +184,7 @@
                         'warning'
                     );
                 } else {
-                    $('#content-detailModalLabel').html('DETAIL PERMOHONAN SURAT ' + nama + ' (' + nik + ')');
+                    $('#content-detailModalLabel').html('DETAIL PERMOHONAN ' + nama + ' (' + nik + ')');
                     $('.contentBodyModal').html(resul.data);
                     $('.content-detailModal').modal({
                         backdrop: 'static',
@@ -219,7 +250,7 @@
                 "url": "./getAll",
                 "type": "POST",
                 "data": function(data) {
-                    data.layanan = $('#_filter_layanan').val();
+                    data.filter_layanan = $('#_filter_layanan').val();
                 }
             },
             language: {
@@ -324,25 +355,5 @@
         margin-top: -15px;
         vertical-align: -webkit-baseline-middle;
     }
-
-    .modal-backdrop-gradient {
-        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b7df2d+0,e3f5ab+63,f8ffe8+100 */
-        background: #b7df2d;
-        /* Old browsers */
-        background: -moz-linear-gradient(top, #b7df2d 0%, #e3f5ab 63%, #f8ffe8 100%);
-        /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, #b7df2d 0%, #e3f5ab 63%, #f8ffe8 100%);
-        /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, #b7df2d 0%, #e3f5ab 63%, #f8ffe8 100%);
-        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7df2d', endColorstr='#f8ffe8', GradientType=0);
-        /* IE6-9 */
-    }
-
-    /* .modal {
-        -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .8);
-        -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .8);
-        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .8);
-    } */
 </style>
 <?= $this->endSection(); ?>

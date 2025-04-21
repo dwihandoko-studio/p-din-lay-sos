@@ -101,8 +101,11 @@ class Antrian extends BaseController
 
         $data['user'] = $user->data;
 
-        $layanans = getGrantedAccessLayanan($user->data->id);
-        $data['layanans'] = ['SKDTKS', 'SKTM', 'PBI', 'LKS'];
+        $layanan = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResultArray();
+
+        // $layanan = json_decode(file_get_contents(FCPATH . "uploads/layanans_silastri.json"), true);
+        // $data['layanans'] = $layanan['layanans'];
+        $data['layanans'] = $layanan;
 
         return view('silastri/su/layanan/antrian/index', $data);
     }

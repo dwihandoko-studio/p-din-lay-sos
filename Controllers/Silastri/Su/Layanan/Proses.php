@@ -87,7 +87,11 @@ class Proses extends BaseController
         }
 
         $data['user'] = $user->data;
+        $layanan = $this->_db->table('ref_layanan')->where('layanan_status', 1)->get()->getResultArray();
 
+        // $layanan = json_decode(file_get_contents(FCPATH . "uploads/layanans_silastri.json"), true);
+        // $data['layanans'] = $layanan['layanans'];
+        $data['layanans'] = $layanan;
         // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
 
         return view('silastri/su/layanan/proses/index', $data);
