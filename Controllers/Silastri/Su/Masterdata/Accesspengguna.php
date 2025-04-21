@@ -53,7 +53,7 @@ class Accesspengguna extends BaseController
                 default:
                     if (count($layanans) > 0) {
                         foreach ($layanans as $key => $value) {
-                            if (cekGrantedLayanan($list->id, $value->layanan_singkatan)) {
+                            if (cekGrantedLayanan($list->id, strtoupper($value->layanan_menu))) {
                                 $row[] = '<input type="checkbox" onchange="aksiChange(this, \'' . $list->id . '\',\'0\',\'' . strtoupper($value->layanan_menu) . '\')" id="' . $list->id . '-' . $value->layanan_singkatan . '" switch="none" checked />
                                 <label for="' . $list->id . '-' . $value->layanan_singkatan . '" data-on-label="On" data-off-label="Off"></label>';
                             } else {
