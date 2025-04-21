@@ -37,8 +37,8 @@
                                         <option value="" selected>--Pilih--</option>
                                         <?php if (isset($layanans)) { ?>
                                             <?php if (count($layanans) > 0) { ?>
-                                                <?php foreach ($layanans as $key) { ?>
-                                                    <option value="<?= $key ?>"><?= $key ?></option>
+                                                <?php foreach ($layanans as $value) { ?>
+                                                    <option value="<?= strtoupper($value['layanan_singkatan']) ?>"><?= $value['layanan_nama'] ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
