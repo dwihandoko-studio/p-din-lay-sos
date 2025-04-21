@@ -54,10 +54,10 @@ class Accesspengguna extends BaseController
                     if (count($layanans) > 0) {
                         foreach ($layanans as $key => $value) {
                             if (cekGrantedLayanan($list->id, $value->layanan_singkatan)) {
-                                $row[] = '<input type="checkbox" onchange="aksiChange(this, \'' . $list->id . '\',\'0\',\'' . $value->layanan_singkatan . '\')" id="' . $list->id . '-' . $value->layanan_singkatan . '" switch="none" checked />
+                                $row[] = '<input type="checkbox" onchange="aksiChange(this, \'' . $list->id . '\',\'0\',\'' . strtoupper($value->layanan_menu) . '\')" id="' . $list->id . '-' . $value->layanan_singkatan . '" switch="none" checked />
                                 <label for="' . $list->id . '-' . $value->layanan_singkatan . '" data-on-label="On" data-off-label="Off"></label>';
                             } else {
-                                $row[] = '<input type="checkbox" onchange="aksiChange(this, \'' . $list->id . '\',\'1\',\'' . $value->layanan_singkatan . '\')" id="' . $list->id . '-' . $value->layanan_singkatan . '" switch="none" />
+                                $row[] = '<input type="checkbox" onchange="aksiChange(this, \'' . $list->id . '\',\'1\',\'' . strtoupper($value->layanan_menu) . '\')" id="' . $list->id . '-' . $value->layanan_singkatan . '" switch="none" />
                                 <label for="' . $list->id . '-' . $value->layanan_singkatan . '" data-on-label="On" data-off-label="Off"></label>';
                             }
                         }
