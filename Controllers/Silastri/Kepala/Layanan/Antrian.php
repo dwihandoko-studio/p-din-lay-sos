@@ -606,6 +606,7 @@ class Antrian extends BaseController
     {
         $bsreLib = new Bsrelib();
         $data = $bsreLib->cekStatusUser("1802052007860001");
+        // $data = $bsreLib->cekStatusUser("1802052007860001");
         $response = new \stdClass;
         $response->errn = $data;
         $response->status = 400;
