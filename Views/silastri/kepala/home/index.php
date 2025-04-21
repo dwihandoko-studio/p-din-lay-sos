@@ -29,8 +29,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Job View</p>
-                                <h4 class="mb-0">14,487</h4>
+                                <p class="text-muted fw-medium">Jumlah Permohonan</p>
+                                <h4 class="mb-0 statistik-jumlah-permohonan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -38,9 +38,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body border-top py-3">
+                    <!-- <div class="card-body border-top py-3">
                         <p class="mb-0"> <span class="badge badge-soft-success me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 18.89%</span> Increase last month</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-4">
@@ -48,8 +48,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">New Application</p>
-                                <h4 class="mb-0">7,402</h4>
+                                <p class="text-muted fw-medium">Submit Layanan</p>
+                                <h4 class="mb-0 statistik-jumlah-permohonan-layanan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -57,9 +57,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body border-top py-3">
+                    <!-- <div class="card-body border-top py-3">
                         <p class="mb-0"> <span class="badge badge-soft-success me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 24.07%</span> Increase last month</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-4">
@@ -67,8 +67,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Total Rejected</p>
-                                <h4 class="mb-0">12,487</h4>
+                                <p class="text-muted fw-medium">Submit Pengaduan</p>
+                                <h4 class="mb-0 statistik-jumlah-permohonan-pengaduan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -76,9 +76,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body border-top py-3">
+                    <!-- <div class="card-body border-top py-3">
                         <p class="mb-0"> <span class="badge badge-soft-danger me-1"><i class="bx bx-trending-down align-bottom me-1"></i> 20.63%</span> Decrease last month</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -206,6 +206,47 @@
 <script src="<?= base_url() ?>/assets/libs/jquery-countdown/jquery.countdown.min.js"></script>
 <script src="<?= base_url() ?>/assets/js/pages/coming-soon.init.js"></script>
 <script>
+    function loadStatistik() {
+        $.ajax({
+            url: "./getAllStatistik",
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(resul) {
+                console.log(resul);
+                if (resul.status !== 200) {
+                    // if (resul.status === 401) {
+                    //     Swal.fire(
+                    //         'PERINGATAN!',
+                    //         resul.message,
+                    //         'warning'
+                    //     ).then((valRes) => {
+                    //         reloadPage();
+                    //     });
+                    // } else {
+                    //     // Swal.fire(
+                    //     //     'PERINGATAN!',
+                    //     //     resul.message,
+                    //     //     'warning'
+                    //     // );
+                    // }
+                    $(".statistik-jumlah-permohonan").html("-");
+                    $(".statistik-jumlah-permohonan-layanan").html("-");
+                    $(".statistik-jumlah-permohonan-pengaduan").html("-");
+                } else {
+                    $(".statistik-jumlah-permohonan").html(resul.data.jumlah_permohonan);
+                    $(".statistik-jumlah-permohonan-layanan").html(resul.data.jumlah_permohonan_layanan);
+                    $(".statistik-jumlah-permohonan-pengaduan").html(resul.data.jumlah_permohonan_pengaduan);
+                }
+            },
+            error: function(e) {
+                console.log(e);
+                $(".statistik-jumlah-permohonan").html("-");
+                $(".statistik-jumlah-permohonan-layanan").html("-");
+                $(".statistik-jumlah-permohonan-pengaduan").html("-");
+            }
+        });
+    }
+
     function loadAllPengaduan() {
         $.ajax({
             url: "./getAllPengaduan",
@@ -346,6 +387,7 @@
     $(document).ready(function() {
         loadAllPengaduan();
         loadAllPermohonan();
+        loadStatistik();
 
         // $("#timeline-carousel").owlCarousel({
         //     items: 1,
