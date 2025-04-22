@@ -74,37 +74,37 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="row mb-2">
-                                    <label for="_nama_ppks" class="col-sm-3 col-form-label">Nama PPKS</label>
+                                    <label for="_nama_ppks" class="form-label">Nama PPKS</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_nama_ppks" name="_nama_ppks" placeholder="Nama PPKS.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_tempat_lahir_ppks" class="col-sm-3 col-form-label">Tempat Lahir PPKS</label>
+                                    <label for="_tempat_lahir_ppks" class="form-label">Tempat Lahir PPKS</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_tempat_lahir_ppks" name="_tempat_lahir_ppks" placeholder="Tempat lahir PPKS.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_tanggal_lahir_ppks" class="col-sm-3 col-form-label">Tanggal Lahir PPKS</label>
+                                    <label for="_tanggal_lahir_ppks" class="form-label">Tanggal Lahir PPKS</label>
                                     <div class="col-sm-8">
                                         <input type="date" class="form-control" id="_tanggal_lahir_ppks" name="_tanggal_lahir_ppks" placeholder="Tanggal lahir PPKS.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_nama_lembaga" class="col-sm-3 col-form-label">Nama Lembaga</label>
+                                    <label for="_nama_lembaga" class="form-label">Nama Lembaga</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_nama_lembaga" name="_nama_lembaga" placeholder="Nama Lembaga.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_nama_pimpinan" class="col-sm-3 col-form-label">Nama pimpinan</label>
+                                    <label for="_nama_pimpinan" class="form-label">Nama pimpinan</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_nama_pimpinan" name="_nama_pimpinan" placeholder="Nama pimpinan.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_no_izin_lks" class="col-sm-3 col-form-label">No Izin LKS / LKSA</label>
+                                    <label for="_no_izin_lks" class="form-label">No Izin LKS / LKSA</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
                                     </div>
