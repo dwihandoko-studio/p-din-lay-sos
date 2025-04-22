@@ -619,6 +619,60 @@
 
     });
 
+
+    function changeKecamatanDomisili(event) {
+        const color = $(event).attr('name');
+        $(event).removeAttr('style');
+        $('.' + color).html('');
+
+        if (event.value !== "") {
+            $.ajax({
+                url: './getKelurahan',
+                type: 'POST',
+                data: {
+                    id: event.value,
+                },
+                dataType: 'JSON',
+                beforeSend: function() {
+                    $('.kelurahan_domisili').html("");
+                    $('div.select2-kelurahan-domisili-loading').block({
+                        message: '<i class="las la-spinner la-spin la-3x la-fw"></i><span class="sr-only">Loading...</span>'
+                    });
+                },
+                success: function(resul) {
+                    $('div.select2-kelurahan-domisili-loading').unblock();
+                    if (resul.status == 200) {
+                        $('.kelurahan_domisili').html(resul.data);
+                    } else {
+                        if (resul.status == 401) {
+                            Swal.fire(
+                                'PERINGATAN!',
+                                resul.message,
+                                'warning'
+                            ).then((valRes) => {
+                                reloadPage(resul.redirrect);
+                            })
+                        } else {
+                            Swal.fire(
+                                'PERINGATAN!!!',
+                                resul.message,
+                                'warning'
+                            );
+                        }
+                    }
+                },
+                error: function(data) {
+                    $('div.select2-kelurahan-domisili-loading').unblock();
+                    Swal.fire(
+                        'PERINGATAN!',
+                        "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+                        'warning'
+                    );
+                }
+            });
+        }
+    }
+
     function changeJenis(event) {
         const color = $(event).attr('name');
         $(event).removeAttr('style');
