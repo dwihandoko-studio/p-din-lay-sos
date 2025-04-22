@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="col-lg-6 mt-2 mb-2">
+                                <div class="col-lg-12 mt-2 mb-2">
                                     <label class="form-label">Kecamatan:</label>
                                     <select class="form-control select2 kecamatan_domisili" onchange="changeKecamatanDomisili(this)" id="_kecamatan_domisili" name="_kecamatan_domisili" style="width: 100%">
                                         <option value=""> --- Pilih Kecamatan --- </option>
@@ -119,7 +119,7 @@
                                     </select>
                                     <div class="help-block _kecamatan_domisili"></div>
                                 </div>
-                                <div class="col-lg-6 mt-2 mb-2 select2-kelurahan-domisili-loading">
+                                <div class="col-lg-12 mt-2 mb-2 select2-kelurahan-domisili-loading">
                                     <label class="form-label">Kelurahan:</label>
                                     <select class="form-control select2 kelurahan_domisili" id="_kelurahan_domisili" name="_kelurahan_domisili" style="width: 100%">
                                         <option value=""> --- Pilih Kelurahan --- </option>
@@ -145,7 +145,7 @@
                                         <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-2 mt-2">
+                                <div class="col-lg-12 mb-2 mt-2">
                                     <label for="group_ppks_1" class="form-label">Group PPKS:</label>
                                     <select class="form-control select2 select2-table group_ppks"
                                         id="group_ppks_1"
@@ -163,7 +163,7 @@
                                     </select>
                                     <div class="help-block help-block-ppks" role="alert"></div>
                                 </div>
-                                <div class="col-lg-6 mb-2 mt-2">
+                                <div class="col-lg-12 mb-2 mt-2">
                                     <label for="kategori_ppks_1" class="form-label">Kategori PPKS:</label>
                                     <select class="form-control select2 select2-table kategori_ppks"
                                         id="kategori_ppks_1"
