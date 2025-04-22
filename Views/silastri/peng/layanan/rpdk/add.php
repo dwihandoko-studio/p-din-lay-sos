@@ -20,6 +20,9 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Permohonan Surat Rekomendasi Penerbitan Dokumen Kependudukan</h4>
                         <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Data Pemohon</h4>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="row mb-2">
                                     <label for="_nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
@@ -42,49 +45,6 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="row mb-2">
-                                    <label for="_tempat_lahir" class="col-sm-3 col-form-label">Tempat Lahir</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control nama" id="_tempat_lahir" name="_tempat_lahir" value="<?= $data->tempat_lahir ?>" placeholder="Tempat lahir.. " readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_tgl_lahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control nama" id="_tgl_lahir" name="_tgl_lahir" value="<?= $data->tgl_lahir ?>" readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_jenis_kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control nama" id="_jenis_kelamin" name="_jenis_kelamin" value="<?= $data->jenis_kelamin === NULL || $data->jenis_kelamin === "" ? '-' : ($data->jenis_kelamin == "L" ? 'Laki-laki' : 'Perempuan') ?>" placeholder="Jenis kelamin.. " readonly />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 
-                <div class="row justify-content-end">
-                    <div class="col-sm-9">
-
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="horizontalLayout-Check">
-                            <label class="form-check-label" for="horizontalLayout-Check">
-                                Remember me
-                            </label>
-                        </div>
-
-                        <div>
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
-                        </div>
-                    </div>
-                </div> -->
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-0 mb-1">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row mb-2">
                                     <label for="_no_hp" class="col-sm-3 col-form-label">No HP.</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_no_hp" name="_no_hp" value="<?= $data->no_hp ?>" placeholder="No handphone.. " readonly />
@@ -103,12 +63,116 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-0 mb-1">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Data yang Diajukan</h4>
+                            </div>
                             <div class="col-lg-6">
+                                <div class="row mb-2">
+                                    <label for="_nama_ppks" class="col-sm-3 col-form-label">Nama PPKS</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_nama_ppks" name="_nama_ppks" placeholder="Nama PPKS.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_tempat_lahir_ppks" class="col-sm-3 col-form-label">Tempat Lahir PPKS</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_tempat_lahir_ppks" name="_tempat_lahir_ppks" placeholder="Tempat lahir PPKS.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_tanggal_lahir_ppks" class="col-sm-3 col-form-label">Tanggal Lahir PPKS</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="_tanggal_lahir_ppks" name="_tanggal_lahir_ppks" placeholder="Tanggal lahir PPKS.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_nama_lembaga" class="col-sm-3 col-form-label">Nama Lembaga</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_nama_lembaga" name="_nama_lembaga" placeholder="Nama Lembaga.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_nama_pimpinan" class="col-sm-3 col-form-label">Nama pimpinan</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_nama_pimpinan" name="_nama_pimpinan" placeholder="Nama pimpinan.. " required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-6 mt-2 mb-2">
+                                    <label class="form-label">Kecamatan:</label>
+                                    <select class="form-control select2 kecamatan_domisili" onchange="changeKecamatanDomisili(this)" id="_kecamatan_domisili" name="_kecamatan_domisili" style="width: 100%">
+                                        <option value=""> --- Pilih Kecamatan --- </option>
+                                        <?php if (isset($kecamatans)) { ?>
+                                            <?php if (count($kecamatans) > 0) { ?>
+                                                <?php foreach ($kecamatans as $key => $value) { ?>
+                                                    <option value="<?= $value->id ?>" <?= $value->id == $data->kecamatan_aduan ? ' selected' : '' ?>><?= $value->kecamatan ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                    <div class="help-block _kecamatan_domisili"></div>
+                                </div>
+                                <div class="col-lg-6 mt-2 mb-2 select2-kelurahan-domisili-loading">
+                                    <label class="form-label">Kelurahan:</label>
+                                    <select class="form-control select2 kelurahan_domisili" id="_kelurahan_domisili" name="_kelurahan_domisili" style="width: 100%">
+                                        <option value=""> --- Pilih Kelurahan --- </option>
+                                        <?php if (isset($kelurahans)) { ?>
+                                            <?php if (count($kelurahans) > 0) { ?>
+                                                <?php foreach ($kelurahans as $key => $value) { ?>
+                                                    <option value="<?= $value->id ?>" <?= $value->id == $data->kelurahan_aduan ? ' selected' : '' ?>><?= $value->kelurahan ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                    <div class="help-block _kelurahan_domisili"></div>
+                                </div>
                                 <div class="row mb-2">
                                     <label for="_alamat" class="col-sm-2 col-form-label">Alamat</label>
                                     <div class="col-sm-10">
-                                        <textarea rows="5" class="form-control" id="_alamat" name="_alamat" readonly><?= $data->alamat ?></textarea>
+                                        <textarea rows="5" class="form-control" id="_alamat" name="_alamat" placeholder="Alamat..." required></textarea>
                                     </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_no_izin_lks" class="col-sm-3 col-form-label">No Izin LKS / LKSA</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2 mt-2">
+                                    <label for="group_ppks_1" class="form-label">Group PPKS:</label>
+                                    <select class="form-control select2 select2-table group_ppks"
+                                        id="group_ppks_1"
+                                        name="_group_ppks[]"
+                                        style="width: 100%"
+                                        aria-label="Pilih Group PPKS" required>
+                                        <option value=""> --- Pilih Group PPKS --- </option>
+                                        <?php if (isset($group_ppks)) { ?>
+                                            <?php if (count($group_ppks) > 0) { ?>
+                                                <?php foreach ($group_ppks as $key => $value) { ?>
+                                                    <option value="<?= $value->group_id ?>"><?= $value->group_name ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                    <div class="help-block help-block-ppks" role="alert"></div>
+                                </div>
+                                <div class="col-lg-6 mb-2 mt-2">
+                                    <label for="kategori_ppks_1" class="form-label">Kategori PPKS:</label>
+                                    <select class="form-control select2 select2-table kategori_ppks"
+                                        id="kategori_ppks_1"
+                                        name="_kategori_ppks[]"
+                                        style="width: 100%"
+                                        aria-label="Pilih Kategori PPKS" required>
+                                        <option value=""> --- Pilih Kategori PPKS --- </option>
+                                    </select>
+                                    <div class="help-block help-block-ppks" role="alert"></div>
                                 </div>
                             </div>
                         </div>

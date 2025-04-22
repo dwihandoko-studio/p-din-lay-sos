@@ -46,7 +46,9 @@ class Rpdk extends BaseController
 
         $data['user'] = $user->data;
         $data['data'] = $user->data;
-
+        $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
+        $data['kelurahans'] = $this->_db->table('ref_kelurahan')->orderBy('kelurahan', 'ASC')->get()->getResult();
+        $data['group_ppks'] = $this->_db->table('ref_kategori_ppks')->select("group_id, group_name")->groupBy('group_id')->orderBy('group_id', 'ASC')->get()->getResult();
         return view('silastri/peng/layanan/rpdk/add', $data);
     }
 
@@ -342,6 +344,95 @@ class Rpdk extends BaseController
                 $response = new \stdClass;
                 $response->status = 400;
                 $response->message = "Gagal mengajukan permohonan.";
+                return json_encode($response);
+            }
+        }
+    }
+
+
+    public function getKelurahan()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+
+            $kels = $this->_db->table('ref_kelurahan')->where('id_kecamatan', $id)->orderBy('kelurahan', 'ASC')->get()->getResult();
+
+            if (count($kels) > 0) {
+                $x['kels'] = $kels;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = view('portal/ref_kelurahan', $x);
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
+                return json_encode($response);
+            }
+        }
+    }
+
+    public function getKategoriPpks()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'group_id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Group Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('group_id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('group_id'), true);
+
+            $kategoris = $this->_db->table('ref_kategori_ppks')->where('group_id', $id)->orderBy('sub_jenis', 'ASC')->get()->getResult();
+
+            if (count($kategoris) > 0) {
+                $x['kategoris'] = $kategoris;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = $kategoris;
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
                 return json_encode($response);
             }
         }
