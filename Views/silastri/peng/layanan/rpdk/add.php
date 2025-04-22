@@ -134,13 +134,13 @@
                                     <div class="help-block _kelurahan_domisili"></div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_alamat" class="col-sm-2 col-form-label">Alamat</label>
+                                    <label for="_alamat" class="form-label">Alamat</label>
                                     <div class="col-sm-10">
                                         <textarea rows="5" class="form-control" id="_alamat" name="_alamat" placeholder="Alamat..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_no_izin_lks" class="col-sm-3 col-form-label">No Izin LKS / LKSA</label>
+                                    <label for="_no_izin_lks" class="form-label">No Izin LKS / LKSA</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
                                     </div>
