@@ -151,6 +151,7 @@
                                         id="_group_ppks"
                                         name="_group_ppks"
                                         style="width: 100%"
+                                        onchange="changeGroupPpks(this)"
                                         aria-label="Pilih Group PPKS" required>
                                         <option value=""> --- Pilih Group PPKS --- </option>
                                         <?php if (isset($group_ppks)) { ?>
@@ -619,6 +620,55 @@
 
     });
 
+    function changeGroupPpks(event) {
+        const color = $(event).attr('name');
+        $(event).removeAttr('style');
+        $('.' + color).html('');
+
+        const loadingText = 'Memuat data...';
+        $('.kategori_ppks').html(`<option>${loadingText}</option>`);
+        $('.kategori_ppks').prop('disabled', true);
+
+        if (event.value !== "") {
+            $.ajax({
+                url: './getKategoriPpks',
+                type: 'POST',
+                data: {
+                    group_id: event.value,
+                },
+                dataType: 'JSON',
+                // beforeSend: function() {
+                //     $('.kelurahan_lembaga').html("");
+                //     $('div.select2-kelurahan-loading').block({
+                //         message: '<i class="las la-spinner la-spin la-3x la-fw"></i><span class="sr-only">Loading...</span>'
+                //     });
+                // },
+                success: function(resul) {
+                    let options = '<option value=""> --- Pilih Kategori PPKS --- </option>';
+
+                    if (response.data && response.data.length > 0) {
+                        response.data.forEach(function(item) {
+                            options += `<option value="${item.id}">${item.sub_jenis}</option>`;
+                        });
+                    }
+
+                    $('.kategori_ppks').html(options);
+                    $('.kategori_ppks').prop('disabled', false);
+                    $('.kategori_ppks').trigger('change');
+                },
+                error: function(data) {
+                    $('.kategori_ppks').html('<option value=""> --- Pilih Kategori PPKS --- </option>');
+                    $('.kategori_ppks').prop('disabled', false);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Gagal mengambil data kategori PPKS',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+    }
 
     function changeKecamatanDomisili(event) {
         const color = $(event).attr('name');
