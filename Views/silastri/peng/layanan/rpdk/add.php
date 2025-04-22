@@ -146,10 +146,10 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <label for="group_ppks_1" class="form-label">Group PPKS:</label>
+                                    <label for="group_ppks" class="form-label">Group PPKS:</label>
                                     <select class="form-control select2 select2-table group_ppks"
-                                        id="group_ppks_1"
-                                        name="_group_ppks[]"
+                                        id="_group_ppks"
+                                        name="_group_ppks"
                                         style="width: 100%"
                                         aria-label="Pilih Group PPKS" required>
                                         <option value=""> --- Pilih Group PPKS --- </option>
@@ -164,10 +164,10 @@
                                     <div class="help-block help-block-ppks" role="alert"></div>
                                 </div>
                                 <div class="col-lg-12 mb-2 mt-2">
-                                    <label for="kategori_ppks_1" class="form-label">Kategori PPKS:</label>
+                                    <label for="kategori_ppks" class="form-label">Kategori PPKS:</label>
                                     <select class="form-control select2 select2-table kategori_ppks"
-                                        id="kategori_ppks_1"
-                                        name="_kategori_ppks[]"
+                                        id="_kategori_ppks"
+                                        name="_kategori_ppks"
                                         style="width: 100%"
                                         aria-label="Pilih Kategori PPKS" required>
                                         <option value=""> --- Pilih Kategori PPKS --- </option>
@@ -353,75 +353,111 @@
         const nama = document.getElementsByName('_nama')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
         const kk = document.getElementsByName('_kk')[0].value;
-        // const jenis = document.getElementsByName('_jenis')[0].value;
-        // const keterangan = document.getElementsByName('_jenis_detail')[0].value;
+
+        const nama_ppks = document.getElementsByName('_nama_ppks')[0].value;
+        const tempat_lahir_ppks = document.getElementsByName('_tempat_lahir_ppks')[0].value;
+        const tanggal_lahir_ppks = document.getElementsByName('_tanggal_lahir_ppks')[0].value;
+        const nama_lembaga = document.getElementsByName('_nama_lembaga')[0].value;
+        const nama_pimpinan = document.getElementsByName('_nama_pimpinan')[0].value;
+        const no_izin_lks = document.getElementsByName('_no_izin_lks')[0].value;
+        const kecamatan_domisili = document.getElementsByName('_kecamatan_domisili')[0].value;
+        const kelurahan_domisili = document.getElementsByName('_kelurahan_domisili')[0].value;
+        const alamat = document.getElementsByName('_alamat')[0].value;
+        const kategori_ppks = document.getElementsByName('_kategori_ppks')[0].value;
 
         const fileKtp = document.getElementsByName('_file_ktp')[0].value;
         const fileKk = document.getElementsByName('_file_kk')[0].value;
         const filePernyataan = document.getElementsByName('_file_sktm')[0].value;
         const fileFotoRumah = document.getElementsByName('_file_foto_rumah')[0].value;
 
-        // if (jenis === "") {
-        //     $("select#_jenis").css("color", "#dc3545");
-        //     $("select#_jenis").css("border-color", "#dc3545");
-        //     $('._jenis-error').html('Silahkan pilih jenis SKTM');
-
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih peruntukan SKTM.",
-        //         'warning'
-        //     );
-        //     return false;
-        // }
-
-        // if (indikator1 === undefined || indikator1 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 1.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator2 === undefined || indikator2 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 2.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator3 === undefined || indikator3 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 3.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator4 === undefined || indikator4 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 4.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator5 === undefined || indikator5 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 5.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator6 === undefined || indikator6 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 6.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
+        if (nama_ppks === undefined || nama_ppks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan nama ppks.",
+                'warning'
+            );
+            return;
+        }
+        if (tempat_lahir_ppks === undefined || tempat_lahir_ppks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan tempat lahir ppks.",
+                'warning'
+            );
+            return;
+        }
+        if (tanggal_lahir_ppks === undefined || tanggal_lahir_ppks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan tanggal lahir ppks.",
+                'warning'
+            );
+            return;
+        }
+        if (nama_lembaga === undefined || nama_lembaga === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan nama lembaga.",
+                'warning'
+            );
+            return;
+        }
+        if (nama_pimpinan === undefined || nama_pimpinan === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan nama pimpinan.",
+                'warning'
+            );
+            return;
+        }
+        if (no_izin_lks === undefined || no_izin_lks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan no izin lks.",
+                'warning'
+            );
+            return;
+        }
+        if (no_izin_lks === undefined || no_izin_lks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan no izin lks.",
+                'warning'
+            );
+            return;
+        }
+        if (kecamatan_domisili === undefined || kecamatan_domisili === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan pilih kecamatan.",
+                'warning'
+            );
+            return;
+        }
+        if (kelurahan_domisili === undefined || kelurahan_domisili === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan pilih kelurahan.",
+                'warning'
+            );
+            return;
+        }
+        if (alamat === undefined || alamat === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukkan alamat.",
+                'warning'
+            );
+            return;
+        }
+        if (kategori_ppks === undefined || kategori_ppks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan pilih kategori ppks.",
+                'warning'
+            );
+            return;
+        }
         if (fileKtp === "") {
             Swal.fire(
                 'Peringatan..!!',
@@ -469,14 +505,16 @@
         formUpload.append('nama', nama);
         formUpload.append('nik', nik);
         formUpload.append('kk', kk);
-        // formUpload.append('jenis', jenis);
-        // formUpload.append('indikator1', indikator1);
-        // formUpload.append('indikator2', indikator2);
-        // formUpload.append('indikator3', indikator3);
-        // formUpload.append('indikator4', indikator4);
-        // formUpload.append('indikator5', indikator5);
-        // formUpload.append('indikator6', indikator6);
-        // formUpload.append('keterangan', keterangan);
+        formUpload.append('nama_ppks', nama_ppks);
+        formUpload.append('tempat_lahir_ppks', tempat_lahir_ppks);
+        formUpload.append('tanggal_lahir_ppks', tanggal_lahir_ppks);
+        formUpload.append('nama_lembaga', nama_lembaga);
+        formUpload.append('nama_pimpinan', nama_pimpinan);
+        formUpload.append('no_izin_lks', no_izin_lks);
+        formUpload.append('kecamatan', kecamatan_domisili);
+        formUpload.append('kelurahan', kelurahan_domisili);
+        formUpload.append('alamat', alamat);
+        formUpload.append('kategori_ppks', kategori_ppks);
 
         Swal.fire({
             title: 'Apakah anda yakin ingin mengajukan permohonan data ini?',

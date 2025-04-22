@@ -74,48 +74,66 @@ class Rpdk extends BaseController
                     'required' => 'Nik boleh kosong. ',
                 ]
             ],
-            // 'jenis' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Jenis permohonan tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator1' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 1 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator2' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 2 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator3' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 3 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator4' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 4 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator5' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 5 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator6' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 6 tidak boleh kosong. ',
-            //     ]
-            // ],
+            'nama_ppks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama ppks tidak boleh kosong. ',
+                ]
+            ],
+            'tempat_lahir_ppks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tempat lahir ppks tidak boleh kosong. ',
+                ]
+            ],
+            'tanggal_lahir_ppks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tanggal lahir ppks tidak boleh kosong. ',
+                ]
+            ],
+            'nama_lembaga' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama lembaga tidak boleh kosong. ',
+                ]
+            ],
+            'nama_pimpinan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama pimpinan tidak boleh kosong. ',
+                ]
+            ],
+            'no_izin_lks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'No Izin LKS tidak boleh kosong. ',
+                ]
+            ],
+            'kecamatan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kecamatan tidak boleh kosong. ',
+                ]
+            ],
+            'kelurahan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kelurahan tidak boleh kosong. ',
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Alamat tidak boleh kosong. ',
+                ]
+            ],
+            'kategori_ppks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kategori ppks tidak boleh kosong. ',
+                ]
+            ],
         ];
 
         $filenamelampiranKtp = dot_array_search('_file_ktp.name', $_FILES);
@@ -183,12 +201,16 @@ class Rpdk extends BaseController
             $response->status = 400;
             $response->message = $this->validator->getError('nama')
                 . $this->validator->getError('nik')
-                // . $this->validator->getError('indikator1')
-                // . $this->validator->getError('indikator2')
-                // . $this->validator->getError('indikator3')
-                // . $this->validator->getError('indikator4')
-                // . $this->validator->getError('indikator5')
-                // . $this->validator->getError('indikator6')
+                . $this->validator->getError('nama_ppks')
+                . $this->validator->getError('tempat_lahir_ppks')
+                . $this->validator->getError('tanggal_lahir_ppks')
+                . $this->validator->getError('nama_lembaga')
+                . $this->validator->getError('nama_pimpinan')
+                . $this->validator->getError('no_izin_lks')
+                . $this->validator->getError('kecamatan')
+                . $this->validator->getError('kelurahan')
+                . $this->validator->getError('alamat')
+                . $this->validator->getError('kategori_ppks')
                 . $this->validator->getError('_file_ktp')
                 . $this->validator->getError('_file_kk')
                 . $this->validator->getError('_file_sktm');
@@ -206,22 +228,31 @@ class Rpdk extends BaseController
                 return json_encode($response);
             }
 
-            // $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
-            // $indikator1 = (int)htmlspecialchars($this->request->getVar('indikator1'), true);
-            // $indikator2 = (int)htmlspecialchars($this->request->getVar('indikator2'), true);
-            // $indikator3 = (int)htmlspecialchars($this->request->getVar('indikator3'), true);
-            // $indikator4 = (int)htmlspecialchars($this->request->getVar('indikator4'), true);
-            // $indikator5 = (int)htmlspecialchars($this->request->getVar('indikator5'), true);
-            // $indikator6 = (int)htmlspecialchars($this->request->getVar('indikator6'), true);
-            // $keterangan = (int)htmlspecialchars($this->request->getVar('keterangan'), true);
+            $nama_ppks = htmlspecialchars($this->request->getVar('nama_ppks'), true);
+            $tempat_lahir_ppks = (int)htmlspecialchars($this->request->getVar('tempat_lahir_ppks'), true);
+            $tanggal_lahir_ppks = (int)htmlspecialchars($this->request->getVar('tanggal_lahir_ppks'), true);
+            $nama_lembaga = (int)htmlspecialchars($this->request->getVar('nama_lembaga'), true);
+            $nama_pimpinan = (int)htmlspecialchars($this->request->getVar('nama_pimpinan'), true);
+            $no_izin_lks = (int)htmlspecialchars($this->request->getVar('no_izin_lks'), true);
+            $kecamatan = (int)htmlspecialchars($this->request->getVar('kecamatan'), true);
+            $kelurahan = (int)htmlspecialchars($this->request->getVar('kelurahan'), true);
+            $alamat = (int)htmlspecialchars($this->request->getVar('alamat'), true);
+            $kategori_ppks = (int)htmlspecialchars($this->request->getVar('kategori_ppks'), true);
 
-            // if ($keterangan === NULL || $keterangan === "") {
-            //     $jenisFix = $jenis;
-            // } else {
-            //     $jenisFix = $keterangan;
-            // }
+            $field_tambahan = [
+                'nama_ppks' => $nama_ppks,
+                'tempat_lahir_ppks' => $tempat_lahir_ppks,
+                'tanggal_lahir_ppks' => $tanggal_lahir_ppks,
+                'nama_lembaga' => $nama_lembaga,
+                'nama_pimpinan' => $nama_pimpinan,
+                'no_izin_lks' => $no_izin_lks,
+                'kecamatan' => $kecamatan,
+                'kelurahan' => $kelurahan,
+                'alamat' => $alamat,
+                'kategori_ppks' => $kategori_ppks,
+            ];
 
             // $skor = (($indikator1 + $indikator2 + $indikator3 + $indikator4 + $indikator5 + $indikator6) / 16) * 100;
             $uuidLib = new Uuid();
@@ -238,7 +269,7 @@ class Rpdk extends BaseController
                 'user_id' => $user->data->id,
                 'jenis' => 'Rekomendasi Penerbitan Dokumen Kependudukan',
                 'layanan' => "RPDK",
-                // 'indikator1' => $indikator1,
+                'field_tambahan' => json_encode($field_tambahan),
                 // 'indikator2' => $indikator2,
                 // 'indikator3' => $indikator3,
                 // 'indikator4' => $indikator4,
