@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="row mb-2">
                                     <label for="_alamat" class="form-label">Alamat</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-12">
                                         <textarea rows="5" class="form-control" id="_alamat" name="_alamat" placeholder="Alamat..." required></textarea>
                                     </div>
                                 </div>
