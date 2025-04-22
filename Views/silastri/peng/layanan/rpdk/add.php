@@ -103,6 +103,12 @@
                                         <input type="text" class="form-control" id="_nama_pimpinan" name="_nama_pimpinan" placeholder="Nama pimpinan.. " required />
                                     </div>
                                 </div>
+                                <div class="row mb-2">
+                                    <label for="_no_izin_lks" class="col-sm-3 col-form-label">No Izin LKS / LKSA</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="col-lg-12 mt-2 mb-2">
@@ -137,12 +143,6 @@
                                     <label for="_alamat" class="form-label">Alamat</label>
                                     <div class="col-sm-10">
                                         <textarea rows="5" class="form-control" id="_alamat" name="_alamat" placeholder="Alamat..." required></textarea>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_no_izin_lks" class="form-label">No Izin LKS / LKSA</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2 mt-2">
