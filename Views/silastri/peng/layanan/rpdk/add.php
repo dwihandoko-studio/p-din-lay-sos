@@ -643,7 +643,7 @@
                 //         message: '<i class="las la-spinner la-spin la-3x la-fw"></i><span class="sr-only">Loading...</span>'
                 //     });
                 // },
-                success: function(resul) {
+                success: function(response) {
                     let options = '<option value=""> --- Pilih Kategori PPKS --- </option>';
 
                     if (response.data && response.data.length > 0) {
