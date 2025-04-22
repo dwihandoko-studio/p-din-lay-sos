@@ -112,7 +112,7 @@
                                         <?php if (isset($kecamatans)) { ?>
                                             <?php if (count($kecamatans) > 0) { ?>
                                                 <?php foreach ($kecamatans as $key => $value) { ?>
-                                                    <option value="<?= $value->id ?>" <?= $value->id == $data->kecamatan_aduan ? ' selected' : '' ?>><?= $value->kecamatan ?></option>
+                                                    <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
@@ -126,7 +126,7 @@
                                         <?php if (isset($kelurahans)) { ?>
                                             <?php if (count($kelurahans) > 0) { ?>
                                                 <?php foreach ($kelurahans as $key => $value) { ?>
-                                                    <option value="<?= $value->id ?>" <?= $value->id == $data->kelurahan_aduan ? ' selected' : '' ?>><?= $value->kelurahan ?></option>
+                                                    <option value="<?= $value->id ?>"><?= $value->kelurahan ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
