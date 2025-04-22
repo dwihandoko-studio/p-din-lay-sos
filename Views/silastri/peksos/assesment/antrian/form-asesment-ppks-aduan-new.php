@@ -2512,6 +2512,11 @@
                         );
                     });
             } else {
+                Swal.fire(
+                    'GAGAL!',
+                    "Silangkah lengkapi isian form.",
+                    'warning'
+                );
                 console.log("tidak valid");
             }
         };
