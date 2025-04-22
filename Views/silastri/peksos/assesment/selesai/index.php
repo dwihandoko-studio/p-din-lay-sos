@@ -176,7 +176,7 @@
                 'warning'
             );
         } else {
-            // reloadPage(redirrect);
+            reloadPage(redirrect);
         }
         // const linkSource = `data:application/octet-stream;base64,${pdf}`;
         // const downloadLink = document.createElement("a");
