@@ -139,6 +139,7 @@ class Apilib
             $data = [
                 'tgl_awal' => $tgl_awal,
                 'tgl_akhir' => $tgl_akhir,
+                'layanan' => $layanan,
             ];
             if ($type == "pdf") {
                 if ($layanan == "PBI") {
@@ -149,6 +150,47 @@ class Apilib
             } else {
                 if ($layanan == "PBI") {
                     $add         = $this->_send_post($data, 'exportlaporanpbi', $jwt);
+                } else {
+                    return false;
+                }
+            }
+            $send_data         = curl_exec($add);
+
+            $result = json_decode($send_data);
+
+
+            if (isset($result->error)) {
+                return false;
+            }
+
+            if ($result) {
+                return $result;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function downloadLaporanLayanan($tgl_awal, $tgl_akhir, $layanan, $type)
+    {
+        $jwt = get_cookie('jwt');
+        if ($jwt) {
+            $data = [
+                'tgl_awal' => $tgl_awal,
+                'tgl_akhir' => $tgl_akhir,
+                'layanan' => $layanan,
+            ];
+            if ($type == "pdf") {
+                if ($layanan == "PBI") {
+                    $add         = $this->_send_post($data, 'exportlaporanlayananpdf', $jwt);
+                } else {
+                    return false;
+                }
+            } else {
+                if ($layanan == "PBI") {
+                    $add         = $this->_send_post($data, 'exportlaporanlayanan', $jwt);
                 } else {
                     return false;
                 }
