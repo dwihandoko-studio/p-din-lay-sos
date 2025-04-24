@@ -301,181 +301,240 @@ class Selesai extends BaseController
 
     public function aksidownload()
     {
-        $tgl_awal = $this->request->getPost('tgl_awal');
-        $tgl_akhir = $this->request->getPost('tgl_akhir');
-        $layanan = $this->request->getPost('layanan');
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
 
-        $builder = $this->_db->table('_permohonan a');
-        $builder->select("a.kode_permohonan, a.nik, a.nama, a.jenis_kepesertaan, 
+        $rules = [
+            'tgl_awal' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal Awal tidak boleh kosong. ',
+                ]
+            ],
+            'tgl_akhir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal Akhir tidak boleh kosong. ',
+                ]
+            ],
+            'layanan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Layanan tidak boleh kosong. ',
+                ]
+            ],
+            'type_file' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Type file tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('tgl_awal')
+                . $this->validator->getError('tgl_akhir')
+                . $this->validator->getError('layanan')
+                . $this->validator->getError('type_file');
+            return json_encode($response);
+        } else {
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                delete_cookie('jwt');
+                session()->destroy();
+                $response = new \stdClass;
+                $response->status = 401;
+                $response->message = "Session expired";
+                return json_encode($response);
+            }
+
+            $tgl_awal = htmlspecialchars($this->request->getVar('tgl_awal'), true);
+            $tgl_akhir = htmlspecialchars($this->request->getVar('tgl_akhir'), true);
+            $layanan = htmlspecialchars($this->request->getVar('layanan'), true);
+            $type_file = htmlspecialchars($this->request->getVar('type_file'), true);
+            // $tgl_awal = $this->request->getPost('tgl_awal');
+            // $tgl_akhir = $this->request->getPost('tgl_akhir');
+            // $layanan = $this->request->getPost('layanan');
+
+            $builder = $this->_db->table('_permohonan a');
+            $builder->select("a.kode_permohonan, a.nik, a.nama, a.jenis_kepesertaan, 
                          a.kode_faskes, c.nama_faskes, b.kk, b.tempat_lahir, b.tgl_lahir, 
                          b.jenis_kelamin, b.kecamatan as kode_kecamatan, d.kecamatan as nama_kecamatan, 
                          b.kelurahan as kode_kampung, e.kelurahan as nama_kampung, b.alamat, b.rt, 
                          b.rw, b.kode_pos, b.pekerjaan, a.updated_at as tanggal_usulan");
-        $builder->join('_profil_users_tb b', 'a.user_id = b.id', 'left');
-        $builder->join('ref_kecamatan d', 'b.kecamatan = d.id', 'left');
-        $builder->join('ref_kelurahan e', 'b.kelurahan = e.id', 'left');
-        $builder->join('ref_faskes c', 'a.kode_faskes = c.kode_faskes', 'left');
-        $builder->where('a.status_permohonan', 5);
-        $builder->where('a.layanan', strtoupper($layanan));
-        $builder->where('a.updated_at >=', $tgl_awal);
-        $builder->where('a.updated_at <=', $tgl_akhir);
+            $builder->join('_profil_users_tb b', 'a.user_id = b.id', 'left');
+            $builder->join('ref_kecamatan d', 'b.kecamatan = d.id', 'left');
+            $builder->join('ref_kelurahan e', 'b.kelurahan = e.id', 'left');
+            $builder->join('ref_faskes c', 'a.kode_faskes = c.kode_faskes', 'left');
+            $builder->where('a.status_permohonan', 5);
+            $builder->where('a.layanan', strtoupper($layanan));
+            $builder->where('a.updated_at >=', $tgl_awal);
+            $builder->where('a.updated_at <=', $tgl_akhir);
 
-        $datanya = $builder->get()->getResultArray();
+            $datanya = $builder->get()->getResultArray();
 
 
-        // Buat spreadsheet baru
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
+            // Buat spreadsheet baru
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
 
-        // Set judul laporan
-        $sheet->mergeCells('A1:U1');
-        $sheet->setCellValue('A1', 'DATA USULAN CALON PENERIMA BANTUAN IURAN (PBI) APBD KABUPATEN LAMPUNG TENGAH');
-        $sheet->mergeCells('A2:U2');
-        $sheet->setCellValue('A2', 'PERIODE ' . $tgl_awal . ' s/d ' . $tgl_akhir);
+            // Set judul laporan
+            $sheet->mergeCells('A1:U1');
+            $sheet->setCellValue('A1', 'DATA USULAN CALON PENERIMA BANTUAN IURAN (PBI) APBD KABUPATEN LAMPUNG TENGAH');
+            $sheet->mergeCells('A2:U2');
+            $sheet->setCellValue('A2', 'PERIODE ' . $tgl_awal . ' s/d ' . $tgl_akhir);
 
-        // Style untuk judul
-        $titleStyle = [
-            'font' => ['bold' => true],
-            'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER,
-                'vertical' => Alignment::VERTICAL_CENTER
-            ]
-        ];
-        $sheet->getStyle('A1:U2')->applyFromArray($titleStyle);
-
-        // Set header tabel
-        $sheet->mergeCells('A5:A6');
-        $sheet->setCellValue('A5', 'NO');
-        $sheet->mergeCells('B5:B6');
-        $sheet->setCellValue('B5', 'Nomor KK');
-        $sheet->mergeCells('C5:C6');
-        $sheet->setCellValue('C5', 'NIK/KITAS/KITAP');
-        $sheet->mergeCells('D5:D6');
-        $sheet->setCellValue('D5', 'Nama Lengkap');
-
-        $sheet->setCellValue('E5', 'Peserta, Suami, Istri, Anak, Tambahan');
-        $sheet->setCellValue('E6', '1=P, 2=S, 3=I, 4=A, 5=T');
-
-        $sheet->mergeCells('F5:G5');
-        $sheet->setCellValue('F5', 'Data Kelahiran');
-        $sheet->setCellValue('F6', 'Tempat Lahir');
-        $sheet->setCellValue('G6', 'Tanggal Lahir');
-
-        $sheet->setCellValue('H5', 'Jenis Kelamin');
-        $sheet->setCellValue('H6', 'L/P');
-
-        $sheet->setCellValue('I5', 'Status Kawin');
-        $sheet->setCellValue('I6', '1=B, 2=K, 3=C (1 Belum Kawin, 2 Kawin, 3 Cerai)');
-
-        $sheet->mergeCells('J5:J6');
-        $sheet->setCellValue('J5', 'Alamat Tempat Tinggal');
-
-        // ... (lanjutkan untuk header lainnya sesuai kebutuhan)
-
-        // Style untuk header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER,
-                'vertical' => Alignment::VERTICAL_CENTER,
-                'wrapText' => true
-            ],
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => Border::BORDER_THIN
+            // Style untuk judul
+            $titleStyle = [
+                'font' => ['bold' => true],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER
                 ]
-            ],
-            'fill' => [
-                'fillType' => Fill::FILL_SOLID,
-                'startColor' => ['argb' => 'FFD9D9D9']
-            ]
-        ];
-        $sheet->getStyle('A5:U6')->applyFromArray($headerStyle);
+            ];
+            $sheet->getStyle('A1:U2')->applyFromArray($titleStyle);
 
-        // Isi data
-        $row = 7;
-        $no = 1;
-        foreach ($datanya as $item) {
-            $sheet->setCellValue('A' . $row, $no);
-            $sheet->setCellValue('B' . $row, $item['kk'] ?? '');
-            $sheet->setCellValue('C' . $row, $item['nik'] ?? '');
-            $sheet->setCellValue('D' . $row, $item['nama'] ?? '');
-            $sheet->setCellValue('E' . $row, $item['jenis_kepesertaan'] ?? '');
-            $sheet->setCellValue('F' . $row, $item['tempat_lahir'] ?? '');
-            $sheet->setCellValue('G' . $row, $item['tgl_lahir'] ?? '');
-            $sheet->setCellValue('H' . $row, $item['jenis_kelamin'] ?? '');
-            $sheet->setCellValue('I' . $row, $item['status_kawin'] ?? '');
-            $sheet->setCellValue('J' . $row, $item['alamat'] ?? '');
+            // Set header tabel
+            $sheet->mergeCells('A5:A6');
+            $sheet->setCellValue('A5', 'NO');
+            $sheet->mergeCells('B5:B6');
+            $sheet->setCellValue('B5', 'Nomor KK');
+            $sheet->mergeCells('C5:C6');
+            $sheet->setCellValue('C5', 'NIK/KITAS/KITAP');
+            $sheet->mergeCells('D5:D6');
+            $sheet->setCellValue('D5', 'Nama Lengkap');
+
+            $sheet->setCellValue('E5', 'Peserta, Suami, Istri, Anak, Tambahan');
+            $sheet->setCellValue('E6', '1=P, 2=S, 3=I, 4=A, 5=T');
+
+            $sheet->mergeCells('F5:G5');
+            $sheet->setCellValue('F5', 'Data Kelahiran');
+            $sheet->setCellValue('F6', 'Tempat Lahir');
+            $sheet->setCellValue('G6', 'Tanggal Lahir');
+
+            $sheet->setCellValue('H5', 'Jenis Kelamin');
+            $sheet->setCellValue('H6', 'L/P');
+
+            $sheet->setCellValue('I5', 'Status Kawin');
+            $sheet->setCellValue('I6', '1=B, 2=K, 3=C (1 Belum Kawin, 2 Kawin, 3 Cerai)');
+
+            $sheet->mergeCells('J5:J6');
+            $sheet->setCellValue('J5', 'Alamat Tempat Tinggal');
+
+            // ... (lanjutkan untuk header lainnya sesuai kebutuhan)
+
+            // Style untuk header
+            $headerStyle = [
+                'font' => ['bold' => true],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                    'wrapText' => true
+                ],
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => Border::BORDER_THIN
+                    ]
+                ],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['argb' => 'FFD9D9D9']
+                ]
+            ];
+            $sheet->getStyle('A5:U6')->applyFromArray($headerStyle);
+
+            // Isi data
+            $row = 7;
+            $no = 1;
+            foreach ($datanya as $item) {
+                $sheet->setCellValue('A' . $row, $no);
+                $sheet->setCellValue('B' . $row, $item['kk'] ?? '');
+                $sheet->setCellValue('C' . $row, $item['nik'] ?? '');
+                $sheet->setCellValue('D' . $row, $item['nama'] ?? '');
+                $sheet->setCellValue('E' . $row, $item['jenis_kepesertaan'] ?? '');
+                $sheet->setCellValue('F' . $row, $item['tempat_lahir'] ?? '');
+                $sheet->setCellValue('G' . $row, $item['tgl_lahir'] ?? '');
+                $sheet->setCellValue('H' . $row, $item['jenis_kelamin'] ?? '');
+                $sheet->setCellValue('I' . $row, $item['status_kawin'] ?? '');
+                $sheet->setCellValue('J' . $row, $item['alamat'] ?? '');
+                // ... (lanjutkan untuk kolom lainnya)
+
+                $row++;
+                $no++;
+            }
+
+            // Set lebar kolom
+            $sheet->getColumnDimension('A')->setWidth(4);
+            $sheet->getColumnDimension('B')->setWidth(20);
+            $sheet->getColumnDimension('C')->setWidth(20);
+            $sheet->getColumnDimension('D')->setWidth(30);
             // ... (lanjutkan untuk kolom lainnya)
 
-            $row++;
-            $no++;
-        }
+            // Set tinggi baris
+            $sheet->getRowDimension(5)->setRowHeight(30);
+            $sheet->getRowDimension(6)->setRowHeight(30);
 
-        // Set lebar kolom
-        $sheet->getColumnDimension('A')->setWidth(4);
-        $sheet->getColumnDimension('B')->setWidth(20);
-        $sheet->getColumnDimension('C')->setWidth(20);
-        $sheet->getColumnDimension('D')->setWidth(30);
-        // ... (lanjutkan untuk kolom lainnya)
-
-        // Set tinggi baris
-        $sheet->getRowDimension(5)->setRowHeight(30);
-        $sheet->getRowDimension(6)->setRowHeight(30);
-
-        // Border untuk data
-        $dataStyle = [
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => Border::BORDER_THIN
+            // Border untuk data
+            $dataStyle = [
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => Border::BORDER_THIN
+                    ]
+                ],
+                'alignment' => [
+                    'vertical' => Alignment::VERTICAL_CENTER
                 ]
-            ],
-            'alignment' => [
-                'vertical' => Alignment::VERTICAL_CENTER
-            ]
-        ];
-        $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
+            ];
+            $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
 
-        ///new saved file
-        $outputDir = FCPATH . "uploads/laporan";
-        if (!is_dir($outputDir)) {
-            mkdir($outputDir, 0777, true);
+            ///new saved file
+            $outputDir = FCPATH . "uploads/laporan";
+            if (!is_dir($outputDir)) {
+                mkdir($outputDir, 0777, true);
+            }
+
+            // Generate filename
+            $filename = 'LAPORAN_PBI_' . $tgl_awal . '_sd_' . $tgl_akhir . '.xlsx';
+            $filepath = $outputDir . $filename;
+
+            // Save Excel file
+            $writer = new Xlsx($spreadsheet);
+            $writer->save($filepath);
+
+            // Prepare response
+            $response = new \stdClass();
+            $response->status = 200;
+
+            $dataResponse = new \stdClass();
+            $dataResponse->url = '/uploads/laporan/' . $filename;
+
+            $response->data = new \stdClass();
+            $response->data->data = $dataResponse;
+            $response->url = base_url() . "/uploads/laporan/" . $filename;
+            $response->message = "Download Data Berhasil Dilakukan.";
+
+            // Return JSON response
+            return $this->response->setJSON($response);
+
+            // Buat writer Excel
+            // $writer = new Xlsx($spreadsheet);
+
+            // $dir = FCPATH . "uploads/lks";
+
+            // // Set header untuk download
+            // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            // header('Content-Disposition: attachment;filename="LAPORAN_PBI_' . $tgl_awal . '_sd_' . $tgl_akhir . '.xlsx"');
+            // header('Cache-Control: max-age=0');
+
+            // $writer->save('php://output');
+            // exit;
         }
-
-        // Generate filename
-        $filename = 'LAPORAN_PBI_' . $tgl_awal . '_sd_' . $tgl_akhir . '.xlsx';
-        $filepath = $outputDir . $filename;
-
-        // Save Excel file
-        $writer = new Xlsx($spreadsheet);
-        $writer->save($filepath);
-
-        // Prepare response
-        $response = new \stdClass();
-        $response->status = 200;
-
-        $dataResponse = new \stdClass();
-        $dataResponse->url = '/uploads/laporan/' . $filename;
-
-        $response->data = new \stdClass();
-        $response->data->data = $dataResponse;
-        $response->url = base_url() . "/uploads/laporan/" . $filename;
-        $response->message = "Download Data Berhasil Dilakukan.";
-
-        // Return JSON response
-        return $this->response->setJSON($response);
-
-        // Buat writer Excel
-        // $writer = new Xlsx($spreadsheet);
-
-        // $dir = FCPATH . "uploads/lks";
-
-        // // Set header untuk download
-        // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        // header('Content-Disposition: attachment;filename="LAPORAN_PBI_' . $tgl_awal . '_sd_' . $tgl_akhir . '.xlsx"');
-        // header('Cache-Control: max-age=0');
-
-        // $writer->save('php://output');
-        // exit;
     }
 }
