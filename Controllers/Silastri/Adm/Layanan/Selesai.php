@@ -363,6 +363,11 @@ class Selesai extends BaseController
             // $tgl_akhir = $this->request->getPost('tgl_akhir');
             // $layanan = $this->request->getPost('layanan');
 
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "tester";
+            return json_encode($response);
+
             $builder = $this->_db->table('_permohonan a');
             $builder->select("a.kode_permohonan, a.nik, a.nama, a.jenis_kepesertaan, 
                          a.kode_faskes, c.nama_faskes, b.kk, b.tempat_lahir, b.tgl_lahir, 
