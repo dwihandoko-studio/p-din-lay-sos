@@ -149,6 +149,59 @@ class Selesai extends BaseController
     }
 
 
+    public function download()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                delete_cookie('jwt');
+                session()->destroy();
+                return redirect()->to(base_url('auth'));
+            }
+            $kecamatan = $this->_helpLib->getKecamatan($user->data->id);
+
+            $data['user'] = $user->data;
+            $layanans = getGrantedAccessLayanan($user->data->id);
+            $data['layanans'] = $layanans;
+
+            $response = new \stdClass;
+            $response->status = 200;
+            $response->message = "Permintaan diizinkan";
+            $response->data = view('silastri/operator/layanan/selesai/download', $data);
+            return json_encode($response);
+            // } else {
+            //     $response = new \stdClass;
+            //     $response->status = 400;
+            //     $response->message = "Data tidak ditemukan";
+            //     return json_encode($response);
+            // }
+        }
+    }
+
     public function aksidownload()
     {
         // Check request method
