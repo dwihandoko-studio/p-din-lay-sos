@@ -359,6 +359,18 @@ class Selesai extends BaseController
             return $this->buildErrorResponse(404, "Tidak ada data ditemukan untuk periode tersebut");
         }
 
+        switch ($layanan) {
+            case 'PBI':
+                return $this->downloadPBI($datanya, $tgl_awal, $tgl_akhir, $layanan);
+
+            default:
+                return $this->buildErrorResponse(400, "Download pada layanan yang dipilih belum tersedia.");
+        }
+    }
+
+    private function downloadPBI($datanya, $tgl_awal, $tgl_akhir, $layanan)
+    {
+
         try {
             // Create Excel file
             $spreadsheet = $this->createExcelReport($datanya, $tgl_awal, $tgl_akhir);
@@ -449,28 +461,50 @@ class Selesai extends BaseController
         $sheet->mergeCells('A5:A6');
         $sheet->setCellValue('A5', 'NO');
         $sheet->mergeCells('B5:B6');
-        $sheet->setCellValue('B5', 'Nomor KK');
+        $sheet->setCellValue('B5', 'NOMOR KK');
         $sheet->mergeCells('C5:C6');
         $sheet->setCellValue('C5', 'NIK/KITAS/KITAP');
         $sheet->mergeCells('D5:D6');
-        $sheet->setCellValue('D5', 'Nama Lengkap');
+        $sheet->setCellValue('D5', 'NAMA LENGKAP');
 
-        $sheet->setCellValue('E5', 'Peserta, Suami, Istri, Anak, Tambahan');
+        $sheet->setCellValue('E5', 'PESERTA, SUAMI, ISTRI, ANAK, TAMBAHAN');
         $sheet->setCellValue('E6', '1=P, 2=S, 3=I, 4=A, 5=T');
 
         $sheet->mergeCells('F5:G5');
-        $sheet->setCellValue('F5', 'Data Kelahiran');
-        $sheet->setCellValue('F6', 'Tempat Lahir');
-        $sheet->setCellValue('G6', 'Tanggal Lahir');
+        $sheet->setCellValue('F5', 'DATA KELAHIRAN');
+        $sheet->setCellValue('F6', 'TEMPAT LAHIR');
+        $sheet->setCellValue('G6', 'TANGGAL LAHIR');
 
-        $sheet->setCellValue('H5', 'Jenis Kelamin');
+        $sheet->setCellValue('H5', 'JENIS KELAMIN');
         $sheet->setCellValue('H6', 'L/P');
 
-        $sheet->setCellValue('I5', 'Status Kawin');
-        $sheet->setCellValue('I6', '1=B, 2=K, 3=C (1 Belum Kawin, 2 Kawin, 3 Cerai)');
+        $sheet->setCellValue('I5', 'STATUS KAWIN');
+        $sheet->setCellValue('I6', '1=B, 2=K, 3=C (1 BELUM KAWIN, 2 KAWIN, 3 CERAI)');
 
         $sheet->mergeCells('J5:J6');
-        $sheet->setCellValue('J5', 'Alamat Tempat Tinggal');
+        $sheet->setCellValue('J5', 'ALAMAT TEMPAT TINGGAL');
+        $sheet->mergeCells('K5:K6');
+        $sheet->setCellValue('K5', 'RT');
+        $sheet->mergeCells('L5:L6');
+        $sheet->setCellValue('L5', 'RW');
+        $sheet->mergeCells('M5:M6');
+        $sheet->setCellValue('M5', 'KODE POS');
+        $sheet->mergeCells('N5:N6');
+        $sheet->setCellValue('N5', 'KODE KECAMATAN');
+        $sheet->mergeCells('O5:O6');
+        $sheet->setCellValue('O5', 'NAMA KECAMATAN');
+        $sheet->mergeCells('P5:P6');
+        $sheet->setCellValue('P5', 'KODE KELURAHAN');
+        $sheet->mergeCells('Q5:Q6');
+        $sheet->setCellValue('Q5', 'NAMA KELURAHAN');
+        $sheet->mergeCells('R5:R6');
+        $sheet->setCellValue('R5', 'KODE FASKES TK.I');
+        $sheet->mergeCells('S5:S6');
+        $sheet->setCellValue('S5', 'NAMA FASKES TK.I');
+        $sheet->mergeCells('T5:T6');
+        $sheet->setCellValue('T5', 'TAMBAHAN KETERANGAN');
+        $sheet->mergeCells('U5:U6');
+        $sheet->setCellValue('U5', 'TANGGAL PENGUSULAN');
 
         // ... (lanjutkan untuk header lainnya sesuai kebutuhan)
 
@@ -499,8 +533,8 @@ class Selesai extends BaseController
         $no = 1;
         foreach ($data as $item) {
             $sheet->setCellValue('A' . $row, $no);
-            $sheet->setCellValue('B' . $row, $item['kk'] ?? '');
-            $sheet->setCellValue('C' . $row, $item['nik'] ?? '');
+            $sheet->setCellValue('B' . $row, "'" . $item['kk'] ?? '');
+            $sheet->setCellValue('C' . $row, "'" . $item['nik'] ?? '');
             $sheet->setCellValue('D' . $row, $item['nama'] ?? '');
             $sheet->setCellValue('E' . $row, $item['jenis_kepesertaan'] ?? '');
             $sheet->setCellValue('F' . $row, $item['tempat_lahir'] ?? '');
@@ -508,7 +542,17 @@ class Selesai extends BaseController
             $sheet->setCellValue('H' . $row, $item['jenis_kelamin'] ?? '');
             $sheet->setCellValue('I' . $row, $item['status_kawin'] ?? '');
             $sheet->setCellValue('J' . $row, $item['alamat'] ?? '');
-            // ... (lanjutkan untuk kolom lainnya)
+            $sheet->setCellValue('K' . $row, $item['rt'] ?? '');
+            $sheet->setCellValue('L' . $row, $item['rw'] ?? '');
+            $sheet->setCellValue('M' . $row, $item['kode_pos'] ?? '');
+            $sheet->setCellValue('N' . $row, $item['kode_kecamatan'] ?? '');
+            $sheet->setCellValue('O' . $row, $item['nama_kecamatan'] ?? '');
+            $sheet->setCellValue('P' . $row, $item['kode_kampung'] ?? '');
+            $sheet->setCellValue('Q' . $row, $item['nama_kampung'] ?? '');
+            $sheet->setCellValue('R' . $row, $item['kode_faskes'] ?? '');
+            $sheet->setCellValue('S' . $row, $item['nama_faskes'] ?? '');
+            $sheet->setCellValue('T' . $row, $item['keterangan'] ?? '');
+            $sheet->setCellValue('U' . $row, $item['tanggal_usulan'] ?? '');
 
             $row++;
             $no++;
