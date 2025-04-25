@@ -163,12 +163,12 @@ class Ditolak extends BaseController
                 return json_encode($response);
             }
 
-            $current = $this->_db->table('_pengaduan a')
+            $current = $this->_db->table('_pengaduan_tolak a')
                 ->select("a.*")
                 // ->join('_profil_users_tb b', 'b.id = a.user_id')
                 ->join('ref_kecamatan c', 'c.id = a.kecamatan')
                 ->join('ref_kelurahan d', 'd.id = a.kelurahan')
-                ->where(['a.id' => $id, 'a.status_aduan' => 5])->get()->getRowObject();
+                ->where(['a.id' => $id])->get()->getRowObject();
 
             if ($current) {
                 $granted = grantedBidangNaungan($user->data->id, $current->diteruskan_ke);
