@@ -380,7 +380,7 @@ class Antrian extends BaseController
             $this->_db->transBegin();
             $this->_db->table('_pengaduan_tolak')->insert($oldData);
             if ($this->_db->affectedRows() > 0) {
-                $this->_db->table('_pengaduan_temp')->where('id', $oldData['id'])->delete();
+                $this->_db->table('_pengaduan')->where('id', $oldData['id'])->delete();
                 if ($this->_db->affectedRows() > 0) {
                     // try {
                     //     $riwayatLib = new Riwayatlib();
