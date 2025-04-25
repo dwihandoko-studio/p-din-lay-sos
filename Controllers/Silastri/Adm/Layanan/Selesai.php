@@ -536,7 +536,7 @@ class Selesai extends BaseController
         $no = 1;
         foreach ($data as $item) {
             $sheet->setCellValue('A' . $row, $no);
-            $sheet->setCellValue('B' . $row, "'" . $item['kk'] ?? '');
+            $sheet->setCellValue('B' . $row, $item['kk'] ?? '');
             $sheet->setCellValue('C' . $row, "'" . $item['nik'] ?? '');
             $sheet->setCellValue('D' . $row, $item['nama'] ?? '');
             $sheet->setCellValue('E' . $row, $item['jenis_kepesertaan'] ?? '');
@@ -584,6 +584,13 @@ class Selesai extends BaseController
             ]
         ];
         $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
+
+        foreach (['B', 'C'] as $column) {
+            for ($row = 7; $row <= $sheet->getHighestRow(); $row++) {
+                $cell = $sheet->getCell($column . $row);
+                $cell->setValueExplicit($cell->getValue(), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+            }
+        }
 
         foreach (range('A', 'U') as $column) {
             $sheet->getColumnDimension($column)->setAutoSize(true);
