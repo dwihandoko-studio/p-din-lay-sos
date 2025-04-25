@@ -361,11 +361,11 @@ class Antrian extends BaseController
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $keterangan = htmlspecialchars($this->request->getVar('keterangan'), true);
 
-            $oldData = $this->_db->table('_permohonan_temp')->where(['id' => $id])->get()->getRowArray();
+            $oldData = $this->_db->table('_pengaduan')->where(['id' => $id])->get()->getRowArray();
             if (!$oldData) {
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Permohonan tidak ditemukan.";
+                $response->message = "Pengaduan tidak ditemukan.";
                 return json_encode($response);
             }
 
@@ -375,12 +375,12 @@ class Antrian extends BaseController
             $oldData['date_reject'] = $date;
             $oldData['admin_reject'] = $user->data->id;
             $oldData['keterangan_reject'] = $keterangan;
-            $oldData['status_permohonan'] = 3;
+            $oldData['status_aduan'] = 3;
 
             $this->_db->transBegin();
-            $this->_db->table('_permohonan_tolak')->insert($oldData);
+            $this->_db->table('_pengaduan_tolak')->insert($oldData);
             if ($this->_db->affectedRows() > 0) {
-                $this->_db->table('_permohonan_temp')->where('id', $oldData['id'])->delete();
+                $this->_db->table('_pengaduan_temp')->where('id', $oldData['id'])->delete();
                 if ($this->_db->affectedRows() > 0) {
                     // try {
                     //     $riwayatLib = new Riwayatlib();
@@ -410,20 +410,20 @@ class Antrian extends BaseController
                     $response = new \stdClass;
                     $response->status = 200;
                     $response->redirrect = base_url('silastri/operator/pengaduan/antrian');
-                    $response->message = "Tolak Proses Permohonan $nama berhasil dilakukan.";
+                    $response->message = "Tolak Proses Pengaduan $nama berhasil dilakukan.";
                     return json_encode($response);
                 } else {
                     $this->_db->transRollback();
                     $response = new \stdClass;
                     $response->status = 400;
-                    $response->message = "Gagal menolak proses permohonan $nama";
+                    $response->message = "Gagal menolak proses Pengaduan $nama";
                     return json_encode($response);
                 }
             } else {
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal menolak proses permohonan $nama";
+                $response->message = "Gagal menolak proses Pengaduan $nama";
                 return json_encode($response);
             }
         }
