@@ -171,20 +171,20 @@ class Ditolak extends BaseController
                 ->where(['a.id' => $id])->get()->getRowObject();
 
             if ($current) {
-                $granted = grantedBidangNaungan($user->data->id, $current->diteruskan_ke);
-                if ($granted) {
-                    $data['data'] = $current;
-                    $response = new \stdClass;
-                    $response->status = 200;
-                    $response->message = "Permintaan diizinkan";
-                    $response->data = view('silastri/adm/pengaduan/ditolak/detail', $data);
-                    return json_encode($response);
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Akses tidak dizinkan.";
-                    return json_encode($response);
-                }
+                // $granted = grantedBidangNaungan($user->data->id, $current->diteruskan_ke);
+                // if ($granted) {
+                $data['data'] = $current;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = view('silastri/adm/pengaduan/ditolak/detail', $data);
+                return json_encode($response);
+                // } else {
+                //     $response = new \stdClass;
+                //     $response->status = 400;
+                //     $response->message = "Akses tidak dizinkan.";
+                //     return json_encode($response);
+                // }
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
