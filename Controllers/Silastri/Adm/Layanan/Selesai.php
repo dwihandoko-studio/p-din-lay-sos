@@ -585,7 +585,7 @@ class Selesai extends BaseController
         ];
         $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
 
-        foreach (['B', 'C', 'R'] as $column) {
+        foreach (['B', 'C', 'K', 'L', 'N', 'P', 'R'] as $column) {
             for ($row = 7; $row <= $sheet->getHighestRow(); $row++) {
                 $cell = $sheet->getCell($column . $row);
                 $cell->setValueExplicit($cell->getValue(), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
