@@ -373,7 +373,7 @@ class Selesai extends BaseController
 
         try {
             // Create Excel file
-            $spreadsheet = $this->createExcelReport($datanya, $tgl_awal, $tgl_akhir);
+            $spreadsheet = $this->createExcelReportPBI($datanya, $tgl_awal, $tgl_akhir);
 
             // Save file
             $filename = 'LAPORAN_PBI_' . $tgl_awal . '_sd_' . $tgl_akhir . '.xlsx';
@@ -437,7 +437,7 @@ class Selesai extends BaseController
     }
 
     // Helper method to create Excel report
-    private function createExcelReport($data, $tgl_awal, $tgl_akhir)
+    private function createExcelReportPBI($data, $tgl_awal, $tgl_akhir)
     {
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -449,7 +449,10 @@ class Selesai extends BaseController
 
         // Style untuk judul
         $titleStyle = [
-            'font' => ['bold' => true],
+            'font' => [
+                'bold' => true,
+                'size' => 13,
+            ],
             'alignment' => [
                 'horizontal' => Alignment::HORIZONTAL_CENTER,
                 'vertical' => Alignment::VERTICAL_CENTER
@@ -535,23 +538,23 @@ class Selesai extends BaseController
             $sheet->setCellValue('A' . $row, $no);
             $sheet->setCellValue('B' . $row, "'" . $item['kk'] ?? '');
             $sheet->setCellValue('C' . $row, "'" . $item['nik'] ?? '');
-            $sheet->setCellValue('D' . $row, $item['nama'] ?? '');
+            $sheet->setCellValue('D' . $row, strtoupper($item['nama']) ?? '');
             $sheet->setCellValue('E' . $row, $item['jenis_kepesertaan'] ?? '');
-            $sheet->setCellValue('F' . $row, $item['tempat_lahir'] ?? '');
+            $sheet->setCellValue('F' . $row, strtoupper($item['tempat_lahir']) ?? '');
             $sheet->setCellValue('G' . $row, $item['tgl_lahir'] ?? '');
             $sheet->setCellValue('H' . $row, $item['jenis_kelamin'] ?? '');
             $sheet->setCellValue('I' . $row, $item['status_kawin'] ?? '');
-            $sheet->setCellValue('J' . $row, $item['alamat'] ?? '');
+            $sheet->setCellValue('J' . $row, strtoupper($item['alamat']) ?? '');
             $sheet->setCellValue('K' . $row, $item['rt'] ?? '');
             $sheet->setCellValue('L' . $row, $item['rw'] ?? '');
             $sheet->setCellValue('M' . $row, $item['kode_pos'] ?? '');
             $sheet->setCellValue('N' . $row, $item['kode_kecamatan'] ?? '');
-            $sheet->setCellValue('O' . $row, $item['nama_kecamatan'] ?? '');
+            $sheet->setCellValue('O' . $row, strtoupper($item['nama_kecamatan']) ?? '');
             $sheet->setCellValue('P' . $row, $item['kode_kampung'] ?? '');
-            $sheet->setCellValue('Q' . $row, $item['nama_kampung'] ?? '');
+            $sheet->setCellValue('Q' . $row, strtoupper($item['nama_kampung']) ?? '');
             $sheet->setCellValue('R' . $row, $item['kode_faskes'] ?? '');
-            $sheet->setCellValue('S' . $row, $item['nama_faskes'] ?? '');
-            $sheet->setCellValue('T' . $row, $item['keterangan'] ?? '');
+            $sheet->setCellValue('S' . $row, strtoupper($item['nama_faskes']) ?? '');
+            $sheet->setCellValue('T' . $row, strtoupper($item['keterangan']) ?? '');
             $sheet->setCellValue('U' . $row, $item['tanggal_usulan'] ?? '');
 
             $row++;
