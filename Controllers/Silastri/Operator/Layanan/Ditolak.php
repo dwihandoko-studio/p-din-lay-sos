@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Silastri\Adm\Layanan;
+namespace App\Controllers\Silastri\Operator\Layanan;
 
 use App\Controllers\BaseController;
 use App\Models\Silastri\Adm\Layanan\TolakModel;
