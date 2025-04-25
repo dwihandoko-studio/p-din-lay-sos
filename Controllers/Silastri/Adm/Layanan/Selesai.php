@@ -419,10 +419,10 @@ class Selesai extends BaseController
     private function getLaporanData($tgl_awal, $tgl_akhir, $layanan)
     {
         $builder = $this->_db->table('_permohonan a');
-        $builder->select("a.kode_permohonan, a.nik, a.nama, a.jenis_kepesertaan, 
-                     a.kode_faskes, c.nama_faskes, b.kk, b.tempat_lahir, b.tgl_lahir, 
-                     b.jenis_kelamin, b.kecamatan as kode_kecamatan, d.kecamatan as nama_kecamatan, 
-                     b.kelurahan as kode_kampung, e.kelurahan as nama_kampung, b.alamat, b.rt, 
+        $builder->select("a.kode_permohonan, a.nik, UPPER(a.nama) as nama, a.jenis_kepesertaan, 
+                     a.kode_faskes, UPPER(c.nama_faskes) as nama_faskes, b.kk, UPPER(b.tempat_lahir) as tempat_lahir, b.tgl_lahir, 
+                     b.jenis_kelamin, b.kecamatan as kode_kecamatan, UPPER(d.kecamatan) as nama_kecamatan, 
+                     b.kelurahan as kode_kampung, UPPER(e.kelurahan) as nama_kampung, UPPER(b.alamat), b.rt, 
                      b.rw, b.kode_pos, b.pekerjaan, a.updated_at as tanggal_usulan");
         $builder->join('_profil_users_tb b', 'a.user_id = b.id', 'left');
         $builder->join('ref_kecamatan d', 'b.kecamatan = d.id', 'left');
