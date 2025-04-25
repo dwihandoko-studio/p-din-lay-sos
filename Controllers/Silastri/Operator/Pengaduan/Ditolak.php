@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers\Silastri\Operator\Layanan;
+namespace App\Controllers\Silastri\Operator\Pengaduan;
 
 use App\Controllers\BaseController;
-use App\Models\Silastri\Operator\Layanan\TolakModel;
+use App\Models\Silastri\Operator\Pengaduan\DitolakModel;
 use Config\Services;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -11,6 +11,10 @@ use App\Libraries\Profilelib;
 use App\Libraries\Apilib;
 use App\Libraries\Helplib;
 use App\Libraries\Uuid;
+use App\Libraries\Silastri\Riwayatpengaduanlib;
+use App\Libraries\Silastri\Notificationlib;
+use iio\libmergepdf\Merger;
+use Dompdf\Dompdf;
 
 class Ditolak extends BaseController
 {
@@ -29,7 +33,7 @@ class Ditolak extends BaseController
     public function getAll()
     {
         $request = Services::request();
-        $datamodel = new TolakModel($request);
+        $datamodel = new DitolakModel($request);
 
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
@@ -39,8 +43,9 @@ class Ditolak extends BaseController
             return redirect()->to(base_url('auth'));
         }
 
-        $layanans = getGrantedAccessLayanan($user->data->id);
-        $lists = $datamodel->get_datatables($layanans);
+        $bidangs = getBidangNaungan($user->data->id);
+
+        $lists = $datamodel->get_datatables($bidangs);
         $data = [];
         $no = $request->getPost("start");
         foreach ($lists as $list) {
@@ -55,7 +60,7 @@ class Ditolak extends BaseController
             //                 <a class="dropdown-item" href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><i class="bx bx-transfer-alt font-size-16 align-middle"></i> &nbsp;Sync Dapodik</a>
             //             </div>
             //         </div>';
-            $action = '<a href="javascript:actionDetail(\'' . $list->id_permohonan . '\', \'' . $list->nik . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
+            $action = '<a href="javascript:actionDetail(\'' . $list->id . '\', \'' . $list->nik . '\', \'' . str_replace('&#039;', "`", str_replace("'", "`", $list->nama)) . '\');"><button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
                 <i class="bx bxs-show font-size-16 align-middle"></i> DETAIL</button>
                 </a>';
             //     <a href="javascript:actionSync(\'' . $list->id . '\', \'' . $list->id_ptk . '\', \'' . str_replace("'", "", $list->nama)  . '\', \'' . $list->nuptk  . '\', \'' . $list->npsn . '\');"><button type="button" class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
@@ -65,19 +70,18 @@ class Ditolak extends BaseController
             //     <i class="bx bx-trash font-size-16 align-middle"></i></button>
             //     </a>';
             $row[] = $action;
-            $row[] = $list->layanan;
-            $row[] = $list->kode_permohonan;
+            $row[] = $list->kategori;
+            $row[] = $list->kode_aduan;
             $row[] = $list->nik;
             $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama));
-            $row[] = $list->kk;
-            $row[] = $list->jenis;
+            $row[] = str_replace('&#039;', "`", str_replace("'", "`", $list->nama_aduan));
 
             $data[] = $row;
         }
         $output = [
             "draw" => $request->getPost('draw'),
-            "recordsTotal" => $datamodel->count_all($layanans),
-            "recordsFiltered" => $datamodel->count_filtered($layanans),
+            "recordsTotal" => $datamodel->count_all($bidangs),
+            "recordsFiltered" => $datamodel->count_filtered($bidangs),
             "data" => $data
         ];
         echo json_encode($output);
@@ -85,12 +89,12 @@ class Ditolak extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('silastri/operator/layanan/ditolak/data'));
+        return redirect()->to(base_url('silastri/operator/pengaduan/ditolak/data'));
     }
 
     public function data()
     {
-        $data['title'] = 'Permohonan Layanan Ditolak';
+        $data['title'] = 'Pengaduan Layanan Ditolak';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
         if ($user->status != 200) {
@@ -100,12 +104,10 @@ class Ditolak extends BaseController
         }
 
         $data['user'] = $user->data;
-        $layanans = getGrantedAccessLayanan($user->data->id);
-        $data['layanans'] = $layanans;
 
-        // $data['jeniss'] = ['Surat Keterangan DTKS untuk Pengajuan PIP', 'Surat Keterangan DTKS untuk Pendaftaran PPDB', 'Surat Keterangan DTKS untuk Pengajuan PLN', 'Lainnya'];
+        $data['jeniss'] = ['Pengaduan Program Bantuan Sosial', 'Pengaduan Pemerlu Pelayanan Kesejahteraan Sosial (PPKS)', 'Pengaduan Layanan Sosial', 'Lainnya'];
 
-        return view('silastri/operator/layanan/tolak/index', $data);
+        return view('silastri/operator/pengaduan/ditolak/index', $data);
     }
 
     public function detail()
@@ -150,32 +152,39 @@ class Ditolak extends BaseController
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
 
-            $current = $this->_db->table('_permohonan_tolak a')
-                ->select("a.*, 
-                b.nik as nik_pemohon, 
-                b.kk as kk, 
-                b.email as email, 
-                b.no_hp as no_hp, 
-                b.tempat_lahir, 
-                b.tgl_lahir, 
-                b.jenis_kelamin, 
-                b.alamat, 
-                c.id as id_kecamatan, 
-                c.kecamatan as nama_kecamatan, 
-                d.id as id_kelurahan, 
-                d.kelurahan as nama_kelurahan")
-                ->join('_profil_users_tb b', 'b.id = a.user_id')
-                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
-                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-                ->where(['a.id' => $id])->get()->getRowObject();
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                session()->destroy();
+                delete_cookie('jwt');
+                $response = new \stdClass;
+                $response->status = 401;
+                $response->message = "Session telah habis";
+                return json_encode($response);
+            }
+
+            $current = $this->_db->table('_pengaduan a')
+                ->select("a.*")
+                // ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->join('ref_kecamatan c', 'c.id = a.kecamatan')
+                ->join('ref_kelurahan d', 'd.id = a.kelurahan')
+                ->where(['a.id' => $id, 'a.status_aduan' => 5])->get()->getRowObject();
 
             if ($current) {
-                $data['data'] = $current;
-                $response = new \stdClass;
-                $response->status = 200;
-                $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/operator/layanan/tolak/detail', $data);
-                return json_encode($response);
+                $granted = grantedBidangNaungan($user->data->id, $current->diteruskan_ke);
+                if ($granted) {
+                    $data['data'] = $current;
+                    $response = new \stdClass;
+                    $response->status = 200;
+                    $response->message = "Permintaan diizinkan";
+                    $response->data = view('silastri/operator/pengaduan/ditolak/detail', $data);
+                    return json_encode($response);
+                } else {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Akses tidak dizinkan.";
+                    return json_encode($response);
+                }
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
