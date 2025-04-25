@@ -585,6 +585,9 @@ class Selesai extends BaseController
         ];
         $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
 
+        foreach (range('A', 'U') as $column) {
+            $sheet->getColumnDimension($column)->setAutoSize(true);
+        }
 
 
         // // Set report title
