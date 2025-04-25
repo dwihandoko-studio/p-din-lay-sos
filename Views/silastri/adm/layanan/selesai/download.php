@@ -149,7 +149,7 @@
                             })
                         }
                     } else {
-                        window.open(resul.url, "_blank");
+                        // window.open(resul.url, "_blank");
                         Swal.fire(
                             'SELAMAT!',
                             resul.message,
