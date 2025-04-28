@@ -873,7 +873,7 @@ class Proses extends BaseController
                     break;
                 case 'RPDK':
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
-                    $response->data = view('silastri/peksos/layanan/proses/form-input-rpdk', $data);
+                    $response->data = view('silastri/adm/layanan/proses/form-input-rpdk', $data);
                     break;
                 case 'PBI':
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
