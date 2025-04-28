@@ -53,12 +53,12 @@
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="_tujuan_surat_sktm" class="form-label">Tujuan Surat SKTM</label>
-                    <input type="text" class="form-control tujuan_surat_sktm" id="_tujuan_surat_sktm" name="_tujuan_surat_sktm" placeholder="Tujuan surat SKTM..." onfocusin="inputFocus(this);">
+                    <input type="text" class="form-control tujuan_surat_sktm" id="_tujuan_surat_sktm" name="_tujuan_surat_sktm" placeholder="Direktur..." onfocusin="inputFocus(this);">
                     <div class="help-block _tujuan_surat_sktm"></div>
                 </div>
                 <div class="mb-3">
                     <label for="_tujuan_tempat_sktm" class="form-label">Tujuan Tempat SKTM</label>
-                    <input type="text" class="form-control tujuan_tempat_sktm" id="_tujuan_tempat_sktm" name="_tujuan_tempat_sktm" placeholder="Tujuan tempat SKTM..." onfocusin="inputFocus(this);">
+                    <input type="text" class="form-control tujuan_tempat_sktm" id="_tujuan_tempat_sktm" name="_tujuan_tempat_sktm" placeholder="Tujuan tempat..." onfocusin="inputFocus(this);">
                     <div class="help-block _tujuan_tempat_sktm"></div>
                 </div>
             </div>
