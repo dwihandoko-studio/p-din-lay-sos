@@ -25,7 +25,7 @@ class Verifiqrcodev extends BaseController
             return view('page/verifiqrcode/index', $data);
         } else {
             // $dokumen = $this->_db->table('_pengaduan')->where('id', $token)->get()->getRowObject();
-            return view('page/verifiqrcode/404', $data);
+            return view('404', $data);
         }
     }
 
