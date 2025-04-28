@@ -1852,7 +1852,7 @@ class Proses extends BaseController
     private function _download($id)
     {
         $data = $this->_db->table('_permohonan a')
-            ->select("b.*, a.to_rumah_sakit, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
+            ->select("b.*, a.field_tambahan, a.to_rumah_sakit, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
             ->join('_permohonan_doc c', 'a.id = c.id')
             ->join('_profil_users_tb b', 'a.user_id = b.id')
             ->join('ref_kecamatan d', 'c.kecamatan = d.id', 'LEFT')
