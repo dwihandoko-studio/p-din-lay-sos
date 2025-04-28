@@ -147,6 +147,8 @@ class Proses extends BaseController
                     return view('silastri/adm/layanan/proses/detail-page-lks', $data);
                 case 'PBI':
                     return view('silastri/adm/layanan/proses/detail-page-pbi', $data);
+                case 'RPDK':
+                    return view('silastri/adm/layanan/proses/detail-page-rpdk', $data);
 
                 default:
                     return view('silastri/adm/layanan/proses/detail-page', $data);
