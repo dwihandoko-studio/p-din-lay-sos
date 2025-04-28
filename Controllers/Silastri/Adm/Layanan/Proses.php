@@ -2099,7 +2099,7 @@ class Proses extends BaseController
                 // $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
                 // $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
                 $template_processor->setValue('NO_SURAT_LKS', $dataDecJson->no_surat_permohonan_lks);
-                $template_processor->setValue('TANGGAL_SURAT_LKS', tgl_indo($dataDecJson->tgl_surat_permohonan_lks));
+                $template_processor->setValue('TANGGAL_SURAT_LKS', $dataDecJson->tgl_surat_permohonan_lks);
                 // $template_processor->setValue('TUJUAN_SURAT', $data->tujuan_surat);
                 // $template_processor->setValue('TEMPAT_TUJUAN_SURAT', $data->tempat_surat);
                 // $template_processor->setValue('TUJUAN_SKTM', $data->tujuan_rs);
@@ -2107,7 +2107,7 @@ class Proses extends BaseController
                 // $template_processor->setValue('P3KE', " ");
                 $template_processor->setValue('NAMA_PPKS', $dataDecJson->nama_ppks);
                 $template_processor->setValue('TEMPAT_LAHIR_PPKS', $dataDecJson->tempat_lahir_ppks);
-                $template_processor->setValue('TANGGAL_LAHIR_PPKS', tgl_indo($dataDecJson->tanggal_lahir_ppks));
+                $template_processor->setValue('TANGGAL_LAHIR_PPKS', $dataDecJson->tanggal_lahir_ppks);
                 $template_processor->setValue('NAMA_LKS', $dataDecJson->nama_lembaga);
                 $template_processor->setValue('NAMA_PIMPINAN', $dataDecJson->nama_pimpinan);
                 $alamatLks = $dataDecJson->alamat . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan);
