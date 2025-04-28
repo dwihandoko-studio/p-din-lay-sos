@@ -1,6 +1,4 @@
 <?php if (isset($data)) { ?>
-    <?= var_dump($data->field_tambahan);
-    die; ?>
     <div class="modal-body">
         <div class="row">
             <h2>DATA PEMOHON</h2>
@@ -67,7 +65,7 @@
                 <label class="col-form-label">Jenis:</label>
                 <textarea rows="3" class="form-control" readonly><?= getJenisSubLayanan($data->layanan, $data->jenis) ?></textarea>
             </div>
-            <?php if (isset($data->fied_tambahan)) {
+            <?php if (isset($data->field_tambahan)) {
                 $dataDecJson = json_decode($data->field_tambahan);
             ?>
                 <div class="col-lg-6">
