@@ -110,6 +110,18 @@ class Rpdk extends BaseController
                     'required' => 'No Izin LKS tidak boleh kosong. ',
                 ]
             ],
+            'no_surat_permohonan_lks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'No Surat Permohonan LKS tidak boleh kosong. ',
+                ]
+            ],
+            'tgl_surat_permohonan_lks' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tanggal Surat Permohonan LKS tidak boleh kosong. ',
+                ]
+            ],
             'kecamatan' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -136,14 +148,14 @@ class Rpdk extends BaseController
             ],
         ];
 
-        $filenamelampiranKtp = dot_array_search('_file_ktp.name', $_FILES);
+        $filenamelampiranKtp = dot_array_search('_file_foto.name', $_FILES);
         if ($filenamelampiranKtp != '') {
             $lampiranValKtp = [
-                '_file_ktp' => [
-                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,5120]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png,application/pdf]',
+                '_file_foto' => [
+                    'rules' => 'uploaded[_file_foto]|max_size[_file_foto,5120]|mime_in[_file_foto,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
-                        'uploaded' => 'Pilih dokumen KTP terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KTP terlalu besar. ',
+                        'uploaded' => 'Pilih dokumen Foto PPKS terlebih dahulu. ',
+                        'max_size' => 'Ukuran dokumen Foto PPKS terlalu besar. ',
                         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
                     ]
                 ],
@@ -151,14 +163,14 @@ class Rpdk extends BaseController
             $rules = array_merge($rules, $lampiranValKtp);
         }
 
-        $filenamelampiranKk = dot_array_search('_file_kk.name', $_FILES);
+        $filenamelampiranKk = dot_array_search('_file_surat.name', $_FILES);
         if ($filenamelampiranKk != '') {
             $lampiranValKk = [
-                '_file_kk' => [
-                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,5120]|mime_in[_file_kk,image/jpeg,image/jpg,image/png,application/pdf]',
+                '_file_surat' => [
+                    'rules' => 'uploaded[_file_surat]|max_size[_file_surat,5120]|mime_in[_file_surat,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
-                        'uploaded' => 'Pilih dokumen KK terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KK terlalu besar. ',
+                        'uploaded' => 'Pilih dokumen Surat Usulan terlebih dahulu. ',
+                        'max_size' => 'Ukuran dokumen Surat Usulan terlalu besar. ',
                         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
                     ]
                 ],
@@ -166,14 +178,14 @@ class Rpdk extends BaseController
             $rules = array_merge($rules, $lampiranValKk);
         }
 
-        $filenamelampiranPernyataan = dot_array_search('_file_sktm.name', $_FILES);
+        $filenamelampiranPernyataan = dot_array_search('_file_lain.name', $_FILES);
         if ($filenamelampiranPernyataan != '') {
             $lampiranValPernyataan = [
-                '_file_sktm' => [
-                    'rules' => 'uploaded[_file_sktm]|max_size[_file_sktm,5120]|mime_in[_file_sktm,image/jpeg,image/jpg,image/png,application/pdf]',
+                '_file_lain' => [
+                    'rules' => 'uploaded[_file_lain]|max_size[_file_lain,5120]|mime_in[_file_lain,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
-                        'uploaded' => 'Pilih dokumen SKTM terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen SKTM terlalu besar. ',
+                        'uploaded' => 'Pilih dokumen lainnya terlebih dahulu. ',
+                        'max_size' => 'Ukuran dokumen Lainnya terlalu besar. ',
                         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
                     ]
                 ],
@@ -211,9 +223,9 @@ class Rpdk extends BaseController
                 . $this->validator->getError('kelurahan')
                 . $this->validator->getError('alamat')
                 . $this->validator->getError('kategori_ppks')
-                . $this->validator->getError('_file_ktp')
-                . $this->validator->getError('_file_kk')
-                . $this->validator->getError('_file_sktm');
+                . $this->validator->getError('_file_foto')
+                . $this->validator->getError('_file_surat')
+                . $this->validator->getError('_file_lain');
             // . $this->validator->getError('_file_foto_rumah');
             return json_encode($response);
         } else {
@@ -236,6 +248,8 @@ class Rpdk extends BaseController
             $nama_lembaga = (int)htmlspecialchars($this->request->getVar('nama_lembaga'), true);
             $nama_pimpinan = (int)htmlspecialchars($this->request->getVar('nama_pimpinan'), true);
             $no_izin_lks = (int)htmlspecialchars($this->request->getVar('no_izin_lks'), true);
+            $no_surat_permohonan_lks = (int)htmlspecialchars($this->request->getVar('no_surat_permohonan_lks'), true);
+            $tgl_surat_permohonan_lks = (int)htmlspecialchars($this->request->getVar('tgl_surat_permohonan_lks'), true);
             $kecamatan = (int)htmlspecialchars($this->request->getVar('kecamatan'), true);
             $kelurahan = (int)htmlspecialchars($this->request->getVar('kelurahan'), true);
             $alamat = (int)htmlspecialchars($this->request->getVar('alamat'), true);
@@ -248,6 +262,8 @@ class Rpdk extends BaseController
                 'nama_lembaga' => $nama_lembaga,
                 'nama_pimpinan' => $nama_pimpinan,
                 'no_izin_lks' => $no_izin_lks,
+                'no_surat_permohonan_lks' => $no_surat_permohonan_lks,
+                'tgl_surat_permohonan_lks' => $tgl_surat_permohonan_lks,
                 'kecamatan' => $kecamatan,
                 'kelurahan' => $kelurahan,
                 'alamat' => $alamat,
@@ -282,7 +298,7 @@ class Rpdk extends BaseController
 
             $dir = FCPATH . "uploads/rpdk";
 
-            $lampiranKtp = $this->request->getFile('_file_ktp');
+            $lampiranKtp = $this->request->getFile('_file_foto');
             $filesNamelampiranKtp = $lampiranKtp->getName();
             $newNamelampiranKtp = _create_name_foto($filesNamelampiranKtp);
 
@@ -292,11 +308,11 @@ class Rpdk extends BaseController
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupload lampiran KTP.";
+                $response->message = "Gagal mengupload lampiran Foto PPKS.";
                 return json_encode($response);
             }
 
-            $lampiranKk = $this->request->getFile('_file_kk');
+            $lampiranKk = $this->request->getFile('_file_surat');
             $filesNamelampiranKk = $lampiranKk->getName();
             $newNamelampiranKk = _create_name_foto($filesNamelampiranKk);
 
@@ -306,36 +322,24 @@ class Rpdk extends BaseController
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupload lampiran KK.";
+                $response->message = "Gagal mengupload lampiran Surat Usulan.";
                 return json_encode($response);
             }
 
-            $lampiranPernyataan = $this->request->getFile('_file_sktm');
-            $filesNamelampiranPernyataan = $lampiranPernyataan->getName();
-            $newNamelampiranPernyataan = _create_name_foto($filesNamelampiranPernyataan);
+            if ($filenamelampiranPernyataan != '') {
+                $lampiranPernyataan = $this->request->getFile('_file_lain');
+                $filesNamelampiranPernyataan = $lampiranPernyataan->getName();
+                $newNamelampiranPernyataan = _create_name_foto($filesNamelampiranPernyataan);
 
-            if ($lampiranPernyataan->isValid() && !$lampiranPernyataan->hasMoved()) {
-                $lampiranPernyataan->move($dir, $newNamelampiranPernyataan);
-                $data['lampiran_pernyataan'] = $newNamelampiranPernyataan;
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupload lampiran Pernyataan.";
-                return json_encode($response);
-            }
-
-            $lampiranFotoRumah = $this->request->getFile('_file_foto_rumah');
-            $filesNamelampiranFotoRumah = $lampiranFotoRumah->getName();
-            $newNamelampiranFotoRumah = _create_name_foto($filesNamelampiranFotoRumah);
-
-            if ($lampiranFotoRumah->isValid() && !$lampiranFotoRumah->hasMoved()) {
-                $lampiranFotoRumah->move($dir, $newNamelampiranFotoRumah);
-                $data['lampiran_foto_rumah'] = $newNamelampiranFotoRumah;
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupload lampiran Foto Rumah.";
-                return json_encode($response);
+                if ($lampiranPernyataan->isValid() && !$lampiranPernyataan->hasMoved()) {
+                    $lampiranPernyataan->move($dir, $newNamelampiranPernyataan);
+                    $data['lampiran_pernyataan'] = $newNamelampiranPernyataan;
+                } else {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengupload lampiran Dokumen Lainnya.";
+                    return json_encode($response);
+                }
             }
 
             $this->_db->transBegin();
@@ -344,8 +348,9 @@ class Rpdk extends BaseController
             } catch (\Exception $e) {
                 unlink($dir . '/' . $newNamelampiranKtp);
                 unlink($dir . '/' . $newNamelampiranKk);
-                unlink($dir . '/' . $newNamelampiranPernyataan);
-                unlink($dir . '/' . $newNamelampiranFotoRumah);
+                if ($filenamelampiranPernyataan != '') {
+                    unlink($dir . '/' . $newNamelampiranPernyataan);
+                }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
@@ -369,8 +374,9 @@ class Rpdk extends BaseController
             } else {
                 unlink($dir . '/' . $newNamelampiranKtp);
                 unlink($dir . '/' . $newNamelampiranKk);
-                unlink($dir . '/' . $newNamelampiranPernyataan);
-                unlink($dir . '/' . $newNamelampiranFotoRumah);
+                if ($filenamelampiranPernyataan != '') {
+                    unlink($dir . '/' . $newNamelampiranPernyataan);
+                }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;

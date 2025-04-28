@@ -182,6 +182,9 @@ class Antrian extends BaseController
                     case 'PBI':
                         $response->data = view('silastri/adm/layanan/antrian/detail_pbi', $data);
                         break;
+                    case 'RPDK':
+                        $response->data = view('silastri/adm/layanan/antrian/detail_rpdk', $data);
+                        break;
 
                     default:
                         $response->data = view('silastri/adm/layanan/antrian/detail', $data);

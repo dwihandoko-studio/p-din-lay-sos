@@ -18,7 +18,7 @@
             <form id="formAddData" action="./addSave" method="post" enctype="multipart/form-data">
                 <div class="card mb-1">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Permohonan Surat Rekomendasi Penerbitan Dokumen Kependudukan</h4>
+                        <h4 class="card-title mb-4">Permohonan Surat Rekomendasi Penerbitan Dokumen Kependudukan Bagi Warga Binaan LKS/LKSA</h4>
                         <div class="row">
                             <div class="col-lg-12">
                                 <h4>Data Pemohon</h4>
@@ -74,33 +74,27 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="row mb-2">
-                                    <label for="_nama_ppks" class="form-label">Nama PPKS</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="_nama_ppks" name="_nama_ppks" placeholder="Nama PPKS.. " required />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_tempat_lahir_ppks" class="form-label">Tempat Lahir PPKS</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="_tempat_lahir_ppks" name="_tempat_lahir_ppks" placeholder="Tempat lahir PPKS.. " required />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_tanggal_lahir_ppks" class="form-label">Tanggal Lahir PPKS</label>
-                                    <div class="col-sm-12">
-                                        <input type="date" class="form-control" id="_tanggal_lahir_ppks" name="_tanggal_lahir_ppks" placeholder="Tanggal lahir PPKS.. " required />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_nama_lembaga" class="form-label">Nama Lembaga</label>
+                                    <label for="_nama_lembaga" class="form-label">Nama LKS / LKSA</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="_nama_lembaga" name="_nama_lembaga" placeholder="Nama Lembaga.. " required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_nama_pimpinan" class="form-label">Nama pimpinan</label>
+                                    <label for="_nama_pimpinan" class="form-label">Nama pimpinan LKS / LKSA</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="_nama_pimpinan" name="_nama_pimpinan" placeholder="Nama pimpinan.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_no_surat_permohonan_lks" class="form-label">No Surat Permohonan LKS / LKSA</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="_no_surat_permohonan_lks" name="_no_surat_permohonan_lks" placeholder="No surat permohonan.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_tgl_surat_permohonan_lks" class="form-label">Tanggal Surat Permohonan LKS / LKSA</label>
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control" id="_tgl_surat_permohonan_lks" name="_tgl_surat_permohonan_lks" required />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -109,8 +103,6 @@
                                         <input type="text" class="form-control" id="_no_izin_lks" name="_no_izin_lks" placeholder="No Izin LKS / LKSA.. " required />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
                                 <div class="col-lg-12 mt-2 mb-2">
                                     <label class="form-label">Kecamatan:</label>
                                     <select class="form-control select2 kecamatan_domisili" onchange="changeKecamatanDomisili(this)" id="_kecamatan_domisili" name="_kecamatan_domisili" style="width: 100%">
@@ -143,6 +135,27 @@
                                     <label for="_alamat" class="form-label">Alamat</label>
                                     <div class="col-sm-12">
                                         <textarea rows="5" class="form-control" id="_alamat" name="_alamat" placeholder="Alamat..." required></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row mb-2">
+                                    <label for="_nama_ppks" class="form-label">Nama PPKS</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="_nama_ppks" name="_nama_ppks" placeholder="Nama PPKS.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_tempat_lahir_ppks" class="form-label">Tempat Lahir PPKS</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="_tempat_lahir_ppks" name="_tempat_lahir_ppks" placeholder="Tempat lahir PPKS.. " required />
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="_tanggal_lahir_ppks" class="form-label">Tanggal Lahir PPKS</label>
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control" id="_tanggal_lahir_ppks" name="_tanggal_lahir_ppks" placeholder="Tanggal lahir PPKS.. " required />
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2 mt-2">
@@ -211,21 +224,21 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <h4>Lampiran Dokumen Permohonan</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (KTP, KK, Surat Keterangan Tidak Mampu dan Foto Rumah).</p>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (Surat usulan dari LKS/LKSA, Foto PPKS, Dokumen Lainnya).</p>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mt-3">
-                                            <label for="_file_ktp" class="form-label">Lampiran KTP : </label>
-                                            <input class="form-control" type="file" id="_file_ktp" name="_file_ktp" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp', 'Ktp')">
+                                            <label for="_file_foto_ppks" class="form-label">Lampiran Foto PPKS : </label>
+                                            <input class="form-control" type="file" id="_file_foto_ppks" name="_file_foto_ppks" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_ppks', 'Foto')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_ktp" for="_file_ktp"></div>
+                                            <div class="help-block _file_foto_ppks" for="_file_foto_ppks"></div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <div class="preview-image-upload-ktp">
-                                                <img class="imagePreviewUploadKtp" id="imagePreviewUploadKtp" />
-                                                <button onclick="removeLampiran('_file_ktp', 'Ktp')" type="button" class="btn-remove-preview-image-ktp">Remove</button>
+                                            <div class="preview-image-upload-foto">
+                                                <img class="imagePreviewUploadFoto" id="imagePreviewUploadFoto" />
+                                                <button onclick="removeLampiran('_file_foto_ppks', 'Foto')" type="button" class="btn-remove-preview-image-ktp">Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -233,17 +246,17 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mt-3">
-                                            <label for="_file_kk" class="form-label">Lampiran KK : </label>
-                                            <input class="form-control" type="file" id="_file_kk" name="_file_kk" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_kk', 'Kk')">
+                                            <label for="_file_surat_usulan" class="form-label">Lampiran Surat Usulan dari LKS / LKSA : </label>
+                                            <input class="form-control" type="file" id="_file_surat_usulan" name="_file_surat_usulan" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_surat_usulan', 'Surat')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_kk" for="_file_kk"></div>
+                                            <div class="help-block _file_surat_usulan" for="_file_surat_usulan"></div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <div class="preview-image-upload-kk">
-                                                <img class="imagePreviewUploadKk" id="imagePreviewUploadKk" />
-                                                <button onclick="removeLampiran('_file_kk', 'Kk')" type="button" class="btn-remove-preview-image-kk">Remove</button>
+                                            <div class="preview-image-upload-surat">
+                                                <img class="imagePreviewUploadSurat" id="imagePreviewUploadSurat" />
+                                                <button onclick="removeLampiran('_file_surat_usulan', 'Surat')" type="button" class="btn-remove-preview-image-kk">Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -251,36 +264,18 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mt-3">
-                                            <label for="_file_sktm" class="form-label">Lampiran Surat Keterangan Tidak Mampu : </label>
+                                            <label for="_file_doc_lain" class="form-label">Lampiran Dokumen Lainnya : </label>
                                             <!-- <p class="font-size-11">&nbsp;&nbsp;Template surat pernyataan miskin dapat di download pada : <a class="menu-badge badge-info" href="#">Link Berikut...</a></p> -->
-                                            <input class="form-control" type="file" id="_file_sktm" name="_file_sktm" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_sktm', 'Surat Keterangan Tidak Mampu')">
+                                            <input class="form-control" type="file" id="_file_doc_lain" name="_file_doc_lain" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_doc_lain', 'Dokumen Lainnya')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_sktm" for="_file_sktm"></div>
+                                            <div class="help-block _file_doc_lain" for="_file_doc_lain"></div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <div class="preview-image-upload-pernyataan">
-                                                <img class="imagePreviewUploadPernyataan" id="imagePreviewUploadPernyataan" />
-                                                <button onclick="removeLampiran('_file_sktm', 'Surat Keterangan Tidak Mampu')" type="button" class="btn-remove-preview-image-pernyataan">Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-3">
-                                            <label for="_file_foto_rumah" class="form-label">Lampiran Foto Rumah : </label>
-                                            <input class="form-control" type="file" id="_file_foto_rumah" name="_file_foto_rumah" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_rumah', 'FotoRumah')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_foto_rumah" for="_file_foto_rumah"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="preview-image-upload-foto-rumah">
-                                                <img class="imagePreviewUploadFotoRumah" id="imagePreviewUploadFotoRumah" />
-                                                <button type="button" onclick="removeLampiran('_file_foto_rumah', 'FotoRumah')" class="btn-remove-preview-image-foto-rumah">Remove</button>
+                                            <div class="preview-image-upload-lain">
+                                                <img class="imagePreviewUploadLain" id="imagePreviewUploadLain" />
+                                                <button onclick="removeLampiran('_file_doc_lain', 'Dokumen Lainnya')" type="button" class="btn-remove-preview-image-pernyataan">Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -360,16 +355,17 @@
         const tanggal_lahir_ppks = document.getElementsByName('_tanggal_lahir_ppks')[0].value;
         const nama_lembaga = document.getElementsByName('_nama_lembaga')[0].value;
         const nama_pimpinan = document.getElementsByName('_nama_pimpinan')[0].value;
+        const no_surat_permohonan_lks = document.getElementsByName('_no_surat_permohonan_lks')[0].value;
+        const tgl_surat_permohonan_lks = document.getElementsByName('_tgl_surat_permohonan_lks')[0].value;
         const no_izin_lks = document.getElementsByName('_no_izin_lks')[0].value;
         const kecamatan_domisili = document.getElementsByName('_kecamatan_domisili')[0].value;
         const kelurahan_domisili = document.getElementsByName('_kelurahan_domisili')[0].value;
         const alamat = document.getElementsByName('_alamat')[0].value;
         const kategori_ppks = document.getElementsByName('_kategori_ppks')[0].value;
 
-        const fileKtp = document.getElementsByName('_file_ktp')[0].value;
-        const fileKk = document.getElementsByName('_file_kk')[0].value;
-        const filePernyataan = document.getElementsByName('_file_sktm')[0].value;
-        const fileFotoRumah = document.getElementsByName('_file_foto_rumah')[0].value;
+        const fileFoto = document.getElementsByName('_file_foto_ppks')[0].value;
+        const fileSurat = document.getElementsByName('_file_surat_usulan')[0].value;
+        const fileLain = document.getElementsByName('_file_doc_lain')[0].value;
 
         if (nama_ppks === undefined || nama_ppks === "") {
             Swal.fire(
@@ -419,10 +415,18 @@
             );
             return;
         }
-        if (no_izin_lks === undefined || no_izin_lks === "") {
+        if (no_surat_permohonan_lks === undefined || no_surat_permohonan_lks === "") {
             Swal.fire(
                 'Peringatan..!!',
-                "Silahkan masukan no izin lks.",
+                "Silahkan masukan no surat permohonan.",
+                'warning'
+            );
+            return;
+        }
+        if (tgl_surat_permohonan_lks === undefined || tgl_surat_permohonan_lks === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukan tanggal surat permohonan.",
                 'warning'
             );
             return;
@@ -459,34 +463,18 @@
             );
             return;
         }
-        if (fileKtp === "") {
+        if (fileFoto === "") {
             Swal.fire(
                 'Peringatan..!!',
-                "Silahkan lampirkan dokumen KTP.",
+                "Silahkan lampirkan Foto PPKS.",
                 'warning'
             );
             return;
         }
-        if (fileKk === "") {
+        if (fileSurat === "") {
             Swal.fire(
                 'Peringatan..!!',
-                "Silahkan lampirkan dokumen KK.",
-                'warning'
-            );
-            return;
-        }
-        if (filePernyataan === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Pernyataan.",
-                'warning'
-            );
-            return;
-        }
-        if (fileFotoRumah === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Foto Rumah.",
+                "Silahkan lampirkan surat usulan dari LKS / LKSA.",
                 'warning'
             );
             return;
@@ -494,14 +482,14 @@
 
         const formUpload = new FormData();
 
-        const file_ktp = document.getElementsByName('_file_ktp')[0].files[0];
-        formUpload.append('_file_ktp', file_ktp);
-        const file_kk = document.getElementsByName('_file_kk')[0].files[0];
-        formUpload.append('_file_kk', file_kk);
-        const file_sktm = document.getElementsByName('_file_sktm')[0].files[0];
-        formUpload.append('_file_sktm', file_sktm);
-        const file_foto_rumah = document.getElementsByName('_file_foto_rumah')[0].files[0];
-        formUpload.append('_file_foto_rumah', file_foto_rumah);
+        const file_foto = document.getElementsByName('_file_foto_ppks')[0].files[0];
+        formUpload.append('_file_foto', file_foto);
+        const file_surat = document.getElementsByName('_file_surat_usulan')[0].files[0];
+        formUpload.append('_file_surat', file_surat);
+        if (fileLain !== "") {
+            const file_lain = document.getElementsByName('_file_doc_lain')[0].files[0];
+            formUpload.append('_file_lain', file_lain);
+        }
 
         formUpload.append('nama', nama);
         formUpload.append('nik', nik);
@@ -512,6 +500,8 @@
         formUpload.append('nama_lembaga', nama_lembaga);
         formUpload.append('nama_pimpinan', nama_pimpinan);
         formUpload.append('no_izin_lks', no_izin_lks);
+        formUpload.append('no_surat_permohonan_lks', no_surat_permohonan_lks);
+        formUpload.append('tgl_surat_permohonan_lks', tgl_surat_permohonan_lks);
         formUpload.append('kecamatan', kecamatan_domisili);
         formUpload.append('kelurahan', kelurahan_domisili);
         formUpload.append('alamat', alamat);
