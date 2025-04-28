@@ -65,7 +65,12 @@
                 <label class="col-form-label">Jenis:</label>
                 <textarea rows="3" class="form-control" readonly><?= $data->jenis ?></textarea>
             </div>
-
+            <?php if (isset($data->to_rumah_sakit)) { ?>
+                <div class="col-lg-6">
+                    <label class="col-form-label">Tujuan Rumah Sakit:</label>
+                    <input type="text" class="form-control" value="<?= $data->to_rumah_sakit ?>" readonly />
+                </div>
+            <?php } ?>
             <?php if (isset($data->lampiran_ktp)) { ?>
                 <div class="col-lg-12 mt-2">
                     <label class="col-form-label">Lampiran Dokumen:</label>
