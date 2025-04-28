@@ -1699,8 +1699,8 @@ class Proses extends BaseController
                 $template_processor->setValue('NAMA_PENGUSUL', $data->fullname);
                 $template_processor->setValue('KK_PENGUSUL', $data->kk);
                 $template_processor->setValue('NIK_PENGUSUL', $data->nik);
-                // $template_processor->setValue('TEMPAT_LAHIR_PENGUSUL', $data->tempat_lahir);
-                // $template_processor->setValue('TGL_LAHIR_PENGUSUL', tgl_indo($data->tgl_lahir));
+                $template_processor->setValue('TEMPAT_LAHIR_PENGUSUL', $data->tempat_lahir);
+                $template_processor->setValue('TGL_LAHIR_PENGUSUL', tgl_indo($data->tgl_lahir));
                 // $template_processor->setValue('PEKERJAAN_PENGUSUL', $data->pekerjaan);
                 $template_processor->setValue('ALAMAT_PENGUSUL', $data->alamat);
                 $template_processor->setValue('KELURAHAN_PENGUSUL', $data->nama_kelurahan);
