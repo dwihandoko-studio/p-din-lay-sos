@@ -197,6 +197,10 @@ class Antrian extends BaseController
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
                         break;
+                    case 'RPDK':
+                        $dirFile = 'generate/surat/pdf';
+                        $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        break;
 
                     default:
                         $dirFile = 'notfound';
