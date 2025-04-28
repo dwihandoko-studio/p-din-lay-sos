@@ -99,7 +99,7 @@ class Verifiqrcodev extends BaseController
                     $response->filename = $nameFile;
                     $xr['data'] = $data->data;
                     $xr['url'] = base_url('uploads/temp_validiti') . '/' . $nameFile;
-                    $response->data = view('page/verifiqrcode/content_validation', $xr);
+                    $response->data = view('verifiqrcode/content_validation', $xr);
                     return json_encode($response);
 
                     break;
