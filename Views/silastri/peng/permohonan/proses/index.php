@@ -37,7 +37,7 @@
                                         <?php if (isset($layanans)) {
                                             if (count($layanans) > 0) {
                                                 foreach ($layanans as $key => $value) { ?>
-                                                    <option value="<?= $value->layanan_singkatan ?>"><?= $value->layanan_deskripsi ?></option>
+                                                    <option value="<?= strtoupper($value->layanan_menu) ?>"><?= $value->layanan_deskripsi ?></option>
                                         <?php }
                                             }
                                         } ?>
