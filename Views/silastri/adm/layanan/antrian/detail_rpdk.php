@@ -1,4 +1,6 @@
 <?php if (isset($data)) { ?>
+    <?= var_dump($data->fied_tambahan);
+    die; ?>
     <div class="modal-body">
         <div class="row">
             <h2>DATA PEMOHON</h2>
