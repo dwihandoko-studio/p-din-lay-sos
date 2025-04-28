@@ -1,5 +1,5 @@
 <?php if (isset($data)) { ?>
-    <?= var_dump($data->fied_tambahan);
+    <?= var_dump($data->field_tambahan);
     die; ?>
     <div class="modal-body">
         <div class="row">
