@@ -853,10 +853,10 @@ class Proses extends BaseController
 
             $formsktm = $this->_db->table('_permohonan_doc')->where('id', $oldData->id)->get()->getRowObject();
 
-            if ($formsktm) {
-                $response->data = view('silastri/adm/layanan/proses/form-upload-download', $data);
-                return json_encode($response);
-            }
+            // if ($formsktm) {
+            //     $response->data = view('silastri/adm/layanan/proses/form-upload-download', $data);
+            //     return json_encode($response);
+            // }
 
 
             switch ($oldData->layanan) {
@@ -881,6 +881,7 @@ class Proses extends BaseController
                     break;
 
                 default:
+
                     $response->data = view('silastri/peksos/layanan/proses/form-upload', $data);
                     break;
             }
