@@ -26,7 +26,7 @@ class DitolakModel extends Model
     private function _get_datatables_query()
     {
         $this->dt->select("a.id as id_permohonan, a.layanan, a.kode_permohonan, a.user_id, a.nik, a.nama, a.jenis, a.kelurahan, b.kk");
-        $this->dt->join('_profil_users_tb b', 'b.id = a.user_id');
+        $this->dt->join('_profil_users_tbs b', 'b.id = a.user_id');
         $this->dt->where("(a.status_permohonan = 3 OR a.status_permohonan = 4)");
 
         $i = 0;
