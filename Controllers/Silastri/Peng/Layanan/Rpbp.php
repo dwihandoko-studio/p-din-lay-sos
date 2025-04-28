@@ -72,12 +72,12 @@ class Rpbp extends BaseController
                     'required' => 'Nik boleh kosong. ',
                 ]
             ],
-            // 'jenis' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Jenis permohonan tidak boleh kosong. ',
-            //     ]
-            // ],
+            'rumah_sakit' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tujuan rumah sakit permohonan tidak boleh kosong. ',
+                ]
+            ],
             // 'indikator1' => [
             //     'rules' => 'required|trim',
             //     'errors' => [
@@ -181,7 +181,7 @@ class Rpbp extends BaseController
             $response->status = 400;
             $response->message = $this->validator->getError('nama')
                 . $this->validator->getError('nik')
-                // . $this->validator->getError('jenis')
+                . $this->validator->getError('rumah_sakit')
                 // . $this->validator->getError('indikator1')
                 // . $this->validator->getError('indikator2')
                 // . $this->validator->getError('indikator3')
@@ -205,7 +205,7 @@ class Rpbp extends BaseController
                 return json_encode($response);
             }
 
-            // $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
+            $rumah_sakit = htmlspecialchars($this->request->getVar('jenis'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             // $indikator1 = (int)htmlspecialchars($this->request->getVar('indikator1'), true);
@@ -237,7 +237,7 @@ class Rpbp extends BaseController
                 'user_id' => $user->data->id,
                 'jenis' => 'Rekomendasi Pembebasan Biaya Perawatan Bagi PPKS',
                 'layanan' => "RPBP",
-                // 'indikator1' => $indikator1,
+                'to_rumah_sakit' => $rumah_sakit,
                 // 'indikator2' => $indikator2,
                 // 'indikator3' => $indikator3,
                 // 'indikator4' => $indikator4,

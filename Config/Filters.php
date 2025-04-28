@@ -43,6 +43,8 @@ class Filters extends BaseConfig
                     'home/*',
                     'verifiqrcodev',
                     'verifiqrcodev/*',
+                    'verifiqrcode',
+                    'verifiqrcode/*',
                 ]
             ]
         ],
@@ -63,6 +65,8 @@ class Filters extends BaseConfig
                     'situpeng/*',
                     'verifiqrcodev',
                     'verifiqrcodev/*',
+                    'verifiqrcode',
+                    'verifiqrcode/*',
                 ]
             ],
             'toolbar',

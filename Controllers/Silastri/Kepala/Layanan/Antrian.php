@@ -339,6 +339,7 @@ class Antrian extends BaseController
                         'date_tte' => $dateNya,
                         'updated_at' => $dateNya,
                     ]);
+
                     if ($this->_db->affectedRows() > 0) {
                         $builderInsert = $this->_db->table('_file_tte');
                         $builderInsert->insert([

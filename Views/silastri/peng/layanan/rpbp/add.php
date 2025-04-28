@@ -114,32 +114,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card mt-0 mb-1">
+                <div class="card mt-0 mb-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row mb-2">
-                                    <label for="_jenis" class="col-sm-3 col-form-label">Jenis Rekomendasi PBI :</label>
+                                    <label for="_rumah_sakit" class="col-sm-3 col-form-label">Tujuan Rumah Sakit</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control select2 pekerjaan" id="_jenis" name="_jenis" style="width: 100%" onchange="changeJenis(this)">
-                                            <option value=""> --- Pilih Rekomendasi PBI ---</option>
-                                            <?php if (isset($jeniss)) {
-                                                if (count($jeniss) > 0) {
-                                                    foreach ($jeniss as $key => $value) { ?>
-                                                        <option value="<?= $value ?>"><?= $value ?></option>
-                                            <?php }
-                                                }
-                                            } ?>
-                                        </select>
-                                        <textarea rows="3" style="display: none; margin-top: 10px;" id="_jenis_detail" name="_jenis_detail" class="form-control" placeholder="Masukan keterangan peruntukan SKTM.."></textarea>
-                                        <div class="help-block _jenis"></div>
-                                        <div class="help-block _jenis_detail"></div>
+                                        <input type="text" class="form-control" id="_rumah_sakit" name="_rumah_sakit" placeholder="Tujuan rumah sakit.. " required />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="card mt-0 mb-1">
                     <div class="card-body">
@@ -289,7 +277,7 @@
         const nama = document.getElementsByName('_nama')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
         const kk = document.getElementsByName('_kk')[0].value;
-        // const jenis = document.getElementsByName('_jenis')[0].value;
+        const rumah_sakit = document.getElementsByName('_rumah_sakit')[0].value;
         // const keterangan = document.getElementsByName('_jenis_detail')[0].value;
 
         const fileKtp = document.getElementsByName('_file_ktp')[0].value;
@@ -297,67 +285,15 @@
         const filePernyataan = document.getElementsByName('_file_sktm')[0].value;
         const fileFotoRumah = document.getElementsByName('_file_foto_rumah')[0].value;
 
-        // if (jenis === "") {
-        //     $("select#_jenis").css("color", "#dc3545");
-        //     $("select#_jenis").css("border-color", "#dc3545");
-        //     $('._jenis-error').html('Silahkan pilih jenis SKTM');
+        if (rumah_sakit === "") {
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan masukkan tujuan Rumah Sakit.",
+                'warning'
+            );
+            return false;
+        }
 
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih peruntukan SKTM.",
-        //         'warning'
-        //     );
-        //     return false;
-        // }
-
-        // if (indikator1 === undefined || indikator1 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 1.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator2 === undefined || indikator2 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 2.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator3 === undefined || indikator3 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 3.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator4 === undefined || indikator4 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 4.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator5 === undefined || indikator5 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 5.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator6 === undefined || indikator6 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 6.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
         if (fileKtp === "") {
             Swal.fire(
                 'Peringatan..!!',
@@ -405,7 +341,7 @@
         formUpload.append('nama', nama);
         formUpload.append('nik', nik);
         formUpload.append('kk', kk);
-        // formUpload.append('jenis', jenis);
+        formUpload.append('rumah_sakit', rumah_sakit);
         // formUpload.append('indikator1', indikator1);
         // formUpload.append('indikator2', indikator2);
         // formUpload.append('indikator3', indikator3);

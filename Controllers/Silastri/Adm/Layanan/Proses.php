@@ -862,9 +862,12 @@ class Proses extends BaseController
                     $response->data = view('silastri/peksos/layanan/proses/form-upload', $data);
                     break;
                 case 'SKTM':
-
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
                     $response->data = view('silastri/peksos/layanan/proses/form-input-sktm', $data);
+                    break;
+                case 'RPBP':
+                    $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
+                    $response->data = view('silastri/peksos/layanan/proses/form-input-rpbp', $data);
                     break;
                 case 'PBI':
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
@@ -1039,6 +1042,52 @@ class Proses extends BaseController
                     $data['template'] = "sktm.docx";
                     $dir = FCPATH . "upload/sktm";
                     break;
+                case 'RPBP':
+                    $tujuan_rss = $this->request->getVar('tujuan_rs');
+                    $tujuan_surats = $this->request->getVar('tujuan_surat');
+                    $tempat_surats = $this->request->getVar('tempat_surat');
+                    // $perihal_surats = $this->request->getVar('perihal_surat');
+
+                    if ($tujuan_rss == "" || $tujuan_rss == NULL) {
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Tujuan rs tidak boleh kosong.";
+                        return json_encode($response);
+                    }
+
+                    if ($tujuan_surats == "" || $tujuan_surats == NULL) {
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Tujuan surat tidak boleh kosong.";
+                        return json_encode($response);
+                    }
+
+                    if ($tempat_surats == "" || $tempat_surats == NULL) {
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = "Tujuan tempat surat tidak boleh kosong.";
+                        return json_encode($response);
+                    }
+
+                    // if ($perihal_surats == "" || $perihal_surats == NULL) {
+                    //     $response = new \stdClass;
+                    //     $response->status = 400;
+                    //     $response->message = "Perihal surat tidak boleh kosong.";
+                    //     return json_encode($response);
+                    // }
+
+                    $tujuan_rs = htmlspecialchars($tujuan_rss, true);
+                    $tujuan_surat = htmlspecialchars($tujuan_surats, true);
+                    $tempat_surat = htmlspecialchars($tempat_surats, true);
+                    // $perihal_surat = htmlspecialchars($perihal_surats, true);
+
+                    $data['tujuan_rs'] = $tujuan_rs;
+                    $data['tujuan_surat'] = $tujuan_surat;
+                    $data['tempat_surat'] = $tempat_surat;
+                    // $data['perihal_surat'] = $perihal_surat;
+                    $data['template'] = "rpbp.docx";
+                    $dir = FCPATH . "upload/rpbp";
+                    break;
                 case 'PBI':
                     if ($oldData['jenis'] == "Rekomendasi Pengusulan Baru Peserta PBI APBD" || $oldData['jenis'] == "Rekomendasi Pengusulan Pengaktifan PBI APBD") {
                         $data['template'] = "pbi-apbd.docx";
@@ -1087,7 +1136,7 @@ class Proses extends BaseController
 
                     $tteUpload = new Ttelib();
                     // $uploaded = $tteUpload->createUploadFileGenerate($generateFile->dir, $dir, $generateFile->filename, $contentCreator, 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData['id']);
-                    $uploaded = $tteUpload->createUploadFileGenerate($generateFile->dir, $dir, $generateFile->filename, $contentCreator, 'http://192.168.33.16:8020/generate?data=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData['kode_permohonan']);
+                    $uploaded = $tteUpload->createUploadFileGenerate($generateFile->dir, $dir, $generateFile->filename, $contentCreator, 'http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcode?token=' . $oldData['kode_permohonan']);
                     // $uploaded = $tteUpload->createUploadFile($dir_pdf_tte, $dir, $newNamelampiran, $contentCreator);
                     // var_dump($uploaded);
                     // die;
@@ -1507,7 +1556,7 @@ class Proses extends BaseController
     private function _download($id)
     {
         $data = $this->_db->table('_permohonan a')
-            ->select("b.*, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
+            ->select("b.*, a.to_rumah_sakit, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
             ->join('_permohonan_doc c', 'a.id = c.id')
             ->join('_profil_users_tb b', 'a.user_id = b.id')
             ->join('ref_kecamatan d', 'c.kecamatan = d.id', 'LEFT')
@@ -1631,6 +1680,118 @@ class Proses extends BaseController
                         $response->message = "Gagal mengenerate dokumen.";
                         return $response;
                     }
+                }
+            } else if ($data->layanan == "RPBP") {
+                $file = FCPATH . "upload/template/$data->template";
+                $template_processor = new TemplateProcessor($file);
+                $template_processor->setValue('NOMOR_SURAT', "400.9.11.4/$data->no_surat/D.a.VII/" . date('Y'));
+                $template_processor->setValue('PERIHAL', $data->perihal_surat);
+                $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
+                $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
+                $template_processor->setValue('NOMOR_SKTM', $data->nomor_sktm);
+                $template_processor->setValue('TUJUAN_SURAT', $data->tujuan_surat);
+                $template_processor->setValue('TEMPAT_TUJUAN_SURAT', $data->tempat_surat);
+                $template_processor->setValue('TUJUAN_SKTM', $data->tujuan_rs);
+                $template_processor->setValue('DTKS_SIKS_NG',  "");
+                $template_processor->setValue('P3KE', " ");
+                $template_processor->setValue('TGL_SKTM', tgl_indo($data->tgl_sktm));
+
+                $template_processor->setValue('NAMA_PENGUSUL', $data->fullname);
+                // $template_processor->setValue('KK_PENGUSUL', $data->kk);
+                $template_processor->setValue('NIK_PENGUSUL', $data->nik);
+                // $template_processor->setValue('TEMPAT_LAHIR_PENGUSUL', $data->tempat_lahir);
+                // $template_processor->setValue('TGL_LAHIR_PENGUSUL', tgl_indo($data->tgl_lahir));
+                // $template_processor->setValue('PEKERJAAN_PENGUSUL', $data->pekerjaan);
+                $template_processor->setValue('ALAMAT_PENGUSUL', $data->alamat);
+                $template_processor->setValue('KELURAHAN_PENGUSUL', $data->nama_kelurahan);
+                $template_processor->setValue('KECAMATAN_PENGUSUL', $data->nama_kecamatan);
+                $template_processor->setValue('TGL_KELUAR', tgl_indo(date('Y-m-d')));
+                $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
+                $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
+                $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
+                $template_processor->setValue('PANGKAT_TTD', "Pembina TK.I (IV/b)");
+                $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
+
+                // $template_processor->setImageValue('BARCODE', array('path' => 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=layanan.disdikbud.lampungtengahkab.go.id/verifiqrcodev?token=' . $ptks[0]->kode_verifikasi . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
+                $template_processor->setImageValue('BARCODE', array('path' => 'http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcodev?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
+
+                $filed = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+
+                $template_processor->saveAs($filed);
+
+                sleep(3);
+
+                $datas = [
+                    'nama_file' => $data->kode_permohonan . '.docx',
+                    'file_folder' => $filed,
+                ];
+
+                $urlConvert = getenv('beconvert.default.url');
+
+                // $curlHandle = curl_init("http://192.168.33.30:1891/convert");
+                $curlHandle = curl_init($urlConvert);
+                curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($curlHandle, CURLOPT_POSTFIELDS, json_encode($datas));
+                curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
+                    // 'X-API-TOKEN: ' . $apiToken,
+                    // 'Authorization: Bearer ' . $jwt,
+                    'Content-Type: application/json'
+                ));
+                curl_setopt($curlHandle, CURLOPT_TIMEOUT, 120);
+                curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 120);
+
+                $send_data         = curl_exec($curlHandle);
+
+                $result = json_decode($send_data);
+
+
+                if (isset($result->error)) {
+                    try {
+                        unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengenerate dokumen.";
+                    return $response;
+                }
+
+                if ($result) {
+                    if ($result->status == 200) {
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->redirrect = base_url('silastri/adm/layanan/approval');
+                        $response->message = "Selesaikan Permohonan $data->fullname berhasil dilakukan. Tinggal menunggu TTE kadis.";
+                        $response->result = $result;
+                        $response->dir = FCPATH . "upload/generate/surat/pdf/" . $data->kode_permohonan . ".pdf";
+                        $response->dir_temp = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+                        $response->filename = $data->kode_permohonan . ".pdf";
+                        return $response;
+                    } else {
+                        try {
+                            unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = $result->message;
+                        // $response->message = "Gagal mengenerate dokumen.";
+                        return $response;
+                    }
+                    // return $result;
+                } else {
+                    try {
+                        unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengenerate dokumen.";
+                    return $response;
                 }
             } else if ($data->layanan == "PBI") {
                 $file = FCPATH . "upload/template/$data->template";
