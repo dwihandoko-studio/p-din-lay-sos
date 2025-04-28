@@ -22,10 +22,10 @@ class Verifiqrcodev extends BaseController
         ];
         if ($dokumen) {
             $data['dokumen'] = $dokumen;
-            return view('page/verifiqrcode/index', $data);
+            return view('verifiqrcode/index', $data);
         } else {
             // $dokumen = $this->_db->table('_pengaduan')->where('id', $token)->get()->getRowObject();
-            return view('404', $data);
+            return view('verifiqrcode/404', $data);
         }
     }
 
