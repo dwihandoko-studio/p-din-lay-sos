@@ -98,6 +98,12 @@
                                 <input type="text" class="form-control" value="<?= getJenisSubLayanan($data->layanan, $data->jenis) ?>" readonly />
                                 <!-- <textarea rows="3" class="form-control" readonly><?= getJenisSubLayanan($data->layanan, $data->jenis) ?></textarea> -->
                             </div>
+                            <?php if (isset($data->to_rumah_sakit)) { ?>
+                                <div class="col-lg-6">
+                                    <label class="col-form-label">Tujuan Rumah Sakit:</label>
+                                    <input type="text" class="form-control" value="<?= $data->to_rumah_sakit ?>" readonly />
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php if (isset($lks)) { ?>
