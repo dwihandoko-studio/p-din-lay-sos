@@ -1078,8 +1078,8 @@ class Proses extends BaseController
                         return json_encode($response);
                     }
                     $data['perihal_surat'] = $dokumen;
-                    $data['template'] = "rpbp.docx";
-                    $dir = FCPATH . "upload/rpbp";
+                    $data['template'] = "rpdk.docx";
+                    $dir = FCPATH . "upload/rpdk";
                     break;
                 case 'PBI':
                     if ($oldData['jenis'] == "Rekomendasi Pengusulan Baru Peserta PBI APBD" || $oldData['jenis'] == "Rekomendasi Pengusulan Pengaktifan PBI APBD") {
