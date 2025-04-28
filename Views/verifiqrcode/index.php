@@ -12,12 +12,12 @@
     <meta name="title" content="<?= isset($title) ? $title : "HOME" ?>">
     <meta name="author" content="handokowae.my.id">
 
-    <link rel="icon" href="https://tte.lampungtengahkab.go.id//assets/img/logo.png" type="image/png">
+    <link rel="icon" href="https://tte.lampungtengahkab.go.id/assets/img/logo.png" type="image/png">
 
-    <link type="text/css" href="https://tte.lampungtengahkab.go.id//assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"><!-- Nucleo icons -->
-    <link rel="stylesheet" href="https://tte.lampungtengahkab.go.id//assets/vendor/nucleo/css/nucleo.css" type="text/css"><!-- Prism -->
-    <link type="text/css" href="https://tte.lampungtengahkab.go.id//assets/vendor/prismjs/themes/prism.css" rel="stylesheet"><!-- Front CSS -->
-    <link type="text/css" href="https://tte.lampungtengahkab.go.id//assets/css/front.css" rel="stylesheet">
+    <link type="text/css" href="https://tte.lampungtengahkab.go.id/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"><!-- Nucleo icons -->
+    <link rel="stylesheet" href="https://tte.lampungtengahkab.go.id/assets/vendor/nucleo/css/nucleo.css" type="text/css"><!-- Prism -->
+    <link type="text/css" href="https://tte.lampungtengahkab.go.id/assets/vendor/prismjs/themes/prism.css" rel="stylesheet"><!-- Front CSS -->
+    <link type="text/css" href="https://tte.lampungtengahkab.go.id/assets/css/front.css" rel="stylesheet">
     <script>
         const BASE_URL = "<?= base_url() ?>";
     </script>
@@ -51,22 +51,22 @@
             </div>
         </footer>
     </main>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/headroom.js/dist/headroom.min.js"></script><!-- Vendor JS -->
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/onscreen/dist/on-screen.umd.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/nouislider/distribute/nouislider.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/jarallax/dist/jarallax.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/countup.js/dist/countUp.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/vendor/prismjs/prism.js"></script><!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/headroom.js/dist/headroom.min.js"></script><!-- Vendor JS -->
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/countup.js/dist/countUp.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/vendor/prismjs/prism.js"></script><!-- Place this tag in your head or just before your close body tag. -->
     <script async defer="defer" src="https://buttons.github.io/buttons.js"></script><!-- Impact JS -->
-    <script src="https://tte.lampungtengahkab.go.id//assets/js/front.js"></script>
-    <script src="https://tte.lampungtengahkab.go.id//assets/js/jquery-block-ui.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/js/front.js"></script>
+    <script src="https://tte.lampungtengahkab.go.id/assets/js/jquery-block-ui.js"></script>
     <script>
         $(document).ready(function() {
             <?php if (isset($dokumen)) { ?>
