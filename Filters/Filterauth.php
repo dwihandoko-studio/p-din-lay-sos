@@ -488,7 +488,7 @@ class Filterauth implements FilterInterface
 
                     $uriMain = $uri->getSegment(1);
 
-                    if ($uriMain == "" || $uriMain == "home" || $uriMain == "auth") {
+                    if ($uriMain == "" || $uriMain == "home" || $uriMain == "auth" || $uriMain == "verifiqrcodev") {
                     } else {
                         // var_dump($e);
                         // var_dump("<br>token salah");
@@ -506,8 +506,11 @@ class Filterauth implements FilterInterface
 
                 if ($uriMain == "auth") {
                 } else {
-                    // var_dump("tidak ada token"); die;
-                    return redirect()->to(base_url('auth'));
+                    if ($uriMain == "verifiqrcodev") {
+                    } else {
+                        // var_dump("tidak ada token"); die;
+                        return redirect()->to(base_url('auth'));
+                    }
                 }
             }
         }
@@ -569,7 +572,9 @@ class Filterauth implements FilterInterface
 
                         $uriMain = $uri->getSegment(1);
                         if ($uriMain != 'auth') {
-                            return redirect()->to(base_url('auth'));
+                            if ($uriMain != 'verifiqrcodev') {
+                                return redirect()->to(base_url('auth'));
+                            }
                         }
                     }
                 }
@@ -580,7 +585,9 @@ class Filterauth implements FilterInterface
 
                     $uriMain = $uri->getSegment(1);
                     if ($uriMain != 'auth') {
-                        return redirect()->to(base_url('auth'));
+                        if ($uriMain != 'verifiqrcodev') {
+                            return redirect()->to(base_url('auth'));
+                        }
                     }
                 }
             }
@@ -590,7 +597,9 @@ class Filterauth implements FilterInterface
             if ($totalSegment > 0) {
                 $uriMain = $uri->getSegment(1);
                 if ($uriMain != 'auth') {
-                    return redirect()->to(base_url('auth'));
+                    if ($uriMain != 'verifiqrcodev') {
+                        return redirect()->to(base_url('auth'));
+                    }
                 }
             }
         }

@@ -61,6 +61,8 @@ class Filters extends BaseConfig
                     'silastri/*',
                     'situpeng',
                     'situpeng/*',
+                    'verifiqrcodev',
+                    'verifiqrcodev/*',
                 ]
             ],
             'toolbar',
