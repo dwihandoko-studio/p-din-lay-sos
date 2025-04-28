@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Libraries\tte\Bsrelib;
+use App\Libraries\Tte\Bsrelib;
 
 class Verifiqrcodev extends BaseController
 {
