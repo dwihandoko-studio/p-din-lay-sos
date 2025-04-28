@@ -32,7 +32,7 @@ class Filterauth implements FilterInterface
                     $totalSegment = $uri->getTotalSegments();
                     if ($totalSegment > 0) {
                         $uriMain = $uri->getSegment(1);
-                        if ($uriMain === "" || $uriMain === "home" || $uriMain === "auth" || $uriMain === "portal" || $uriMain === "profil") {
+                        if ($uriMain === "" || $uriMain === "home" || $uriMain === "auth" || $uriMain === "portal" || $uriMain === "profil" || $uriMain === "verifiqrcodev") {
                         } else {
                             if ($uriMain === "silastri") {
                                 $uriLevel = $uri->getSegment(2);

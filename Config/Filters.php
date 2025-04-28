@@ -37,20 +37,30 @@ class Filters extends BaseConfig
         'before' => [
             'filterauth' => [
                 'except' => [
-                    'auth', 'auth/*',
-                    'home', 'home/*',
+                    'auth',
+                    'auth/*',
+                    'home',
+                    'home/*',
+                    'verifiqrcodev',
+                    'verifiqrcodev/*',
                 ]
             ]
         ],
         'after'  => [
             'filterauth' => [
                 'except' => [
-                    'portal', 'portal/*',
-                    'profil', 'profil/*',
-                    'home', 'home/*',
-                    'auth', 'auth/*',
-                    'silastri', 'silastri/*',
-                    'situpeng', 'situpeng/*',
+                    'portal',
+                    'portal/*',
+                    'profil',
+                    'profil/*',
+                    'home',
+                    'home/*',
+                    'auth',
+                    'auth/*',
+                    'silastri',
+                    'silastri/*',
+                    'situpeng',
+                    'situpeng/*',
                 ]
             ],
             'toolbar',
