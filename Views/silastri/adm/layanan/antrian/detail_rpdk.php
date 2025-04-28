@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label class="col-form-label">Kategori PPKS:</label>
-                    <input type="text" class="form-control" value="<?= getNameKategoriPPKSNew($dataDecJson->tanggal_lahir_ppks) ?>" readonly />
+                    <input type="text" class="form-control" value="<?= getNameKategoriPPKSNew($dataDecJson->kategori_ppks) ?>" readonly />
                 </div>
             <?php } ?>
             <?php if (isset($data->lampiran_ktp)) { ?>
