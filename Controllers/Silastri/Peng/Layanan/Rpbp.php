@@ -205,7 +205,7 @@ class Rpbp extends BaseController
                 return json_encode($response);
             }
 
-            $rumah_sakit = htmlspecialchars($this->request->getVar('jenis'), true);
+            $rumah_sakit = htmlspecialchars($this->request->getVar('rumah_sakit'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             // $indikator1 = (int)htmlspecialchars($this->request->getVar('indikator1'), true);
