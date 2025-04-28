@@ -269,7 +269,7 @@ class Sktm extends BaseController
         if ($filenamelampiranKtp != '') {
             $lampiranValKtp = [
                 '_file_ktp' => [
-                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,2048]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,5120]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen KTP terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen KTP terlalu besar. ',
@@ -284,7 +284,7 @@ class Sktm extends BaseController
         if ($filenamelampiranKk != '') {
             $lampiranValKk = [
                 '_file_kk' => [
-                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,2048]|mime_in[_file_kk,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,5120]|mime_in[_file_kk,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen KK terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen KK terlalu besar. ',
@@ -299,7 +299,7 @@ class Sktm extends BaseController
         if ($filenamelampiranPernyataan != '') {
             $lampiranValPernyataan = [
                 '_file_pernyataan' => [
-                    'rules' => 'uploaded[_file_pernyataan]|max_size[_file_pernyataan,2048]|mime_in[_file_pernyataan,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_pernyataan]|max_size[_file_pernyataan,5120]|mime_in[_file_pernyataan,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen Pernyataan terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen Pernyataan terlalu besar. ',
@@ -314,7 +314,7 @@ class Sktm extends BaseController
         if ($filenamelampiranFotoRumah != '') {
             $lampiranValFotoRumah = [
                 '_file_foto_rumah' => [
-                    'rules' => 'uploaded[_file_foto_rumah]|max_size[_file_foto_rumah,2048]|mime_in[_file_foto_rumah,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'rules' => 'uploaded[_file_foto_rumah]|max_size[_file_foto_rumah,5120]|mime_in[_file_foto_rumah,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
                         'uploaded' => 'Pilih dokumen foto rumah terlebih dahulu. ',
                         'max_size' => 'Ukuran dokumen foto rumah terlalu besar. ',

@@ -1635,7 +1635,7 @@ class Proses extends BaseController
             } else {
                 $file = FCPATH . "upload/template/$data->template";
                 $template_processor = new TemplateProcessor($file);
-                $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/2023");
+                $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/" . date('Y'));
                 $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
                 $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
                 $template_processor->setValue('NOMOR_SKTM', $data->nomor_sktm);
@@ -1654,7 +1654,7 @@ class Proses extends BaseController
                 $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
                 $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
                 $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
-                $template_processor->setValue('PANGKAT_TTD', "Pembina (IV/a)");
+                $template_processor->setValue('PANGKAT_TTD', "Pembina Tk.I (IV/b)");
                 $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
 
                 // $template_processor->setImageValue('BARCODE', array('path' => 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=layanan.disdikbud.lampungtengahkab.go.id/verifiqrcodev?token=' . $ptks[0]->kode_verifikasi . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
