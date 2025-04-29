@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?= isset($title) ? $title : "Portal Layanan" ?></title>
+    <title><?= isset($title) ? $title : "Verifi QRCode Layanan" ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" name="description" />
