@@ -94,9 +94,9 @@
                         $('div.loading-get-verifi').unblock();
                         if (msg.code != 200) {
                             if (msg.code != 201) {
-                                reloadPage(msg.redirrect);
-                            } else {
                                 console.log('gagal');
+                            } else {
+                                document.location.href = msg.redirrect;
                                 // Swal.fire(
                                 //   'Gagal!',
                                 //   msg.message,
