@@ -68,6 +68,13 @@
     <script src="<?= base_url() ?>/assets/verifi/assets/js/front.js"></script>
     <script src="<?= base_url() ?>/assets/verifi/assets/js/jquery-block-ui.js"></script>
     <script>
+        function reloadPage(action = "") {
+            if (action === "") {
+                document.location.href = "<?= current_url(true); ?>";
+            } else {
+                document.location.href = action;
+            }
+        }
         $(document).ready(function() {
             <?php if (isset($dokumen)) { ?>
                 $.ajax({
@@ -86,12 +93,16 @@
                         console.log(msg);
                         $('div.loading-get-verifi').unblock();
                         if (msg.code != 200) {
-                            console.log('gagal');
-                            // Swal.fire(
-                            //   'Gagal!',
-                            //   msg.message,
-                            //   'warning'
-                            // );
+                            if (msg.code != 201) {
+                                reloadPage(msg.redirrect);
+                            } else {
+                                console.log('gagal');
+                                // Swal.fire(
+                                //   'Gagal!',
+                                //   msg.message,
+                                //   'warning'
+                                // );
+                            }
                         } else {
                             $('#loading-get-verifi').html(msg.data);
                         }
