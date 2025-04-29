@@ -69,6 +69,7 @@
             color: #202022 !important;
         }
     </style>
+    <?= $this->renderSection('scriptTop'); ?>
     <link href="<?= base_url() ?>/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 </head>
 
