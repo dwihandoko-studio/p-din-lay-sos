@@ -136,7 +136,7 @@ class Verifiqrcode extends BaseController
                     return json_encode($response);
                 }
             } else {
-                $dokumenAntrian = $this->_db->table('_permohonan_temp a')
+                $dokumenAntrian = $this->_db->table('_permohonan_temps a')
                     ->select("a.*, 
                         b.nik as nik_pemohon, 
                         b.kk as kk, 
