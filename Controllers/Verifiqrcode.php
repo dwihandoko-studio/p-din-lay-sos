@@ -199,7 +199,7 @@ class Verifiqrcode extends BaseController
 
     public function detaillayanan()
     {
-        $id = htmlspecialchars($this->request->getVar('token'), true);
+        $id = htmlspecialchars($this->request->getGet('token'), true);
         $dokumen = $this->_db->table('_permohonan a')
             ->select("a.*")
             ->where('a.id', $id)->get()->getRowObject();
