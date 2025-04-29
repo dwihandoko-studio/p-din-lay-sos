@@ -49,9 +49,9 @@
     <link href="<?= base_url() ?>/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <script>
-        // if (sessionStorage.getItem("is_visited") === null) {
-        //     sessionStorage.setItem("is_visited", "dark-mode-switch");
-        // }
+        if (sessionStorage.getItem("is_visited") === null) {
+            sessionStorage.setItem("is_visited", "light-mode-switch");
+        }
 
         // sessionStorage.setItem("is_visited", "dark-mode-switch");
         const BASE_URL = '<?= base_url() ?>';
