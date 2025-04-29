@@ -56,70 +56,236 @@ class Verifiqrcode extends BaseController
             $id = htmlspecialchars($this->request->getVar('id'), true);
             $dokumen = $this->_db->table('_permohonan a')
                 ->select("a.*, b.file_dokumen_tte")
-                ->join('_file_tte b', 'a.id = b.id')
+                ->join('_file_tte b', 'a.id = b.id', 'LEFT')
                 ->where('a.id', $id)->get()->getRowObject();
 
-            if (!$dokumen) {
-                $response = new \stdClass;
-                $response->code = 400;
-                $response->message = "Dokumen tidak ditemukan.";
-                return json_encode($response);
-            }
+            if ($dokumen) {
+                if ((int)$dokumen->status_permohonan == 5) {
 
-            $nameFile = time() . "-sudah-tte.pdf";
+                    $nameFile = time() . "-sudah-tte.pdf";
 
-            $pdf = fopen(FCPATH . "uploads/temp_validiti/" . $nameFile, 'w');
-            fwrite($pdf, $dokumen->file_dokumen_tte);
-            fclose($pdf);
-            // var_dump($nameFile);
-            // die;
+                    $pdf = fopen(FCPATH . "uploads/temp_validiti/" . $nameFile, 'w');
+                    fwrite($pdf, $dokumen->file_dokumen_tte);
+                    fclose($pdf);
+                    // var_dump($nameFile);
+                    // die;
 
 
-            $data = [
-                'signed_file' => new \CURLFile(FCPATH . "uploads/temp_validiti/" . $nameFile, 'application/pdf', $nameFile),
-                // 'linkQR' => "https://web.lampungtengahkab.go.id",
-                // 'imageTTD' => new \CURLFile('/www/wwwroot/tte.lampungtengahkab.go.id/dev/public/upload/imagette/' . $fileName, 'image/png',$fileName),
-                // 'imageTTD' => new \CURLFile('/www/wwwroot/tte.lampungtengahkab.go.id/dev/public/upload/imagette/' . $imageTte, 'image/jpeg', $imageTte),
-                // 'file' => 'file://' . realpath('./upload/dokumen/' . $dokumen->dokumen),
-                // 'imageTTD' => 'file://' . realpath('./upload/imagette/' . $imageTte),
-            ];
+                    $data = [
+                        'signed_file' => new \CURLFile(FCPATH . "uploads/temp_validiti/" . $nameFile, 'application/pdf', $nameFile),
+                        // 'linkQR' => "https://web.lampungtengahkab.go.id",
+                        // 'imageTTD' => new \CURLFile('/www/wwwroot/tte.lampungtengahkab.go.id/dev/public/upload/imagette/' . $fileName, 'image/png',$fileName),
+                        // 'imageTTD' => new \CURLFile('/www/wwwroot/tte.lampungtengahkab.go.id/dev/public/upload/imagette/' . $imageTte, 'image/jpeg', $imageTte),
+                        // 'file' => 'file://' . realpath('./upload/dokumen/' . $dokumen->dokumen),
+                        // 'imageTTD' => 'file://' . realpath('./upload/imagette/' . $imageTte),
+                    ];
 
-            $bsreLib = new Bsrelib();
+                    $bsreLib = new Bsrelib();
 
-            $data = $bsreLib->verifiPdf($data);
-            // var_dump($data);
-            // die;
+                    $data = $bsreLib->verifiPdf($data);
+                    // var_dump($data);
+                    // die;
 
-            switch ($http_code = $data->status) {
+                    switch ($http_code = $data->status) {
 
-                case "SUCCESS":  # OK
+                        case "SUCCESS":  # OK
+                            $response = new \stdClass;
+                            $response->code = 200;
+                            $response->message = $data->message;
+                            $response->filename = $nameFile;
+                            $xr['data'] = $data->data;
+                            $xr['url'] = base_url('uploads/temp_validiti') . '/' . $nameFile;
+                            $response->data = view('verifiqrcode/content_validation', $xr);
+                            return json_encode($response);
+
+                            break;
+                        case "UNAUTHORIZED":
+                            $response = new \stdClass;
+                            $response->code = 400;
+                            $response->message = $data->message;
+                            return json_encode($response);
+                            break;
+                        case "NOT_FOUND":
+                            $response = new \stdClass;
+                            $response->code = 400;
+                            $response->message = "Url tidak ditemukan.";
+                            return json_encode($response);
+                            break;
+                        default:
+                            $response = new \stdClass;
+                            $response->code = 400;
+                            $response->message = $data->message;
+                            return json_encode($response);
+                    }
+                } else {
                     $response = new \stdClass;
                     $response->code = 200;
-                    $response->message = $data->message;
-                    $response->filename = $nameFile;
-                    $xr['data'] = $data->data;
-                    $xr['url'] = base_url('uploads/temp_validiti') . '/' . $nameFile;
-                    $response->data = view('verifiqrcode/content_validation', $xr);
+                    $response->message = "Data ditemukan";
+                    $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumen->layanan;
                     return json_encode($response);
+                }
+            } else {
+                $dokumenAntrian = $this->_db->table('_permohonan_temp a')
+                    ->select("a.*, 
+                        b.nik as nik_pemohon, 
+                        b.kk as kk, 
+                        b.email as email, 
+                        b.no_hp as no_hp, 
+                        b.tempat_lahir, 
+                        b.tgl_lahir, 
+                        b.jenis_kelamin, 
+                        b.alamat, 
+                        c.id as id_kecamatan, 
+                        c.kecamatan as nama_kecamatan, 
+                        d.id as id_kelurahan, 
+                        d.kelurahan as nama_kelurahan")
+                    ->join('_profil_users_tb b', 'b.id = a.user_id')
+                    ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                    ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                    ->where(['a.id' => $id])->get()->getRowObject();
 
-                    break;
-                case "UNAUTHORIZED":
+                if ($dokumenAntrian) {
                     $response = new \stdClass;
-                    $response->code = 400;
-                    $response->message = $data->message;
+                    $response->code = 200;
+                    $response->message = "Data ditemukan";
+                    $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumenAntrian->layanan;
                     return json_encode($response);
+                } else {
+                    $dokumenTolak = $this->_db->table('_permohonan_tolak a')
+                        ->select("a.*, 
+                            b.nik as nik_pemohon, 
+                            b.kk as kk, 
+                            b.email as email, 
+                            b.no_hp as no_hp, 
+                            b.tempat_lahir, 
+                            b.tgl_lahir, 
+                            b.jenis_kelamin, 
+                            b.alamat, 
+                            c.id as id_kecamatan, 
+                            c.kecamatan as nama_kecamatan, 
+                            d.id as id_kelurahan, 
+                            d.kelurahan as nama_kelurahan")
+                        ->join('_profil_users_tb b', 'b.id = a.user_id')
+                        ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                        ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                        ->where(['a.id' => $id])->get()->getRowObject();
+                    if ($dokumenTolak) {
+                        $response = new \stdClass;
+                        $response->code = 200;
+                        $response->message = "Data ditemukan";
+                        $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumenTolak->layanan;
+                        return json_encode($response);
+                    } else {
+                        $response = new \stdClass;
+                        $response->code = 400;
+                        $response->message = "Dokumen tidak ditemukan.";
+                        return json_encode($response);
+                    }
+                }
+            }
+        }
+    }
+
+    public function detaillayanan()
+    {
+        $id = htmlspecialchars($this->request->getVar('token'), true);
+        $dokumen = $this->_db->table('_permohonan a')
+            ->select("a.*")
+            ->where('a.id', $id)->get()->getRowObject();
+
+        if ($dokumen) {
+            $data['data'] = $dokumen;
+            if ((int)$dokumen->status_permohonan === 1) {
+                $data['status_permohonan'] = 'disposisi';
+            } else if ((int)$dokumen->status_permohonan === 2) {
+                $data['status_permohonan'] = 'proses';
+            } else if ((int)$dokumen->status_permohonan === 5) {
+                $data['status_permohonan'] = 'pengesahan';
+                $fileSelesai = $this->_db->table('_file_tte')->where('id', $dokumen->id)->get()->getRowObject();
+                if ($fileSelesai) {
+                    $data['file_selesai'] = $fileSelesai;
+                }
+            } else {
+                $data['status_permohonan'] = 'ditolak';
+            }
+            switch ($dokumen->layanan) {
+                case 'LKS':
+                    $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $dokumen->id)->get()->getRowObject();
+                    return view('verifiqrcode/detail_layanan_lks', $data);
                     break;
-                case "NOT_FOUND":
-                    $response = new \stdClass;
-                    $response->code = 400;
-                    $response->message = "Url tidak ditemukan.";
-                    return json_encode($response);
-                    break;
+
                 default:
-                    $response = new \stdClass;
-                    $response->code = 400;
-                    $response->message = $data->message;
-                    return json_encode($response);
+                    return view('verifiqrcode/detail_layanan', $data);
+                    break;
+            }
+        } else {
+            $dokumenAntrian = $this->_db->table('_permohonan_temp a')
+                ->select("a.*, 
+                        b.nik as nik_pemohon, 
+                        b.kk as kk, 
+                        b.email as email, 
+                        b.no_hp as no_hp, 
+                        b.tempat_lahir, 
+                        b.tgl_lahir, 
+                        b.jenis_kelamin, 
+                        b.alamat, 
+                        c.id as id_kecamatan, 
+                        c.kecamatan as nama_kecamatan, 
+                        d.id as id_kelurahan, 
+                        d.kelurahan as nama_kelurahan")
+                ->join('_profil_users_tb b', 'b.id = a.user_id')
+                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                ->where(['a.id' => $id])->get()->getRowObject();
+
+            if ($dokumenAntrian) {
+                $data['data'] = $dokumenAntrian;
+                $data['status_permohonan'] = 'antrian';
+                switch ($dokumenAntrian->layanan) {
+                    case 'LKS':
+                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $dokumenAntrian->id)->get()->getRowObject();
+                        return view('verifiqrcode/detail_layanan_lks', $data);
+                        break;
+
+                    default:
+                        return view('verifiqrcode/detail_layanan', $data);
+                        break;
+                }
+            } else {
+                $dokumenTolak = $this->_db->table('_permohonan_tolak a')
+                    ->select("a.*, 
+                            b.nik as nik_pemohon, 
+                            b.kk as kk, 
+                            b.email as email, 
+                            b.no_hp as no_hp, 
+                            b.tempat_lahir, 
+                            b.tgl_lahir, 
+                            b.jenis_kelamin, 
+                            b.alamat, 
+                            c.id as id_kecamatan, 
+                            c.kecamatan as nama_kecamatan, 
+                            d.id as id_kelurahan, 
+                            d.kelurahan as nama_kelurahan")
+                    ->join('_profil_users_tb b', 'b.id = a.user_id')
+                    ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                    ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                    ->where(['a.id' => $id])->get()->getRowObject();
+                if ($dokumenTolak) {
+                    $data['data'] = $dokumenAntrian;
+                    $data['status_permohonan'] = 'ditolak';
+                    switch ($dokumenTolak->layanan) {
+                        case 'LKS':
+                            $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $dokumenTolak->id)->get()->getRowObject();
+                            return view('verifiqrcode/detail_layanan_lks', $data);
+                            break;
+
+                        default:
+                            return view('verifiqrcode/detail_layanan', $data);
+                            break;
+                    }
+                } else {
+                    return view('404');
+                }
             }
         }
     }

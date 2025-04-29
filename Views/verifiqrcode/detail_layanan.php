@@ -1,0 +1,743 @@
+<?= $this->extend('t-silastri/umum/index'); ?>
+
+<?= $this->section('content'); ?>
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 font-size-18">DETAIL PROSES PERMOHONAN LAYANAN</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="./data" class="btn btn-info btn-rounded waves-effect waves-light">Kembali</a></li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="card-title">Detail Permohonan Layanan - <?= $data->jenis ?> - <?= $data->nik ?></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <h4>DATA PEMOHON</h4>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Nama Lengkap:</label>
+                                <input type="text" class="form-control" value="<?= str_replace('&#039;', "`", str_replace("'", "`", $data->nama)) ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">NIK:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" aria-describedby="nik" aria-label="NIK" value="<?= $data->nik ?>" readonly />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">KK:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" aria-describedby="kk" aria-label="KK" value="<?= $data->kk ?>" readonly />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Tempat Lahir:</label>
+                                <input type="text" class="form-control" value="<?= $data->tempat_lahir ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Tanggal Lahir:</label>
+                                <input type="text" class="form-control" value="<?= $data->tgl_lahir ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Jenis Kelamin:</label>
+                                <div><?php switch ($data->jenis_kelamin) {
+                                            case 'P':
+                                                echo '<span class="badge badge-pill badge-soft-primary">Perempuan</span>';
+                                                break;
+                                            case 'L':
+                                                echo '<span class="badge badge-pill badge-soft-primary">Laki-Laki</span>';
+                                                break;
+                                            default:
+                                                echo '-';
+                                                break;
+                                        } ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Email:</label>
+                                <input type="text" class="form-control" value="<?= $data->email ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">No Handphone:</label>
+                                <input type="text" class="form-control" value="<?= $data->no_hp ?>" readonly />
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row mt-2">
+                            <h4>DATA PERMOHONAN</h4>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Kode Permohonan:</label>
+                                <input type="text" class="form-control" value="<?= $data->kode_permohonan ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Layanan:</label>
+                                <input type="text" class="form-control" value="<?= $data->layanan ?>" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-form-label">Jenis:</label>
+                                <textarea rows="3" class="form-control" readonly><?= getJenisSubLayanan($data->layanan, $data->jenis) ?></textarea>
+                            </div>
+                            <?php if (isset($data->to_rumah_sakit)) { ?>
+                                <div class="col-lg-6">
+                                    <label class="col-form-label">Tujuan Rumah Sakit:</label>
+                                    <input type="text" class="form-control" value="<?= $data->to_rumah_sakit ?>" readonly />
+                                </div>
+                            <?php } ?>
+
+                            <?php if (isset($data->lampiran_ktp)) { ?>
+                                <div class="col-lg-12 mt-2">
+                                    <label class="col-form-label">Lampiran Dokumen:</label>
+                                    <br />
+                                    <?php if (isset($data->lampiran_ktp)) { ?>
+                                        <?php if ($data->lampiran_ktp === null || $data->lampiran_ktp === "") { ?>
+                                        <?php } else { ?>
+                                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_ktp ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_ktp ?>" id="nik">
+                                                KTP
+                                            </a>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <?php if (isset($data->lampiran_kk)) { ?>
+                                        <?php if ($data->lampiran_kk === null || $data->lampiran_kk === "") { ?>
+                                        <?php } else { ?>
+                                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_kk ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_kk ?>" id="nik">
+                                                Kartu Keluarga
+                                            </a>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <?php if (isset($data->lampiran_pernyataan)) { ?>
+                                        <?php if ($data->lampiran_pernyataan === null || $data->lampiran_pernyataan === "") { ?>
+                                        <?php } else { ?>
+                                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_pernyataan ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_pernyataan ?>" id="nik">
+                                                Pernyataan
+                                            </a>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <?php if (isset($data->lampiran_foto_rumah)) { ?>
+                                        <?php if ($data->lampiran_foto_rumah === null || $data->lampiran_foto_rumah === "") { ?>
+                                        <?php } else { ?>
+                                            <a class="btn btn-secondary btn-sm btn-rounded waves-effect waves-light mr-2 mb-1" target="popup" onclick="window.open('<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_foto_rumah ?>','popup','width=600,height=600'); return false;" href="<?= base_url('uploads') . '/' . strtolower($data->layanan) . '/' . $data->lampiran_foto_rumah ?>" id="nik">
+                                                Foto Rumah
+                                            </a>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <hr />
+                        <div class="row mt-2">
+                            <?php if ($status_permohonan === 'antrian') { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list active">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1">...</div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-primary down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if ($status_permohonan === 'disposisi') { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_approve ?></div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list active">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1">...</div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-primary down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if ($status_permohonan === 'proses') { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_approve ?></div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_proses ?></div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list active">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1">...</div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-primary down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if ($status_permohonan === 'pengesahan') { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_approve ?></div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1"><?= $data->updated_at ?></div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1"><?= $data->date_tte ?></div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list active">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1"><?= $data->updated_at ?></div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <button type="button" onclick="downloadPDF('<?= isset($file_selesai) ? base64_encode($file_selesai->file_dokumen_tte) : '' ?>','<?= $data->kode_permohonan ?>.pdf')" class="btn btn-primary waves-effect waves-light w-sm">
+                                                                    <i class="mdi mdi-download d-block font-size-16"></i> Download
+                                                                </button>
+                                                                <!-- <i class="bx bx-timer h1 text-primary down-arrow-icon"></i> -->
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else { ?>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Progress Pengajuan Permohonan Anda</h4>
+
+                                            <div class="hori-timeline">
+                                                <div class="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->created_at ?></div>
+                                                                <h5 class="mb-4">1</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-check-circle h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Mengajukan Permohonan Layanan</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-primary mb-1"><?= $data->date_approve ?></div>
+                                                                <h5 class="mb-4">2</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-repost h1 text-success down-arrow-icon"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Disposisi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-danger mb-1"><?= $data->date_reject ?></div>
+                                                                <h5 class="mb-4">3</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-danger"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Verifikasi Permohonan Layanan oleh Admin.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">4</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Proses Pengesahan oleh Kepala.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item event-list">
+                                                        <div>
+                                                            <div class="event-date">
+                                                                <div class="text-Opacity mb-1">...</div>
+                                                                <h5 class="mb-4">5</h5>
+                                                            </div>
+                                                            <div class="event-down-icon">
+                                                                <i class="bx bx-timer h1 text-Opacity"></i>
+                                                            </div>
+
+                                                            <div class="mt-3 px-3">
+                                                                <p class="text-muted">Permohonan Layanan Selesai.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- container-fluid -->
+</div>
+<?= $this->endSection(); ?>
+
+<?= $this->section('scriptBottom'); ?>
+<script src="<?= base_url() ?>/assets/libs/select2/js/select2.min.js"></script>
+<script src="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="<?= base_url() ?>/assets/libs/owl.carousel/owl.carousel.min.js"></script>
+
+<script>
+    function downloadPDF(pdf, filename) {
+        // const linkSource = `data:application/pdf;base64,${pdf}`;
+        const linkSource = `data:application/octet-stream;base64,${pdf}`;
+        const downloadLink = document.createElement("a");
+        const fileName = filename;
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+    }
+
+    function ambilId(id) {
+        return document.getElementById(id);
+    }
+
+    $('#content-detailModal').on('click', '.btn-remove-preview-image', function(event) {
+        $('.imagePreviewUpload').removeAttr('src');
+        document.getElementsByName("_file")[0].value = "";
+    });
+
+    function initSelect2(event, parrent) {
+        $('#' + event).select2({
+            dropdownParent: parrent
+        });
+    }
+
+    $(document).ready(function() {
+        $("#timeline-carousel").owlCarousel({
+            items: 1,
+            loop: !1,
+            margin: 0,
+            nav: !0,
+            navText: ["<i class='mdi mdi-chevron-left'></i>", "<i class='mdi mdi-chevron-right'></i>"],
+            dots: !1,
+            responsive: {
+                576: {
+                    items: 3
+                },
+                768: {
+                    items: 6
+                }
+            }
+        });
+    });
+</script>
+<?= $this->endSection(); ?>
+
+<?= $this->section('scriptTop'); ?>
+<link href="<?= base_url() ?>/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url() ?>/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+<link href="<?= base_url() ?>/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.carousel.min.css">
+
+<link rel="stylesheet" href="<?= base_url() ?>/assets/libs/owl.carousel/assets/owl.theme.default.min.css">
+
+<style>
+    .preview-image-upload {
+        position: relative;
+    }
+
+    .preview-image-upload .imagePreviewUpload {
+        max-width: 300px;
+        max-height: 300px;
+        cursor: pointer;
+    }
+
+    .preview-image-upload .btn-remove-preview-image {
+        display: none;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: #555;
+        color: white;
+        font-size: 16px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .imagePreviewUpload:hover+.btn-remove-preview-image,
+    .btn-remove-preview-image:hover {
+        display: block;
+    }
+
+    .ul-custom-style-sub-menu-action {
+        list-style: none;
+        padding-left: 0.5rem;
+        border: 1px solid #ffffff2e;
+        padding-top: 0.5rem;
+        padding-right: 0.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .li-custom-style-sub-menu-action {
+        border: 1px solid white;
+        display: inline-block !important;
+        padding: 0.3rem 0.5rem 0rem 0.3rem;
+        margin-right: 0.3rem;
+        margin-bottom: 0.5rem;
+        border-radius: 2rem;
+    }
+
+    .custom-style-sub-menu-action {
+        font-size: 1em;
+        line-height: 1;
+        height: 24px;
+        color: #f6f6f6;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-weight: 500;
+        box-sizing: border-box;
+        margin-top: -15px;
+        vertical-align: -webkit-baseline-middle;
+    }
+</style>
+<?= $this->endSection(); ?>
