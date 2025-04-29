@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?= isset($title) ? $title : "Administrator" ?></title>
+    <title><?= isset($title) ? $title : "Portal Layanan" ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Portal Layanan Resmi Dinas Sosial Kab. Lampung Tengah" name="description" />
@@ -49,17 +49,32 @@
     <link href="<?= base_url() ?>/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <script>
-        if (sessionStorage.getItem("is_visited") === null) {
-            sessionStorage.setItem("is_visited", "light-mode-switch");
-        }
+        // if (sessionStorage.getItem("is_visited") === null) {
+        //     sessionStorage.setItem("is_visited", "dark-mode-switch");
+        // }
 
         // sessionStorage.setItem("is_visited", "dark-mode-switch");
         const BASE_URL = '<?= base_url() ?>';
     </script>
-    <?= $this->renderSection('scriptTop'); ?>
+    <style>
+        ._sorot-mouse:hover {
+            background-color: #c3cbe4;
+        }
+
+        ._sorot-mouse:hover ._color-h-hover {
+            color: #000 !important;
+        }
+
+        ._sorot-mouse:hover ._color-p-hover {
+            color: #202022 !important;
+        }
+    </style>
+    <link href="<?= base_url() ?>/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body data-sidebar="dark" data-layout-mode="light" class="loading-logout">
+<!-- <body data-sidebar="dark" data-layout-mode="light" class="loading-logout"> -->
+
+<body data-sidebar="dark" data-layout="horizontal" data-layout-size="boxed" data-layout-mode="light" class="loading-logout">
     <div id="layout-wrapper">
 
         <div class="main-content">
@@ -117,19 +132,9 @@
     <script src="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/node-waves/waves.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="<?= base_url() ?>/assets/libs/select2/js/select2.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.js"></script>
     <?= $this->renderSection('scriptBottom'); ?>
-    <script>
-        function reloadPage(action = "") {
-            if (action === "") {
-                document.location.href = "<?= current_url(true); ?>";
-            } else {
-                document.location.href = action;
-            }
-        }
-
-        $(document).ready(function() {});
-    </script>
 </body>
 
 </html>
