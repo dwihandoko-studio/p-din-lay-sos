@@ -24,8 +24,19 @@ class Verifiqrcode extends BaseController
             $data['dokumen'] = $dokumen;
             return view('verifiqrcode/index', $data);
         } else {
-            // $dokumen = $this->_db->table('_pengaduan')->where('id', $token)->get()->getRowObject();
-            return view('verifiqrcode/404', $data);
+            $dokumen = $this->_db->table('_permohonan_temp')->where('id', $token)->get()->getRowObject();
+            if ($dokumen) {
+                $data['dokumen'] = $dokumen;
+                return view('verifiqrcode/index', $data);
+            } else {
+                if ($dokumen) {
+                    $data['dokumen'] = $dokumen;
+                    return view('verifiqrcode/index', $data);
+                } else {
+                    $dokumen = $this->_db->table('_permohonan_tolak')->where('id', $token)->get()->getRowObject();
+                    return view('verifiqrcode/404', $data);
+                }
+            }
         }
     }
 
