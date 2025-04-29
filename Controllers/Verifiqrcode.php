@@ -130,7 +130,7 @@ class Verifiqrcode extends BaseController
                     }
                 } else {
                     $response = new \stdClass;
-                    $response->code = 200;
+                    $response->code = 201;
                     $response->message = "Data ditemukan";
                     $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumen->layanan;
                     return json_encode($response);
@@ -157,7 +157,7 @@ class Verifiqrcode extends BaseController
 
                 if ($dokumenAntrian) {
                     $response = new \stdClass;
-                    $response->code = 200;
+                    $response->code = 201;
                     $response->message = "Data ditemukan";
                     $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumenAntrian->layanan;
                     return json_encode($response);
@@ -182,7 +182,7 @@ class Verifiqrcode extends BaseController
                         ->where(['a.id' => $id])->get()->getRowObject();
                     if ($dokumenTolak) {
                         $response = new \stdClass;
-                        $response->code = 200;
+                        $response->code = 201;
                         $response->message = "Data ditemukan";
                         $response->redirrect = base_url() . '/verifiqrcode/detaillayanan?token=' . $id . '&layanan=' . $dokumenTolak->layanan;
                         return json_encode($response);
