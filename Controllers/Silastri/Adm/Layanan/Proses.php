@@ -980,12 +980,6 @@ class Proses extends BaseController
             $nomor_rekening = htmlspecialchars($this->request->getVar('nomor_rekening'), true);
             $tempat_surat = htmlspecialchars($this->request->getVar('tempat_surat'), true);
 
-            $kecamatan_keterangan = htmlspecialchars($this->request->getVar('kecamatan_keterangan'), true);
-            $kelurahan_keterangan = htmlspecialchars($this->request->getVar('kelurahan_keterangan'), true);
-            $nomor_surat_keterangan = htmlspecialchars($this->request->getVar('nomor_surat_keterangan'), true);
-            $tgl_surat_keterangan = htmlspecialchars($this->request->getVar('tgl_surat_keterangan'), true);
-            $perihal_surat_keterangan = htmlspecialchars($this->request->getVar('perihal_surat_keterangan'), true);
-
             $oldData = $this->_db->table('_permohonan')->where(['id' => $id])->get()->getRowArray();
             if (!$oldData) {
                 $response = new \stdClass;
@@ -1004,17 +998,29 @@ class Proses extends BaseController
                 $nomorFix = 1;
             }
 
+            $dataDecJson = json_decode($oldData['field_tambahan']);
+
             $fieldTambahanDoc = [
                 'nama_bank' => $nama_bank,
                 'unit_bank' => $unit_bank,
                 'nomor_rekening' => $nomor_rekening,
                 'tempat_surat' => $tempat_surat,
-                'kecamatan_keterangan' => $kecamatan_keterangan,
-                'kelurahan_keterangan' => $kelurahan_keterangan,
-                'nomor_surat_keterangan' => $nomor_surat_keterangan,
-                'tgl_surat_keterangan' => $tgl_surat_keterangan,
-                'perihal_surat_keterangan' => $perihal_surat_keterangan,
             ];
+
+            if ($dataDecJson->identitas_ahli_waris == "beda") {
+                $kecamatan_keterangan = htmlspecialchars($this->request->getVar('kecamatan_keterangan'), true);
+                $kelurahan_keterangan = htmlspecialchars($this->request->getVar('kelurahan_keterangan'), true);
+                $nomor_surat_keterangan = htmlspecialchars($this->request->getVar('nomor_surat_keterangan'), true);
+                $tgl_surat_keterangan = htmlspecialchars($this->request->getVar('tgl_surat_keterangan'), true);
+                $perihal_surat_keterangan = htmlspecialchars($this->request->getVar('perihal_surat_keterangan'), true);
+
+                $fieldTambahanDoc['kecamatan_keterangan'] = $kecamatan_keterangan;
+                $fieldTambahanDoc['kelurahan_keterangan'] = $kelurahan_keterangan;
+                $fieldTambahanDoc['nomor_surat_keterangan'] = $nomor_surat_keterangan;
+                $fieldTambahanDoc['tgl_surat_keterangan'] = $tgl_surat_keterangan;
+                $fieldTambahanDoc['perihal_surat_keterangan'] = $perihal_surat_keterangan;
+            }
+
 
             $data = [
                 'id' => $oldData['id'],
