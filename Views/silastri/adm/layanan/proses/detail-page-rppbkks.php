@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label">Keterangan:</label>
-                                        <input type="text" class="form-control" value="<?= $dataDecJson->keterangan ?>" readonly />
+                                        <input type="text" class="form-control" value="<?= isset($dataDecJson->keterangan) ? $dataDecJson->keterangan : "-" ?>" readonly />
                                     </div>
                                 <?php } ?>
                             <?php } ?>
