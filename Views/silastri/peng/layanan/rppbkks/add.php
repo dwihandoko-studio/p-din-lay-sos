@@ -507,7 +507,7 @@
         formUpload.append('_file_kk', file_kk);
 
         if (fileSuratKeterangan !== "") {
-            const file_surat = document.getElementsByName('_file_surat')[0].files[0];
+            const file_surat = document.getElementsByName('_file_surat_keterangan')[0].files[0];
             formUpload.append('_file_surat', file_surat);
         }
 
