@@ -432,6 +432,7 @@ class Rppbkks extends BaseController
                     'kecamatan_ahli_waris' => $kecamatan_ahli_waris,
                     'alamat_ahli_waris' => $alamat_ahli_waris,
                     'identitas_ahli_waris' => $identitas_ahli_waris,
+                    'keterangan' => $keterangan,
                 ];
             } else {
                 $field_tambahan = [

@@ -185,6 +185,9 @@ class Antrian extends BaseController
                     case 'RPDK':
                         $response->data = view('silastri/adm/layanan/antrian/detail_rpdk', $data);
                         break;
+                    case 'RPPBKKS':
+                        $response->data = view('silastri/adm/layanan/antrian/detail_rppbkks', $data);
+                        break;
 
                     default:
                         $response->data = view('silastri/adm/layanan/antrian/detail', $data);
