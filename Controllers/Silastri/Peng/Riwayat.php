@@ -256,7 +256,9 @@ class Riwayat extends BaseController
                     $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
                     return view('silastri/peng/riwayat/layanan/detail_lks', $data);
                     break;
-
+                case 'RPPBKKS':
+                    return view('silastri/peng/riwayat/layanan/detail_rppbkks', $data);
+                    break;
                 default:
                     return view('silastri/peng/riwayat/layanan/detail', $data);
                     break;
@@ -299,6 +301,9 @@ class Riwayat extends BaseController
                     case 'LKS':
                         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current1->id)->get()->getRowObject();
                         return view('silastri/peng/riwayat/layanan/detail_lks', $data);
+                        break;
+                    case 'RPPBKKS':
+                        return view('silastri/peng/riwayat/layanan/detail_rppbkks', $data);
                         break;
 
                     default:

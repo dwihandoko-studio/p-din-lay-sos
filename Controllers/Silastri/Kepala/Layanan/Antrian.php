@@ -173,50 +173,58 @@ class Antrian extends BaseController
 
             if ($current) {
                 $data['data'] = $current;
+                $response = new \stdClass;
 
                 switch ($current->layanan) {
                     case 'SKTM':
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         break;
                     case 'PBI':
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         break;
                     case 'SKDTKS':
                         $dirFile = 'dtks';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         // $data['file'] = $dirFile . '/' . $current->nik . '.pdf';
                         break;
                     case 'LKS':
                         $dirFile = 'lks';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         // $data['file'] = $dirFile . '/' . $current->nik . '.pdf';
                         break;
                     case 'RPBP':
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         break;
                     case 'RPDK':
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         break;
                     case 'RPPBKKS':
                         $dirFile = 'generate/surat/pdf';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail-rppbkks', $data);
                         break;
 
                     default:
                         $dirFile = 'notfound';
                         $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
+                        $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                         break;
                 }
 
                 // $data['file'] = $dirFile . '/' . $current->kode_permohonan . '.pdf';
-                $response = new \stdClass;
+
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('silastri/kepala/layanan/antrian/detail', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
