@@ -531,7 +531,7 @@
 
         Swal.fire({
             title: 'Apakah anda yakin ingin mengirim permohonan ini?',
-            text: "Kirim Permohonan RPPBKKS : " + kategori,
+            text: "Kirim Permohonan RPPBKKS",
             showCancelButton: true,
             icon: 'question',
             confirmButtonColor: '#3085d6',
