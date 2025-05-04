@@ -329,11 +329,58 @@ class Rppbkks extends BaseController
             $rules = array_merge($rules, $lampiranValSurat);
         }
 
+        $identitas_ahli_waris = htmlspecialchars($this->request->getVar('identitas_ahli_waris'), true);
+
+        if ($identitas_ahli_waris == "beda") {
+            $tambahanFieldAhliWaris = [
+                'hubungan_ahli_waris' => [
+                    'rules' => 'required|trim',
+                    'errors' => [
+                        'required' => 'Hubungan ahli waris tidak boleh kosong. ',
+                    ]
+                ],
+                'tempat_lahir_ahli_waris' => [
+                    'rules' => 'required|trim',
+                    'errors' => [
+                        'required' => 'Tempat lahir ahli waris tidak boleh kosong. ',
+                    ]
+                ],
+                'tanggal_lahir_ahli_waris' => [
+                    'rules' => 'required|trim',
+                    'errors' => [
+                        'required' => 'Tanggal lahir ahli waris tidak boleh kosong. ',
+                    ]
+                ],
+                'keterangan' => [
+                    'rules' => 'required|trim',
+                    'errors' => [
+                        'required' => 'Keterangan tidak boleh kosong. ',
+                    ]
+                ],
+            ];
+            $rules = array_merge($rules, $tambahanFieldAhliWaris);
+        }
+
+
         if (!$this->validate($rules)) {
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('nama')
                 . $this->validator->getError('nik')
+                . $this->validator->getError('nohp')
+                . $this->validator->getError('alamat')
+                . $this->validator->getError('kecamatan')
+                . $this->validator->getError('kelurahan')
+                . $this->validator->getError('nama_ahli_waris')
+                . $this->validator->getError('nik_ahli_waris')
+                . $this->validator->getError('nohp_ahli_waris')
+                . $this->validator->getError('alamat_ahli_waris')
+                . $this->validator->getError('kecamatan_ahli_waris')
+                . $this->validator->getError('kelurahan_ahli_waris')
+                . $this->validator->getError('hubungan_ahli_waris')
+                . $this->validator->getError('tempat_lahir_ahli_waris')
+                . $this->validator->getError('tanggal_lahir_ahli_waris')
+                . $this->validator->getError('keterangan')
                 . $this->validator->getError('identitas_ahli_waris')
                 . $this->validator->getError('_file_ktp')
                 . $this->validator->getError('_file_kk')
@@ -351,16 +398,55 @@ class Rppbkks extends BaseController
                 return json_encode($response);
             }
 
-            $identitas_ahli_waris = htmlspecialchars($this->request->getVar('identitas_ahli_waris'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
-            $keterangan = (int)htmlspecialchars($this->request->getVar('keterangan'), true);
 
-            // if ($keterangan === NULL || $keterangan === "") {
-            //     $jenisFix = $jenis;
-            // } else {
-            //     $jenisFix = $keterangan;
-            // }
+            if ($identitas_ahli_waris === "beda") {
+                $keterangan = htmlspecialchars($this->request->getVar('keterangan'), true);
+                $nama_ahli_waris = htmlspecialchars($this->request->getVar('nama_ahli_waris'), true);
+                $nik_ahli_waris = htmlspecialchars($this->request->getVar('nik_ahli_waris'), true);
+                $tempat_lahir_ahli_waris = htmlspecialchars($this->request->getVar('tempat_lahir_ahli_waris'), true);
+                $tanggal_lahir_ahli_waris = htmlspecialchars($this->request->getVar('tanggal_lahir_ahli_waris'), true);
+                $hubungan_ahli_waris = htmlspecialchars($this->request->getVar('hubungan_ahli_waris'), true);
+                $alamat_ahli_waris = htmlspecialchars($this->request->getVar('alamat_ahli_waris'), true);
+                $kecamatan_ahli_waris = htmlspecialchars($this->request->getVar('kecamatan_ahli_waris'), true);
+                $kelurahan_ahli_waris = htmlspecialchars($this->request->getVar('kelurahan_ahli_waris'), true);
+                $nohp_ahli_waris = htmlspecialchars($this->request->getVar('nohp_ahli_waris'), true);
+
+                $field_tambahan = [
+                    'nama_pemohon' => $user->data->fullname,
+                    'nik_pemohon' => $user->data->nik,
+                    'kk_pemohon' => $user->data->kk,
+                    'tempat_lahir_pemohon' => $user->data->tempat_lahir,
+                    'tgl_lahir_pemohon' => $user->data->tgl_lahir,
+                    'kelurahan_pemohon' => $user->data->kelurahan,
+                    'kecamatan_pemohon' => $user->data->kecamatan,
+                    'alamat_pemohon' => $user->data->alamat,
+                    'nama_ahli_waris' => $nama_ahli_waris,
+                    'nik_ahli_waris' => $nik_ahli_waris,
+                    'kk_ahli_waris' => $user->data->kk,
+                    'tempat_lahir_ahli_waris' => $tempat_lahir_ahli_waris,
+                    'tgl_lahir_ahli_waris' => $tanggal_lahir_ahli_waris,
+                    'hubungan_ahli_waris' => $hubungan_ahli_waris,
+                    'kelurahan_ahli_waris' => $kelurahan_ahli_waris,
+                    'kecamatan_ahli_waris' => $kecamatan_ahli_waris,
+                    'alamat_ahli_waris' => $alamat_ahli_waris,
+                    'identitas_ahli_waris' => $identitas_ahli_waris,
+                ];
+            } else {
+                $field_tambahan = [
+                    'nama_pemohon' => $user->data->fullname,
+                    'nik_pemohon' => $user->data->nik,
+                    'kk_pemohon' => $user->data->kk,
+                    'tempat_lahir_pemohon' => $user->data->tempat_lahir,
+                    'tgl_lahir_pemohon' => $user->data->tgl_lahir,
+                    'kelurahan_pemohon' => $user->data->kelurahan,
+                    'kecamatan_pemohon' => $user->data->kecamatan,
+                    'alamat_pemohon' => $user->data->alamat,
+                    'identitas_ahli_waris' => $identitas_ahli_waris,
+                ];
+            }
+
 
             // $skor = (($indikator1 + $indikator2 + $indikator3 + $indikator4 + $indikator5 + $indikator6) / 16) * 100;
             $uuidLib = new Uuid();
@@ -375,16 +461,10 @@ class Rppbkks extends BaseController
                 'nik' => $user->data->nik,
                 'nama' => $user->data->fullname,
                 'user_id' => $user->data->id,
-                'jenis' => $jenis,
+                'jenis' => "Rekomendasi Permohonan Penerbitan Buku Rekening dan Kartu Keluarga Sejahtera",
                 'layanan' => "RPPBKKS",
-                // 'indikator1' => $indikator1,
-                // 'indikator2' => $indikator2,
-                // 'indikator3' => $indikator3,
-                // 'indikator4' => $indikator4,
-                // 'indikator5' => $indikator5,
-                // 'indikator6' => $indikator6,
-                // 'skor' => $skor,
                 'status_permohonan' => 0,
+                'field_tambahan' => json_encode($field_tambahan),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
