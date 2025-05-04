@@ -2475,7 +2475,7 @@ class Proses extends BaseController
                     $template_processor->setValue('KECAMATAN_KETERANGAN', getNamaKelurahan($dataDecJsonDoc->kecamatan_keterangan));
                     $template_processor->setValue('NOMOR_SURAT_KETERANGAN', $dataDecJsonDoc->nomor_surat_keterangan);
                     $template_processor->setValue('PERIHAL_SURAT_KETERANGAN', $dataDecJsonDoc->perihal_surat_keterangan);
-                    $template_processor->setValue('TANGGAL_SURAT_KETERANGAN', tgl_indo($dataDecJsonDoc->tanggal_surat_keterangan));
+                    $template_processor->setValue('TANGGAL_SURAT_KETERANGAN', tgl_indo($dataDecJsonDoc->tgl_surat_keterangan));
                 } else {
                     $file = FCPATH . "upload/template/rppbkks-mandiri.docx";
                     $template_processor = new TemplateProcessor($file);
