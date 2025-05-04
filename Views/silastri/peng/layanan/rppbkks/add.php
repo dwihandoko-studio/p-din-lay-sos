@@ -229,7 +229,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_screenshoot" class="form-label">Lampiran dokumen pengahli_waris 1: </label>
+                                            <label for="_file_screenshoot" class="form-label">Lampiran dokumen screenshoot: </label>
                                             <input class="form-control" type="file" id="_file_screenshoot" name="_file_screenshoot" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_screenshoot', 'Lampiran Dokumen Screenshoot')" required>
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_screenshoot" for="_file_screenshoot"></div>
