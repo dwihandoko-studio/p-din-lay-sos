@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label class="col-form-label">Tanggal Lahir:</label>
-                    <input type="text" class="form-control" value="<?= $dataDecJson->tanggal_lahir_pemohon ?>" readonly />
+                    <input type="text" class="form-control" value="<?= $dataDecJson->tgl_lahir_pemohon ?>" readonly />
                 </div>
                 <div class="col-lg-6">
                     <label class="col-form-label">Alamat:</label>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-lg-6">
                         <label class="col-form-label">Tanggal Lahir Ahli Waris:</label>
-                        <input type="text" class="form-control" value="<?= $dataDecJson->tanggal_lahir_ahli_waris ?>" readonly />
+                        <input type="text" class="form-control" value="<?= $dataDecJson->tgl_lahir_ahli_waris ?>" readonly />
                     </div>
                     <div class="col-lg-6">
                         <label class="col-form-label">Alamat Ahli Waris:</label>
