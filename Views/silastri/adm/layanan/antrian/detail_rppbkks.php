@@ -100,7 +100,7 @@
                     <label class="col-form-label">Kelurahan:</label>
                     <input type="text" class="form-control" value="<?= getNamaKelurahan($dataDecJson->kelurahan_pemohon) ?>" readonly />
                 </div>
-                <?php if ($$dataDecJson->identitas_ahli_waris == "beda") { ?>
+                <?php if ($dataDecJson->identitas_ahli_waris == "beda") { ?>
                     <div class="col-lg-6">
                         <label class="col-form-label">Nama Lengkap Ahli Waris:</label>
                         <input type="text" class="form-control" value="<?= $dataDecJson->nama_ahli_waris ?>" readonly />
