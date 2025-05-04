@@ -86,7 +86,7 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Identitas Subject Layanan</h4>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-10">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mt-1">
