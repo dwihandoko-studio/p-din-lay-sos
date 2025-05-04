@@ -176,12 +176,12 @@ class Rppbkks extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('silastri/peng/layanan/pbi/add'));
+        return redirect()->to(base_url('silastri/peng/layanan/rppbkks/add'));
     }
 
     public function add()
     {
-        $data['title'] = 'Layanan Rekomendasi PBI';
+        $data['title'] = 'Rekomendasi PPBKKS';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
         if ($user->status != 200) {
@@ -193,8 +193,9 @@ class Rppbkks extends BaseController
         $data['user'] = $user->data;
         $data['data'] = $user->data;
 
-        $data['jeniss'] = ['Rekomendasi Pengusulan Baru Peserta PBI APBD', 'Rekomendasi Pengusulan Pengaktifan PBI APBD'];
-        // $data['jeniss'] = ['Rekomendasi Pengusulan Baru Peserta PBI APBD', 'Rekomendasi Pengusulan Pengaktifan PBI APBD', 'Rekomendasi Pengusulan Reaktifasi PBI JK'];
+        $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'asc')->get()->getResult();
+
+        // $data['jeniss'] = ['Belum Pernah Menerima', 'Pengaduan Pemerlu Pelayanan Kesejahteraan Sosial (PPKS)', 'Pengaduan Layanan Sosial', 'Lainnya'];
 
         return view('silastri/peng/layanan/rppbkks/add', $data);
     }
@@ -492,6 +493,50 @@ class Rppbkks extends BaseController
                 $response = new \stdClass;
                 $response->status = 400;
                 $response->message = "Gagal mengajukan permohonan.";
+                return json_encode($response);
+            }
+        }
+    }
+
+    public function getKelurahan()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id');
+            return json_encode($response);
+        } else {
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+
+            $kels = $this->_db->table('ref_kelurahan')->where('id_kecamatan', $id)->orderBy('kelurahan', 'ASC')->get()->getResult();
+
+            if (count($kels) > 0) {
+                $x['kels'] = $kels;
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->message = "Permintaan diizinkan";
+                $response->data = view('portal/ref_kelurahan', $x);
+                return json_encode($response);
+            } else {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Data tidak ditemukan";
                 return json_encode($response);
             }
         }

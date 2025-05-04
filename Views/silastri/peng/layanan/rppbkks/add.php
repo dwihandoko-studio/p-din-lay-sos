@@ -20,6 +20,8 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Permohonan Surat Rekomendasi Permohonan Penerbitan Buku Rekening dan Kartu Keluarga Sejahtera</h4>
                         <div class="row">
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="row mb-2">
                                     <label for="_nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
@@ -34,80 +36,31 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_kk" class="col-sm-3 col-form-label">KK</label>
+                                    <label for="_nohp" class="col-sm-3 col-form-label">No Handphone</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control nama" id="_kk" name="_kk" value="<?= $data->kk ?>" placeholder="KK.. " readonly />
+                                        <input type="text" class="form-control nama" id="_nohp" name="_nohp" value="<?= $data->no_hp ?>" placeholder="No Handphone.. " readonly />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="row mb-2">
-                                    <label for="_tempat_lahir" class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                    <label for="_alamat" class="col-sm-3 col-form-label">Alamat</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control nama" id="_tempat_lahir" name="_tempat_lahir" value="<?= $data->tempat_lahir ?>" placeholder="Tempat lahir.. " readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_tgl_lahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control nama" id="_tgl_lahir" name="_tgl_lahir" value="<?= $data->tgl_lahir ?>" readonly />
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="_jenis_kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control nama" id="_jenis_kelamin" name="_jenis_kelamin" value="<?= $data->jenis_kelamin === NULL || $data->jenis_kelamin === "" ? '-' : ($data->jenis_kelamin == "L" ? 'Laki-laki' : 'Perempuan') ?>" placeholder="Jenis kelamin.. " readonly />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 
-                <div class="row justify-content-end">
-                    <div class="col-sm-9">
-
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="horizontalLayout-Check">
-                            <label class="form-check-label" for="horizontalLayout-Check">
-                                Remember me
-                            </label>
-                        </div>
-
-                        <div>
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
-                        </div>
-                    </div>
-                </div> -->
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-0 mb-1">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row mb-2">
-                                    <label for="_no_hp" class="col-sm-3 col-form-label">No HP.</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="_no_hp" name="_no_hp" value="<?= $data->no_hp ?>" placeholder="No handphone.. " readonly />
+                                        <textarea rows="2" class="form-control alamat" id="_alamat" name="_alamat" readonly><?= $data->alamat ?></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <label for="_kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="_kecamatan" name="_kecamatan" value="<?= getNamaKecamatan($data->kecamatan) ?>" placeholder="Kecamatan.. " readonly />
+                                    <div class="col-sm-9">
+                                        <input type="hidden" id="_kecamatan" name="_kecamatan" value="<?= $data->kecamatan ?>" readonly />
+                                        <input type="text" class="form-control kecamatan" id="_nama_kecamatan" name="_nama_kecamatan" value="<?= getNamaKecamatan($data->kecamatan) ?>" readonly />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label for="_kelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="_kelurahan" name="_kelurahan" value="<?= getNamaKelurahan($data->kelurahan) ?>" placeholder="Kelurahan.. " readonly />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="row mb-2">
-                                    <label for="_alamat" class="col-sm-2 col-form-label">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <textarea rows="5" class="form-control" id="_alamat" name="_alamat" readonly><?= $data->alamat ?></textarea>
+                                    <label for="_kampung" class="col-sm-3 col-form-label">Kampung</label>
+                                    <div class="col-sm-9">
+                                        <input type="hidden" id="_kampung" name="_kampung" value="<?= $data->kelurahan ?>" readonly />
+                                        <input type="text" class="form-control kampung" id="_nama_kampung" name="_nama_kampung" value="<?= getNamaKelurahan($data->kelurahan) ?>" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -119,10 +72,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row mb-2">
-                                    <label for="_jenis" class="col-sm-3 col-form-label">Jenis Rekomendasi PBI :</label>
+                                    <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control select2 pekerjaan" id="_jenis" name="_jenis" style="width: 100%" onchange="changeJenis(this)">
-                                            <option value=""> --- Pilih Rekomendasi PBI ---</option>
+                                        <select class="form-control select2 kategori_aduan" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
+                                            <option value=""> --- Pilih Keterangan ---</option>
                                             <?php if (isset($jeniss)) {
                                                 if (count($jeniss) > 0) {
                                                     foreach ($jeniss as $key => $value) { ?>
@@ -131,9 +84,111 @@
                                                 }
                                             } ?>
                                         </select>
-                                        <textarea rows="3" style="display: none; margin-top: 10px;" id="_jenis_detail" name="_jenis_detail" class="form-control" placeholder="Masukan keterangan peruntukan SKTM.."></textarea>
-                                        <div class="help-block _jenis"></div>
-                                        <div class="help-block _jenis_detail"></div>
+                                        <div class="help-block _keterangan"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-0 mb-1">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Identitas Subject Yang Diadukan</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mt-1">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="sama" id="_identitas_subject" onchange="changePengadu(this)" checked="">
+                                                <label class="form-check-label" for="_identitas_subject">
+                                                    Sama dengan pemohon
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mt-1">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="beda" onchange="changePengadu(this)" id="_identitas_subject_lain">
+                                                <label class="form-check-label" for="_identitas_subject_lain">
+                                                    Orang lain
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 data-aduan" id="data-aduan" style="display: none;">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="row mb-2">
+                                            <label for="_nama_aduan" class="col-sm-3 col-form-label">Nama Lengkap yang diadukan</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nama_aduan" id="_nama_aduan" name="_nama_aduan" placeholder="Nama lengkap yang diadukan.. " />
+                                                <div class="help-block _nama_aduan"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_nik_aduan" class="col-sm-3 col-form-label">NIK yang diadukan</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nik_aduan" id="_nik_aduan" name="_nik_aduan" placeholder="NIK yang diadukan.. " />
+                                                <div class="help-block _nik_aduan"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_nohp_aduan" class="col-sm-3 col-form-label">No Handphone yang diadukan</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nohp_aduan" id="_nohp_aduan" name="_nohp_aduan" placeholder="No Handphone yang diadukan.. " />
+                                                <div class="help-block _nohp_aduan"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row mb-2">
+                                            <label for="_alamat_aduan" class="col-sm-3 col-form-label">Alamat yang diadukan</label>
+                                            <div class="col-sm-9">
+                                                <textarea rows="3" class="form-control alamat_aduan" id="_alamat_aduan" name="_alamat_aduan"></textarea>
+                                                <div class="help-block _alamat_aduan"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_kecamatan_aduan" class="col-sm-3 col-form-label">Kecamatan (yang diadukan) :</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2 kecamatan_aduan" id="_kecamatan_aduan" name="_kecamatan_aduan" style="width: 100%" onchange="changeKecamatan(this)">
+                                                    <option value=""> --- Pilih Kecamatan --- </option>
+                                                    <?php if (isset($kecamatans)) { ?>
+                                                        <?php if (count($kecamatans) > 0) { ?>
+                                                            <?php foreach ($kecamatans as $key => $value) { ?>
+                                                                <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                                <div class="help-block _kecamatan_aduan"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2 select2-kelurahan-loading">
+                                            <label for="_kelurahan_aduan" class="col-sm-3 col-form-label">Kelurahan (yang diadukan) :</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2 kelurahan_aduan" id="_kelurahan_aduan" name="_kelurahan_aduan" style="width: 100%">
+                                                    <option value=""> --- Pilih Kecamatan Dulu --- </option>
+                                                </select>
+                                                <div class="help-block _kelurahan_aduan"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row mb-2">
+                                    <label for="_uraian_aduan" class="col-sm-3 col-form-label">Uraian Pengaduan</label>
+                                    <div class="col-sm-12">
+                                        <textarea rows="4" class="form-control uraian_aduan" id="_uraian_aduan" name="_uraian_aduan" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -145,78 +200,71 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h4>Lampiran Dokumen Permohonan</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen permohonan (KTP, KK, Surat Keterangan Tidak Mampu dan Foto Rumah).</p>
+                                <h4>Lampiran Pengaduan 1</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_ktp" class="form-label">Lampiran KTP : </label>
-                                            <input class="form-control" type="file" id="_file_ktp" name="_file_ktp" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp', 'Ktp')">
+                                            <label for="_file_lampiran_1" class="form-label">Lampiran dokumen pengaduan 1: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_1" name="_file_lampiran_1" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_1', 'Lampiran Dokumen Pengaduan 1')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_ktp" for="_file_ktp"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="preview-image-upload-ktp">
-                                                <img class="imagePreviewUploadKtp" id="imagePreviewUploadKtp" />
-                                                <button onclick="removeLampiran('_file_ktp', 'Ktp')" type="button" class="btn-remove-preview-image-ktp">Remove</button>
-                                            </div>
+                                            <div class="help-block _file_lampiran_1" for="_file_lampiran_1"></div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h4>Lampiran Pengaduan 2</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_kk" class="form-label">Lampiran KK : </label>
-                                            <input class="form-control" type="file" id="_file_kk" name="_file_kk" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_kk', 'Kk')">
+                                            <label for="_file_lampiran_2" class="form-label">Lampiran dokumen pengaduan 2: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_2" name="_file_lampiran_2" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_2', 'Lampiran Dokumen Pengaduan 2')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_kk" for="_file_kk"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="preview-image-upload-kk">
-                                                <img class="imagePreviewUploadKk" id="imagePreviewUploadKk" />
-                                                <button onclick="removeLampiran('_file_kk', 'Kk')" type="button" class="btn-remove-preview-image-kk">Remove</button>
-                                            </div>
+                                            <div class="help-block _file_lampiran_2" for="_file_lampiran_2"></div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h4>Lampiran Pengaduan 3</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_sktm" class="form-label">Lampiran Surat Keterangan Tidak Mampu : </label>
-                                            <!-- <p class="font-size-11">&nbsp;&nbsp;Template surat pernyataan miskin dapat di download pada : <a class="menu-badge badge-info" href="#">Link Berikut...</a></p> -->
-                                            <input class="form-control" type="file" id="_file_sktm" name="_file_sktm" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_sktm', 'Surat Keterangan Tidak Mampu')">
+                                            <label for="_file_lampiran_3" class="form-label">Lampiran dokumen pengaduan 3: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_3" name="_file_lampiran_3" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_3', 'Lampiran Dokumen Pengaduan 3')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_sktm" for="_file_sktm"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="preview-image-upload-pernyataan">
-                                                <img class="imagePreviewUploadPernyataan" id="imagePreviewUploadPernyataan" />
-                                                <button onclick="removeLampiran('_file_sktm', 'Surat Keterangan Tidak Mampu')" type="button" class="btn-remove-preview-image-pernyataan">Remove</button>
-                                            </div>
+                                            <div class="help-block _file_lampiran_3" for="_file_lampiran_3"></div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h4>Lampiran Pengaduan 4</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_foto_rumah" class="form-label">Lampiran Foto Rumah : </label>
-                                            <input class="form-control" type="file" id="_file_foto_rumah" name="_file_foto_rumah" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_foto_rumah', 'FotoRumah')">
+                                            <label for="_file_lampiran_4" class="form-label">Lampiran dokumen pengaduan 4: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_4" name="_file_lampiran_4" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_4', 'Lampiran Dokumen Pengaduan 4')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_foto_rumah" for="_file_foto_rumah"></div>
+                                            <div class="help-block _file_lampiran_4" for="_file_lampiran_4"></div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="preview-image-upload-foto-rumah">
-                                                <img class="imagePreviewUploadFotoRumah" id="imagePreviewUploadFotoRumah" />
-                                                <button type="button" onclick="removeLampiran('_file_foto_rumah', 'FotoRumah')" class="btn-remove-preview-image-foto-rumah">Remove</button>
-                                            </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h4>Lampiran Pengaduan 5</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mt-3">
+                                            <label for="_file_lampiran_5" class="form-label">Lampiran dokumen pengaduan 5: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_5" name="_file_lampiran_5" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_5', 'Lampiran Dokumen Pengaduan 5')">
+                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
+                                            <div class="help-block _file_lampiran_5" for="_file_lampiran_5"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -275,153 +323,159 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptBottom'); ?>
+<script src="<?= base_url() ?>/assets/libs/select2/js/select2.min.js"></script>
 
 <script>
+    initSelect2("_keterangan", ".page-content");
+    initSelect2("_kecamatan_aduan", ".page-content");
+    initSelect2("_kelurahan_aduan", ".page-content");
+
     $("#formAddData").on("submit", function(e) {
         e.preventDefault();
-        // const indikator1 = $("input[type='radio'][name='_indikator_1']:checked").val();
-        // const indikator2 = $("input[type='radio'][name='_indikator_2']:checked").val();
-        // const indikator3 = $("input[type='radio'][name='_indikator_3']:checked").val();
-        // const indikator4 = $("input[type='radio'][name='_indikator_4']:checked").val();
-        // const indikator5 = $("input[type='radio'][name='_indikator_5']:checked").val();
-        // const indikator6 = $("input[type='radio'][name='_indikator_6']:checked").val();
+        const identitasAduan = $("input[type='radio'][name='_identitas_pemohon']:checked").val();
 
         const nama = document.getElementsByName('_nama')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
-        const kk = document.getElementsByName('_kk')[0].value;
-        const jenis = document.getElementsByName('_jenis')[0].value;
-        const keterangan = document.getElementsByName('_jenis_detail')[0].value;
+        const nohp = document.getElementsByName('_nohp')[0].value;
+        const alamat = document.getElementsByName('_alamat')[0].value;
+        const nama_kecamatan = document.getElementsByName('_kecamatan')[0].value;
+        const nama_kampung = document.getElementsByName('_kampung')[0].value;
 
-        const fileKtp = document.getElementsByName('_file_ktp')[0].value;
-        const fileKk = document.getElementsByName('_file_kk')[0].value;
-        const filePernyataan = document.getElementsByName('_file_sktm')[0].value;
-        const fileFotoRumah = document.getElementsByName('_file_foto_rumah')[0].value;
+        let nama_aduan = document.getElementsByName('_nama_aduan')[0].value;
+        let nik_aduan = document.getElementsByName('_nik_aduan')[0].value;
+        let nohp_aduan = document.getElementsByName('_nohp_aduan')[0].value;
+        let alamat_aduan = document.getElementsByName('_alamat_aduan')[0].value;
+        let kecamatan_aduan = document.getElementsByName('_kecamatan_aduan')[0].value;
+        let kelurahan_aduan = document.getElementsByName('_kelurahan_aduan')[0].value;
 
-        if (jenis === "") {
-            $("select#_jenis").css("color", "#dc3545");
-            $("select#_jenis").css("border-color", "#dc3545");
-            $('._jenis-error').html('Silahkan pilih jenis SKTM');
+        const keterangan = document.getElementsByName('_keterangan')[0].value;
+
+        const fileLampiran1 = document.getElementsByName('_file_lampiran_1')[0].value;
+        const fileLampiran2 = document.getElementsByName('_file_lampiran_2')[0].value;
+        const fileLampiran3 = document.getElementsByName('_file_lampiran_3')[0].value;
+        const fileLampiran4 = document.getElementsByName('_file_lampiran_4')[0].value;
+        const fileLampiran5 = document.getElementsByName('_file_lampiran_5')[0].value;
+
+        const uraian_aduan = document.getElementsByName('_uraian_aduan')[0].value;
+
+        if (keterangan === "") {
+            $("select#_keterangan").css("color", "#dc3545");
+            $("select#_keterangan").css("border-color", "#dc3545");
+            $('._keterangan-error').html('Silahkan pilih keterangan');
 
             Swal.fire(
                 'Peringatan..!!',
-                "Silahkan pilih peruntukan SKTM.",
+                "Silahkan pilih keterangan.",
                 'warning'
             );
             return false;
         }
 
-        // if (indikator1 === undefined || indikator1 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 1.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator2 === undefined || indikator2 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 2.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator3 === undefined || indikator3 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 3.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator4 === undefined || indikator4 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 4.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator5 === undefined || indikator5 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 5.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        // if (indikator6 === undefined || indikator6 === "") {
-        //     Swal.fire(
-        //         'Peringatan..!!',
-        //         "Silahkan pilih isian indikator 6.",
-        //         'warning'
-        //     );
-        //     return;
-        // }
-        if (fileKtp === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen KTP.",
-                'warning'
-            );
-            return;
+        if (identitasAduan === "beda") {
+            if (nama_aduan === "") {
+                $("input#_nama_aduan").css("color", "#dc3545");
+                $("input#_nama_aduan").css("border-color", "#dc3545");
+                $('._nama_aduan').html('Silahkan masukkan nama yang diadukan');
+                return;
+            }
+            if (nik_aduan === "") {
+                $("input#_nik_aduan").css("color", "#dc3545");
+                $("input#_nik_aduan").css("border-color", "#dc3545");
+                $('._nik_aduan').html('Silahkan masukkan NIK yang diadukan');
+                return;
+            }
+            if (nohp_aduan === "") {
+                $("input#_nohp_aduan").css("color", "#dc3545");
+                $("input#_nohp_aduan").css("border-color", "#dc3545");
+                $('._nohp_aduan').html('Silahkan masukkan no handphone yang diadukan');
+                return;
+            }
+            if (alamat_aduan === "") {
+                $("input#_alamat_aduan").css("color", "#dc3545");
+                $("input#_alamat_aduan").css("border-color", "#dc3545");
+                $('._alamat_aduan').html('Silahkan masukkan alamat yang diadukan');
+                return;
+            }
+            if (kecamatan_aduan === "") {
+                $("select#_kecamatan_aduan").css("color", "#dc3545");
+                $("select#_kecamatan_aduan").css("border-color", "#dc3545");
+                $('._kecamatan_aduan').html('Silahkan pilih kecamatan yang diadukan');
+                return;
+            }
+            if (kelurahan_aduan === "") {
+                $("select#_kelurahan_aduan").css("color", "#dc3545");
+                $("select#_kelurahan_aduan").css("border-color", "#dc3545");
+                $('._kelurahan_aduan').html('Silahkan pilih kelurahan yang diadukan');
+                return;
+            }
+        } else {
+            nama_aduan = nama;
+            nik_aduan = nik;
+            nohp_aduan = nohp;
+            alamat_aduan = alamat;
+            kecamatan_aduan = nama_kecamatan;
+            kelurahan_aduan = nama_kampung;
         }
-        if (fileKk === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen KK.",
-                'warning'
-            );
-            return;
-        }
-        if (filePernyataan === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Pernyataan.",
-                'warning'
-            );
-            return;
-        }
-        if (fileFotoRumah === "") {
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan lampirkan dokumen Foto Rumah.",
-                'warning'
-            );
+
+        if (uraian_aduan === "") {
+            $("input#_uraian_aduan").css("color", "#dc3545");
+            $("input#_uraian_aduan").css("border-color", "#dc3545");
+            $('._uraian_aduan').html('Silahkan masukkan uraian aduan');
             return;
         }
 
         const formUpload = new FormData();
 
-        const file_ktp = document.getElementsByName('_file_ktp')[0].files[0];
-        formUpload.append('_file_ktp', file_ktp);
-        const file_kk = document.getElementsByName('_file_kk')[0].files[0];
-        formUpload.append('_file_kk', file_kk);
-        const file_sktm = document.getElementsByName('_file_sktm')[0].files[0];
-        formUpload.append('_file_sktm', file_sktm);
-        const file_foto_rumah = document.getElementsByName('_file_foto_rumah')[0].files[0];
-        formUpload.append('_file_foto_rumah', file_foto_rumah);
+        if (fileLampiran1 !== "") {
+            const file_lampiran1 = document.getElementsByName('_file_lampiran_1')[0].files[0];
+            formUpload.append('_file_1', file_lampiran1);
+        }
+
+        if (fileLampiran2 !== "") {
+            const file_lampiran2 = document.getElementsByName('_file_lampiran_2')[0].files[0];
+            formUpload.append('_file_2', file_lampiran2);
+        }
+
+        if (fileLampiran3 !== "") {
+            const file_lampiran3 = document.getElementsByName('_file_lampiran_3')[0].files[0];
+            formUpload.append('_file_3', file_lampiran3);
+        }
+
+        if (fileLampiran4 !== "") {
+            const file_lampiran4 = document.getElementsByName('_file_lampiran_4')[0].files[0];
+            formUpload.append('_file_4', file_lampiran4);
+        }
+
+        if (fileLampiran5 !== "") {
+            const file_lampiran5 = document.getElementsByName('_file_lampiran_5')[0].files[0];
+            formUpload.append('_file_5', file_lampiran5);
+        }
 
         formUpload.append('nama', nama);
         formUpload.append('nik', nik);
-        formUpload.append('kk', kk);
-        formUpload.append('jenis', jenis);
-        // formUpload.append('indikator1', indikator1);
-        // formUpload.append('indikator2', indikator2);
-        // formUpload.append('indikator3', indikator3);
-        // formUpload.append('indikator4', indikator4);
-        // formUpload.append('indikator5', indikator5);
-        // formUpload.append('indikator6', indikator6);
+        formUpload.append('nohp', nohp);
+        formUpload.append('alamat', alamat);
+        formUpload.append('kecamatan', nama_kecamatan);
+        formUpload.append('kelurahan', nama_kampung);
+        formUpload.append('nama_aduan', nama_aduan);
+        formUpload.append('nik_aduan', nik_aduan);
+        formUpload.append('nohp_aduan', nohp_aduan);
+        formUpload.append('alamat_aduan', alamat_aduan);
+        formUpload.append('kecamatan_aduan', kecamatan_aduan);
+        formUpload.append('kelurahan_aduan', kelurahan_aduan);
+        formUpload.append('kategori', kategori);
+        formUpload.append('identitas_aduan', identitasAduan);
+        formUpload.append('uraian_aduan', uraian_aduan);
         formUpload.append('keterangan', keterangan);
 
         Swal.fire({
-            title: 'Apakah anda yakin ingin mengajukan permohonan data ini?',
-            text: "Ajukan permohonan : Rekomendasi PBI",
+            title: 'Apakah anda yakin ingin mengirim permohonan ini?',
+            text: "Kirim Permohonan RPPBKKS : " + kategori,
             showCancelButton: true,
             icon: 'question',
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Ajukan!'
+            confirmButtonText: 'Ya, Kirim!'
         }).then((result) => {
             if (result.value) {
                 $.ajax({
@@ -517,15 +571,82 @@
 
     });
 
-    function changeJenis(event) {
+    function changeKecamatan(event) {
         const color = $(event).attr('name');
         $(event).removeAttr('style');
         $('.' + color).html('');
 
+        if (event.value !== "") {
+            $.ajax({
+                url: './getKelurahan',
+                type: 'POST',
+                data: {
+                    id: event.value,
+                },
+                dataType: 'JSON',
+                beforeSend: function() {
+                    $('.kelurahan_aduan').html("");
+                    $('div.select2-kelurahan-loading').block({
+                        message: '<i class="las la-spinner la-spin la-3x la-fw"></i><span class="sr-only">Loading...</span>'
+                    });
+                },
+                success: function(resul) {
+                    $('div.select2-kelurahan-loading').unblock();
+                    if (resul.status == 200) {
+                        $('.kelurahan_aduan').html(resul.data);
+                    } else {
+                        if (resul.status == 401) {
+                            Swal.fire(
+                                'PERINGATAN!',
+                                resul.message,
+                                'warning'
+                            ).then((valRes) => {
+                                reloadPage(resul.redirrect);
+                            })
+                        } else {
+                            Swal.fire(
+                                'PERINGATAN!!!',
+                                resul.message,
+                                'warning'
+                            );
+                        }
+                    }
+                },
+                error: function(data) {
+                    $('div.select2-kelurahan-loading').unblock();
+                    Swal.fire(
+                        'PERINGATAN!',
+                        "Server sedang sibuk, silahkan ulangi beberapa saat lagi.",
+                        'warning'
+                    );
+                }
+            });
+        }
+    }
+
+    function changeJenis(event) {
+        const color = $(event).attr('name');
+
+        $(event).removeAttr('style');
+        $('.' + color).html('');
+
         if (event.value === "Lainnya") {
-            document.getElementById("_jenis_detail").style.display = "block";
+            document.getElementById("_keterangan_detail").style.display = "block";
         } else {
-            document.getElementById("_jenis_detail").style.display = "none";
+            document.getElementById("_keterangan_detail").style.display = "none";
+        }
+    }
+
+    function changePengadu(event) {
+        const color = $(event).attr('name');
+        const vPengadu = $("input[type='radio'][name='" + color + "']:checked").val();
+
+        $('.data-aduan').removeAttr('style');
+
+        if (vPengadu === "sama") {
+            document.getElementById("data-aduan").style.display = "none";
+        } else {
+            document.getElementById("data-aduan").style.display = "block";
         }
     }
 
@@ -621,6 +742,7 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptTop'); ?>
+<link href="<?= base_url() ?>/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <style>
     .preview-image-upload-ktp {
         position: relative;
