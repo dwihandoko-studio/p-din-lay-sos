@@ -2488,7 +2488,7 @@ class Proses extends BaseController
                 $template_processor->setValue('TEMPAT_SURAT', $data->tempat_surat);
                 $template_processor->setValue('NAMA_PEMOHON', $dataDecJson->nama_pemohon);
                 $template_processor->setValue('TEMPAT_LAHIR_PEMOHON', $dataDecJson->tempat_lahir_pemohon);
-                $template_processor->setValue('TANGGAL_LAHIR_PEMOHON', tgl_indo($dataDecJson->tanggal_lahir_pemohon));
+                $template_processor->setValue('TANGGAL_LAHIR_PEMOHON', tgl_indo($dataDecJson->tgl_lahir_pemohon));
                 $template_processor->setValue('NIK_PEMOHON', $dataDecJson->nik_pemohon);
                 $template_processor->setValue('KK_PEMOHON', $dataDecJson->kk_pemohon);
                 // $alamatLks = $dataDecJson->alamat . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan);
