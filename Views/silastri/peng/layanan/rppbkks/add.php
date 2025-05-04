@@ -72,9 +72,141 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row mb-2">
+                                    <label for="_no_rekening" class="col-sm-3 col-form-label">No Rekening</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no_rekening" id="_no_rekening" name="_no_rekening" placeholder="No Rekening.. " required />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card mt-0 mb-1">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Identitas Subject Layanan</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mt-1">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="sama" id="_identitas_subject" onchange="changePemohon(this)" checked="">
+                                                <label class="form-check-label" for="_identitas_subject">
+                                                    Diri Sendiri
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mt-1">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="beda" onchange="changePemohon(this)" id="_identitas_subject_lain">
+                                                <label class="form-check-label" for="_identitas_subject_lain">
+                                                    Ahli Waris (Dalam Satu Kartu Keluarga)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 data-ahli_waris" id="data-ahli_waris" style="display: none;">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="row mb-2">
+                                            <label for="_nama_ahli_waris" class="col-sm-3 col-form-label">Nama Lengkap Ahli Waris</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nama_ahli_waris" id="_nama_ahli_waris" name="_nama_ahli_waris" placeholder="Nama lengkap yang diadukan.. " />
+                                                <div class="help-block _nama_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_nik_ahli_waris" class="col-sm-3 col-form-label">NIK Ahli Waris</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nik_ahli_waris" id="_nik_ahli_waris" name="_nik_ahli_waris" placeholder="NIK yang diadukan.. " />
+                                                <div class="help-block _nik_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_tempat_lahir_ahli_waris" class="col-sm-3 col-form-label">Tempat Lahir Ahli Waris</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control tempat_lahir_ahli_waris" id="_tempat_lahir_ahli_waris" name="_tempat_lahir_ahli_waris" placeholder="tempat lahir ahli waris.. " />
+                                                <div class="help-block _tempat_lahir_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_tanggal_lahir_ahli_waris" class="col-sm-3 col-form-label">Tanggal Lahir Ahli Waris</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" class="form-control tanggal_lahir_ahli_waris" id="_tanggal_lahir_ahli_waris" name="_tanggal_lahir_ahli_waris" />
+                                                <div class="help-block _tanggal_lahir_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_nohp_ahli_waris" class="col-sm-3 col-form-label">No Handphone Ahli Waris</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control nohp_ahli_waris" id="_nohp_ahli_waris" name="_nohp_ahli_waris" placeholder="No Handphone yang diadukan.. " />
+                                                <div class="help-block _nohp_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2 mt-2">
+                                            <label for="_hubungan_ahli_waris" class="col-sm-3 col-form-label">Hubungan dengan Pemilik Rekening :</label>
+                                            <div class="col-sm-8 mt-2">
+                                                <select class="form-control select2 hubungan_ahli_waris" id="_hubungan_ahli_waris" name="_hubungan_ahli_waris" style="width: 100%" onchange="changeHubungan(this)">
+                                                    <option value=""> --- Pilih Hubungan ---</option>
+                                                    <option value="Suami/Istri">Suami/Istri</option>
+                                                    <option value="Anah">Anak</option>
+                                                    <option value="Ayah/Ibu">Ayah/Ibu</option>
+                                                </select>
+                                                <div class="help-block _hubungan_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row mb-2">
+                                            <label for="_alamat_ahli_waris" class="col-sm-3 col-form-label">Alamat Ahli Waris</label>
+                                            <div class="col-sm-9">
+                                                <textarea rows="3" class="form-control alamat_ahli_waris" id="_alamat_ahli_waris" name="_alamat_ahli_waris"></textarea>
+                                                <div class="help-block _alamat_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="_kecamatan_ahli_waris" class="col-sm-3 col-form-label">Kecamatan (Ahli Waris) :</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2 kecamatan_ahli_waris" id="_kecamatan_ahli_waris" name="_kecamatan_ahli_waris" style="width: 100%" onchange="changeKecamatan(this)">
+                                                    <option value=""> --- Pilih Kecamatan --- </option>
+                                                    <?php if (isset($kecamatans)) { ?>
+                                                        <?php if (count($kecamatans) > 0) { ?>
+                                                            <?php foreach ($kecamatans as $key => $value) { ?>
+                                                                <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                                <div class="help-block _kecamatan_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2 select2-kelurahan-loading">
+                                            <label for="_kelurahan_ahli_waris" class="col-sm-3 col-form-label">Kelurahan (Ahli Waris) :</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2 kelurahan_ahli_waris" id="_kelurahan_ahli_waris" name="_kelurahan_ahli_waris" style="width: 100%">
+                                                    <option value=""> --- Pilih Kecamatan Dulu --- </option>
+                                                </select>
+                                                <div class="help-block _kelurahan_ahli_waris"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row mb-2">
                                     <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control select2 kategori_aduan" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
+                                        <select class="form-control select2 kategori_ahli_waris" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
                                             <option value=""> --- Pilih Keterangan ---</option>
                                             <?php if (isset($jeniss)) {
                                                 if (count($jeniss) > 0) {
@@ -90,123 +222,19 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="card mt-0 mb-1">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Identitas Subject Yang Diadukan</h4>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mt-1">
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="sama" id="_identitas_subject" onchange="changePengadu(this)" checked="">
-                                                <label class="form-check-label" for="_identitas_subject">
-                                                    Sama dengan pemohon
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mt-1">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="_identitas_pemohon" value="beda" onchange="changePengadu(this)" id="_identitas_subject_lain">
-                                                <label class="form-check-label" for="_identitas_subject_lain">
-                                                    Orang lain
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 data-aduan" id="data-aduan" style="display: none;">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row mb-2">
-                                            <label for="_nama_aduan" class="col-sm-3 col-form-label">Nama Lengkap yang diadukan</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control nama_aduan" id="_nama_aduan" name="_nama_aduan" placeholder="Nama lengkap yang diadukan.. " />
-                                                <div class="help-block _nama_aduan"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <label for="_nik_aduan" class="col-sm-3 col-form-label">NIK yang diadukan</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control nik_aduan" id="_nik_aduan" name="_nik_aduan" placeholder="NIK yang diadukan.. " />
-                                                <div class="help-block _nik_aduan"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <label for="_nohp_aduan" class="col-sm-3 col-form-label">No Handphone yang diadukan</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control nohp_aduan" id="_nohp_aduan" name="_nohp_aduan" placeholder="No Handphone yang diadukan.. " />
-                                                <div class="help-block _nohp_aduan"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row mb-2">
-                                            <label for="_alamat_aduan" class="col-sm-3 col-form-label">Alamat yang diadukan</label>
-                                            <div class="col-sm-9">
-                                                <textarea rows="3" class="form-control alamat_aduan" id="_alamat_aduan" name="_alamat_aduan"></textarea>
-                                                <div class="help-block _alamat_aduan"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <label for="_kecamatan_aduan" class="col-sm-3 col-form-label">Kecamatan (yang diadukan) :</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control select2 kecamatan_aduan" id="_kecamatan_aduan" name="_kecamatan_aduan" style="width: 100%" onchange="changeKecamatan(this)">
-                                                    <option value=""> --- Pilih Kecamatan --- </option>
-                                                    <?php if (isset($kecamatans)) { ?>
-                                                        <?php if (count($kecamatans) > 0) { ?>
-                                                            <?php foreach ($kecamatans as $key => $value) { ?>
-                                                                <option value="<?= $value->id ?>"><?= $value->kecamatan ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                                <div class="help-block _kecamatan_aduan"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2 select2-kelurahan-loading">
-                                            <label for="_kelurahan_aduan" class="col-sm-3 col-form-label">Kelurahan (yang diadukan) :</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control select2 kelurahan_aduan" id="_kelurahan_aduan" name="_kelurahan_aduan" style="width: 100%">
-                                                    <option value=""> --- Pilih Kecamatan Dulu --- </option>
-                                                </select>
-                                                <div class="help-block _kelurahan_aduan"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="row mb-2">
-                                    <label for="_uraian_aduan" class="col-sm-3 col-form-label">Uraian Pengaduan</label>
-                                    <div class="col-sm-12">
-                                        <textarea rows="4" class="form-control uraian_aduan" id="_uraian_aduan" name="_uraian_aduan" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="card mt-0 mb-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengaduan 1</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <h4>Lampiran Pengahli_waris 1</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_1" class="form-label">Lampiran dokumen pengaduan 1: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_1" name="_file_lampiran_1" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_1', 'Lampiran Dokumen Pengaduan 1')">
+                                            <label for="_file_lampiran_1" class="form-label">Lampiran dokumen pengahli_waris 1: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_1" name="_file_lampiran_1" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_1', 'Lampiran Dokumen Pengahli_waris 1')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_lampiran_1" for="_file_lampiran_1"></div>
                                         </div>
@@ -214,13 +242,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengaduan 2</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <h4>Lampiran Pengahli_waris 2</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_2" class="form-label">Lampiran dokumen pengaduan 2: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_2" name="_file_lampiran_2" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_2', 'Lampiran Dokumen Pengaduan 2')">
+                                            <label for="_file_lampiran_2" class="form-label">Lampiran dokumen pengahli_waris 2: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_2" name="_file_lampiran_2" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_2', 'Lampiran Dokumen Pengahli_waris 2')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_lampiran_2" for="_file_lampiran_2"></div>
                                         </div>
@@ -228,13 +256,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengaduan 3</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <h4>Lampiran Pengahli_waris 3</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_3" class="form-label">Lampiran dokumen pengaduan 3: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_3" name="_file_lampiran_3" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_3', 'Lampiran Dokumen Pengaduan 3')">
+                                            <label for="_file_lampiran_3" class="form-label">Lampiran dokumen pengahli_waris 3: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_3" name="_file_lampiran_3" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_3', 'Lampiran Dokumen Pengahli_waris 3')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_lampiran_3" for="_file_lampiran_3"></div>
                                         </div>
@@ -242,13 +270,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengaduan 4</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <h4>Lampiran Pengahli_waris 4</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_4" class="form-label">Lampiran dokumen pengaduan 4: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_4" name="_file_lampiran_4" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_4', 'Lampiran Dokumen Pengaduan 4')">
+                                            <label for="_file_lampiran_4" class="form-label">Lampiran dokumen pengahli_waris 4: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_4" name="_file_lampiran_4" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_4', 'Lampiran Dokumen Pengahli_waris 4')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_lampiran_4" for="_file_lampiran_4"></div>
                                         </div>
@@ -256,13 +284,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengaduan 5</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengaduan jika ada.</p>
+                                <h4>Lampiran Pengahli_waris 5</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_5" class="form-label">Lampiran dokumen pengaduan 5: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_5" name="_file_lampiran_5" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_5', 'Lampiran Dokumen Pengaduan 5')">
+                                            <label for="_file_lampiran_5" class="form-label">Lampiran dokumen pengahli_waris 5: </label>
+                                            <input class="form-control" type="file" id="_file_lampiran_5" name="_file_lampiran_5" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_5', 'Lampiran Dokumen Pengahli_waris 5')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
                                             <div class="help-block _file_lampiran_5" for="_file_lampiran_5"></div>
                                         </div>
@@ -327,12 +355,12 @@
 
 <script>
     initSelect2("_keterangan", ".page-content");
-    initSelect2("_kecamatan_aduan", ".page-content");
-    initSelect2("_kelurahan_aduan", ".page-content");
+    initSelect2("_kecamatan_ahli_waris", ".page-content");
+    initSelect2("_kelurahan_ahli_waris", ".page-content");
 
     $("#formAddData").on("submit", function(e) {
         e.preventDefault();
-        const identitasAduan = $("input[type='radio'][name='_identitas_pemohon']:checked").val();
+        const identitasahli_waris = $("input[type='radio'][name='_identitas_pemohon']:checked").val();
 
         const nama = document.getElementsByName('_nama')[0].value;
         const nik = document.getElementsByName('_nik')[0].value;
@@ -341,12 +369,12 @@
         const nama_kecamatan = document.getElementsByName('_kecamatan')[0].value;
         const nama_kampung = document.getElementsByName('_kampung')[0].value;
 
-        let nama_aduan = document.getElementsByName('_nama_aduan')[0].value;
-        let nik_aduan = document.getElementsByName('_nik_aduan')[0].value;
-        let nohp_aduan = document.getElementsByName('_nohp_aduan')[0].value;
-        let alamat_aduan = document.getElementsByName('_alamat_aduan')[0].value;
-        let kecamatan_aduan = document.getElementsByName('_kecamatan_aduan')[0].value;
-        let kelurahan_aduan = document.getElementsByName('_kelurahan_aduan')[0].value;
+        let nama_ahli_waris = document.getElementsByName('_nama_ahli_waris')[0].value;
+        let nik_ahli_waris = document.getElementsByName('_nik_ahli_waris')[0].value;
+        let nohp_ahli_waris = document.getElementsByName('_nohp_ahli_waris')[0].value;
+        let alamat_ahli_waris = document.getElementsByName('_alamat_ahli_waris')[0].value;
+        let kecamatan_ahli_waris = document.getElementsByName('_kecamatan_ahli_waris')[0].value;
+        let kelurahan_ahli_waris = document.getElementsByName('_kelurahan_ahli_waris')[0].value;
 
         const keterangan = document.getElementsByName('_keterangan')[0].value;
 
@@ -356,7 +384,7 @@
         const fileLampiran4 = document.getElementsByName('_file_lampiran_4')[0].value;
         const fileLampiran5 = document.getElementsByName('_file_lampiran_5')[0].value;
 
-        const uraian_aduan = document.getElementsByName('_uraian_aduan')[0].value;
+        const uraian_ahli_waris = document.getElementsByName('_uraian_ahli_waris')[0].value;
 
         if (keterangan === "") {
             $("select#_keterangan").css("color", "#dc3545");
@@ -371,56 +399,56 @@
             return false;
         }
 
-        if (identitasAduan === "beda") {
-            if (nama_aduan === "") {
-                $("input#_nama_aduan").css("color", "#dc3545");
-                $("input#_nama_aduan").css("border-color", "#dc3545");
-                $('._nama_aduan').html('Silahkan masukkan nama yang diadukan');
+        if (identitasahli_waris === "beda") {
+            if (nama_ahli_waris === "") {
+                $("input#_nama_ahli_waris").css("color", "#dc3545");
+                $("input#_nama_ahli_waris").css("border-color", "#dc3545");
+                $('._nama_ahli_waris').html('Silahkan masukkan nama yang diadukan');
                 return;
             }
-            if (nik_aduan === "") {
-                $("input#_nik_aduan").css("color", "#dc3545");
-                $("input#_nik_aduan").css("border-color", "#dc3545");
-                $('._nik_aduan').html('Silahkan masukkan NIK yang diadukan');
+            if (nik_ahli_waris === "") {
+                $("input#_nik_ahli_waris").css("color", "#dc3545");
+                $("input#_nik_ahli_waris").css("border-color", "#dc3545");
+                $('._nik_ahli_waris').html('Silahkan masukkan NIK yang diadukan');
                 return;
             }
-            if (nohp_aduan === "") {
-                $("input#_nohp_aduan").css("color", "#dc3545");
-                $("input#_nohp_aduan").css("border-color", "#dc3545");
-                $('._nohp_aduan').html('Silahkan masukkan no handphone yang diadukan');
+            if (nohp_ahli_waris === "") {
+                $("input#_nohp_ahli_waris").css("color", "#dc3545");
+                $("input#_nohp_ahli_waris").css("border-color", "#dc3545");
+                $('._nohp_ahli_waris').html('Silahkan masukkan no handphone yang diadukan');
                 return;
             }
-            if (alamat_aduan === "") {
-                $("input#_alamat_aduan").css("color", "#dc3545");
-                $("input#_alamat_aduan").css("border-color", "#dc3545");
-                $('._alamat_aduan').html('Silahkan masukkan alamat yang diadukan');
+            if (alamat_ahli_waris === "") {
+                $("input#_alamat_ahli_waris").css("color", "#dc3545");
+                $("input#_alamat_ahli_waris").css("border-color", "#dc3545");
+                $('._alamat_ahli_waris').html('Silahkan masukkan alamat yang diadukan');
                 return;
             }
-            if (kecamatan_aduan === "") {
-                $("select#_kecamatan_aduan").css("color", "#dc3545");
-                $("select#_kecamatan_aduan").css("border-color", "#dc3545");
-                $('._kecamatan_aduan').html('Silahkan pilih kecamatan yang diadukan');
+            if (kecamatan_ahli_waris === "") {
+                $("select#_kecamatan_ahli_waris").css("color", "#dc3545");
+                $("select#_kecamatan_ahli_waris").css("border-color", "#dc3545");
+                $('._kecamatan_ahli_waris').html('Silahkan pilih kecamatan yang diadukan');
                 return;
             }
-            if (kelurahan_aduan === "") {
-                $("select#_kelurahan_aduan").css("color", "#dc3545");
-                $("select#_kelurahan_aduan").css("border-color", "#dc3545");
-                $('._kelurahan_aduan').html('Silahkan pilih kelurahan yang diadukan');
+            if (kelurahan_ahli_waris === "") {
+                $("select#_kelurahan_ahli_waris").css("color", "#dc3545");
+                $("select#_kelurahan_ahli_waris").css("border-color", "#dc3545");
+                $('._kelurahan_ahli_waris').html('Silahkan pilih kelurahan yang diadukan');
                 return;
             }
         } else {
-            nama_aduan = nama;
-            nik_aduan = nik;
-            nohp_aduan = nohp;
-            alamat_aduan = alamat;
-            kecamatan_aduan = nama_kecamatan;
-            kelurahan_aduan = nama_kampung;
+            nama_ahli_waris = nama;
+            nik_ahli_waris = nik;
+            nohp_ahli_waris = nohp;
+            alamat_ahli_waris = alamat;
+            kecamatan_ahli_waris = nama_kecamatan;
+            kelurahan_ahli_waris = nama_kampung;
         }
 
-        if (uraian_aduan === "") {
-            $("input#_uraian_aduan").css("color", "#dc3545");
-            $("input#_uraian_aduan").css("border-color", "#dc3545");
-            $('._uraian_aduan').html('Silahkan masukkan uraian aduan');
+        if (uraian_ahli_waris === "") {
+            $("input#_uraian_ahli_waris").css("color", "#dc3545");
+            $("input#_uraian_ahli_waris").css("border-color", "#dc3545");
+            $('._uraian_ahli_waris').html('Silahkan masukkan uraian ahli_waris');
             return;
         }
 
@@ -457,15 +485,15 @@
         formUpload.append('alamat', alamat);
         formUpload.append('kecamatan', nama_kecamatan);
         formUpload.append('kelurahan', nama_kampung);
-        formUpload.append('nama_aduan', nama_aduan);
-        formUpload.append('nik_aduan', nik_aduan);
-        formUpload.append('nohp_aduan', nohp_aduan);
-        formUpload.append('alamat_aduan', alamat_aduan);
-        formUpload.append('kecamatan_aduan', kecamatan_aduan);
-        formUpload.append('kelurahan_aduan', kelurahan_aduan);
+        formUpload.append('nama_ahli_waris', nama_ahli_waris);
+        formUpload.append('nik_ahli_waris', nik_ahli_waris);
+        formUpload.append('nohp_ahli_waris', nohp_ahli_waris);
+        formUpload.append('alamat_ahli_waris', alamat_ahli_waris);
+        formUpload.append('kecamatan_ahli_waris', kecamatan_ahli_waris);
+        formUpload.append('kelurahan_ahli_waris', kelurahan_ahli_waris);
         formUpload.append('kategori', kategori);
-        formUpload.append('identitas_aduan', identitasAduan);
-        formUpload.append('uraian_aduan', uraian_aduan);
+        formUpload.append('identitas_ahli_waris', identitasahli_waris);
+        formUpload.append('uraian_ahli_waris', uraian_ahli_waris);
         formUpload.append('keterangan', keterangan);
 
         Swal.fire({
@@ -585,7 +613,7 @@
                 },
                 dataType: 'JSON',
                 beforeSend: function() {
-                    $('.kelurahan_aduan').html("");
+                    $('.kelurahan_ahli_waris').html("");
                     $('div.select2-kelurahan-loading').block({
                         message: '<i class="las la-spinner la-spin la-3x la-fw"></i><span class="sr-only">Loading...</span>'
                     });
@@ -593,7 +621,7 @@
                 success: function(resul) {
                     $('div.select2-kelurahan-loading').unblock();
                     if (resul.status == 200) {
-                        $('.kelurahan_aduan').html(resul.data);
+                        $('.kelurahan_ahli_waris').html(resul.data);
                     } else {
                         if (resul.status == 401) {
                             Swal.fire(
@@ -637,16 +665,16 @@
         }
     }
 
-    function changePengadu(event) {
+    function changePemohon(event) {
         const color = $(event).attr('name');
         const vPengadu = $("input[type='radio'][name='" + color + "']:checked").val();
 
-        $('.data-aduan').removeAttr('style');
+        $('.data-ahli_waris').removeAttr('style');
 
         if (vPengadu === "sama") {
-            document.getElementById("data-aduan").style.display = "none";
+            document.getElementById("data-ahli_waris").style.display = "none";
         } else {
-            document.getElementById("data-aduan").style.display = "block";
+            document.getElementById("data-ahli_waris").style.display = "block";
         }
     }
 

@@ -195,7 +195,7 @@ class Rppbkks extends BaseController
 
         $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'asc')->get()->getResult();
 
-        // $data['jeniss'] = ['Belum Pernah Menerima', 'Pengaduan Pemerlu Pelayanan Kesejahteraan Sosial (PPKS)', 'Pengaduan Layanan Sosial', 'Lainnya'];
+        $data['jeniss'] = ['Meninggal', 'Merantau'];
 
         return view('silastri/peng/layanan/rppbkks/add', $data);
     }
