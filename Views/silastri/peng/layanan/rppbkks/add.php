@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-0 mb-1">
+                <!-- <div class="card mt-0 mb-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="card mt-0 mb-1">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Identitas Subject Yang Diadukan</h4>
