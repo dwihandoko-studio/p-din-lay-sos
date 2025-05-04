@@ -178,6 +178,9 @@ class Ditolak extends BaseController
                         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current->id)->get()->getRowObject();
                         $response->data = view('silastri/peng/permohonan/ditolak/detail_lks', $data);
                         break;
+                    case 'RPPBKKS':
+                        $response->data = view('silastri/peng/permohonan/ditolak/detail_rppbkks', $data);
+                        break;
 
                     default:
                         $response->data = view('silastri/peng/permohonan/ditolak/detail', $data);

@@ -2470,6 +2470,7 @@ class Proses extends BaseController
                     $template_processor->setValue('NIK_AHLI_WARIS', $dataDecJson->nik_ahli_waris);
                     $alamatAhliWaris = $dataDecJson->alamat_ahli_waris . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan_ahli_waris) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan_ahli_waris);
                     $template_processor->setValue('ALAMAT_AHLI_WARIS', $alamatAhliWaris);
+                    $template_processor->setValue('HUBUNGAN_AHLI_WARIS', $dataDecJson->hubungan_ahli_waris);
 
                     $template_processor->setValue('KELURAHAN_KETERANGAN', getNamaKelurahan($dataDecJsonDoc->kelurahan_keterangan));
                     $template_processor->setValue('KECAMATAN_KETERANGAN', getNamaKelurahan($dataDecJsonDoc->kecamatan_keterangan));
