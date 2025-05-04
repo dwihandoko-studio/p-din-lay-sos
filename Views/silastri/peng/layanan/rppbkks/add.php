@@ -197,26 +197,22 @@
                                                 <div class="help-block _kelurahan_ahli_waris"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="row mb-2">
-                                    <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control select2 kategori_ahli_waris" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
-                                            <option value=""> --- Pilih Keterangan ---</option>
-                                            <?php if (isset($jeniss)) {
-                                                if (count($jeniss) > 0) {
-                                                    foreach ($jeniss as $key => $value) { ?>
-                                                        <option value="<?= $value ?>"><?= $value ?></option>
-                                            <?php }
-                                                }
-                                            } ?>
-                                        </select>
-                                        <div class="help-block _keterangan"></div>
+                                        <div class="row mb-2">
+                                            <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2 kategori_ahli_waris" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
+                                                    <option value=""> --- Pilih Keterangan ---</option>
+                                                    <?php if (isset($jeniss)) {
+                                                        if (count($jeniss) > 0) {
+                                                            foreach ($jeniss as $key => $value) { ?>
+                                                                <option value="<?= $value ?>"><?= $value ?></option>
+                                                    <?php }
+                                                        }
+                                                    } ?>
+                                                </select>
+                                                <div class="help-block _keterangan"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
