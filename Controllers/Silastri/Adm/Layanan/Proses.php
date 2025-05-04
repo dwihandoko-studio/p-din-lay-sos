@@ -877,6 +877,10 @@ class Proses extends BaseController
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
                     $response->data = view('silastri/adm/layanan/proses/form-input-rpdk', $data);
                     break;
+                case 'RPPBKKS':
+                    $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
+                    $response->data = view('silastri/adm/layanan/proses/form-input-rppbkks', $data);
+                    break;
                 case 'PBI':
                     $data['kecamatans'] = $this->_db->table('ref_kecamatan')->orderBy('kecamatan', 'ASC')->get()->getResult();
                     $response->data = view('silastri/peksos/layanan/proses/form-input', $data);
@@ -888,6 +892,232 @@ class Proses extends BaseController
                     break;
             }
             return json_encode($response);
+        }
+    }
+
+    public function saverppbkks()
+    {
+        if ($this->request->getMethod() != 'post') {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = "Permintaan tidak diizinkan";
+            return json_encode($response);
+        }
+
+        $rules = [
+            'id' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Id tidak boleh kosong. ',
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama tidak boleh kosong. ',
+                ]
+            ],
+            'nama_bank' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama bank tidak boleh kosong. ',
+                ]
+            ],
+            'unit_bank' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Unit bank tidak boleh kosong. ',
+                ]
+            ],
+            'nomor_rekening' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nomor Rekening tidak boleh kosong. ',
+                ]
+            ],
+            'tempat_surat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat surat tidak boleh kosong. ',
+                ]
+            ],
+            // '_file' => [
+            //     'rules' => 'uploaded[_file]|max_size[_file,2048]|mime_in[_file,application/pdf]',
+            //     'errors' => [
+            //         'uploaded' => 'Pilih file terlebih dahulu. ',
+            //         'max_size' => 'Ukuran file terlalu besar, Maximum 2Mb. ',
+            //         'mime_in' => 'Ekstensi yang anda upload harus berekstensi pdf. '
+            //     ]
+            // ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $response->status = 400;
+            $response->message = $this->validator->getError('id')
+                . $this->validator->getError('nama')
+                . $this->validator->getError('nama_bank')
+                . $this->validator->getError('unit_bank')
+                . $this->validator->getError('nomor_rekening')
+                . $this->validator->getError('tempat_surat');
+            return json_encode($response);
+        } else {
+            $Profilelib = new Profilelib();
+            $user = $Profilelib->user();
+            if ($user->status != 200) {
+                delete_cookie('jwt');
+                session()->destroy();
+                $response = new \stdClass;
+                $response->status = 401;
+                $response->message = "Permintaan diizinkan";
+                return json_encode($response);
+            }
+
+            $id = htmlspecialchars($this->request->getVar('id'), true);
+            $nama = htmlspecialchars($this->request->getVar('nama'), true);
+            $nama_bank = htmlspecialchars($this->request->getVar('nama_bank'), true);
+            $unit_bank = htmlspecialchars($this->request->getVar('unit_bank'), true);
+            $nomor_rekening = htmlspecialchars($this->request->getVar('nomor_rekening'), true);
+            $tempat_surat = htmlspecialchars($this->request->getVar('tempat_surat'), true);
+
+            $kecamatan_keterangan = htmlspecialchars($this->request->getVar('kecamatan_keterangan'), true);
+            $kelurahan_keterangan = htmlspecialchars($this->request->getVar('kelurahan_keterangan'), true);
+            $nomor_surat_keterangan = htmlspecialchars($this->request->getVar('nomor_surat_keterangan'), true);
+            $tgl_surat_keterangan = htmlspecialchars($this->request->getVar('tgl_surat_keterangan'), true);
+            $perihal_surat_keterangan = htmlspecialchars($this->request->getVar('perihal_surat_keterangan'), true);
+
+            $oldData = $this->_db->table('_permohonan')->where(['id' => $id])->get()->getRowArray();
+            if (!$oldData) {
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Usulan tidak ditemukan.";
+                return json_encode($response);
+            }
+
+            $date = date('Y-m-d H:i:s');
+
+            $nomor = $this->_db->table('_permohonan_doc')->select("no_surat")->orderBy('no_surat', 'DESC')->get()->getRowObject();
+
+            if ($nomor) {
+                $nomorFix = (int)$nomor->no_surat + 1;
+            } else {
+                $nomorFix = 1;
+            }
+
+            $fieldTambahanDoc = [
+                'nama_bank' => $nama_bank,
+                'unit_bank' => $unit_bank,
+                'nomor_rekening' => $nomor_rekening,
+                'tempat_surat' => $tempat_surat,
+                'kecamatan_keterangan' => $kecamatan_keterangan,
+                'kelurahan_keterangan' => $kelurahan_keterangan,
+                'nomor_surat_keterangan' => $nomor_surat_keterangan,
+                'tgl_surat_keterangan' => $tgl_surat_keterangan,
+                'perihal_surat_keterangan' => $perihal_surat_keterangan,
+            ];
+
+            $data = [
+                'id' => $oldData['id'],
+                'no_surat' => $nomorFix,
+                'nomor_sktm' => $nomor_rekening,
+                'tempat_surat' => $tempat_surat,
+                'field_tambahan' => json_encode($fieldTambahanDoc),
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+
+            switch ($oldData['layanan']) {
+                case 'RPPBKKS':
+                    // $data['perihal_surat'] = $perihal_surat;
+                    $data['template'] = "rppbkks.docx";
+                    $dir = FCPATH . "upload/rppbkks";
+                    break;
+
+                default:
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Template tidak ditemukan.";
+                    return json_encode($response);
+            }
+
+            $this->_db->transBegin();
+            $this->_db->table('_permohonan_doc')->insert($data);
+            if ($this->_db->affectedRows() > 0) {
+                $generateFile = $this->_download($oldData['id']);
+                if (!$generateFile) {
+                    $this->_db->transRollback();
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    // $response->erronya = var_dump($uploaded->message);
+                    $response->message = "Gagal dalam mengenerate dokumen.";
+                    return json_encode($response);
+                }
+                if ($generateFile->status !== 200) {
+                    $this->_db->transRollback();
+                    return json_encode($generateFile);
+                }
+
+                $oldData['updated_at'] = $date;
+                $oldData['date_approve'] = $date;
+                $oldData['admin_approve'] = $user->data->id;
+                $oldData['status_permohonan'] = 2;
+
+                $contentCreator = [
+                    'author' => $user->data->fullname,
+                    'title' => $oldData['jenis'] . ' (' . $oldData['nama'] . ')',
+                    'subject' => $oldData['jenis'] . ' (' . $oldData['nama'] . ') - ' . $oldData['kode_permohonan'],
+                    'keyword' => 'TTE, Signature, Lampung Tengah, Si-Lastri, ' . $oldData['jenis'] . ', ' . $oldData['kode_permohonan'],
+                ];
+
+                try {
+
+                    $tteUpload = new Ttelib();
+                    // $uploaded = $tteUpload->createUploadFileGenerate($generateFile->dir, $dir, $generateFile->filename, $contentCreator, 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=https://layanan.dinsos.lampungtengahkab.go.id/verifiqrcode?token=' . $oldData['id']);
+                    $uploaded = $tteUpload->createUploadFileGenerate($generateFile->dir, $dir, $generateFile->filename, $contentCreator, 'http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcode?token=' . $oldData['kode_permohonan']);
+                    // $uploaded = $tteUpload->createUploadFile($dir_pdf_tte, $dir, $newNamelampiran, $contentCreator);
+                    // var_dump($uploaded);
+                    // die;
+                    if ($uploaded->code === 200) {
+                        $oldData['lampiran_selesai'] = $generateFile->filename;
+                    } else {
+                        try {
+                            unlink($generateFile->dir);
+                            unlink($generateFile->dir_temp);
+                        } catch (\Throwable $th) {
+                        }
+                        $this->_db->transRollback();
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        // $response->erronya = var_dump($uploaded->message);
+                        $response->message = "Kesalahan dalam mengenerate dokumen, dokumen pdf max versi 1.5.";
+                        return json_encode($response);
+                    }
+                    //code...
+                } catch (\Throwable $th) {
+                    $this->_db->transRollback();
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->error = var_dump($th);
+                    $response->erronya = $generateFile;
+                    $response->message = "Kesalahan dalam mengenerate dokumen, dokumen pdf max versi 1.5.";
+                    return json_encode($response);
+                }
+
+                $this->_db->table('_permohonan')->where('id', $oldData['id'])->update($oldData);
+
+                $this->_db->transCommit();
+                $response = new \stdClass;
+                $response->status = 200;
+                $response->redirrect = base_url('silastri/peksos/layanan/approval');
+                $response->message = "Proses Permohonan Persetujuan $nama berhasil. Selanjutnya menunggu TTE Kepala Dinas.";
+                $response->id = $oldData['id'];
+                return json_encode($response);
+            } else {
+                $this->_db->transRollback();
+                $response = new \stdClass;
+                $response->status = 400;
+                $response->message = "Gagal menyimpan keterangan SKTM permohonan $nama";
+                return json_encode($response);
+            }
         }
     }
 
@@ -1854,7 +2084,7 @@ class Proses extends BaseController
     private function _download($id)
     {
         $data = $this->_db->table('_permohonan a')
-            ->select("b.*, a.field_tambahan, a.to_rumah_sakit, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
+            ->select("b.*, a.field_tambahan, a.to_rumah_sakit, a.id as id_permohonan, a.kode_permohonan, a.layanan, a.jenis, c.field_tambahan as field_tambahan_doc, c.template, c.no_surat, c.nomor_sktm, c.tgl_sktm, c.tujuan_rs, c.tujuan_surat, c.tempat_surat, c.perihal_surat, d.kecamatan as nama_kecamatan_sktm, e.kelurahan as nama_kelurahan_sktm, f.kecamatan as nama_kecamatan, g.kelurahan as nama_kelurahan")
             ->join('_permohonan_doc c', 'a.id = c.id')
             ->join('_profil_users_tb b', 'a.user_id = b.id')
             ->join('ref_kecamatan d', 'c.kecamatan = d.id', 'LEFT')
@@ -2127,6 +2357,139 @@ class Proses extends BaseController
                 // $template_processor->setValue('ALAMAT_PENGUSUL', $data->alamat);
                 $template_processor->setValue('KELURAHAN_PENGUSUL', $data->nama_kelurahan);
                 $template_processor->setValue('KECAMATAN_PENGUSUL', $data->nama_kecamatan);
+                $template_processor->setValue('TGL_KELUAR', tgl_indo(date('Y-m-d')));
+                $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
+                $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
+                $template_processor->setValue('NAMA_TTD', "ARI NUGRAHA MUKTI,S.STP.,M.M.");
+                $template_processor->setValue('PANGKAT_TTD', "Pembina TK.I (IV/b)");
+                $template_processor->setValue('NIP_TTD', "NIP. 19860720 200501 1 004");
+
+                // $template_processor->setImageValue('BARCODE', array('path' => 'https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=layanan.disdikbud.lampungtengahkab.go.id/verifiqrcodev?token=' . $ptks[0]->kode_verifikasi . '&choe=UTF-8', 'width' => 100, 'height' => 100, 'ratio' => false));
+                $template_processor->setImageValue('BARCODE', array('path' => 'http://192.168.33.16:8020/generate?data=' . base_url() . '/verifiqrcodev?token=' . $data->kode_permohonan, 'width' => 100, 'height' => 100, 'ratio' => false));
+
+                $filed = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+
+                $template_processor->saveAs($filed);
+
+                sleep(3);
+
+                $datas = [
+                    'nama_file' => $data->kode_permohonan . '.docx',
+                    'file_folder' => $filed,
+                ];
+
+                $urlConvert = getenv('beconvert.default.url');
+
+                // $curlHandle = curl_init("http://192.168.33.30:1891/convert");
+                $curlHandle = curl_init($urlConvert);
+                curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($curlHandle, CURLOPT_POSTFIELDS, json_encode($datas));
+                curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
+                    // 'X-API-TOKEN: ' . $apiToken,
+                    // 'Authorization: Bearer ' . $jwt,
+                    'Content-Type: application/json'
+                ));
+                curl_setopt($curlHandle, CURLOPT_TIMEOUT, 120);
+                curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 120);
+
+                $send_data         = curl_exec($curlHandle);
+
+                $result = json_decode($send_data);
+
+
+                if (isset($result->error)) {
+                    try {
+                        unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengenerate dokumen.";
+                    return $response;
+                }
+
+                if ($result) {
+                    if ($result->status == 200) {
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->redirrect = base_url('silastri/adm/layanan/approval');
+                        $response->message = "Selesaikan Permohonan $data->fullname berhasil dilakukan. Tinggal menunggu TTE kadis.";
+                        $response->result = $result;
+                        $response->dir = FCPATH . "upload/generate/surat/pdf/" . $data->kode_permohonan . ".pdf";
+                        $response->dir_temp = FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx";
+                        $response->filename = $data->kode_permohonan . ".pdf";
+                        return $response;
+                    } else {
+                        try {
+                            unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
+                        $response = new \stdClass;
+                        $response->status = 400;
+                        $response->message = $result->message;
+                        // $response->message = "Gagal mengenerate dokumen.";
+                        return $response;
+                    }
+                    // return $result;
+                } else {
+                    try {
+                        unlink(FCPATH . "upload/generate/surat/word/" . $data->kode_permohonan . ".docx");
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengenerate dokumen.";
+                    return $response;
+                }
+            } else if ($data->layanan == "RPPBKKS") {
+                $dataDecJson = json_decode($data->field_tambahan);
+                $dataDecJsonDoc = json_decode($data->field_tambahan_doc);
+
+                if ($dataDecJson->identitas_ahli_waris == "beda") {
+                    if ($dataDecJson->keterangan == "Meninggal") {
+                        $file = FCPATH . "upload/template/rppbkks-meninggal.docx";
+                        $template_processor = new TemplateProcessor($file);
+                    } else {
+                        $file = FCPATH . "upload/template/rppbkks-merantau.docx";
+                        $template_processor = new TemplateProcessor($file);
+                    }
+                    $alamatPemohon = $dataDecJson->alamat_pemohon . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan_pemohon) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan_pemohon);
+                    $template_processor->setValue('ALAMAT', $alamatPemohon);
+
+                    $template_processor->setValue('NAMA_AHLI_WARIS', $dataDecJson->nama_ahli_waris);
+                    $template_processor->setValue('NIK_AHLI_WARIS', $dataDecJson->nik_ahli_waris);
+                    $alamatAhliWaris = $dataDecJson->alamat_ahli_waris . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan_ahli_waris) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan_ahli_waris);
+                    $template_processor->setValue('ALAMAT_AHLI_WARIS', $alamatAhliWaris);
+
+                    $template_processor->setValue('KELURAHAN_KETERANGAN', getNamaKelurahan($dataDecJsonDoc->kelurahan_keterangan));
+                    $template_processor->setValue('KECAMATAN_KETERANGAN', getNamaKelurahan($dataDecJsonDoc->kecamatan_keterangan));
+                    $template_processor->setValue('NOMOR_SURAT_KETERANGAN', $dataDecJsonDoc->nomor_surat_keterangan);
+                    $template_processor->setValue('PERIHAL_SURAT_KETERANGAN', $dataDecJsonDoc->perihal_surat_keterangan);
+                    $template_processor->setValue('TANGGAL_SURAT_KETERANGAN', tgl_indo($dataDecJsonDoc->tanggal_surat_keterangan));
+                } else {
+                    $file = FCPATH . "upload/template/rppbkks-mandiri.docx";
+                    $template_processor = new TemplateProcessor($file);
+                }
+
+                $template_processor->setValue('NOMOR_SURAT', "400.9.11.3/$data->no_surat/D.a.VII/" . date('Y'));
+                $template_processor->setValue('NAMA_BANK', $dataDecJsonDoc->nama_bank);
+                $template_processor->setValue('UNIT_BANK', $dataDecJsonDoc->unit_bank);
+                $template_processor->setValue('NOMOR_REKENING', $dataDecJsonDoc->nomor_rekening);
+                $template_processor->setValue('TEMPAT_SURAT', $data->tempat_surat);
+                $template_processor->setValue('NAMA_PEMOHON', $dataDecJson->nama_pemohon);
+                $template_processor->setValue('TEMPAT_LAHIR_PEMOHON', $dataDecJson->tempat_lahir_pemohon);
+                $template_processor->setValue('TANGGAL_LAHIR_PEMOHON', tgl_indo($dataDecJson->tanggal_lahir_pemohon));
+                $template_processor->setValue('NIK_PEMOHON', $dataDecJson->nik_pemohon);
+                $template_processor->setValue('KK_PEMOHON', $dataDecJson->kk_pemohon);
+                // $alamatLks = $dataDecJson->alamat . ', Kel. ' . getNamaKelurahan($dataDecJson->kelurahan) . ', Kec. ' . getNamaKecamatan($dataDecJson->kecamatan);
+                $template_processor->setValue('ALAMAT_PEMOHON', $dataDecJson->alamat_pemohon);
+                $template_processor->setValue('KELURAHAN_PEMOHON', getNamaKelurahan($dataDecJson->kelurahan_pemohon));
+                $template_processor->setValue('KECAMATAN_PEMOHON', getNamaKecamatan($dataDecJson->kecamatan_pemohon));
+
                 $template_processor->setValue('TGL_KELUAR', tgl_indo(date('Y-m-d')));
                 $template_processor->setValue('JABATAN_TTD', "KEPALA DINAS SOSIAL");
                 $template_processor->setValue('NAMA_KABUPATEN', "KABUPATEN LAMPUNG TENGAH");
