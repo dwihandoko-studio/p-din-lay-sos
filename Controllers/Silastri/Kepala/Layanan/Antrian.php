@@ -327,6 +327,10 @@ class Antrian extends BaseController
                     $dirFile = 'rpdk/' . $oldData->kode_permohonan;
                     $fName = $oldData->kode_permohonan;
                     break;
+                case 'RPPBKKS':
+                    $dirFile = 'rppbkks/' . $oldData->kode_permohonan;
+                    $fName = $oldData->kode_permohonan;
+                    break;
 
                 default:
                     $dirFile = 'notfound';
