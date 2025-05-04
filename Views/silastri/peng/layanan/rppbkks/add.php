@@ -200,7 +200,7 @@
                                         <div class="row mb-2">
                                             <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control select2 kategori_ahli_waris" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
+                                                <select class="form-control select2 keterangan" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
                                                     <option value=""> --- Pilih Keterangan ---</option>
                                                     <?php if (isset($jeniss)) {
                                                         if (count($jeniss) > 0) {
@@ -224,71 +224,57 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengahli_waris 1</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
+                                <h4>Lampiran Screenshoot Detail Data DTKS/SIKS-NG</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen screenshoot detail data DTKS/SIKS-NG.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_1" class="form-label">Lampiran dokumen pengahli_waris 1: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_1" name="_file_lampiran_1" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_1', 'Lampiran Dokumen Pengahli_waris 1')">
+                                            <label for="_file_screenshoot" class="form-label">Lampiran dokumen pengahli_waris 1: </label>
+                                            <input class="form-control" type="file" id="_file_screenshoot" name="_file_screenshoot" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_screenshoot', 'Lampiran Dokumen Screenshoot')" required>
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_lampiran_1" for="_file_lampiran_1"></div>
+                                            <div class="help-block _file_screenshoot" for="_file_screenshoot"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengahli_waris 2</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
+                                <h4>Lampiran KTP</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen KTP.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_2" class="form-label">Lampiran dokumen pengahli_waris 2: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_2" name="_file_lampiran_2" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_2', 'Lampiran Dokumen Pengahli_waris 2')">
+                                            <label for="_file_ktp" class="form-label">Lampiran dokumen KTP: </label>
+                                            <input class="form-control" type="file" id="_file_ktp" name="_file_ktp" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_ktp', 'Lampiran Dokumen KTP')" required>
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_lampiran_2" for="_file_lampiran_2"></div>
+                                            <div class="help-block _file_ktp" for="_file_ktp"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <h4>Lampiran Pengahli_waris 3</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
+                                <h4>Lampiran Kartu Keluarga</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen kartu keluarga.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_3" class="form-label">Lampiran dokumen pengahli_waris 3: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_3" name="_file_lampiran_3" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_3', 'Lampiran Dokumen Pengahli_waris 3')">
+                                            <label for="_file_kk" class="form-label">Lampiran dokumen kartu keluarga: </label>
+                                            <input class="form-control" type="file" id="_file_kk" name="_file_kk" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_kk', 'Lampiran Dokumen Kartu Keluarga')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_lampiran_3" for="_file_lampiran_3"></div>
+                                            <div class="help-block _file_kk" for="_file_kk"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <h4>Lampiran Pengahli_waris 4</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
+                            <div class="col-lg-12 lampiran-ahli_waris" id="lampiran-ahli_waris" style="display: none;">
+                                <h4>Lampiran Surat Keterangan Merantau / Meninggal Dari Kampung / Kelurahan</h4>
+                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen surat keterangan merantau / meninggal dari kampung / kelurahan.</p>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-3">
-                                            <label for="_file_lampiran_4" class="form-label">Lampiran dokumen pengahli_waris 4: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_4" name="_file_lampiran_4" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_4', 'Lampiran Dokumen Pengahli_waris 4')">
+                                            <label for="_file_surat_keterangan" class="form-label">Lampiran Surat Keterangan: </label>
+                                            <input class="form-control" type="file" id="_file_surat_keterangan" name="_file_surat_keterangan" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_surat_keterangan', 'Lampiran Dokumen Surat Keterangan')">
                                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_lampiran_4" for="_file_lampiran_4"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <h4>Lampiran Pengahli_waris 5</h4>
-                                <p style="margin-bottom: 30px;">Silahkan lampirkan dokumen pengahli_waris jika ada.</p>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mt-3">
-                                            <label for="_file_lampiran_5" class="form-label">Lampiran dokumen pengahli_waris 5: </label>
-                                            <input class="form-control" type="file" id="_file_lampiran_5" name="_file_lampiran_5" onFocus="inputFocus(this);" accept="image/*,application/pdf" onchange="loadFile('_file_lampiran_5', 'Lampiran Dokumen Pengahli_waris 5')">
-                                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Files</code> and Maximum File Size <code>2 Mb</code></p>
-                                            <div class="help-block _file_lampiran_5" for="_file_lampiran_5"></div>
+                                            <div class="help-block _file_surat_keterangan" for="_file_surat_keterangan"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -367,70 +353,106 @@
 
         let nama_ahli_waris = document.getElementsByName('_nama_ahli_waris')[0].value;
         let nik_ahli_waris = document.getElementsByName('_nik_ahli_waris')[0].value;
+        let tempat_lahir_ahli_waris = document.getElementsByName('_tempat_lahir_ahli_waris')[0].value;
+        let tanggal_lahir_ahli_waris = document.getElementsByName('_tanggal_lahir_ahli_waris')[0].value;
         let nohp_ahli_waris = document.getElementsByName('_nohp_ahli_waris')[0].value;
         let alamat_ahli_waris = document.getElementsByName('_alamat_ahli_waris')[0].value;
         let kecamatan_ahli_waris = document.getElementsByName('_kecamatan_ahli_waris')[0].value;
         let kelurahan_ahli_waris = document.getElementsByName('_kelurahan_ahli_waris')[0].value;
+        let hubungan_ahli_waris = document.getElementsByName('_hubungan_ahli_waris')[0].value;
 
         const keterangan = document.getElementsByName('_keterangan')[0].value;
 
-        const fileLampiran1 = document.getElementsByName('_file_lampiran_1')[0].value;
-        const fileLampiran2 = document.getElementsByName('_file_lampiran_2')[0].value;
-        const fileLampiran3 = document.getElementsByName('_file_lampiran_3')[0].value;
-        const fileLampiran4 = document.getElementsByName('_file_lampiran_4')[0].value;
-        const fileLampiran5 = document.getElementsByName('_file_lampiran_5')[0].value;
-
-        const uraian_ahli_waris = document.getElementsByName('_uraian_ahli_waris')[0].value;
-
-        if (keterangan === "") {
-            $("select#_keterangan").css("color", "#dc3545");
-            $("select#_keterangan").css("border-color", "#dc3545");
-            $('._keterangan-error').html('Silahkan pilih keterangan');
-
-            Swal.fire(
-                'Peringatan..!!',
-                "Silahkan pilih keterangan.",
-                'warning'
-            );
-            return false;
-        }
+        const fileSs = document.getElementsByName('_file_screenshoot')[0].value;
+        const fileKtp = document.getElementsByName('_file_ktp')[0].value;
+        const fileKk = document.getElementsByName('_file_kk')[0].value;
+        const fileSuratKeterangan = document.getElementsByName('_file_surat_keterangan')[0].value;
 
         if (identitasahli_waris === "beda") {
             if (nama_ahli_waris === "") {
                 $("input#_nama_ahli_waris").css("color", "#dc3545");
                 $("input#_nama_ahli_waris").css("border-color", "#dc3545");
-                $('._nama_ahli_waris').html('Silahkan masukkan nama yang diadukan');
+                $('._nama_ahli_waris').html('Silahkan masukkan nama ahli waris');
                 return;
             }
             if (nik_ahli_waris === "") {
                 $("input#_nik_ahli_waris").css("color", "#dc3545");
                 $("input#_nik_ahli_waris").css("border-color", "#dc3545");
-                $('._nik_ahli_waris').html('Silahkan masukkan NIK yang diadukan');
+                $('._nik_ahli_waris').html('Silahkan masukkan NIK ahli waris');
+                return;
+            }
+            if (tempat_lahir_ahli_waris === "") {
+                $("input#_tempat_lahir_ahli_waris").css("color", "#dc3545");
+                $("input#_tempat_lahir_ahli_waris").css("border-color", "#dc3545");
+                $('._tempat_lahir_ahli_waris').html('Silahkan masukkan tempat lahir ahli waris');
+                return;
+            }
+            if (tanggal_lahir_ahli_waris === "") {
+                $("input#_tanggal_lahir_ahli_waris").css("color", "#dc3545");
+                $("input#_tanggal_lahir_ahli_waris").css("border-color", "#dc3545");
+                $('._tanggal_lahir_ahli_waris').html('Silahkan masukkan tanggal lahir ahli waris');
                 return;
             }
             if (nohp_ahli_waris === "") {
                 $("input#_nohp_ahli_waris").css("color", "#dc3545");
                 $("input#_nohp_ahli_waris").css("border-color", "#dc3545");
-                $('._nohp_ahli_waris').html('Silahkan masukkan no handphone yang diadukan');
+                $('._nohp_ahli_waris').html('Silahkan masukkan no handphone ahli waris');
                 return;
             }
+
+            if (hubungan_ahli_waris === "") {
+                $("select#_hubungan_ahli_waris").css("color", "#dc3545");
+                $("select#_hubungan_ahli_waris").css("border-color", "#dc3545");
+                $('._hubungan_ahli_waris-error').html('Silahkan pilih hubungan');
+
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan pilih hubungan.",
+                    'warning'
+                );
+                return false;
+            }
+
+            if (keterangan === "") {
+                $("select#_keterangan").css("color", "#dc3545");
+                $("select#_keterangan").css("border-color", "#dc3545");
+                $('._keterangan-error').html('Silahkan pilih keterangan');
+
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan pilih keterangan.",
+                    'warning'
+                );
+                return false;
+            }
+
             if (alamat_ahli_waris === "") {
                 $("input#_alamat_ahli_waris").css("color", "#dc3545");
                 $("input#_alamat_ahli_waris").css("border-color", "#dc3545");
-                $('._alamat_ahli_waris').html('Silahkan masukkan alamat yang diadukan');
+                $('._alamat_ahli_waris').html('Silahkan masukkan alamat ahli waris');
                 return;
             }
             if (kecamatan_ahli_waris === "") {
                 $("select#_kecamatan_ahli_waris").css("color", "#dc3545");
                 $("select#_kecamatan_ahli_waris").css("border-color", "#dc3545");
-                $('._kecamatan_ahli_waris').html('Silahkan pilih kecamatan yang diadukan');
+                $('._kecamatan_ahli_waris').html('Silahkan pilih kecamatan ahli waris');
                 return;
             }
             if (kelurahan_ahli_waris === "") {
                 $("select#_kelurahan_ahli_waris").css("color", "#dc3545");
                 $("select#_kelurahan_ahli_waris").css("border-color", "#dc3545");
-                $('._kelurahan_ahli_waris').html('Silahkan pilih kelurahan yang diadukan');
+                $('._kelurahan_ahli_waris').html('Silahkan pilih kelurahan ahli waris');
                 return;
+            }
+            if (fileSuratKeterangan === "") {
+                $('._file_surat_keterangan-error').html('Silahkan lampirkan surat keterangan');
+
+                Swal.fire(
+                    'Peringatan..!!',
+                    "Silahkan lampirkan surat keterangan.",
+                    'warning'
+                );
+                return false;
             }
         } else {
             nama_ahli_waris = nama;
@@ -441,38 +463,52 @@
             kelurahan_ahli_waris = nama_kampung;
         }
 
-        if (uraian_ahli_waris === "") {
-            $("input#_uraian_ahli_waris").css("color", "#dc3545");
-            $("input#_uraian_ahli_waris").css("border-color", "#dc3545");
-            $('._uraian_ahli_waris').html('Silahkan masukkan uraian ahli_waris');
-            return;
+        if (fileSs === "") {
+            $('._file_screenshoot-error').html('Silahkan lampirkan screenshoot data detail DTKS / SIKS-NG');
+
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan lampirkan screenshoot data detail DTKS / SIKS-NG.",
+                'warning'
+            );
+            return false;
+        }
+
+        if (fileKtp === "") {
+            $('._file_ktp-error').html('Silahkan lampirkan KTP');
+
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan lampirkan KTP.",
+                'warning'
+            );
+            return false;
+        }
+        if (fileKk === "") {
+            $('._file_kk-error').html('Silahkan lampirkan Kartu Keluarga');
+
+            Swal.fire(
+                'Peringatan..!!',
+                "Silahkan lampirkan Keluarga.",
+                'warning'
+            );
+            return false;
         }
 
         const formUpload = new FormData();
 
-        if (fileLampiran1 !== "") {
-            const file_lampiran1 = document.getElementsByName('_file_lampiran_1')[0].files[0];
-            formUpload.append('_file_1', file_lampiran1);
-        }
+        const file_screenshoot = document.getElementsByName('_file_screenshoot')[0].files[0];
+        formUpload.append('_file_screenshoot', file_screenshoot);
 
-        if (fileLampiran2 !== "") {
-            const file_lampiran2 = document.getElementsByName('_file_lampiran_2')[0].files[0];
-            formUpload.append('_file_2', file_lampiran2);
-        }
+        const file_ktp = document.getElementsByName('_file_ktp')[0].files[0];
+        formUpload.append('_file_ktp', file_ktp);
 
-        if (fileLampiran3 !== "") {
-            const file_lampiran3 = document.getElementsByName('_file_lampiran_3')[0].files[0];
-            formUpload.append('_file_3', file_lampiran3);
-        }
+        const file_kk = document.getElementsByName('_file_kk')[0].files[0];
+        formUpload.append('_file_kk', file_kk);
 
-        if (fileLampiran4 !== "") {
-            const file_lampiran4 = document.getElementsByName('_file_lampiran_4')[0].files[0];
-            formUpload.append('_file_4', file_lampiran4);
-        }
-
-        if (fileLampiran5 !== "") {
-            const file_lampiran5 = document.getElementsByName('_file_lampiran_5')[0].files[0];
-            formUpload.append('_file_5', file_lampiran5);
+        if (fileSuratKeterangan !== "") {
+            const file_surat = document.getElementsByName('_file_surat')[0].files[0];
+            formUpload.append('_file_surat', file_surat);
         }
 
         formUpload.append('nama', nama);
@@ -483,14 +519,15 @@
         formUpload.append('kelurahan', nama_kampung);
         formUpload.append('nama_ahli_waris', nama_ahli_waris);
         formUpload.append('nik_ahli_waris', nik_ahli_waris);
+        formUpload.append('tempat_lahir_ahli_waris', tempat_lahir_ahli_waris);
+        formUpload.append('tanggal_lahir_ahli_waris', tanggal_lahir_ahli_waris);
+        formUpload.append('hubungan_ahli_waris', hubungan_ahli_waris);
         formUpload.append('nohp_ahli_waris', nohp_ahli_waris);
         formUpload.append('alamat_ahli_waris', alamat_ahli_waris);
         formUpload.append('kecamatan_ahli_waris', kecamatan_ahli_waris);
         formUpload.append('kelurahan_ahli_waris', kelurahan_ahli_waris);
-        formUpload.append('kategori', kategori);
-        formUpload.append('identitas_ahli_waris', identitasahli_waris);
-        formUpload.append('uraian_ahli_waris', uraian_ahli_waris);
         formUpload.append('keterangan', keterangan);
+        formUpload.append('identitas_ahli_waris', identitasahli_waris);
 
         Swal.fire({
             title: 'Apakah anda yakin ingin mengirim permohonan ini?',
@@ -666,11 +703,14 @@
         const vPengadu = $("input[type='radio'][name='" + color + "']:checked").val();
 
         $('.data-ahli_waris').removeAttr('style');
+        $('.lampiran-ahli_waris').removeAttr('style');
 
         if (vPengadu === "sama") {
             document.getElementById("data-ahli_waris").style.display = "none";
+            document.getElementById("lampiran-ahli_waris").style.display = "none";
         } else {
             document.getElementById("data-ahli_waris").style.display = "block";
+            document.getElementById("lampiran-ahli_waris").style.display = "block";
         }
     }
 

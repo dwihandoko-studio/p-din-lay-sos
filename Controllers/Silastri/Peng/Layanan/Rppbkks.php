@@ -213,135 +213,131 @@ class Rppbkks extends BaseController
             'nama' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Nama tidak boleh kosong. ',
+                    'required' => 'Nama pemohon tidak boleh kosong. ',
                 ]
             ],
             'nik' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Nik boleh kosong. ',
+                    'required' => 'Nik pemohon tidak boleh kosong. ',
                 ]
             ],
-            'jenis' => [
+            'nohp' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Jenis permohonan tidak boleh kosong. ',
+                    'required' => 'Nohp pemohon tidak boleh kosong. ',
                 ]
             ],
-            // 'indikator1' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 1 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator2' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 2 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator3' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 3 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator4' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 4 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator5' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 5 tidak boleh kosong. ',
-            //     ]
-            // ],
-            // 'indikator6' => [
-            //     'rules' => 'required|trim',
-            //     'errors' => [
-            //         'required' => 'Indikator 6 tidak boleh kosong. ',
-            //     ]
-            // ],
+            'alamat' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Alamat pemohon tidak boleh kosong. ',
+                ]
+            ],
+            'kecamatan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kecamatan pemohon tidak boleh kosong. ',
+                ]
+            ],
+            'kelurahan' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kelurahan pemohon tidak boleh kosong. ',
+                ]
+            ],
+            'nama_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'nik_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nik yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'nohp_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nohp yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'alamat_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Alamat yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'kecamatan_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kecamatan yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'kelurahan_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Kelurahan yang diadukan tidak boleh kosong. ',
+                ]
+            ],
+            'identitas_ahli_waris' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Identitas ahli waris tidak boleh kosong. ',
+                ]
+            ],
+            '_file_screenshoot' => [
+                'rules' => 'uploaded[_file_screenshoot]|max_size[_file_screenshoot,5120]|mime_in[_file_screenshoot,image/jpeg,image/jpg,image/png,application/pdf]',
+                'errors' => [
+                    'uploaded' => 'Pilih dokumen Screenshoot terlebih dahulu. ',
+                    'max_size' => 'Ukuran dokumen Screenshoot terlalu besar. ',
+                    'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                ]
+            ],
+            '_file_ktp' => [
+                'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,5120]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png,application/pdf]',
+                'errors' => [
+                    'uploaded' => 'Pilih dokumen KTP terlebih dahulu. ',
+                    'max_size' => 'Ukuran dokumen KTP terlalu besar. ',
+                    'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                ]
+            ],
+            '_file_kk' => [
+                'rules' => 'uploaded[_file_kk]|max_size[_file_kk,5120]|mime_in[_file_kk,image/jpeg,image/jpg,image/png,application/pdf]',
+                'errors' => [
+                    'uploaded' => 'Pilih dokumen KK terlebih dahulu. ',
+                    'max_size' => 'Ukuran dokumen KK terlalu besar. ',
+                    'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
+                ]
+            ],
         ];
 
-        $filenamelampiranKtp = dot_array_search('_file_ktp.name', $_FILES);
-        if ($filenamelampiranKtp != '') {
-            $lampiranValKtp = [
-                '_file_ktp' => [
-                    'rules' => 'uploaded[_file_ktp]|max_size[_file_ktp,5120]|mime_in[_file_ktp,image/jpeg,image/jpg,image/png,application/pdf]',
+        $filenamelampiranSurat = dot_array_search('_file_surat.name', $_FILES);
+        if ($filenamelampiranSurat != '') {
+            $lampiranValSurat = [
+                '_file_surat' => [
+                    'rules' => 'uploaded[_file_surat]|max_size[_file_surat,5120]|mime_in[_file_surat,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
-                        'uploaded' => 'Pilih dokumen KTP terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KTP terlalu besar. ',
+                        'uploaded' => 'Pilih dokumen Surat Keterangan terlebih dahulu. ',
+                        'max_size' => 'Ukuran dokumen Surat Keterangan terlalu besar. ',
                         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
                     ]
                 ],
             ];
-            $rules = array_merge($rules, $lampiranValKtp);
+            $rules = array_merge($rules, $lampiranValSurat);
         }
-
-        $filenamelampiranKk = dot_array_search('_file_kk.name', $_FILES);
-        if ($filenamelampiranKk != '') {
-            $lampiranValKk = [
-                '_file_kk' => [
-                    'rules' => 'uploaded[_file_kk]|max_size[_file_kk,5120]|mime_in[_file_kk,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen KK terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen KK terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValKk);
-        }
-
-        $filenamelampiranPernyataan = dot_array_search('_file_sktm.name', $_FILES);
-        if ($filenamelampiranPernyataan != '') {
-            $lampiranValPernyataan = [
-                '_file_sktm' => [
-                    'rules' => 'uploaded[_file_sktm]|max_size[_file_sktm,5120]|mime_in[_file_sktm,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih dokumen SKTM terlebih dahulu. ',
-                        'max_size' => 'Ukuran dokumen SKTM terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValPernyataan);
-        }
-
-        // $filenamelampiranFotoRumah = dot_array_search('_file_foto_rumah.name', $_FILES);
-        // if ($filenamelampiranFotoRumah != '') {
-        //     $lampiranValFotoRumah = [
-        //         '_file_foto_rumah' => [
-        //             'rules' => 'uploaded[_file_foto_rumah]|max_size[_file_foto_rumah,2048]|mime_in[_file_foto_rumah,image/jpeg,image/jpg,image/png,application/pdf]',
-        //             'errors' => [
-        //                 'uploaded' => 'Pilih dokumen foto rumah terlebih dahulu. ',
-        //                 'max_size' => 'Ukuran dokumen foto rumah terlalu besar. ',
-        //                 'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar atau pdf. '
-        //             ]
-        //         ],
-        //     ];
-        //     $rules = array_merge($rules, $lampiranValFotoRumah);
-        // }
 
         if (!$this->validate($rules)) {
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('nama')
                 . $this->validator->getError('nik')
-                . $this->validator->getError('jenis')
-                // . $this->validator->getError('indikator1')
-                // . $this->validator->getError('indikator2')
-                // . $this->validator->getError('indikator3')
-                // . $this->validator->getError('indikator4')
-                // . $this->validator->getError('indikator5')
-                // . $this->validator->getError('indikator6')
+                . $this->validator->getError('identitas_ahli_waris')
                 . $this->validator->getError('_file_ktp')
                 . $this->validator->getError('_file_kk')
-                . $this->validator->getError('_file_sktm');
-            // . $this->validator->getError('_file_foto_rumah');
+                . $this->validator->getError('_file_screenshoot');
             return json_encode($response);
         } else {
             $Profilelib = new Profilelib();
@@ -355,15 +351,9 @@ class Rppbkks extends BaseController
                 return json_encode($response);
             }
 
-            $jenis = htmlspecialchars($this->request->getVar('jenis'), true);
+            $identitas_ahli_waris = htmlspecialchars($this->request->getVar('identitas_ahli_waris'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
-            // $indikator1 = (int)htmlspecialchars($this->request->getVar('indikator1'), true);
-            // $indikator2 = (int)htmlspecialchars($this->request->getVar('indikator2'), true);
-            // $indikator3 = (int)htmlspecialchars($this->request->getVar('indikator3'), true);
-            // $indikator4 = (int)htmlspecialchars($this->request->getVar('indikator4'), true);
-            // $indikator5 = (int)htmlspecialchars($this->request->getVar('indikator5'), true);
-            // $indikator6 = (int)htmlspecialchars($this->request->getVar('indikator6'), true);
             $keterangan = (int)htmlspecialchars($this->request->getVar('keterangan'), true);
 
             // if ($keterangan === NULL || $keterangan === "") {
@@ -386,7 +376,7 @@ class Rppbkks extends BaseController
                 'nama' => $user->data->fullname,
                 'user_id' => $user->data->id,
                 'jenis' => $jenis,
-                'layanan' => "PBI",
+                'layanan' => "RPPBKKS",
                 // 'indikator1' => $indikator1,
                 // 'indikator2' => $indikator2,
                 // 'indikator3' => $indikator3,
@@ -428,32 +418,34 @@ class Rppbkks extends BaseController
                 return json_encode($response);
             }
 
-            $lampiranPernyataan = $this->request->getFile('_file_sktm');
-            $filesNamelampiranPernyataan = $lampiranPernyataan->getName();
-            $newNamelampiranPernyataan = _create_name_foto($filesNamelampiranPernyataan);
+            $lampiranScreenshoot = $this->request->getFile('_file_screenshoot');
+            $filesNamelampiranScreenshoot = $lampiranScreenshoot->getName();
+            $newNamelampiranScreenshoot = _create_name_foto($filesNamelampiranScreenshoot);
 
-            if ($lampiranPernyataan->isValid() && !$lampiranPernyataan->hasMoved()) {
-                $lampiranPernyataan->move($dir, $newNamelampiranPernyataan);
-                $data['lampiran_pernyataan'] = $newNamelampiranPernyataan;
+            if ($lampiranScreenshoot->isValid() && !$lampiranScreenshoot->hasMoved()) {
+                $lampiranScreenshoot->move($dir, $newNamelampiranScreenshoot);
+                $data['lampiran_pernyataan'] = $newNamelampiranScreenshoot;
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupload lampiran Pernyataan.";
+                $response->message = "Gagal mengupload lampiran Screenshoot.";
                 return json_encode($response);
             }
 
-            $lampiranFotoRumah = $this->request->getFile('_file_foto_rumah');
-            $filesNamelampiranFotoRumah = $lampiranFotoRumah->getName();
-            $newNamelampiranFotoRumah = _create_name_foto($filesNamelampiranFotoRumah);
+            if ($filenamelampiranSurat != '') {
+                $lampiranSurat = $this->request->getFile('_file_surat');
+                $filesNamelampiranSurat = $lampiranSurat->getName();
+                $newNamelampiranSurat = _create_name_foto($filesNamelampiranSurat);
 
-            if ($lampiranFotoRumah->isValid() && !$lampiranFotoRumah->hasMoved()) {
-                $lampiranFotoRumah->move($dir, $newNamelampiranFotoRumah);
-                $data['lampiran_foto_rumah'] = $newNamelampiranFotoRumah;
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupload lampiran Foto Rumah.";
-                return json_encode($response);
+                if ($lampiranSurat->isValid() && !$lampiranSurat->hasMoved()) {
+                    $lampiranSurat->move($dir, $newNamelampiranSurat);
+                    $data['lampiran_foto_rumah'] = $newNamelampiranSurat;
+                } else {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengupload lampiran Surat Keterangan.";
+                    return json_encode($response);
+                }
             }
 
             $this->_db->transBegin();
@@ -462,8 +454,10 @@ class Rppbkks extends BaseController
             } catch (\Exception $e) {
                 unlink($dir . '/' . $newNamelampiranKtp);
                 unlink($dir . '/' . $newNamelampiranKk);
-                unlink($dir . '/' . $newNamelampiranPernyataan);
-                unlink($dir . '/' . $newNamelampiranFotoRumah);
+                unlink($dir . '/' . $newNamelampiranScreenshoot);
+                if ($filenamelampiranSurat != '') {
+                    unlink($dir . '/' . $newNamelampiranSurat);
+                }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
@@ -487,8 +481,10 @@ class Rppbkks extends BaseController
             } else {
                 unlink($dir . '/' . $newNamelampiranKtp);
                 unlink($dir . '/' . $newNamelampiranKk);
-                unlink($dir . '/' . $newNamelampiranPernyataan);
-                unlink($dir . '/' . $newNamelampiranFotoRumah);
+                unlink($dir . '/' . $newNamelampiranScreenshoot);
+                if ($filenamelampiranSurat != '') {
+                    unlink($dir . '/' . $newNamelampiranSurat);
+                }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
