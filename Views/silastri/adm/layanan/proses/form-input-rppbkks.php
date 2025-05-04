@@ -7,7 +7,7 @@
             if ($dataDecJson->identitas_ahli_waris == "beda") { ?>
                 <div class="col-lg-6">
                     <div class="mb-3">
-                        <label for="_kecamatan" class="col-form-label">Kecamatan :</label>
+                        <label for="_kecamatan" class="col-form-label">Kecamatan Surat Keterangan :</label>
                         <select class="form-control select2 kecamatan" id="_kecamatan" name="_kecamatan" style="width: 100%" onchange="changeKecamatan(this)" required>
                             <option value="">&nbsp;</option>
                             <?php if (isset($kecamatans)) {
@@ -21,7 +21,7 @@
                         <div class="help-block _kecamatan"></div>
                     </div>
                     <div class="mb-3 select2-kelurahan-loading">
-                        <label for="_kelurahan" class="col-form-label">Kelurahan :</label>
+                        <label for="_kelurahan" class="col-form-label">Kelurahan Surat Keterangan :</label>
                         <select class="form-control select2 kelurahan" id="_kelurahan" name="_kelurahan" style="width: 100%" required>
                             <option value="">&nbsp;</option>
                             <?php if (isset($kelurahans)) {
