@@ -16,7 +16,7 @@ class Verifiqrcode extends BaseController
     public function index()
     {
         $token = htmlspecialchars($this->request->getGet('token'), true);
-        $dokumen = $this->_db->table('_permohonan')->where('id', $token)->get()->getRowObject();
+        $dokumen = $this->_db->table('_permohonan')->where("a.id = '$token' OR kode_permohonan = '$token'")->get()->getRowObject();
         $data = [
             'title' => 'Verifi Dokumen PDF Dari QRCode'
         ];
@@ -24,7 +24,7 @@ class Verifiqrcode extends BaseController
             $data['dokumen'] = $dokumen;
             return view('verifiqrcode/index', $data);
         } else {
-            $dokumen = $this->_db->table('_permohonan_temp')->where('id', $token)->get()->getRowObject();
+            $dokumen = $this->_db->table('_permohonan_temp')->where("a.id = '$token' OR kode_permohonan = '$token'")->get()->getRowObject();
             if ($dokumen) {
                 $data['dokumen'] = $dokumen;
                 return view('verifiqrcode/index', $data);
@@ -33,8 +33,13 @@ class Verifiqrcode extends BaseController
                     $data['dokumen'] = $dokumen;
                     return view('verifiqrcode/index', $data);
                 } else {
-                    $dokumen = $this->_db->table('_permohonan_tolak')->where('id', $token)->get()->getRowObject();
-                    return view('verifiqrcode/404', $data);
+                    $dokumen = $this->_db->table('_permohonan_tolak')->where("a.id = '$token' OR kode_permohonan = '$token'")->get()->getRowObject();
+                    if ($dokumen) {
+                        $data['dokumen'] = $dokumen;
+                        return view('verifiqrcode/index', $data);
+                    } else {
+                        return view('verifiqrcode/404', $data);
+                    }
                 }
             }
         }
@@ -200,8 +205,7 @@ class Verifiqrcode extends BaseController
     public function detaillayanan()
     {
         $id = htmlspecialchars($this->request->getGet('token'), true);
-        var_dump($id);
-        die;
+
         $dokumen = $this->_db->table('_permohonan a')
             ->select("a.*")
             ->where("a.id = '$id' OR kode_permohonan = '$id'")->get()->getRowObject();
@@ -249,7 +253,7 @@ class Verifiqrcode extends BaseController
                 ->join('_profil_users_tb b', 'b.id = a.user_id')
                 ->join('ref_kecamatan c', 'c.id = b.kecamatan')
                 ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-                ->where(['a.id' => $id])->get()->getRowObject();
+                ->where("a.id = '$id' OR kode_permohonan = '$id'")->get()->getRowObject();
 
             if ($dokumenAntrian) {
                 $data['data'] = $dokumenAntrian;
@@ -282,7 +286,7 @@ class Verifiqrcode extends BaseController
                     ->join('_profil_users_tb b', 'b.id = a.user_id')
                     ->join('ref_kecamatan c', 'c.id = b.kecamatan')
                     ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-                    ->where(['a.id' => $id])->get()->getRowObject();
+                    ->where("a.id = '$id' OR kode_permohonan = '$id'")->get()->getRowObject();
                 if ($dokumenTolak) {
                     $data['data'] = $dokumenAntrian;
                     $data['status_permohonan'] = 'ditolak';
