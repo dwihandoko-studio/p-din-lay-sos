@@ -71,6 +71,10 @@
                     <input type="text" class="form-control" value="<?= $data->to_rumah_sakit ?>" readonly />
                 </div>
             <?php } ?>
+            <div class="col-lg-12">
+                <label class="col-form-label">Keterangan Penolakan:</label>
+                <textarea rows="3" class="form-control" readonly><?= $data->keterangan_reject ?></textarea>
+            </div>
             <?php if (isset($data->lampiran_ktp)) { ?>
                 <div class="col-lg-12 mt-2">
                     <label class="col-form-label">Lampiran Dokumen:</label>

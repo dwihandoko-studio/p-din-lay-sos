@@ -249,6 +249,10 @@
                 <input type="text" class="form-control" value="<?= $lks->jumlah_binaan_luar ?>" readonly />
             </div>
         </div>
+        <div class="col-lg-12">
+            <label class="col-form-label">Keterangan Penolakan:</label>
+            <textarea rows="3" class="form-control" readonly><?= $data->keterangan_reject ?></textarea>
+        </div>
         <div class="row mt-2">
             <div class="col-lg-12 mt-2">
                 <label class="col-form-label">Lampiran Dokumen Lembaga:</label>
