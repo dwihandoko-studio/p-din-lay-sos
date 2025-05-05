@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_jumlah_selesai_pengaduan"></div>
+                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_jumlah_ditolak_pengaduan"></div>
                             </div>
                         </div>
                     </div>
