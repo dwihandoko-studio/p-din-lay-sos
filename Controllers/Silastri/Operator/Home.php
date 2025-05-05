@@ -102,8 +102,8 @@ class Home extends BaseController
         $query = "
     SELECT 
         (SELECT COUNT(*) FROM _permohonan_temp) AS jumlah_antrian_permohonan,
-        (SELECT COUNT(*) FROM _permohonan status_permohonan IN (1,2)) AS jumlah_diproses_permohonan,
-        (SELECT COUNT(*) FROM _permohonan status_permohonan = 5) AS jumlah_selesai_permohonan,
+        (SELECT COUNT(*) FROM _permohonan WHERE status_permohonan IN (1,2)) AS jumlah_diproses_permohonan,
+        (SELECT COUNT(*) FROM _permohonan WHERE status_permohonan = 5) AS jumlah_selesai_permohonan,
         (SELECT COUNT(*) FROM _permohonan_tolak) AS jumlah_ditolak_permohonan,
         (SELECT COUNT(*) FROM _pengaduan WHERE status_aduan = 1) AS jumlah_antrian_pengaduan,
         (SELECT COUNT(*) FROM _pengaduan WHERE status_aduan = 2) AS jumlah_diproses_pengaduan,
