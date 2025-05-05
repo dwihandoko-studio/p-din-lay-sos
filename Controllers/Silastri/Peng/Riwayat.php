@@ -176,49 +176,35 @@ class Riwayat extends BaseController
             }
             return view('silastri/peng/riwayat/pengaduan/detail', $data);
         } else {
-            $current1 = $this->_db->table('_permohonan a')
-                ->select("a.*, 
-                b.nik as nik_pemohon, 
-                b.kk as kk, 
-                b.email as email, 
-                b.no_hp as no_hp, 
-                b.tempat_lahir, 
-                b.tgl_lahir, 
-                b.jenis_kelamin, 
-                b.alamat, 
-                c.id as id_kecamatan, 
-                c.kecamatan as nama_kecamatan, 
-                d.id as id_kelurahan, 
-                d.kelurahan as nama_kelurahan")
+            $current1 = $this->_db->table('_pengaduan_tolak a')
+                ->select("a.*, b.nik as nik_pemohon, 
+            b.kk as kk, 
+            b.email as email, 
+            b.no_hp as no_hp, 
+            b.tempat_lahir, 
+            b.tgl_lahir, 
+            b.jenis_kelamin, 
+            b.alamat")
                 ->join('_profil_users_tb b', 'b.id = a.user_id')
-                ->join('ref_kecamatan c', 'c.id = b.kecamatan')
-                ->join('ref_kelurahan d', 'd.id = b.kelurahan')
+                // ->join('ref_kecamatan c', 'c.id = b.kecamatan')
+                // ->join('ref_kelurahan d', 'd.id = b.kelurahan')
                 ->where(['a.id' => $id])->get()->getRowObject();
             if ($current1) {
                 $data['data'] = $current1;
-                if ((int)$current1->status_permohonan === 1) {
-                    $data['status_aduan'] = 'disposisi';
-                } else if ((int)$current1->status_permohonan === 2) {
-                    $data['status_aduan'] = 'proses';
-                } else if ((int)$current1->status_permohonan === 5) {
-                    $data['status_aduan'] = 'pengesahan';
-                    $fileSelesai = $this->_db->table('_file_tte')->where('id', $current1->id)->get()->getRowObject();
-                    if ($fileSelesai) {
-                        $data['file_selesai'] = $fileSelesai;
-                    }
-                } else {
-                    $data['status_aduan'] = 'ditolak';
-                }
-                switch ($current1->layanan) {
-                    case 'LKS':
-                        $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current1->id)->get()->getRowObject();
-                        return view('silastri/peng/riwayat/layanan/detail_lks', $data);
-                        break;
 
-                    default:
-                        return view('silastri/peng/riwayat/layanan/detail', $data);
-                        break;
-                }
+                $data['status_aduan'] = 'ditolak';
+
+                // switch ($current1->layanan) {
+                //     case 'LKS':
+                //         $data['lks'] = $this->_db->table('_permohonan_lksa')->where('id_permohonan', $current1->id)->get()->getRowObject();
+                //         return view('silastri/peng/riwayat/pengaduan/detail_lks', $data);
+                //         break;
+
+                //     default:
+                //         return view('silastri/peng/riwayat/pengaduan/detail', $data);
+                //         break;
+                //     }
+                return view('silastri/peng/riwayat/pengaduan/detail', $data);
             } else {
                 return view('404');
             }
