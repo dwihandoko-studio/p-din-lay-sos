@@ -100,13 +100,15 @@ class Home extends BaseController
         // $userId = 'c0790cbb-1567-48fa-8949-fb5037866118';
         $userId = $user->data->id;
 
-        $bidangs = getBidangNaungan($user->data->id);
-        $layanans = getGrantedAccessLayanan($user->data->id);
+        $bidangs = getBidangNaunganArray($user->data->id);
+        $layanans = getGrantedAccessLayananArray($user->data->id);
 
-        $bidangF = implode(",", $bidangs);
-        $layananF = implode(",", $layanans);
+        $bidangF = implode(",", array_map([$this->_db, 'escape'], $bidangs));
+        $layananF = implode(",", array_map([$this->_db, 'escape'], $layanans));
 
-        $queryJumlahAll = $this->_db->query("SELECT 
+
+        $query = "
+    SELECT 
         (SELECT COUNT(*) FROM _permohonan_temp WHERE layanan IN ($layananF)) AS jumlah_antrian_permohonan,
         (SELECT COUNT(*) FROM _permohonan WHERE layanan IN ($layananF) AND status_permohonan IN (1,2)) AS jumlah_diproses_permohonan,
         (SELECT COUNT(*) FROM _permohonan WHERE layanan IN ($layananF) AND status_permohonan = 5) AS jumlah_selesai_permohonan,
@@ -114,18 +116,21 @@ class Home extends BaseController
         (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 1) AS jumlah_antrian_pengaduan,
         (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 2) AS jumlah_diproses_pengaduan,
         (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 5) AS jumlah_selesai_pengaduan,
-        (SELECT COUNT(*) FROM _pengaduan_tolak WHERE diteruskan_ke IN ($bidangF)) AS jumlah_ditolak_pengaduan");
+        (SELECT COUNT(*) FROM _pengaduan_tolak WHERE diteruskan_ke IN ($bidangF)) AS jumlah_ditolak_pengaduan
+";
+
+        $queryJumlahAll = $this->_db->query($query);
         $jumlahAll = $queryJumlahAll->getRow();
 
         $datas = [
-            'jumlah_antrian_pengaduan' => $jumlahAll->jumlah_antrian_pengaduan,
-            'jumlah_diproses_pengaduan' => $jumlahAll->jumlah_diproses_pengaduan,
-            'jumlah_selesai_pengaduan' => $jumlahAll->jumlah_selesai_pengaduan,
-            'jumlah_ditolak_pengaduan' => $jumlahAll->jumlah_ditolak_pengaduan,
-            'jumlah_antrian_permohonan' => $jumlahAll->jumlah_antrian_permohonan,
-            'jumlah_diproses_permohonan' => $jumlahAll->jumlah_diproses_permohonan,
-            'jumlah_selesai_permohonan' => $jumlahAll->jumlah_selesai_permohonan,
-            'jumlah_ditolak_permohonan' => $jumlahAll->jumlah_ditolak_permohonan,
+            'jumlah_antrian_pengaduan' => (int) $jumlahAll->jumlah_antrian_pengaduan,
+            'jumlah_diproses_pengaduan' => (int) $jumlahAll->jumlah_diproses_pengaduan,
+            'jumlah_selesai_pengaduan' => (int) $jumlahAll->jumlah_selesai_pengaduan,
+            'jumlah_ditolak_pengaduan' => (int) $jumlahAll->jumlah_ditolak_pengaduan,
+            'jumlah_antrian_permohonan' => (int) $jumlahAll->jumlah_antrian_permohonan,
+            'jumlah_diproses_permohonan' => (int) $jumlahAll->jumlah_diproses_permohonan,
+            'jumlah_selesai_permohonan' => (int) $jumlahAll->jumlah_selesai_permohonan,
+            'jumlah_ditolak_permohonan' => (int) $jumlahAll->jumlah_ditolak_permohonan,
         ];
         // var_dump($datas);
         // ->select("a.*, (SELECT count(*) FROM _notification_tb WHERE send_to = '$id' AND (readed = 0)) as jumlah, b.fullname, b.profile_picture as image_user")

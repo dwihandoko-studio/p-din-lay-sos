@@ -896,6 +896,37 @@ function getBidangNaungan($user_id)
 	return [""];
 }
 
+function getGrantedAccessLayananArray($user_id): array
+{
+	$db = \Config\Database::connect();
+	$result = $db->table('hak_access_layanan')
+		->select("bidang")
+		->where('user_id', $user_id)
+		->get()
+		->getResult();
+
+	if (empty($result)) {
+		return [""];
+	}
+
+	return array_column($result, 'bidang');
+}
+function getBidangNaunganArray($user_id): array
+{
+	$db = \Config\Database::connect();
+	$result = $db->table('hak_access_pengaduan')
+		->select("bidang")
+		->where('user_id', $user_id)
+		->get()
+		->getResult();
+
+	if (empty($result)) {
+		return [""];
+	}
+
+	return array_column($result, 'bidang');
+}
+
 function getBidangNaunganMenu($user_id)
 {
 	$db      = \Config\Database::connect();
