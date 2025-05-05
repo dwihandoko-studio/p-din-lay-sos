@@ -330,6 +330,15 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <?php if (isset($data->keterangan_reject)) {
+                                        if (!($data->keterangan_reject === "" || $data->keterangan_reject === NULL)) { ?>
+                                            <div class="col-lg-12">
+                                                <label class="col-form-label">Keterangan Penolakan:</label>
+                                                <textarea rows="3" class="form-control" readonly><?= $data->keterangan_reject ?></textarea>
+                                            </div>
+                                    <?php }
+                                    } ?>
                                 </div>
                             </div>
                         </div>
