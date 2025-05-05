@@ -17,7 +17,6 @@
                 </div>
             </div>
         </div> -->
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex">
@@ -34,7 +33,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="total_jumlah_antrian_pengaduan"></div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +52,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                                <div data-colors='["--bs-warning", "--bs-transparent"]' dir="ltr" id="total_jumlah_diproses_pengaduan"></div>
                             </div>
                         </div>
                     </div>
@@ -72,7 +71,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="new_application_charts"></div>
+                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="total_jumlah_selesai_pengaduan"></div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +90,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_rejected_charts"></div>
+                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_jumlah_ditolak_pengaduan"></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +117,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="total_jumlah_antrian_permohonan"></div>
                             </div>
                         </div>
                     </div>
@@ -137,7 +136,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                                <div data-colors='["--bs-warning", "--bs-transparent"]' dir="ltr" id="total_jumlah_diproses_permohonan"></div>
                             </div>
                         </div>
                     </div>
@@ -156,7 +155,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="new_application_charts"></div>
+                                <div data-colors='["--bs-success", "--bs-transparent"]' dir="ltr" id="total_jumlah_selesai_permohonan"></div>
                             </div>
                         </div>
                     </div>
@@ -175,7 +174,7 @@
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_rejected_charts"></div>
+                                <div data-colors='["--bs-danger", "--bs-transparent"]' dir="ltr" id="total_jumlah_ditolak_permohonan"></div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +184,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card">
@@ -466,7 +464,478 @@
         loadAllPengaduan();
         loadAllPermohonan();
         loadStatistik();
-
+        var totalJumlahantrianpengaduanColors = getChartColorsArray("total_jumlah_antrian_pengaduan");
+        totalJumlahantrianpengaduanColors &&
+            ((options = {
+                    series: [{
+                        name: "Antrian Pengaduan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahantrianpengaduanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_antrian_pengaduan"),
+                    options
+                )).render());
+        var totalJumlahdiprosespengaduanColors = getChartColorsArray("total_jumlah_diproses_pengaduan");
+        totalJumlahdiprosespengaduanColors &&
+            ((options = {
+                    series: [{
+                        name: "Diproses Pengaduan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahdiprosespengaduanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_diproses_pengaduan"),
+                    options
+                )).render());
+        var totalJumlahselesaipengaduanColors = getChartColorsArray("total_jumlah_selesai_pengaduan");
+        totalJumlahselesaipengaduanColors &&
+            ((options = {
+                    series: [{
+                        name: "Selesai Pengaduan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahselesaipengaduanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_selesai_pengaduan"),
+                    options
+                )).render());
+        var totalJumlahditolakpengaduanColors = getChartColorsArray("total_jumlah_ditolak_pengaduan");
+        totalJumlahditolakpengaduanColors &&
+            ((options = {
+                    series: [{
+                        name: "Ditolak Pengaduan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahditolakpengaduanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_ditolak_pengaduan"),
+                    options
+                )).render());
+        var totalJumlahantrianpermohonanColors = getChartColorsArray("total_jumlah_antrian_permohonan");
+        totalJumlahantrianpermohonanColors &&
+            ((options = {
+                    series: [{
+                        name: "Antrian Permohonan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahantrianpermohonanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_antrian_permohonan"),
+                    options
+                )).render());
+        var totalJumlahdiprosespermohonanColors = getChartColorsArray("total_jumlah_diproses_permohonan");
+        totalJumlahdiprosespermohonanColors &&
+            ((options = {
+                    series: [{
+                        name: "Diproses Permohonan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahdiprosespermohonanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_diproses_permohonan"),
+                    options
+                )).render());
+        var totalJumlahselesaipermohonanColors = getChartColorsArray("total_jumlah_selesai_permohonan");
+        totalJumlahselesaipermohonanColors &&
+            ((options = {
+                    series: [{
+                        name: "Selesai Permohonan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahselesaipermohonanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_selesai_permohonan"),
+                    options
+                )).render());
+        var totalJumlahditolakpermohonanColors = getChartColorsArray("total_jumlah_ditolak_permohonan");
+        totalJumlahditolakpermohonanColors &&
+            ((options = {
+                    series: [{
+                        name: "Ditolak Permohonan",
+                        data: [36, 48, 10, 74, 35, 50, 70, 73]
+                    }, ],
+                    chart: {
+                        width: 130,
+                        height: 46,
+                        type: "area",
+                        sparkline: {
+                            enabled: !0
+                        },
+                        toolbar: {
+                            show: !1
+                        },
+                    },
+                    dataLabels: {
+                        enabled: !1
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        width: 1.5
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            inverseColors: !1,
+                            opacityFrom: 0.45,
+                            opacityTo: 0.05,
+                            stops: [50, 100, 100, 100],
+                        },
+                    },
+                    tooltip: {
+                        fixed: {
+                            enabled: !1
+                        },
+                        x: {
+                            show: !1
+                        },
+                        y: {
+                            title: {
+                                formatter: function(e) {
+                                    return "";
+                                },
+                            },
+                        },
+                        marker: {
+                            show: !1
+                        },
+                    },
+                    colors: totalJumlahditolakpermohonanColors,
+                }),
+                (chart = new ApexCharts(
+                    document.querySelector("#total_jumlah_ditolak_permohonan"),
+                    options
+                )).render());
         // $("#timeline-carousel").owlCarousel({
         //     items: 1,
         //     loop: !1,

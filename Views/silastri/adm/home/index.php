@@ -465,7 +465,6 @@
         loadAllPengaduan();
         loadAllPermohonan();
         loadStatistik();
-        total_jumlah_antrian_pengaduan
 
         var totalJumlahantrianpengaduanColors = getChartColorsArray("total_jumlah_antrian_pengaduan");
         totalJumlahantrianpengaduanColors &&
