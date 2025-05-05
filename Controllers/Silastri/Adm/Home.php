@@ -87,6 +87,70 @@ class Home extends BaseController
         }
     }
 
+    public function getAllStatistik()
+    {
+        $Profilelib = new Profilelib();
+        $user = $Profilelib->user();
+        if ($user->status != 200) {
+            session()->destroy();
+            delete_cookie('jwt');
+            return redirect()->to(base_url('auth'));
+        }
+
+        // $userId = 'c0790cbb-1567-48fa-8949-fb5037866118';
+        $userId = $user->data->id;
+
+        $bidangs = getBidangNaungan($user->data->id);
+        $layanans = getGrantedAccessLayanan($user->data->id);
+
+        $bidangF = implode(",", $bidangs);
+        $layananF = implode(",", $layanans);
+
+        $queryJumlahAll = $this->_db->query("SELECT 
+        (SELECT COUNT(*) FROM _permohonan_temp WHERE layanan IN ($layananF)) AS jumlah_antrian_permohonan,
+        (SELECT COUNT(*) FROM _permohonan WHERE layanan IN ($layananF) AND status_permohonan IN (1,2)) AS jumlah_diproses_permohonan,
+        (SELECT COUNT(*) FROM _permohonan WHERE layanan IN ($layananF) AND status_permohonan = 5) AS jumlah_selesai_permohonan,
+        (SELECT COUNT(*) FROM _permohonan_tolak WHERE layanan IN ($layananF)) AS jumlah_ditolak_permohonan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 1) AS jumlah_antrian_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 2) AS jumlah_diproses_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE diteruskan_ke IN ($bidangF) AND status_aduan = 5) AS jumlah_selesai_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan_tolak WHERE diteruskan_ke IN ($bidangF)) AS jumlah_ditolak_pengaduan");
+        $jumlahAll = $queryJumlahAll->getRow();
+
+        $datas = [
+            'jumlah_antrian_pengaduan' => $jumlahAll->jumlah_antrian_pengaduan,
+            'jumlah_diproses_pengaduan' => $jumlahAll->jumlah_diproses_pengaduan,
+            'jumlah_selesai_pengaduan' => $jumlahAll->jumlah_selesai_pengaduan,
+            'jumlah_ditolak_pengaduan' => $jumlahAll->jumlah_ditolak_pengaduan,
+            'jumlah_antrian_permohonan' => $jumlahAll->jumlah_antrian_permohonan,
+            'jumlah_diproses_permohonan' => $jumlahAll->jumlah_diproses_permohonan,
+            'jumlah_selesai_permohonan' => $jumlahAll->jumlah_selesai_permohonan,
+            'jumlah_ditolak_permohonan' => $jumlahAll->jumlah_ditolak_permohonan,
+        ];
+        // var_dump($datas);
+        // ->select("a.*, (SELECT count(*) FROM _notification_tb WHERE send_to = '$id' AND (readed = 0)) as jumlah, b.fullname, b.profile_picture as image_user")
+        // ->join('_profil_users_tb b', 'a.send_from = b.id', 'LEFT')
+        // ->where('a.user_id', $user->data->id)
+        // ->limit(5)
+        // ->orderBy('a.created_at', 'DESC')
+        // ->get()->getResult();
+
+        // if (count($datas) > 0) {
+        //     $x['datas'] = $datas;
+        $response = new \stdClass;
+        $response->status = 200;
+        $response->message = "success";
+        $response->data = $datas;
+        return json_encode($response);
+        // } else {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Belum ada riwayat.";
+        //     $response->data = [];
+        //     return json_encode($response);
+        // }
+    }
+
     public function index()
     {
         return redirect()->to(base_url('silastri/adm/home/data'));

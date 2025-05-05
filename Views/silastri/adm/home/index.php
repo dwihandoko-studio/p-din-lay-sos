@@ -30,7 +30,26 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Antrian</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-antrian-pengaduan"><i class="fa fa-spinner fa-spin"></i></h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card-body border-top py-3">
+                        <p class="mb-0"> <span class="badge badge-soft-info me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 0%</span> Increase last month</p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium">Diproses</p>
+                                <h4 class="mb-0 statistik-jumlah-diproses-pengaduan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -49,7 +68,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Selesai</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-selesai-pengaduan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -68,7 +87,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Ditolak</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-ditolak-pengaduan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -95,7 +114,26 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Antrian</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-antrian-permohonan"><i class="fa fa-spinner fa-spin"></i></h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div data-colors='["--bs-info", "--bs-transparent"]' dir="ltr" id="eathereum_sparkline_charts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card-body border-top py-3">
+                        <p class="mb-0"> <span class="badge badge-soft-info me-1"><i class="bx bx-trending-up align-bottom me-1"></i> 0%</span> Increase last month</p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium">Diproses</p>
+                                <h4 class="mb-0 statistik-jumlah-diproses-permohonan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -114,7 +152,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Selesai</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-selesai-permohonan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -133,7 +171,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">Ditolak</p>
-                                <h4 class="mb-0">0</h4>
+                                <h4 class="mb-0 statistik-jumlah-ditolak-permohonan"><i class="fa fa-spinner fa-spin"></i></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -227,6 +265,65 @@
 <script src="<?= base_url() ?>/assets/libs/jquery-countdown/jquery.countdown.min.js"></script>
 <script src="<?= base_url() ?>/assets/js/pages/coming-soon.init.js"></script>
 <script>
+    function loadStatistik() {
+        $.ajax({
+            url: "./getAllStatistik",
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(resul) {
+                console.log(resul);
+                if (resul.status !== 200) {
+                    // if (resul.status === 401) {
+                    //     Swal.fire(
+                    //         'PERINGATAN!',
+                    //         resul.message,
+                    //         'warning'
+                    //     ).then((valRes) => {
+                    //         reloadPage();
+                    //     });
+                    // } else {
+                    //     // Swal.fire(
+                    //     //     'PERINGATAN!',
+                    //     //     resul.message,
+                    //     //     'warning'
+                    //     // );
+                    // }
+                    $(".statistik-jumlah-antrian-pengaduan").html("-");
+                    $(".statistik-jumlah-diproses-pengaduan").html("-");
+                    $(".statistik-jumlah-selesai-permohonan").html("-");
+                    $(".statistik-jumlah-ditolak-permohonan").html("-");
+
+                    $(".statistik-jumlah-antrian-permohonan").html("-");
+                    $(".statistik-jumlah-diproses-permohonan").html("-");
+                    $(".statistik-jumlah-selesai-permohonan").html("-");
+                    $(".statistik-jumlah-ditolak-permohonan").html("-");
+                } else {
+                    $(".statistik-jumlah-antrian-pengaduan").html(resul.data.jumlah_antrian_pengaduan);
+                    $(".statistik-jumlah-diproses-pengaduan").html(resul.data.jumlah_diproses_pengaduan);
+                    $(".statistik-jumlah-selesai-permohonan").html(resul.data.jumlah_selesai_pengaduan);
+                    $(".statistik-jumlah-ditolak-permohonan").html(resul.data.jumlah_ditolak_pengaduan);
+
+                    $(".statistik-jumlah-antrian-permohonan").html(resul.data.jumlah_antrian_permohonan);
+                    $(".statistik-jumlah-diproses-permohonan").html(resul.data.jumlah_diproses_permohonan);
+                    $(".statistik-jumlah-selesai-permohonan").html(resul.data.jumlah_selesai_permohonan);
+                    $(".statistik-jumlah-ditolak-permohonan").html(resul.data.jumlah_ditolak_permohonan);
+                }
+            },
+            error: function(e) {
+                console.log(e);
+                $(".statistik-jumlah-antrian-pengaduan").html("-");
+                $(".statistik-jumlah-diproses-pengaduan").html("-");
+                $(".statistik-jumlah-selesai-permohonan").html("-");
+                $(".statistik-jumlah-ditolak-permohonan").html("-");
+
+                $(".statistik-jumlah-antrian-permohonan").html("-");
+                $(".statistik-jumlah-diproses-permohonan").html("-");
+                $(".statistik-jumlah-selesai-permohonan").html("-");
+                $(".statistik-jumlah-ditolak-permohonan").html("-");
+            }
+        });
+    }
+
     function loadAllPengaduan() {
         $.ajax({
             url: "./getAllPengaduan",
@@ -367,6 +464,7 @@
     $(document).ready(function() {
         loadAllPengaduan();
         loadAllPermohonan();
+        loadStatistik();
 
         // $("#timeline-carousel").owlCarousel({
         //     items: 1,
