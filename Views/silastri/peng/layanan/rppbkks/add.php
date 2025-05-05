@@ -200,7 +200,7 @@
                                         <div class="row mb-2">
                                             <label for="_keterangan" class="col-sm-3 col-form-label">Keterangan :</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control select2 keterangan" id="_keterangan" name="_keterangan" style="width: 100%" onchange="changeKeterangan(this)">
+                                                <select class="form-control select2 keterangan" id="_keterangan" name="_keterangan" style="width: 100%">
                                                     <option value=""> --- Pilih Keterangan ---</option>
                                                     <?php if (isset($jeniss)) {
                                                         if (count($jeniss) > 0) {
