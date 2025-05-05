@@ -148,7 +148,7 @@ class Ditolak extends BaseController
             $nik = htmlspecialchars($this->request->getVar('nik'), true);
             $nama = htmlspecialchars($this->request->getVar('nama'), true);
 
-            $current = $this->_db->table('_permohonan a')
+            $current = $this->_db->table('_permohonan_tolak a')
                 ->select("a.*, 
                 b.nik as nik_pemohon, 
                 b.kk as kk, 
@@ -165,7 +165,7 @@ class Ditolak extends BaseController
                 ->join('_profil_users_tb b', 'b.id = a.user_id')
                 ->join('ref_kecamatan c', 'c.id = b.kecamatan')
                 ->join('ref_kelurahan d', 'd.id = b.kelurahan')
-                ->where("a.id = '$id' AND (a.status_permohonan = 1 OR a.status_permohonan = 2)")->get()->getRowObject();
+                ->where("a.id = '$id'")->get()->getRowObject();
 
             if ($current) {
                 $data['data'] = $current;
