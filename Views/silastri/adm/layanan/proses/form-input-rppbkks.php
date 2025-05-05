@@ -54,12 +54,12 @@
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="_nama_bank" class="form-label">Nama Bank</label>
-                    <input type="text" class="form-control nama_bank" id="_nama_bank" name="_nama_bank" placeholder="Nomor Rekening..." onfocusin="inputFocus(this);" required>
+                    <input type="text" class="form-control nama_bank" id="_nama_bank" name="_nama_bank" placeholder="Nama Bank..." onfocusin="inputFocus(this);" required>
                     <div class="help-block _nama_bank"></div>
                 </div>
                 <div class="mb-3">
                     <label for="_unit_bank" class="form-label">Unit Bank</label>
-                    <input type="text" class="form-control unit_bank" id="_unit_bank" name="_unit_bank" placeholder="Nomor Rekening..." onfocusin="inputFocus(this);" required>
+                    <input type="text" class="form-control unit_bank" id="_unit_bank" name="_unit_bank" placeholder="Unit Bank..." onfocusin="inputFocus(this);" required>
                     <div class="help-block _unit_bank"></div>
                 </div>
                 <div class="mb-3">

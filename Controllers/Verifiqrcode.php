@@ -202,7 +202,7 @@ class Verifiqrcode extends BaseController
         $id = htmlspecialchars($this->request->getGet('token'), true);
         $dokumen = $this->_db->table('_permohonan a')
             ->select("a.*")
-            ->where('a.id', $id)->get()->getRowObject();
+            ->where("a.id = '$id' OR kode_permohonan = '$id'")->get()->getRowObject();
 
         if ($dokumen) {
             $data['data'] = $dokumen;
