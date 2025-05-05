@@ -87,6 +87,50 @@ class Home extends BaseController
         }
     }
 
+    public function getAllStatistik()
+    {
+        $Profilelib = new Profilelib();
+        $user = $Profilelib->user();
+        if ($user->status != 200) {
+            session()->destroy();
+            delete_cookie('jwt');
+            return redirect()->to(base_url('auth'));
+        }
+
+        $userId = $user->data->id;
+
+        $query = "
+    SELECT 
+        (SELECT COUNT(*) FROM _permohonan_temp) AS jumlah_antrian_permohonan,
+        (SELECT COUNT(*) FROM _permohonan status_permohonan IN (1,2)) AS jumlah_diproses_permohonan,
+        (SELECT COUNT(*) FROM _permohonan status_permohonan = 5) AS jumlah_selesai_permohonan,
+        (SELECT COUNT(*) FROM _permohonan_tolak) AS jumlah_ditolak_permohonan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE status_aduan = 1) AS jumlah_antrian_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE status_aduan = 2) AS jumlah_diproses_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan WHERE status_aduan = 5) AS jumlah_selesai_pengaduan,
+        (SELECT COUNT(*) FROM _pengaduan_tolak) AS jumlah_ditolak_pengaduan
+";
+
+        $queryJumlahAll = $this->_db->query($query);
+        $jumlahAll = $queryJumlahAll->getRow();
+
+        $datas = [
+            'jumlah_antrian_pengaduan' => (int) $jumlahAll->jumlah_antrian_pengaduan,
+            'jumlah_diproses_pengaduan' => (int) $jumlahAll->jumlah_diproses_pengaduan,
+            'jumlah_selesai_pengaduan' => (int) $jumlahAll->jumlah_selesai_pengaduan,
+            'jumlah_ditolak_pengaduan' => (int) $jumlahAll->jumlah_ditolak_pengaduan,
+            'jumlah_antrian_permohonan' => (int) $jumlahAll->jumlah_antrian_permohonan,
+            'jumlah_diproses_permohonan' => (int) $jumlahAll->jumlah_diproses_permohonan,
+            'jumlah_selesai_permohonan' => (int) $jumlahAll->jumlah_selesai_permohonan,
+            'jumlah_ditolak_permohonan' => (int) $jumlahAll->jumlah_ditolak_permohonan,
+        ];
+        $response = new \stdClass;
+        $response->status = 200;
+        $response->message = "success";
+        $response->data = $datas;
+        return json_encode($response);
+    }
+
     public function index()
     {
         return redirect()->to(base_url('silastri/operator/home/data'));
