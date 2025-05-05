@@ -290,8 +290,8 @@
                     // }
                     $(".statistik-jumlah-antrian-pengaduan").html("-");
                     $(".statistik-jumlah-diproses-pengaduan").html("-");
-                    $(".statistik-jumlah-selesai-permohonan").html("-");
-                    $(".statistik-jumlah-ditolak-permohonan").html("-");
+                    $(".statistik-jumlah-selesai-pengaduan").html("-");
+                    $(".statistik-jumlah-ditolak-pengaduan").html("-");
 
                     $(".statistik-jumlah-antrian-permohonan").html("-");
                     $(".statistik-jumlah-diproses-permohonan").html("-");
@@ -300,8 +300,8 @@
                 } else {
                     $(".statistik-jumlah-antrian-pengaduan").html(resul.data.jumlah_antrian_pengaduan);
                     $(".statistik-jumlah-diproses-pengaduan").html(resul.data.jumlah_diproses_pengaduan);
-                    $(".statistik-jumlah-selesai-permohonan").html(resul.data.jumlah_selesai_pengaduan);
-                    $(".statistik-jumlah-ditolak-permohonan").html(resul.data.jumlah_ditolak_pengaduan);
+                    $(".statistik-jumlah-selesai-pengaduan").html(resul.data.jumlah_selesai_pengaduan);
+                    $(".statistik-jumlah-ditolak-pengaduan").html(resul.data.jumlah_ditolak_pengaduan);
 
                     $(".statistik-jumlah-antrian-permohonan").html(resul.data.jumlah_antrian_permohonan);
                     $(".statistik-jumlah-diproses-permohonan").html(resul.data.jumlah_diproses_permohonan);
@@ -313,8 +313,8 @@
                 console.log(e);
                 $(".statistik-jumlah-antrian-pengaduan").html("-");
                 $(".statistik-jumlah-diproses-pengaduan").html("-");
-                $(".statistik-jumlah-selesai-permohonan").html("-");
-                $(".statistik-jumlah-ditolak-permohonan").html("-");
+                $(".statistik-jumlah-selesai-pengaduan").html("-");
+                $(".statistik-jumlah-ditolak-pengaduan").html("-");
 
                 $(".statistik-jumlah-antrian-permohonan").html("-");
                 $(".statistik-jumlah-diproses-permohonan").html("-");
