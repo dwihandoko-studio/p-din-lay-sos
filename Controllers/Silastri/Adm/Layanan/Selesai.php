@@ -423,11 +423,12 @@ class Selesai extends BaseController
                      a.kode_faskes, UPPER(c.nama_faskes) as nama_faskes, b.kk, UPPER(b.tempat_lahir) as tempat_lahir, b.tgl_lahir, 
                      b.jenis_kelamin, b.kecamatan as kode_kecamatan, UPPER(d.kecamatan) as nama_kecamatan, 
                      b.kelurahan as kode_kampung, UPPER(e.kelurahan) as nama_kampung, UPPER(b.alamat), b.rt, 
-                     b.rw, b.kode_pos, b.pekerjaan, a.updated_at as tanggal_usulan");
+                     b.rw, b.kode_pos, b.pekerjaan, a.updated_at as tanggal_usulan, f.field_tambahan as ket_docs");
         $builder->join('_profil_users_tb b', 'a.user_id = b.id', 'left');
         $builder->join('ref_kecamatan d', 'b.kecamatan = d.id', 'left');
         $builder->join('ref_kelurahan e', 'b.kelurahan = e.id', 'left');
         $builder->join('ref_faskes c', 'a.kode_faskes = c.kode_faskes', 'left');
+        $builder->join('_permohonan_doc f', 'f.id = a.id', 'left');
         $builder->where('a.status_permohonan', 5);
         $builder->where('a.layanan', strtoupper($layanan));
         $builder->where('a.updated_at >=', $tgl_awal);
@@ -535,6 +536,7 @@ class Selesai extends BaseController
         $row = 7;
         $no = 1;
         foreach ($data as $item) {
+
             $sheet->setCellValue('A' . $row, $no);
             $sheet->setCellValue('B' . $row, $item['kk'] ?? '');
             $sheet->setCellValue('C' . $row, $item['nik'] ?? '');
@@ -554,7 +556,16 @@ class Selesai extends BaseController
             $sheet->setCellValue('Q' . $row, $item['nama_kampung'] ?? '');
             $sheet->setCellValue('R' . $row, $item['kode_faskes'] ?? '');
             $sheet->setCellValue('S' . $row, $item['nama_faskes'] ?? '');
-            $sheet->setCellValue('T' . $row, $item['keterangan'] ?? '');
+            if (isset($item['ket_docs'])) {
+                $ketDocs = json_decode($item['ket_docs']);
+                if (isset($ketDocs->keterangan_kesehatan)) {
+                    $sheet->setCellValue('T' . $row, $ketDocs->keterangan_kesehatan ?? '');
+                } else {
+                    $sheet->setCellValue('T' . $row, $item['keterangan'] ?? '');
+                }
+            } else {
+                $sheet->setCellValue('T' . $row, $item['keterangan'] ?? '');
+            }
             $sheet->setCellValue('U' . $row, $item['tanggal_usulan'] ?? '');
 
             $row++;
