@@ -443,9 +443,9 @@ class Selesai extends BaseController
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $sheet->mergeCells('A1:U1');
+        $sheet->mergeCells('A1:V1');
         $sheet->setCellValue('A1', 'DATA USULAN CALON PENERIMA BANTUAN IURAN (PBI) APBD KABUPATEN LAMPUNG TENGAH');
-        $sheet->mergeCells('A2:U2');
+        $sheet->mergeCells('A2:V2');
         $sheet->setCellValue('A2', 'PERIODE ' . $tgl_awal . ' s/d ' . $tgl_akhir);
 
         // Style untuk judul
@@ -459,7 +459,7 @@ class Selesai extends BaseController
                 'vertical' => Alignment::VERTICAL_CENTER
             ]
         ];
-        $sheet->getStyle('A1:U2')->applyFromArray($titleStyle);
+        $sheet->getStyle('A1:V2')->applyFromArray($titleStyle);
 
         // Set header tabel
         $sheet->mergeCells('A5:A6');
@@ -597,16 +597,16 @@ class Selesai extends BaseController
                 'vertical' => Alignment::VERTICAL_CENTER
             ]
         ];
-        $sheet->getStyle('A7:U' . ($row - 1))->applyFromArray($dataStyle);
+        $sheet->getStyle('A7:V' . ($row - 1))->applyFromArray($dataStyle);
 
-        foreach (['B', 'C', 'K', 'L', 'N', 'P', 'R'] as $column) {
+        foreach (['B', 'C', 'K', 'L', 'N', 'P', 'R', 'V'] as $column) {
             for ($row = 7; $row <= $sheet->getHighestRow(); $row++) {
                 $cell = $sheet->getCell($column . $row);
                 $cell->setValueExplicit($cell->getValue(), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
             }
         }
 
-        foreach (range('A', 'U') as $column) {
+        foreach (range('A', 'V') as $column) {
             $sheet->getColumnDimension($column)->setAutoSize(true);
         }
 
