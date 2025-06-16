@@ -1248,7 +1248,7 @@ class Proses extends BaseController
                 if ($data->jenis == "SKTM Rekomendasi Keringanan Biaya Pengobatan Rumah Sakit" || $data->jenis == 0) {
                     $file = FCPATH . "upload/template/$data->template";
                     $template_processor = new TemplateProcessor($file);
-                    $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/2023");
+                    $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/" . date('Y'));
                     $template_processor->setValue('PERIHAL', $data->perihal_surat);
                     $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
                     $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
@@ -1361,7 +1361,7 @@ class Proses extends BaseController
             } else {
                 $file = FCPATH . "upload/template/$data->template";
                 $template_processor = new TemplateProcessor($file);
-                $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/2023");
+                $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/" . date('Y'));
                 $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
                 $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
                 $template_processor->setValue('NOMOR_SKTM', $data->nomor_sktm);
@@ -1488,7 +1488,7 @@ class Proses extends BaseController
     //     if ($data) {
     //         $file = FCPATH . "upload/template/$data->template";
     //         $template_processor = new TemplateProcessor($file);
-    //         $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/2023");
+    //         $template_processor->setValue('NOMOR_SURAT', "008/E-LS.$data->no_surat/D.a.VII/" . date('Y'));
     //         $template_processor->setValue('KELURAHAN_SKTM', $data->nama_kelurahan_sktm);
     //         $template_processor->setValue('KECAMATAN_SKTM', $data->nama_kecamatan_sktm);
     //         $template_processor->setValue('NOMOR_SKTM', $data->nomor_sktm);
